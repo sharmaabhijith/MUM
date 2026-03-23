@@ -86,7 +86,7 @@ class ConversationGenerator:
                 response = self.llm_client.generate_json(
                     messages=messages,
                     temperature=0.7,
-                    max_tokens=8192,
+                    max_tokens=16384,
                     phase="conversation_generation",
                 )
 
@@ -166,14 +166,56 @@ class ConversationGenerator:
 
         turns = []
         for t in turns_data:
-            turns.append(
-                ConversationTurn(
-                    turn_number=t.get("turn", len(turns) // 2 + 1),
-                    role=t.get("role", "user"),
-                    content=t.get("content", ""),
-                    timestamp=t.get("timestamp", session_timestamp),
+            # Handle combined format: {"turn": 1, "user": "...", "assistant": "..."}
+            if "user" in t and "assistant" in t and "role" not in t:
+                turn_num = t.get("turn", len(turns) // 2 + 1)
+                ts = t.get("timestamp", session_timestamp)
+                turns.append(
+                    ConversationTurn(
+                        turn_number=turn_num,
+                        role="user",
+                        content=t["user"],
+                        timestamp=ts,
+                    )
                 )
-            )
+                turns.append(
+                    ConversationTurn(
+                        turn_number=turn_num,
+                        role="assistant",
+                        content=t["assistant"],
+                        timestamp=ts,
+                    )
+                )
+            # Handle combined format: {"turn": 1, "user_message": "...", "assistant_response": "..."}
+            elif "user_message" in t and "assistant_response" in t:
+                turn_num = t.get("turn", len(turns) // 2 + 1)
+                ts = t.get("timestamp", session_timestamp)
+                turns.append(
+                    ConversationTurn(
+                        turn_number=turn_num,
+                        role="user",
+                        content=t["user_message"],
+                        timestamp=ts,
+                    )
+                )
+                turns.append(
+                    ConversationTurn(
+                        turn_number=turn_num,
+                        role="assistant",
+                        content=t["assistant_response"],
+                        timestamp=ts,
+                    )
+                )
+            # Standard format: {"turn": 1, "role": "user", "content": "..."}
+            else:
+                turns.append(
+                    ConversationTurn(
+                        turn_number=t.get("turn", len(turns) // 2 + 1),
+                        role=t.get("role", "user"),
+                        content=t.get("content", ""),
+                        timestamp=t.get("timestamp", session_timestamp),
+                    )
+                )
 
         return ConversationSession(
             session_id=session_id,

@@ -55,7 +55,8 @@ class LLMClient:
         response_format: dict | None = None,
         max_tokens: int = 4096,
         phase: str = "general",
-    ) -> str:
+    ) -> tuple[str, str]:
+        """Generate a completion. Returns (content, finish_reason)."""
         self._rate_limit_wait()
         temp = temperature if temperature is not None else self.temperature
 
@@ -82,6 +83,12 @@ class LLMClient:
 
         response = _call()
         content = response.choices[0].message.content or ""
+        finish_reason = response.choices[0].finish_reason or "stop"
+
+        if finish_reason == "length":
+            logger.warning(
+                f"Response truncated (hit max_tokens={max_tokens}) in phase={phase}"
+            )
 
         # Track costs
         usage = response.usage
@@ -93,7 +100,101 @@ class LLMClient:
                 phase=phase,
             )
 
-        return content
+        return content, finish_reason
+
+    @staticmethod
+    def _repair_truncated_json(content: str) -> dict | list | None:
+        """Attempt to repair JSON truncated by max_tokens.
+
+        Handles the common case where a JSON array of objects is cut off
+        mid-element, e.g. {"turns": [{"turn":1,...}, {"turn":2,...}, {"tur
+        """
+        # Strategy: find the last complete object in the array, close the array and braces
+        # Try progressively stripping from the end to find valid JSON
+        # First, try closing open brackets
+        bracket_stack = []
+        in_string = False
+        escape_next = False
+
+        for ch in content:
+            if escape_next:
+                escape_next = False
+                continue
+            if ch == '\\' and in_string:
+                escape_next = True
+                continue
+            if ch == '"' and not escape_next:
+                in_string = not in_string
+                continue
+            if in_string:
+                continue
+            if ch in '{[':
+                bracket_stack.append(ch)
+            elif ch in '}]':
+                if bracket_stack:
+                    bracket_stack.pop()
+
+        # Find the last complete JSON object boundary
+        # Look for the last '},' or '}]' which marks a complete object
+        last_complete = -1
+        depth = 0
+        in_str = False
+        esc = False
+        for i, ch in enumerate(content):
+            if esc:
+                esc = False
+                continue
+            if ch == '\\' and in_str:
+                esc = True
+                continue
+            if ch == '"':
+                in_str = not in_str
+                continue
+            if in_str:
+                continue
+            if ch == '{':
+                depth += 1
+            elif ch == '}':
+                depth -= 1
+                if depth >= 1:  # We closed an inner object (not the root)
+                    last_complete = i
+
+        if last_complete == -1:
+            return None
+
+        # Truncate to last complete object, then close remaining brackets
+        truncated = content[:last_complete + 1]
+        # Count remaining open brackets that need closing
+        stack = []
+        in_str = False
+        esc = False
+        for ch in truncated:
+            if esc:
+                esc = False
+                continue
+            if ch == '\\' and in_str:
+                esc = True
+                continue
+            if ch == '"':
+                in_str = not in_str
+                continue
+            if in_str:
+                continue
+            if ch in '{[':
+                stack.append(ch)
+            elif ch in '}]':
+                if stack:
+                    stack.pop()
+
+        # Close remaining open brackets in reverse order
+        closers = {'[': ']', '{': '}'}
+        suffix = ''.join(closers[b] for b in reversed(stack))
+        repaired = truncated + suffix
+
+        try:
+            return json.loads(repaired)
+        except json.JSONDecodeError:
+            return None
 
     def generate_json(
         self,
@@ -102,7 +203,7 @@ class LLMClient:
         max_tokens: int = 4096,
         phase: str = "general",
     ) -> dict | list:
-        content = self.generate(
+        content, finish_reason = self.generate(
             messages=messages,
             temperature=temperature,
             response_format={"type": "json_object"},
@@ -115,10 +216,29 @@ class LLMClient:
             # Try to extract JSON from markdown code blocks
             if "```json" in content:
                 json_str = content.split("```json")[1].split("```")[0].strip()
-                return json.loads(json_str)
+                try:
+                    return json.loads(json_str)
+                except json.JSONDecodeError:
+                    pass
             elif "```" in content:
                 json_str = content.split("```")[1].split("```")[0].strip()
-                return json.loads(json_str)
+                try:
+                    return json.loads(json_str)
+                except json.JSONDecodeError:
+                    pass
+
+            # If truncated by max_tokens, attempt repair
+            if finish_reason == "length":
+                logger.warning(
+                    f"Attempting to repair truncated JSON ({len(content)} chars) "
+                    f"in phase={phase}"
+                )
+                repaired = self._repair_truncated_json(content)
+                if repaired is not None:
+                    logger.info("Successfully repaired truncated JSON")
+                    return repaired
+                logger.error("Failed to repair truncated JSON")
+
             raise
 
 
@@ -140,10 +260,10 @@ class MockLLMClient(LLMClient):
         response_format: dict | None = None,
         max_tokens: int = 4096,
         phase: str = "general",
-    ) -> str:
+    ) -> tuple[str, str]:
         if response_format and response_format.get("type") == "json_object":
-            return '{"mock": true}'
-        return "Mock response."
+            return '{"mock": true}', "stop"
+        return "Mock response.", "stop"
 
     def generate_json(
         self,
