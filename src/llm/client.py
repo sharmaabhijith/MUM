@@ -24,7 +24,7 @@ class LLMClient:
         model: str = "gpt-4o-mini",
         api_key: str | None = None,
         temperature: float = 0.7,
-        max_retries: int = 3,
+        max_retries: int = 5,
         rate_limit_rpm: int = 500,
         cost_tracker: CostTracker | None = None,
     ):
@@ -33,7 +33,10 @@ class LLMClient:
         self.max_retries = max_retries
         self.rate_limit_rpm = rate_limit_rpm
         self.cost_tracker = cost_tracker or CostTracker()
-        self.client = openai.OpenAI(api_key=api_key)
+        self.client = openai.OpenAI(
+            api_key=api_key,
+            timeout=openai.Timeout(connect=30.0, read=300.0, write=30.0, pool=30.0),
+        )
         self._call_timestamps: deque[float] = deque()
 
     def _rate_limit_wait(self) -> None:

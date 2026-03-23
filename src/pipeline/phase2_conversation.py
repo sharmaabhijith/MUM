@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 from datetime import datetime, timedelta
+from pathlib import Path
 
 from src.llm.client import LLMClient
 from src.llm.cost_tracker import CostTracker
@@ -17,6 +18,7 @@ from src.prompts.conversation_system import build_conversation_system_prompt
 from src.prompts.conversation_user import build_conversation_user_prompt
 from src.prompts.session_summary import build_summary_prompt
 from src.scenarios.base import BaseScenario
+from src.utils.io import write_json
 
 logger = logging.getLogger("mum")
 
@@ -33,13 +35,34 @@ class ConversationGenerator:
         self.cost_tracker = cost_tracker or llm_client.cost_tracker
 
     def generate_scenario(
-        self, scenario: BaseScenario, doc_context: DocumentContext
+        self,
+        scenario: BaseScenario,
+        doc_context: DocumentContext,
+        output_dir: Path | None = None,
     ) -> tuple[list[ConversationSession], list[SessionSummary]]:
         config = scenario.config
         all_sessions: list[ConversationSession] = []
         all_summaries: list[SessionSummary] = []
 
+        # Determine save directory for incremental saves
+        save_dir = None
+        if output_dir is not None:
+            save_dir = Path(output_dir) / f"scenario_{config.scenario_id}"
+
         for user in config.users:
+            # Check if this user's data already exists (resume support)
+            if save_dir and self._user_data_exists(save_dir, user.user_id, config.sessions_per_user):
+                logger.info(
+                    f"Skipping {user.display_name} — "
+                    f"all {config.sessions_per_user} sessions already saved"
+                )
+                loaded_sessions, loaded_summaries = self._load_user_data(
+                    save_dir, user.user_id, config.sessions_per_user
+                )
+                all_sessions.extend(loaded_sessions)
+                all_summaries.extend(loaded_summaries)
+                continue
+
             logger.info(
                 f"Generating conversations for {user.display_name} "
                 f"({config.sessions_per_user} sessions)"
@@ -117,6 +140,15 @@ class ConversationGenerator:
                     f"\n\n--- Session {session_num} Summary ---\n{summary.summary}"
                 )
 
+            # Save after all sessions for this user are complete
+            if save_dir:
+                self._save_user_data(
+                    save_dir, user.user_id, user_sessions, user_summaries
+                )
+                logger.info(
+                    f"  Saved {len(user_sessions)} sessions for {user.display_name}"
+                )
+
             all_sessions.extend(user_sessions)
             all_summaries.extend(user_summaries)
 
@@ -125,6 +157,57 @@ class ConversationGenerator:
             f"{len(all_summaries)} summaries for scenario {config.scenario_id}"
         )
         return all_sessions, all_summaries
+
+    def _user_data_exists(
+        self, save_dir: Path, user_id: str, expected_sessions: int
+    ) -> bool:
+        """Check if all sessions for a user already exist on disk."""
+        conv_dir = save_dir / "conversations"
+        summ_dir = save_dir / "summaries"
+        for sn in range(1, expected_sessions + 1):
+            conv_file = conv_dir / f"{user_id}_session_{sn}.json"
+            summ_file = summ_dir / f"{user_id}_session_{sn}_summary.json"
+            if not conv_file.exists() or not summ_file.exists():
+                return False
+        return True
+
+    def _load_user_data(
+        self, save_dir: Path, user_id: str, expected_sessions: int
+    ) -> tuple[list[ConversationSession], list[SessionSummary]]:
+        """Load previously saved sessions and summaries for a user."""
+        import json as _json
+
+        sessions = []
+        summaries = []
+        for sn in range(1, expected_sessions + 1):
+            conv_file = save_dir / "conversations" / f"{user_id}_session_{sn}.json"
+            summ_file = save_dir / "summaries" / f"{user_id}_session_{sn}_summary.json"
+            with open(conv_file) as f:
+                sessions.append(ConversationSession.model_validate(_json.load(f)))
+            with open(summ_file) as f:
+                summaries.append(SessionSummary.model_validate(_json.load(f)))
+        return sessions, summaries
+
+    def _save_user_data(
+        self,
+        save_dir: Path,
+        user_id: str,
+        sessions: list[ConversationSession],
+        summaries: list[SessionSummary],
+    ) -> None:
+        """Save all sessions and summaries for a user to disk."""
+        conv_dir = save_dir / "conversations"
+        summ_dir = save_dir / "summaries"
+        for session in sessions:
+            write_json(
+                session.model_dump(),
+                conv_dir / f"{user_id}_session_{session.session_number}.json",
+            )
+        for summary in summaries:
+            write_json(
+                summary.model_dump(),
+                summ_dir / f"{user_id}_session_{summary.session_number}_summary.json",
+            )
 
     def _generate_summary(
         self, session: ConversationSession, prior_summary: str

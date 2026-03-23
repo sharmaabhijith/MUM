@@ -85,10 +85,10 @@ class PipelineOrchestrator:
         # Create scenario instance
         scenario = create_scenario(config, doc_context)
 
-        # Phase 2: Conversation generation
+        # Phase 2: Conversation generation (saves incrementally per user)
         logger.info("Phase 2: Conversation Generation")
         conversations, summaries = self.conv_generator.generate_scenario(
-            scenario, doc_context
+            scenario, doc_context, output_dir=self.output_dir
         )
 
         # Phase 3: Annotation
@@ -170,7 +170,7 @@ class PipelineOrchestrator:
         doc_context = self.doc_preparer.prepare_scenario(config)
         scenario = create_scenario(config, doc_context)
         conversations, summaries = self.conv_generator.generate_scenario(
-            scenario, doc_context
+            scenario, doc_context, output_dir=self.output_dir
         )
         self._save_phase_output(scenario_id, "conversations", conversations)
         self._save_phase_output(scenario_id, "summaries", summaries)
