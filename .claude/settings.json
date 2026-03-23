@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la /Users/abhijith.sharma/Documents/Research/MUM/documents/scenario_*/)",
+      "Bash(python3 -c \":*)",
+      "Bash(pip install PyMuPDF tiktoken)",
+      "Bash(python3 -c \"import fitz; print\\(fitz.__version__\\)\")",
+      "Bash(pip3 install --user pymupdf tiktoken)",
+      "Bash(python3 -c \"import fitz; print\\(''OK:'', fitz.__version__\\)\")",
+      "Bash(# Look for conda/venv environment ls /Users/abhijith.sharma/.conda/envs/ ; conda env list)",
+      "Bash(pip3 show pymupdf)",
+      "Bash(pip3 show tiktoken)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(/opt/homebrew/bin/python3.11 -c \":*)",
+      "Bash(/opt/homebrew/bin/python3.11 -m src.cli estimate-cost --all)",
+      "Bash(grep \"filename:\" /Users/abhijith.sharma/Documents/Research/MUM/config/scenarios/scenario_*.yaml)",
+      "Bash(ls /Users/abhijith.sharma/Documents/Research/MUM/documents/scenario_*/*.pdf)",
+      "Bash(/opt/homebrew/bin/python3.11 -m src.cli estimate-cost --all --mode final)",
+      "Bash(git -C /Users/abhijith.sharma/Documents/Research/MUM rev-parse --show-toplevel)",
+      "Bash(git init)"
+    ]
+  }
+}

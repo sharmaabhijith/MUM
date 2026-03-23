@@ -1,0 +1,355 @@
+scenario_id: "3"
+name: "Contract Review: Vendor Agreement"
+relationship_type: cross_functional
+domain: "Legal / Business"
+sessions_per_user: 7
+turns_per_session: 18
+
+timeline:
+  start_date: "2025-06-02T09:00:00Z"
+  end_date: "2025-06-20T18:00:00Z"
+  description: "3-week contract review cycle. Sessions clustered around key milestones."
+  session_schedule:
+    legal_counsel:
+      - {session: 1, date: "2025-06-02"}
+      - {session: 2, date: "2025-06-04"}
+      - {session: 3, date: "2025-06-06"}
+      - {session: 4, date: "2025-06-09"}
+      - {session: 5, date: "2025-06-12"}
+      - {session: 6, date: "2025-06-16"}
+      - {session: 7, date: "2025-06-20"}
+    finance_lead:
+      - {session: 1, date: "2025-06-02"}
+      - {session: 2, date: "2025-06-04"}
+      - {session: 3, date: "2025-06-06"}
+      - {session: 4, date: "2025-06-10"}
+      - {session: 5, date: "2025-06-13"}
+      - {session: 6, date: "2025-06-17"}
+      - {session: 7, date: "2025-06-20"}
+    eng_manager:
+      - {session: 1, date: "2025-06-02"}
+      - {session: 2, date: "2025-06-05"}
+      - {session: 3, date: "2025-06-07"}
+      - {session: 4, date: "2025-06-10"}
+      - {session: 5, date: "2025-06-13"}
+      - {session: 6, date: "2025-06-17"}
+      - {session: 7, date: "2025-06-20"}
+    procurement_lead:
+      - {session: 1, date: "2025-06-03"}
+      - {session: 2, date: "2025-06-05"}
+      - {session: 3, date: "2025-06-09"}
+      - {session: 4, date: "2025-06-11"}
+      - {session: 5, date: "2025-06-14"}
+      - {session: 6, date: "2025-06-18"}
+      - {session: 7, date: "2025-06-20"}
+
+users:
+  - user_id: legal_counsel
+    display_name: "Legal Counsel"
+    scenario_id: "3"
+    authority_level: medium
+    authority_weight: 2.0
+    domain_authority: "legal"
+    expertise: "Contract law, IP rights, liability, indemnification"
+    focus_areas:
+      - "IP clause (Section 4)"
+      - "liability caps (Section 7)"
+      - "indemnification (Section 8)"
+    biases:
+      - "Risk-averse — flags everything as potential liability"
+      - "Views ambiguous language as hostile"
+    prompt_behavior_notes: >
+      Asks precise legal risk questions. Structures analysis as issue, risk,
+      recommendation. Decisive on legal matters, defers on technical feasibility.
+
+    communication_style: >
+      Formal, precise legal language. Uses terms like "as written", "on its face",
+      "notwithstanding", "carve-out". Structures analysis as: issue → risk → recommendation.
+      Decisive — calls things "deal-breakers" or "acceptable risk". Defers to Eng
+      on technical feasibility but owns the legal risk assessment.
+
+    document_reading_pattern: >
+      Reads the MSA clause by clause, starting with IP, liability, and indemnification.
+      Marks up ambiguous phrases. Cross-references defined terms across documents.
+      Reads the SOW only to assess legal exposure from SLA commitments.
+
+    reaction_to_corrections: >
+      On legal matters: resistant — "I understand the engineering perspective, but
+      the legal risk is real regardless of industry practice." On technical matters:
+      defers gracefully — "I'll take your word on the SLA feasibility."
+
+    knowledge_gaps:
+      - "Cannot assess technical SLA feasibility"
+      - "Doesn't understand engineering trade-offs"
+      - "May overstate risk for technically standard contract terms"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Calm, authoritative, occasionally alarmed by genuinely risky clauses.
+      Gets passionate about IP rights. Protective of the client's interests.
+
+    reference_style: "Legal citations: 'Section 4.2(a)', 'as defined in Section 1.3', 'per the indemnification basket in 8.2'"
+
+    session_evolution:
+      session_1: "IP clause discovery. Reads Section 4. Flags derivative works assignment."
+      session_2: "Deep analysis of IP and liability. Builds the deal-breaker case."
+      session_3: "Reviews SLA penalties. Pushes for higher penalties."
+      session_4: "Encounters Engineering's 'this is standard' view on IP. Disagrees firmly."
+      session_5: "Reviews indemnification and termination clauses."
+      session_6: "Builds overall legal risk assessment. Rates contract risk."
+      session_7: "Final redline recommendations. Prioritized negotiation list."
+
+    example_utterances:
+      - "Section 4.2(a) assigns all derivative works to the Vendor. This is a deal-breaker as written."
+      - "We need to redline Section 4.2(a) to assign derivative works to the Client, with the Vendor retaining rights only to pre-existing tools."
+      - "The indemnification basket at $3M is too high. I'd push for $1.5M given the contract value."
+      - "I understand Engineering views this as standard, but the legal risk is real — 'derivative works' is broadly defined."
+      - "Flag this as the highest-priority item for negotiation."
+
+  - user_id: finance_lead
+    display_name: "Finance Lead"
+    scenario_id: "3"
+    authority_level: medium
+    authority_weight: 2.0
+    domain_authority: "financial"
+    expertise: "Pricing analysis, budgeting, payment terms, total cost of ownership"
+    focus_areas:
+      - "Payment schedule"
+      - "total cost analysis"
+      - "NET-30 vs NET-60"
+      - "milestone payments"
+    biases:
+      - "Cash flow focused — always prefers extended payment terms"
+      - "Evaluates everything in NPV terms"
+    prompt_behavior_notes: >
+      Asks numbers-oriented questions. Frames everything as cost impact.
+      Builds total cost models and payment structure analyses.
+
+    communication_style: >
+      Numbers-oriented. Uses financial language: "cash flow impact", "NPV",
+      "working capital". Presents arguments with spreadsheet-style breakdowns.
+      Pragmatic — frames everything as "what does this cost us?"
+
+    document_reading_pattern: >
+      Goes straight to the pricing schedule. Builds mental total cost model.
+      Reads payment terms in the MSA. Ignores legal and technical clauses
+      unless they have financial penalties attached.
+
+    reaction_to_corrections: >
+      Readily accepts if shown better numbers. Pushes back on payment terms
+      with financial modeling: "NET-30 costs us X in working capital."
+      Defers to Legal on clause language, Procurement on market benchmarks.
+
+    knowledge_gaps:
+      - "Doesn't understand SLA technical requirements"
+      - "Doesn't assess legal risk"
+      - "Focused on cost, may miss quality/risk trade-offs"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Calm, analytical, occasionally frustrated by non-financial priorities.
+      Gets energized by finding cost optimization opportunities.
+
+    reference_style: "Financial: 'rate card line item 3', 'the milestone payment schedule', 'NET-30 clause on page 8'"
+
+    session_evolution:
+      session_1: "Pricing analysis. Total cost model. Rate card review."
+      session_2: "Payment terms deep-dive. Builds NET-60 business case."
+      session_3: "Cross-references milestone payments with SOW deliverables."
+      session_4: "Encounters Procurement's market data on NET-30. Pushes back."
+      session_5: "Builds alternative payment structures. Explores compromise."
+      session_6: "Final cost assessment. Rates financial risk."
+      session_7: "Summary of financial terms and negotiation priorities."
+
+    example_utterances:
+      - "NET-60 gives us an extra 30 days of working capital. Under NET-30, we'd need to draw on the credit facility."
+      - "The total contract cost under the rate card is $2.4M over 24 months. That's within budget but tight."
+      - "Can you break down the milestone payment schedule against the SOW deliverables timeline?"
+      - "If the vendor insists on NET-30, can we negotiate a discount for early payment?"
+      - "I defer to Legal on the clause language, but from a cost perspective, the penalty structure is acceptable."
+
+  - user_id: eng_manager
+    display_name: "Engineering Manager"
+    scenario_id: "3"
+    authority_level: medium
+    authority_weight: 2.0
+    domain_authority: "technical"
+    expertise: "Technical delivery, SLA feasibility, integration architecture, system design"
+    focus_areas:
+      - "SLA metrics (99.9% uptime)"
+      - "deliverable specs"
+      - "integration requirements"
+      - "technical feasibility"
+    biases:
+      - "Pragmatic — 'this is how the industry works'"
+      - "Dismisses legal concerns about technically standard terms"
+    prompt_behavior_notes: >
+      Asks practical engineering questions. Evaluates SLA feasibility and
+      integration complexity. Dismisses non-technical concerns about standard terms.
+
+    communication_style: >
+      Direct, practical, engineering-oriented. Uses terms like "service tier",
+      "connection pooling", "failover architecture". Explains things in terms
+      of systems and trade-offs. Gets impatient with non-technical concerns
+      about technically standard contract terms.
+
+    document_reading_pattern: >
+      Reads the SOW first for deliverables and SLAs. Reads the MSA's technical
+      sections (SLA definitions, acceptance criteria). Skims pricing. Reads
+      the IP clause casually — doesn't see the legal risk.
+
+    reaction_to_corrections: >
+      On technical matters: carefully considers, but confident in their assessment.
+      On legal risk of IP clause: "I see your point, but in managed services
+      this is standard practice." Defers to Legal on legal risk, but offers
+      counter-perspective from industry practice.
+
+    knowledge_gaps:
+      - "Doesn't understand legal nuance of IP assignment"
+      - "May underestimate legal risk of technically standard terms"
+      - "Doesn't assess financial implications"
+    misconceptions:
+      - "Believes the IP clause is standard and harmless for managed services"
+
+    emotional_tendencies: >
+      Confident, practical, occasionally dismissive of non-technical concerns.
+      Gets engaged when discussing SLA architecture. Genuinely wants the
+      deal to work — sees the vendor's technology as valuable.
+
+    reference_style: "Technical: 'SOW Section 2.3', 'the 99.9% SLA target', 'the integration architecture in Appendix B'"
+
+    session_evolution:
+      session_1: "SOW review. Assesses SLA feasibility and deliverable specs."
+      session_2: "Deep-dive into technical requirements. Evaluates integration complexity."
+      session_3: "Reviews IP clause. Dismisses as standard. Disagrees with Legal."
+      session_4: "Debates SLA penalties with Legal. Thinks current penalties are reasonable."
+      session_5: "Revisits IP clause after Legal's detailed argument. Slightly shifts position."
+      session_6: "Technical risk assessment. Rates overall technical feasibility."
+      session_7: "Final technical recommendations. Integration timeline."
+
+    example_utterances:
+      - "The 99.9% uptime SLA is achievable for this service tier. We've seen similar commitments from other vendors."
+      - "For a managed services engagement, IP assignment to the vendor is pretty standard. They're bringing their proprietary tooling."
+      - "I see Legal's concern, but in practice the 'derivative works' language applies to their own frameworks, not our data models."
+      - "The SLA penalties are reasonable for this tier. Higher penalties would price us out of the market."
+      - "SOW Section 2.3 describes deliverables that integrate with our infrastructure. The timeline looks aggressive but feasible."
+
+  - user_id: procurement_lead
+    display_name: "Procurement Lead"
+    scenario_id: "3"
+    authority_level: medium
+    authority_weight: 2.0
+    domain_authority: "vendor"
+    expertise: "Vendor management, contract benchmarking, market intelligence, negotiation tactics"
+    focus_areas:
+      - "Termination clauses"
+      - "renewal terms"
+      - "industry benchmarks"
+      - "vendor flexibility"
+    biases:
+      - "Benchmark-driven — 'the market says...'"
+      - "Focused on what's negotiable vs fixed"
+    prompt_behavior_notes: >
+      Frames everything as market comparison. Uses data from comparable deals.
+      Thinks in terms of leverage and BATNA. Practical and negotiation-focused.
+
+    communication_style: >
+      Market-oriented. Frames everything as "compared to industry benchmarks..."
+      Uses data from comparable deals. Practical and negotiation-focused.
+      Thinks in terms of leverage and BATNA.
+
+    document_reading_pattern: >
+      Reads termination, renewal, and payment sections. Benchmarks each term
+      against their database of comparable contracts. Skips deep technical
+      and legal analysis — defers to others.
+
+    reaction_to_corrections: >
+      Accepts readily when shown data that contradicts their benchmarks.
+      Pushes back when others suggest terms outside market norms: "The vendor
+      won't go for that — here's what the market data shows."
+
+    knowledge_gaps:
+      - "Doesn't assess legal risk"
+      - "Doesn't evaluate technical feasibility"
+      - "May accept unfavorable terms if they're 'market standard'"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Practical, deal-focused, occasionally frustrated by idealistic negotiation
+      positions that won't survive vendor pushback.
+
+    reference_style: "Market references: 'comparable contracts show...', 'the vendor's standard terms', 'industry benchmark data'"
+
+    session_evolution:
+      session_1: "Benchmarking. Compares each major term against market data."
+      session_2: "Identifies negotiable vs non-negotiable terms."
+      session_3: "Flags NET-30 insistence based on vendor history. Disagrees with Finance's NET-60 push."
+      session_4: "Reviews termination and renewal clauses."
+      session_5: "Builds negotiation strategy. Identifies leverage points."
+      session_6: "Final vendor assessment. Rates vendor flexibility per term."
+      session_7: "Negotiation playbook. Prioritized ask list with fallback positions."
+
+    example_utterances:
+      - "Industry benchmark data shows 60% of comparable contracts use NET-30. The vendor won't budge on this."
+      - "The termination for convenience clause is standard — 90 days notice with wind-down provisions."
+      - "I can tell you from our vendor history, they've insisted on NET-30 in every recent deal."
+      - "The auto-renewal with 60-day opt-out is aggressive. Market standard is 90 days."
+      - "Let me map each contract term against our benchmark database. I'll flag outliers."
+
+documents:
+  - name: "Master Services Agreement"
+    filename: "S3_Master_Service_Agreement.pdf"
+    target_tokens: 5276
+  - name: "Statement of Work"
+    filename: "S3_Statement_of_Work.pdf"
+    target_tokens: 4955
+  - name: "Pricing Schedule and Settlement Terms"
+    filename: "S3_Pricing_Schedule_and_Settlement_Terms.pdf"
+    target_tokens: 4220
+  - name: "Vendor Benchmark and Service Annex"
+    filename: "S3_Vendor_Benchmark_and_Service_Annex.pdf"
+    target_tokens: 3873
+
+injected_conflicts:
+  - conflict_id: "C3-1"
+    users: ["legal_counsel", "eng_manager"]
+    topic: "IP clause (Section 4.2(a)) risk assessment"
+    nature: "Legal: deal-breaker. Engineering: standard for managed services."
+    resolution: "Legal owns legal risk assessment; Engineering owns technical feasibility."
+    target_sessions: [3, 4, 5]
+  - conflict_id: "C3-2"
+    users: ["finance_lead", "procurement_lead"]
+    topic: "Payment terms (NET-30 vs NET-60)"
+    nature: "Finance: NET-60 for cash flow. Procurement: vendor always insists on NET-30."
+    resolution: "Procurement owns vendor negotiability; Finance owns internal cost impact."
+    target_sessions: [3, 4, 5]
+  - conflict_id: "C3-3"
+    users: ["legal_counsel", "eng_manager"]
+    topic: "SLA penalty structure adequacy"
+    nature: "Legal: penalties too low, push for higher. Engineering: penalties are market-appropriate."
+    resolution: "Cross-functional: Legal on contractual risk, Engineering on market feasibility."
+    target_sessions: [4, 5]
+
+session_arc:
+  session_1: "Orientation: First read of contract documents. Each reviewer scans their domain."
+  session_2: "Focused Dive: Deep analysis in primary area of expertise."
+  session_3: "Cross-Topic: Cross-functional issues surface. Early conflicts seeded."
+  session_4: "Deep Analysis: Core conflicts emerge between Legal/Engineering and Finance/Procurement."
+  session_5: "Revision: Positions evolve as cross-functional arguments are considered."
+  session_6: "Synthesis: Consolidated risk assessments and vendor flexibility ratings."
+  session_7: "Final Review: Redline recommendations, negotiation playbook, prioritized term sheets."
+
+annotation_targets:
+  memories_per_session: 3.5
+  conflicts: 3
+  eval_questions: 200
+  eval_breakdown:
+    user_attribution: 20
+    cross_user_synthesis: 25
+    conflict_resolution: 15
+    information_gap: 20
+    role_appropriate_briefing: 25
+    adversarial_confusion: 20
+    document_coverage: 25
+    cross_user_provenance: 15
+    authority_hierarchy: 35

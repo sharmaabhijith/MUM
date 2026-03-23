@@ -1,0 +1,13 @@
+iteration:
+  conversation: gpt-4o-mini
+  summary: gpt-4o-mini
+  annotation: gpt-4o-mini
+
+final:
+  conversation: gpt-4.1
+  summary: gpt-4o-mini
+  annotation: gpt-4o
+
+eval:
+  judge: gpt-4o
+  baseline: gpt-4o

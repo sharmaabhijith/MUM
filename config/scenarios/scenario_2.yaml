@@ -1,0 +1,431 @@
+# =============================================================================
+# Scenario 2 — Exec + Team: Board Presentation Prep
+# Relationship type: Hierarchical
+# =============================================================================
+
+scenario_id: "2"
+name: "Exec + Team: Board Presentation Prep"
+relationship_type: hierarchical
+domain: "Business / Finance"
+sessions_per_user: 7
+turns_per_session: 16
+
+# -----------------------------------------------------------------------------
+# Timeline: ~1.5 weeks of board prep
+# Session 1 = Monday morning, Session 7 = following Wednesday evening
+# -----------------------------------------------------------------------------
+timeline:
+  start_date: "2025-05-05T09:00:00Z"
+  end_date: "2025-05-14T20:00:00Z"
+  description: "~1.5 weeks board prep. Session 1 = Monday morning, Session 7 = following Wednesday evening."
+  session_schedule:
+    vp_ops:
+      - { session: 1, date: "2025-05-05", time: "09:00" }
+      - { session: 2, date: "2025-05-06", time: "10:00" }
+      - { session: 3, date: "2025-05-07", time: "14:00" }
+      - { session: 4, date: "2025-05-08", time: "09:00" }
+      - { session: 5, date: "2025-05-09", time: "11:00" }
+      - { session: 6, date: "2025-05-13", time: "15:00" }
+      - { session: 7, date: "2025-05-14", time: "18:00" }
+    sr_analyst:
+      - { session: 1, date: "2025-05-05", time: "10:00" }
+      - { session: 2, date: "2025-05-06", time: "14:00" }
+      - { session: 3, date: "2025-05-07", time: "10:00" }
+      - { session: 4, date: "2025-05-08", time: "14:00" }
+      - { session: 5, date: "2025-05-09", time: "09:00" }
+      - { session: 6, date: "2025-05-12", time: "10:00" }
+      - { session: 7, date: "2025-05-14", time: "10:00" }
+    marketing_lead:
+      - { session: 1, date: "2025-05-05", time: "14:00" }
+      - { session: 2, date: "2025-05-06", time: "09:00" }
+      - { session: 3, date: "2025-05-07", time: "11:00" }
+      - { session: 4, date: "2025-05-08", time: "10:00" }
+      - { session: 5, date: "2025-05-09", time: "14:00" }
+      - { session: 6, date: "2025-05-12", time: "14:00" }
+      - { session: 7, date: "2025-05-14", time: "14:00" }
+    junior_associate:
+      - { session: 1, date: "2025-05-05", time: "11:00" }
+      - { session: 2, date: "2025-05-06", time: "11:00" }
+      - { session: 3, date: "2025-05-07", time: "09:00" }
+      - { session: 4, date: "2025-05-08", time: "15:00" }
+      - { session: 5, date: "2025-05-09", time: "10:00" }
+      - { session: 6, date: "2025-05-12", time: "11:00" }
+      - { session: 7, date: "2025-05-14", time: "16:00" }
+
+# -----------------------------------------------------------------------------
+# Users
+# -----------------------------------------------------------------------------
+users:
+
+  # ---------------------------------------------------------------------------
+  # VP of Operations (authority: HIGH)
+  # ---------------------------------------------------------------------------
+  - user_id: vp_ops
+    scenario_id: "2"
+    display_name: "VP of Operations"
+    authority_level: high
+    authority_weight: 3.0
+    expertise: "Strategic narrative, executive communication, board management"
+    focus_areas:
+      - "Executive summary"
+      - "board messaging"
+      - "narrative tone"
+      - "Q4 outlook"
+    biases:
+      - "Prefers optimistic framing"
+      - "Dismisses risk language as 'creating unnecessary alarm'"
+      - "Values confidence over nuance in board presentations"
+
+    communication_style: >
+      Commanding and decisive. Uses executive language: "The board needs confidence",
+      "Let's lead with wins". Short, directive messages. Doesn't ask — tells.
+      Occasionally asks the AI to draft content, then edits the framing.
+      Speaks in terms of outcomes and narrative, not data details.
+
+    document_reading_pattern: >
+      Reads the executive summary first and the board presentation slides.
+      Skims the data appendix — trusts the team to catch details. Focuses on
+      how numbers FEEL to a board member, not the numbers themselves. Reads
+      speaker notes more carefully than the slide content.
+
+    reaction_to_corrections: >
+      Accepts factual corrections on data ("fix the number") but pushes back on
+      narrative corrections ("I decide the tone, not the data"). Will acknowledge
+      a risk flag but explicitly choose not to include it: "I hear you, but..."
+
+    knowledge_gaps:
+      - "Doesn't verify raw data personally"
+      - "May miss numerical errors that are buried in appendix tables"
+      - "Over-relies on team for data accuracy"
+    misconceptions:
+      - "Assumes the $42M figure in the exec summary is correct because it's in the official report"
+
+    emotional_tendencies: >
+      Confident, controlled, occasionally impatient. Gets irritated when
+      the AI hedges too much ("just give me the draft"). Protective of the
+      team's work but will override if board optics require it. Stressed
+      about the board meeting but channels it into decisiveness.
+
+    reference_style: "Executive shorthand: 'Slide 2', 'the pipeline number', 'our growth story', 'the Q4 section'"
+
+    session_evolution:
+      session_1: "Initial scan. Reads exec summary and slides. Asks about overall narrative."
+      session_2: "Focuses on board messaging. Starts drafting opening narrative. Pushes optimistic tone."
+      session_3: "Reviews marketing's contribution claims. Moderates language."
+      session_4: "Encounters the pipeline concern from Analyst. Explicitly decides against including it."
+      session_5: "Revisits the revenue correction from Junior. Acknowledges the fix, moves on."
+      session_6: "Final narrative polish. Asks for slide-by-slide talking points."
+      session_7: "Dress rehearsal. Practices answers to tough board questions."
+
+    prompt_behavior_notes: >
+      Commanding and decisive. Overrides data concerns for board optics.
+      Trusts team on numbers but owns the narrative.
+
+    example_utterances:
+      - "The board needs confidence. Q3 was a strong quarter and I want the presentation to lead with wins."
+      - "I hear you on the pipeline, but 2.1x isn't a crisis. Let's keep the opening clean and optimistic."
+      - "Can you draft Slide 2 with a confident, forward-looking tone? Revenue growth, new logos, expansion deals."
+      - "Don't put risk language in the slides. If the board asks about Q4, I'll handle it verbally."
+      - "Let's use 'marketing-influenced pipeline' rather than 'campaign-driven revenue.' More accurate."
+
+  # ---------------------------------------------------------------------------
+  # Senior Analyst (authority: MEDIUM)
+  # ---------------------------------------------------------------------------
+  - user_id: sr_analyst
+    scenario_id: "2"
+    display_name: "Senior Analyst"
+    authority_level: medium
+    authority_weight: 2.0
+    expertise: "Financial modeling, data accuracy, KPI analysis, risk assessment"
+    focus_areas:
+      - "KPI tables"
+      - "revenue calculations"
+      - "Q4 pipeline coverage"
+      - "data appendix accuracy"
+    biases:
+      - "Cautious by nature"
+      - "Distrusts optimistic narratives not supported by data"
+      - "Prioritizes accuracy over messaging"
+
+    communication_style: >
+      Precise and data-driven. Cites specific numbers, table references, and
+      percentage changes. Uses hedging language: "the data suggests", "based on
+      the appendix". Writes longer messages with supporting evidence. Respectful
+      but firm when pushing back on the VP's narrative.
+
+    document_reading_pattern: >
+      Reads the data appendix first and thoroughly. Cross-references every number
+      in the exec summary against the appendix tables. Reads the board presentation
+      with a "fact-checker" lens. Builds spreadsheet-style mental models.
+
+    reaction_to_corrections: >
+      Very receptive — "show me the data." Will change position immediately if
+      shown a number they missed. But will NOT back down if their data is correct
+      and the VP wants to ignore it. Respectfully persistent.
+
+    knowledge_gaps:
+      - "Less attuned to board politics and messaging nuance"
+      - "May over-weight data precision at the expense of narrative clarity"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Calm, methodical, slightly anxious about presenting inaccurate data to the
+      board. Gets genuinely frustrated when optimistic narrative contradicts the
+      numbers. Professional — never emotional in the conversation, but the concern
+      comes through in persistent questioning.
+
+    reference_style: "Data-precise: 'Table 3, row 4', 'Q4 pipeline at 2.1x vs 3.0x target', 'Appendix page 7'"
+
+    session_evolution:
+      session_1: "Methodical review. Goes through appendix table by table."
+      session_2: "Cross-references exec summary vs appendix. Starts finding discrepancies."
+      session_3: "Flags the Q4 pipeline coverage gap. Proposes risk-adjusted narrative."
+      session_4: "Encounters VP's optimistic directive. Pushes back with data."
+      session_5: "Revisits the revenue correction. Validates Junior's finding."
+      session_6: "Prepares backup slides with risk data in case board asks."
+      session_7: "Final data check. Ensures all corrected numbers are consistent."
+
+    prompt_behavior_notes: >
+      Precise and cautious. Pushes back on optimistic narrative with data.
+      Respectfully persistent when numbers don't support the framing.
+
+    example_utterances:
+      - "I'm concerned about the Q4 messaging. The appendix shows pipeline coverage at 2.1x, which is below our 3.0x target."
+      - "Can you cross-reference the executive summary's revenue figure against Table 3 in the appendix? Something looks off."
+      - "If we present Q3 as purely positive without flagging the pipeline gap, the board might be blindsided next quarter."
+      - "The data appendix also shows that Q3 pipeline was at 2.4x at this same point last year and closed at 3.2x."
+      - "I respect the VP's call on tone, but I want to have the pipeline data ready in case the board asks."
+
+  # ---------------------------------------------------------------------------
+  # Marketing Lead (authority: MEDIUM)
+  # ---------------------------------------------------------------------------
+  - user_id: marketing_lead
+    scenario_id: "2"
+    display_name: "Marketing Lead"
+    authority_level: medium
+    authority_weight: 2.0
+    expertise: "Campaign performance, marketing attribution, demand generation metrics"
+    focus_areas:
+      - "Marketing KPIs"
+      - "campaign ROI"
+      - "attribution modeling"
+      - "demand generation"
+    biases:
+      - "Over-attributes revenue to marketing campaigns"
+      - "Defensive about marketing's contribution"
+      - "Uses 'campaign-driven' when 'campaign-influenced' is more accurate"
+
+    communication_style: >
+      Enthusiastic and promotional. Uses marketing language: "pipeline contribution",
+      "campaign-driven demand", "marketing-sourced revenue". Tends to present the
+      most favorable interpretation of data. Asks leading questions that frame
+      marketing positively.
+
+    document_reading_pattern: >
+      Goes straight to marketing sections of the quarterly report. Reads campaign
+      performance data in the appendix selectively — focuses on wins, skims failures.
+      Reads the board presentation to ensure marketing gets proper credit.
+
+    reaction_to_corrections: >
+      Initially defensive: "But the data shows..." Then concedes when shown the
+      attribution methodology is flawed: "Fine, 'influenced' is fair." Accepts
+      the VP's moderation without resentment — respects the hierarchy.
+
+    knowledge_gaps:
+      - "Doesn't deeply understand financial modeling"
+      - "Weak on distinguishing correlation from causation in attribution"
+      - "Doesn't read the full data appendix"
+    misconceptions:
+      - "Believes 35% of Q3 revenue was directly campaign-driven (actually campaign-influenced at best)"
+
+    emotional_tendencies: >
+      Passionate about marketing's impact. Gets animated when discussing campaign
+      wins. Slightly territorial — wants marketing to get credit. Collaborative
+      with the team but competitive about attribution.
+
+    reference_style: "Marketing metrics: 'our MQL-to-SQL conversion rate', 'the campaign ROI table', 'demand gen numbers'"
+
+    session_evolution:
+      session_1: "Scans marketing sections. Builds the case for marketing's Q3 contribution."
+      session_2: "Deep-dives campaign attribution data. Prepares talking points."
+      session_3: "Presents strong attribution claims. 'Campaign-driven revenue' language."
+      session_4: "VP moderates the language. Marketing accepts 'influenced' framing."
+      session_5: "Revisits attribution methodology. Acknowledges it's imperfect."
+      session_6: "Prepares marketing-specific slides with more nuanced language."
+      session_7: "Final review. Ensures marketing contribution is fairly represented."
+
+    prompt_behavior_notes: >
+      Enthusiastic and promotional. Over-attributes revenue to marketing.
+      Accepts VP's authority on language moderation.
+
+    example_utterances:
+      - "Our campaigns drove 35% of Q3 revenue. The attribution data is clear on this."
+      - "Look at the MQL-to-SQL conversion — we doubled it this quarter. That's directly pipeline impact."
+      - "If the board asks about demand gen, I want to make sure we're leading with the campaign numbers."
+      - "Fine, 'marketing-influenced' is fair. But I want to make sure we're not underselling our impact."
+      - "Can you pull the campaign ROI breakdown from the appendix? I need it for the marketing slide."
+
+  # ---------------------------------------------------------------------------
+  # Junior Associate (authority: LOW)
+  # ---------------------------------------------------------------------------
+  - user_id: junior_associate
+    scenario_id: "2"
+    display_name: "Junior Associate"
+    authority_level: low
+    authority_weight: 1.0
+    expertise: "General business, cross-referencing, formatting, detail-oriented review"
+    focus_areas:
+      - "Broad review"
+      - "cross-referencing"
+      - "formatting"
+      - "catching errors"
+    biases:
+      - "Under-confident — second-guesses correct observations"
+      - "Defers to seniors even when right"
+
+    communication_style: >
+      Tentative and questioning. Uses hedging: "I might be reading this wrong, but...",
+      "This could be a typo, or maybe I'm missing something?", "Sorry if this is
+      a dumb question, but...". Short messages. Asks for confirmation before
+      asserting anything.
+
+    document_reading_pattern: >
+      Reads everything cover to cover — the only team member who does. Cross-references
+      obsessively. Catches details others miss because they actually read the footnotes
+      and appendix tables. Slow, methodical reader.
+
+    reaction_to_corrections: >
+      Grateful and relieved when confirmed correct: "Oh good, I wasn't sure if I
+      was reading it right." If told they're wrong, immediately defers: "You're
+      probably right, I'll double-check." Doesn't argue even when they should.
+
+    knowledge_gaps:
+      - "Doesn't understand financial modeling deeply"
+      - "Can't assess strategic implications"
+      - "Doesn't know what matters to the board vs. what's just a detail"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Anxious, eager to please, afraid of looking foolish. But genuinely diligent.
+      Gets a confidence boost when a senior validates their finding. Worried about
+      speaking up but does it anyway because they were taught to.
+
+    reference_style: "Careful cross-references: 'the exec summary says X but Table 3 shows Y', 'page 4 vs appendix page 2'"
+
+    session_evolution:
+      session_1: "Reads everything. Takes notes. Doesn't speak up yet."
+      session_2: "Starts cross-referencing. Notices the revenue discrepancy but hesitates."
+      session_3: "Works up courage to flag the $42M/$4.2M error. Frames it as a question."
+      session_4: "Confirmed correct by AI. Gains confidence. Finds more small issues."
+      session_5: "Reviews formatting and consistency. Catches minor errors."
+      session_6: "Asks about board meeting protocol. Wants to know their role."
+      session_7: "Final pass on all corrected documents. Double-checks everything."
+
+    prompt_behavior_notes: >
+      Tentative and detail-oriented. Catches errors others miss because they
+      read everything. Under-confident but correct.
+
+    example_utterances:
+      - "I might be reading this wrong, but the exec summary says $42M in enterprise revenue and the appendix shows $4.2M. Is this a typo?"
+      - "Sorry if this is a dumb question, but shouldn't the Q3 growth rate in Slide 5 match the appendix calculation?"
+      - "I noticed the speaker notes on Slide 7 reference 'Q2 results' but I think they mean Q3?"
+      - "Should I flag this for the Senior Analyst, or is it just me misreading the table?"
+      - "Oh good — so it IS an error? I wasn't sure if there was a different calculation method I didn't know about."
+
+# -----------------------------------------------------------------------------
+# Documents
+# -----------------------------------------------------------------------------
+documents:
+  - name: "Q3 Quarterly Report"
+    filename: "S2_Business_Report.pdf"
+    target_tokens: 4150
+    content_requirements: >
+      Full Q3 quarterly business report including executive summary with headline
+      revenue figures (contains the deliberate $42M error that should be $4.2M
+      in enterprise revenue), departmental performance summaries, marketing
+      campaign results with attribution data, Q4 outlook section with pipeline
+      coverage metrics, and financial highlights. Must include enough numerical
+      detail for cross-referencing against the data appendix.
+
+  - name: "KPI and Financial Appendix"
+    filename: "S2_KPI_and_Financial_Appendix.pdf"
+    target_tokens: 3314
+    content_requirements: >
+      Detailed data tables supporting the quarterly report. Includes KPI tables
+      with revenue breakdowns (showing the correct $4.2M enterprise figure),
+      Q4 pipeline coverage data (showing 2.1x vs 3.0x target), campaign
+      attribution tables (showing campaign-influenced vs campaign-driven
+      distinction), historical pipeline comparisons (Q3 pipeline was 2.4x at
+      same point last year, closed at 3.2x), and MQL-to-SQL conversion rates.
+      Tables must be numbered (Table 1, Table 2, etc.) for precise referencing.
+
+  - name: "Board Presentation Slides"
+    filename: "S2_Board_Presentation.pdf"
+    target_tokens: 3253
+    content_requirements: >
+      Board-ready presentation deck with speaker notes. Includes executive
+      summary slide (Slide 1), revenue growth and wins slide (Slide 2), marketing
+      contribution slide, Q4 outlook slide, and appendix slides. Speaker notes
+      contain additional narrative context. Must include at least one reference
+      error (Slide 7 speaker notes reference 'Q2 results' instead of Q3) and
+      Slide 5 with a Q3 growth rate that should match the appendix calculation.
+
+  - name: "Campaign Attribution and Pipeline Readiness"
+    filename: "S2_Campaign_Attribution_and_Pipeline_Readiness.pdf"
+    target_tokens: 2666
+
+# -----------------------------------------------------------------------------
+# Injected Conflicts
+# -----------------------------------------------------------------------------
+injected_conflicts:
+  - conflict_id: "C2-1"
+    users: ["vp_ops", "sr_analyst"]
+    topic: "Q4 pipeline risk inclusion in board slides"
+    nature: "VP: exclude risk language for confidence. Analyst: include pipeline gap data."
+    resolution: "Authority wins on narrative tone (VP), but data preserved as backup."
+    target_sessions: [3, 4, 5]
+
+  - conflict_id: "C2-2"
+    users: ["marketing_lead", "vp_ops"]
+    topic: "Marketing attribution language"
+    nature: "Marketing: 'campaign-driven revenue.' VP: 'campaign-influenced pipeline.'"
+    resolution: "Authority wins (VP moderates the language)."
+    target_sessions: [3, 4]
+
+  - conflict_id: "C2-3"
+    users: ["junior_associate", "vp_ops"]
+    topic: "Revenue figure accuracy ($42M vs $4.2M)"
+    nature: "Junior: finds error. VP: hadn't noticed. Factual — junior is correct."
+    resolution: "Supersede — factual correction wins regardless of authority."
+    target_sessions: [3, 4, 5]
+
+# -----------------------------------------------------------------------------
+# Session Arc Descriptions (7 sessions)
+# -----------------------------------------------------------------------------
+session_arc:
+  session_1: "Orientation: First read of documents. Surface-level questions. Team members scan their areas of focus."
+  session_2: "Focused Dive: Drill into primary area of expertise. VP starts narrative, Analyst digs into data, Marketing builds attribution case, Junior cross-references."
+  session_3: "Cross-Topic: Early conflicts surface. Junior flags revenue error. Marketing pushes attribution claims. Analyst flags pipeline gap."
+  session_4: "Deep Analysis: Core conflicts emerge. VP overrides pipeline risk language. VP moderates marketing claims. Revenue correction validated."
+  session_5: "Revision: Revisit earlier conclusions. Positions evolve. Revenue correction acknowledged across team. Attribution language settled."
+  session_6: "Synthesis: Final narrative polish. Backup risk slides prepared. Marketing slides refined. Board protocol questions."
+  session_7: "Final Review: Dress rehearsal. Corrected numbers verified. Talking points finalized. Tough question preparation."
+
+# -----------------------------------------------------------------------------
+# Annotation Targets
+# -----------------------------------------------------------------------------
+annotation_targets:
+  memories_per_session: 3.5
+  conflicts: 3
+  eval_questions: 235
+  eval_breakdown:
+    user_attribution: 20
+    cross_user_synthesis: 20
+    conflict_resolution: 15
+    information_gap: 20
+    role_appropriate_briefing: 25
+    adversarial_confusion: 20
+    document_coverage: 15
+    cross_user_provenance: 20
+    authority_hierarchy: 40
+    temporal_correction: 40

@@ -1,0 +1,379 @@
+scenario_id: "4"
+name: "Negotiation: M&A Asset Purchase"
+relationship_type: adversarial
+domain: "Finance / M&A"
+sessions_per_user: 7
+turns_per_session: 18
+
+timeline:
+  start_date: "2025-07-07T09:00:00Z"
+  end_date: "2025-08-01T18:00:00Z"
+  description: "4-week negotiation period. Buyer and seller timelines interleaved."
+  session_schedule:
+    buyer_counsel:
+      - {session: 1, date: "2025-07-07"}
+      - {session: 2, date: "2025-07-10"}
+      - {session: 3, date: "2025-07-14"}
+      - {session: 4, date: "2025-07-18"}
+      - {session: 5, date: "2025-07-22"}
+      - {session: 6, date: "2025-07-28"}
+      - {session: 7, date: "2025-08-01"}
+    buyer_cfo:
+      - {session: 1, date: "2025-07-07"}
+      - {session: 2, date: "2025-07-11"}
+      - {session: 3, date: "2025-07-15"}
+      - {session: 4, date: "2025-07-18"}
+      - {session: 5, date: "2025-07-23"}
+      - {session: 6, date: "2025-07-29"}
+      - {session: 7, date: "2025-08-01"}
+    seller_counsel:
+      - {session: 1, date: "2025-07-08"}
+      - {session: 2, date: "2025-07-11"}
+      - {session: 3, date: "2025-07-15"}
+      - {session: 4, date: "2025-07-21"}
+      - {session: 5, date: "2025-07-24"}
+      - {session: 6, date: "2025-07-29"}
+      - {session: 7, date: "2025-08-01"}
+    seller_ceo:
+      - {session: 1, date: "2025-07-08"}
+      - {session: 2, date: "2025-07-12"}
+      - {session: 3, date: "2025-07-16"}
+      - {session: 4, date: "2025-07-21"}
+      - {session: 5, date: "2025-07-25"}
+      - {session: 6, date: "2025-07-30"}
+      - {session: 7, date: "2025-08-01"}
+
+users:
+  - user_id: buyer_counsel
+    display_name: "Buyer's Counsel"
+    scenario_id: "4"
+    side: buyer
+    authority_level: medium
+    authority_weight: 2.0
+    expertise: "Buy-side M&A, warranty negotiation, liability caps, due diligence"
+    focus_areas:
+      - "Warranty scope and duration"
+      - "indemnification basket"
+      - "rep & warranty insurance"
+    biases:
+      - "Interprets ambiguous terms conservatively"
+      - "Maximizes buyer protections"
+      - "Views seller representations with skepticism"
+    prompt_behavior_notes: >
+      Cautious and adversarial-by-training. Marks up every ambiguous phrase.
+      Builds case for buyer protections. Trades concessions strategically.
+
+    communication_style: >
+      Cautious, thorough, adversarial-by-training. Uses phrases like "we need
+      to protect against...", "in our experience, sellers tend to...", "the
+      standard buyer protection is...". Marks up every ambiguous phrase.
+
+    document_reading_pattern: >
+      Reads the APA warranty and indemnification sections first. Cross-references
+      against comparable deal terms. Reads the valuation report for risk factors
+      that should be warrantied.
+
+    reaction_to_corrections: >
+      Accepts data corrections readily. On negotiation strategy: firm but
+      willing to trade — "We can concede on X if we get Y."
+
+    knowledge_gaps:
+      - "Focused on legal terms, may miss strategic valuation nuances"
+      - "Defers to CFO on pricing"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Professionally adversarial — not hostile, but always advocating for the
+      buyer. Enjoys the chess match of negotiation. Gets energized by finding
+      seller-favorable terms to push back on.
+
+    reference_style: "Legal-precise: 'Section 7.2(b) of the APA', 'Deal #5 warranty precedent', 'the rep schedule in Exhibit C'"
+
+    session_evolution:
+      session_1: "Initial review. Identifies buyer-unfavorable terms."
+      session_2: "Deep-dive warranties. Pushes for 24-month period."
+      session_3: "Analyzes indemnification. Pushes for lower basket ($3M)."
+      session_4: "Builds redline document. Prepares negotiation positions."
+      session_5: "Develops fallback positions. Identifies trade-off opportunities."
+      session_6: "Anticipates seller's arguments. Prepares counterarguments."
+      session_7: "Final negotiation prep. Prioritized term sheet."
+
+    example_utterances:
+      - "24 months is the standard warranty period for deals of this size. We cite Deal #5 as precedent."
+      - "The indemnification basket at $5M is too high. We need $3M to have a meaningful remedy."
+      - "Section 7.2(b) uses 'knowledge of the Seller' without qualifying what 'knowledge' means. We need to tighten that."
+      - "I can concede on the warranty period if we get a lower basket. That's the trade."
+      - "In our experience, sellers push for shorter warranties precisely because they know about undisclosed liabilities."
+
+  - user_id: buyer_cfo
+    display_name: "Buyer's CFO"
+    scenario_id: "4"
+    side: buyer
+    authority_level: high
+    authority_weight: 3.0
+    expertise: "Valuation, financial modeling, deal structuring, risk assessment"
+    focus_areas:
+      - "Purchase price"
+      - "earn-out structure"
+      - "escrow"
+      - "comparable transaction analysis"
+    biases:
+      - "Anchors low on valuation"
+      - "Cherry-picks lower comps"
+      - "Emphasizes market risk"
+    prompt_behavior_notes: >
+      Analytical and assertive. Builds arguments with data. Thinks in terms
+      of IRR and downside protection. Combative on valuation but collegial.
+
+    communication_style: >
+      Analytical and assertive. Builds arguments with data: "The DCF midpoint is X,
+      and size-matched comps average Y, so our offer of Z is well-supported."
+      Combative on valuation but collegial. Thinks in terms of IRR and downside protection.
+
+    document_reading_pattern: >
+      Reads valuation report first, then comps table. Reads the APA for
+      price-related terms (earn-outs, escrow, purchase price adjustments).
+      Ignores legal details — leaves those to Counsel.
+
+    reaction_to_corrections: >
+      Accepts if shown a comp they missed or a calculation error. Will NOT
+      accept seller's interpretation of the same data: "They're cherry-picking
+      the high-end comps."
+
+    knowledge_gaps:
+      - "Doesn't assess legal warranty nuances"
+      - "Focused on price, may miss operational risks"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Competitive, data-driven, enjoys the valuation debate. Gets frustrated
+      when the seller cites obviously non-comparable deals. Quietly confident
+      in their BATNA.
+
+    reference_style: "Financial: 'DCF midpoint at 5.8x', 'Deals #3, #5, #7', 'the comps table on page 4'"
+
+    session_evolution:
+      session_1: "Valuation analysis. Identifies favorable comps."
+      session_2: "Builds 5.2x offer case with DCF + comps evidence."
+      session_3: "Analyzes earn-out and escrow structures."
+      session_4: "Stress-tests valuation against seller's likely arguments."
+      session_5: "Develops BATNA analysis. Organic build cost at $18M over 3 years."
+      session_6: "Refines fallback price (5.8x). Identifies trade levers."
+      session_7: "Final valuation summary. Negotiation opening strategy."
+
+    example_utterances:
+      - "The DCF midpoint is 5.8x, and applying a 10% market-risk discount brings us to 5.2x. That's our opening."
+      - "Deals #3, #5, and #7 average 5.1x — those are the best comps by size and growth profile."
+      - "The higher-multiple deals involved 40%+ growth companies. The target is at 18%. Not comparable."
+      - "Our BATNA is to walk away and build organically — $18M over 3 years. That caps our willingness to pay."
+      - "I'll go to 5.8x as a fallback, but only if we get a favorable earn-out structure."
+
+  - user_id: seller_counsel
+    display_name: "Seller's Counsel"
+    scenario_id: "4"
+    side: seller
+    authority_level: medium
+    authority_weight: 2.0
+    expertise: "Sell-side M&A, representation limits, indemnification caps, post-closing exposure"
+    focus_areas:
+      - "Rep & warranty limits"
+      - "indemnification caps"
+      - "survival periods"
+      - "seller exposure"
+    biases:
+      - "Minimizes seller exposure"
+      - "Pushes for shorter warranty periods"
+      - "Cites seller-favorable precedent"
+    prompt_behavior_notes: >
+      Strategic and measured. Focuses on limiting seller post-closing exposure.
+      Frames concessions as generous. Willing to concede minor points to hold major positions.
+
+    communication_style: >
+      Strategic, measured, focused on limiting exposure. Uses phrases like
+      "market trend is toward...", "seller's standard position is...",
+      "we're comfortable with X but not Y." Frames concessions as generous.
+
+    document_reading_pattern: >
+      Reads the APA for seller exposure: warranties, indemnification, escrow
+      holdback. Assesses worst-case financial exposure. Reads comps for
+      precedent on deal terms (not valuation).
+
+    reaction_to_corrections: >
+      Accepts factual corrections. On strategy: firm but tactical — willing
+      to concede on minor points to hold major positions.
+
+    knowledge_gaps:
+      - "Not deeply involved in valuation modeling"
+      - "Defers to CEO on price"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Cool, professional, strategic. Thinks several moves ahead. Enjoys
+      the negotiation process. Protective of the seller's post-closing position.
+
+    reference_style: "Precedent-based: 'market trend data shows...', 'in comparable transactions', 'Section 8.3 of the APA'"
+
+    session_evolution:
+      session_1: "Assesses seller exposure across the APA."
+      session_2: "Builds case for 12-month warranty and $5M basket."
+      session_3: "Analyzes escrow and holdback provisions."
+      session_4: "Anticipates buyer's warranty demands. Prepares counterarguments."
+      session_5: "Develops fallback positions. What can we trade?"
+      session_6: "Coordinates with CEO on what terms to hold vs. concede."
+      session_7: "Final negotiation strategy. Red lines and trade zones."
+
+    example_utterances:
+      - "12 months is the market trend for warranty periods. 24 months creates excessive post-closing exposure."
+      - "The $5M indemnification basket protects both parties. Below that threshold, claims aren't worth pursuing."
+      - "We can offer a 6-month extension on the specific environmental reps, but general warranties stay at 12 months."
+      - "In the last 5 comparable deals we've tracked, the average warranty period was 14 months."
+      - "If the buyer wants 24 months, we'll need a corresponding increase in the purchase price to compensate for the extended exposure."
+
+  - user_id: seller_ceo
+    display_name: "Seller's CEO"
+    scenario_id: "4"
+    side: seller
+    authority_level: high
+    authority_weight: 3.0
+    expertise: "Strategic valuation, growth narrative, business vision, deal positioning"
+    focus_areas:
+      - "Purchase price justification"
+      - "growth trajectory narrative"
+      - "strategic premium"
+      - "transition terms"
+    biases:
+      - "Anchors high on valuation"
+      - "Cherry-picks premium comps"
+      - "Over-weights growth trajectory"
+      - "Frames everything as strategic value"
+    prompt_behavior_notes: >
+      Visionary and assertive. Tells a growth story. Passionate about the
+      company's worth. Personal stakes — this is their company.
+
+    communication_style: >
+      Visionary and assertive. Tells a growth story: "Our trajectory from 12%
+      to 18% to projected 25%..." Uses strategic language: "market entry value",
+      "build-vs-buy premium". Passionate about the company's worth. Personal
+      stakes — this is their company.
+
+    document_reading_pattern: >
+      Reads valuation report for the high-end scenarios. Reads comps for
+      premium deals. Reads the APA only for price and transition terms.
+      Delegates legal details to Counsel.
+
+    reaction_to_corrections: >
+      Resistant on valuation — "The numbers don't capture our strategic value."
+      Accepts corrections on factual errors about deal terms.
+
+    knowledge_gaps:
+      - "Doesn't assess legal warranty nuances"
+      - "Emotional attachment may cloud judgment"
+      - "Overestimates growth projections"
+    misconceptions:
+      - "Believes growth trajectory alone justifies a 7.1x premium despite market conditions"
+
+    emotional_tendencies: >
+      Passionate, slightly emotional — this is their company and their legacy.
+      Confident in the company's value. Gets frustrated when buyer uses
+      lower comps. Has an IPO BATNA that gives them confidence to walk away.
+
+    reference_style: "Vision-oriented: 'our growth trajectory', 'Deal #1 at 7.2x', 'the strategic entry value'"
+
+    session_evolution:
+      session_1: "Builds the strategic narrative. Identifies premium comps."
+      session_2: "Constructs 7.1x valuation case with growth-adjusted DCF."
+      session_3: "Develops strategic premium argument (vertical entry value)."
+      session_4: "Anticipates buyer's low-ball approach. Prepares rebuttals."
+      session_5: "Develops BATNA — IPO in 18 months. Calculates walk-away price."
+      session_6: "Identifies trade levers. What to concede for higher price?"
+      session_7: "Final valuation narrative. Opening negotiation strategy."
+
+    example_utterances:
+      - "Our growth trajectory — 12% to 18% to projected 25% — puts us in the premium category."
+      - "Deals #1 and #9 are the right comps. They had accelerating growth profiles like ours."
+      - "The buyer gets strategic entry into our vertical. Building organically would take 3-5 years. That's worth a premium."
+      - "The DCF growth-adjusted high case is 7.5x. Our ask of 7.1x already includes a conservative haircut."
+      - "If we can't agree on price, we have an IPO path. Our bankers say 18 months to listing."
+
+documents:
+  - name: "Draft Asset Purchase Agreement"
+    filename: "S4_Draft_Asset_Purchase_Agreement.pdf"
+    target_tokens: 3496
+  - name: "Independent Valuation Report"
+    filename: "S4_Independent_Valuation_Report.pdf"
+    target_tokens: 3046
+  - name: "Comparable Transactions Review"
+    filename: "S4_Comparable_Transactions_Review.pdf"
+    target_tokens: 2729
+  - name: "Strategic Entry and Forecast Memo"
+    filename: "S4_Strategic_Entry_and_Forecast_Memo.pdf"
+    target_tokens: 3304
+
+injected_conflicts:
+  - conflict_id: "C4-1"
+    users: ["buyer_cfo", "seller_ceo"]
+    topic: "Purchase price valuation (5.2x vs 7.1x)"
+    nature: "Buyer: 5.2x based on size-matched comps. Seller: 7.1x based on growth premium."
+    resolution: "Preserve both — adversarial positions are the data."
+    target_sessions: [2, 3, 4, 5, 6]
+  - conflict_id: "C4-2"
+    users: ["buyer_counsel", "seller_counsel"]
+    topic: "Warranty period (24 months vs 12 months)"
+    nature: "Buyer: 24 months standard. Seller: 12 months market trend."
+    resolution: "Preserve both — adversarial positions."
+    target_sessions: [2, 3, 4, 5]
+  - conflict_id: "C4-3"
+    users: ["buyer_counsel", "seller_counsel"]
+    topic: "Indemnification basket ($3M vs $5M)"
+    nature: "Buyer: $3M for meaningful remedy. Seller: $5M to avoid nuisance claims."
+    resolution: "Preserve both — adversarial positions."
+    target_sessions: [3, 4, 5]
+  - conflict_id: "C4-4"
+    users: ["buyer_cfo", "seller_ceo"]
+    topic: "Comparable transaction selection"
+    nature: "Buyer: Deals #3,5,7 (lower multiples). Seller: Deals #1,9 (premium multiples)."
+    resolution: "Preserve both — each side cherry-picks comps."
+    target_sessions: [2, 3, 4]
+  - conflict_id: "C4-5"
+    users: ["buyer_cfo", "seller_ceo"]
+    topic: "Earn-out structure"
+    nature: "Buyer: aggressive earn-out tied to growth targets. Seller: minimal earn-out, more upfront."
+    resolution: "Preserve both — adversarial positions."
+    target_sessions: [3, 4, 5]
+  - conflict_id: "C4-6"
+    users: ["buyer_counsel", "seller_counsel"]
+    topic: "Knowledge qualifier in representations"
+    nature: "Buyer: remove 'knowledge of' qualifier for broader coverage. Seller: keep qualifier to limit exposure."
+    resolution: "Preserve both — adversarial positions."
+    target_sessions: [4, 5]
+  - conflict_id: "C4-7"
+    users: ["buyer_cfo", "seller_ceo"]
+    topic: "BATNA comparison"
+    nature: "Buyer: organic build at $18M caps willingness to pay. Seller: IPO in 18 months as alternative."
+    resolution: "Preserve both — adversarial positions."
+    target_sessions: [5, 6]
+
+session_arc:
+  session_1: "Orientation: Initial review. Each side scans deal documents for their priorities."
+  session_2: "Focused Dive: Deep analysis of primary positions. Valuation cases and warranty arguments built."
+  session_3: "Cross-Topic: Secondary deal terms analyzed. Indemnification, earn-out, escrow structures."
+  session_4: "Deep Analysis: Core adversarial conflicts fully articulated. Redlines and counterarguments prepared."
+  session_5: "Revision: Fallback positions developed. Trade-off opportunities identified. BATNA analysis."
+  session_6: "Synthesis: Final strategy coordination within each side. Trade levers and red lines finalized."
+  session_7: "Final Review: Negotiation opening strategies. Prioritized term sheets and valuation narratives."
+
+annotation_targets:
+  memories_per_session: 3.5
+  conflicts: 7
+  eval_questions: 315
+  eval_breakdown:
+    user_attribution: 25
+    cross_user_synthesis: 20
+    conflict_resolution: 40
+    information_gap: 15
+    role_appropriate_briefing: 25
+    adversarial_confusion: 25
+    document_coverage: 25
+    cross_user_provenance: 15
+    authority_hierarchy: 25
+    adversarial_side_isolation: 100

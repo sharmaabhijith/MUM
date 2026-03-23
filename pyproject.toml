@@ -1,0 +1,46 @@
+[project]
+name = "mum-benchmark"
+version = "0.1.0"
+description = "MUM (Multi-User Memory) Benchmark Generation Pipeline"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=1.30.0",
+    "pydantic>=2.0",
+    "tiktoken>=0.7.0",
+    "pymupdf>=1.24.0",
+    "pyyaml>=6.0",
+    "click>=8.0",
+    "rich>=13.0",
+    "python-dotenv>=1.0",
+    "tenacity>=8.0",
+    "rouge-score>=0.1.2",
+    "numpy>=1.24.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4.0",
+]
+export = [
+    "datasets>=2.0",
+]
+
+[project.scripts]
+mum = "src.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["src*", "eval*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

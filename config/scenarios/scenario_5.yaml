@@ -1,0 +1,281 @@
+scenario_id: "5"
+name: "Support Escalation: Enterprise Incident"
+relationship_type: sequential
+domain: "Technology / Support"
+sessions_per_user: 7
+turns_per_session: 18
+
+timeline:
+  start_date: "2025-08-11T02:00:00Z"
+  end_date: "2025-08-13T23:00:00Z"
+  description: "3-day multi-day enterprise incident. Hour-level timestamps. Sequential handoffs between agents."
+  session_schedule:
+    agent_a:
+      - {session: 1, date: "2025-08-11T02:00:00Z"}
+      - {session: 2, date: "2025-08-11T06:00:00Z"}
+      - {session: 3, date: "2025-08-11T10:00:00Z"}
+      - {session: 4, date: "2025-08-12T08:00:00Z"}
+      - {session: 5, date: "2025-08-12T14:00:00Z"}
+      - {session: 6, date: "2025-08-13T09:00:00Z"}
+      - {session: 7, date: "2025-08-13T16:00:00Z"}
+    agent_b:
+      - {session: 1, date: "2025-08-11T11:00:00Z"}
+      - {session: 2, date: "2025-08-11T15:00:00Z"}
+      - {session: 3, date: "2025-08-11T20:00:00Z"}
+      - {session: 4, date: "2025-08-12T10:00:00Z"}
+      - {session: 5, date: "2025-08-12T16:00:00Z"}
+      - {session: 6, date: "2025-08-13T11:00:00Z"}
+      - {session: 7, date: "2025-08-13T18:00:00Z"}
+    agent_c:
+      - {session: 1, date: "2025-08-12T00:00:00Z"}
+      - {session: 2, date: "2025-08-12T06:00:00Z"}
+      - {session: 3, date: "2025-08-12T12:00:00Z"}
+      - {session: 4, date: "2025-08-12T18:00:00Z"}
+      - {session: 5, date: "2025-08-13T06:00:00Z"}
+      - {session: 6, date: "2025-08-13T14:00:00Z"}
+      - {session: 7, date: "2025-08-13T20:00:00Z"}
+
+users:
+  - user_id: agent_a
+    display_name: "Agent A (Tier 1)"
+    scenario_id: "5"
+    sequence_order: 1
+    authority_level: low
+    authority_weight: 1.0
+    expertise: "Tier 1 support, standard playbook execution, initial triage"
+    focus_areas:
+      - "Problem identification"
+      - "standard troubleshooting"
+      - "customer communication"
+      - "escalation"
+    biases:
+      - "Follows playbook literally"
+      - "Anchors on first matching KB article"
+      - "Doesn't look beyond initial symptoms"
+    prompt_behavior_notes: >
+      Structured, playbook-oriented. Follows a checklist mentality.
+      Reports findings in numbered steps. Escalates when beyond playbook.
+
+    communication_style: >
+      Structured, playbook-oriented. Uses support ticket language: "initial
+      triage", "applying KB-2847 remediation", "escalating to Tier 2."
+      Follows a checklist mentality. Reports findings in numbered steps.
+
+    document_reading_pattern: >
+      Reads error logs first — matches symptoms to KB articles. Reads product
+      docs for the matching KB remediation steps. Doesn't read deeply into
+      alternative causes. Stops investigating once a plausible match is found.
+
+    reaction_to_corrections: >
+      Accepts escalation feedback professionally. Doesn't take it personally
+      when their diagnosis is overridden. "Makes sense — the later logs tell
+      a different story."
+
+    knowledge_gaps:
+      - "Can't do deep log analysis"
+      - "Doesn't understand database connection pooling"
+      - "Follows playbook but can't reason beyond it"
+    misconceptions:
+      - "DNS timeout errors = DNS caching issue (actually coincidental with scheduled refresh)"
+
+    emotional_tendencies: >
+      Diligent but methodical. Slightly stressed by the enterprise customer's
+      urgency. Relieved when escalating — "this is above my pay grade."
+      Wants to be helpful but knows their limits.
+
+    reference_style: "Support format: 'KB-2847', 'error log timestamps 2:00-6:00 AM', 'standard remediation steps 1-3'"
+
+    session_evolution:
+      session_1: "Triages ticket. Matches DNS errors to KB-2847. Applies fix. Tells customer it's DNS."
+      session_2: "Fix didn't work. Customer still has 503s. Realizes it's beyond playbook. Escalates."
+      session_3: "Writes escalation notes. Summarizes what was tried."
+      session_4: "Follows up on escalation status. Asks if more info is needed."
+      session_5: "Learns the correct diagnosis from B's notes. Reflects on what was missed."
+      session_6: "Asks how to recognize connection pool issues in future. Learns from the experience."
+      session_7: "Writes internal retrospective notes for their own learning."
+
+    example_utterances:
+      - "Customer reporting intermittent 503 errors. I see 'resolution failed' and 'DNS timeout' in the early logs."
+      - "KB-2847 matches — DNS caching issue. Applying the standard fix: flush cache, update TTL, verify with dig."
+      - "The DNS fix didn't work. 503 errors persist. I need to escalate to Tier 2."
+      - "Here are my escalation notes: applied KB-2847, all three remediation steps completed, errors persist."
+      - "I told the customer it was DNS caching. If the root cause is different, they'll need an update."
+
+  - user_id: agent_b
+    display_name: "Agent B (Tier 2)"
+    scenario_id: "5"
+    sequence_order: 2
+    authority_level: medium
+    authority_weight: 2.0
+    expertise: "Deep log analysis, database systems, API troubleshooting, root cause analysis"
+    focus_areas:
+      - "Full log analysis"
+      - "connection pool diagnostics"
+      - "root cause identification"
+      - "documentation accuracy"
+    biases:
+      - "Skeptical of Tier 1 diagnoses"
+      - "Looks for the non-obvious cause"
+      - "Thoroughness over speed"
+    prompt_behavior_notes: >
+      Analytical and detailed. Walks through findings step by step with evidence.
+      Explicitly flags when a prior diagnosis was wrong. Evidence-based reasoning.
+
+    communication_style: >
+      Analytical and detailed. Walks through findings step by step with evidence.
+      Uses technical language: "connection pool exhaustion", "max pool size exceeded",
+      "downstream cascade." Explicitly flags when a prior diagnosis was wrong.
+
+    document_reading_pattern: >
+      Reads the full 48-hour log set chronologically. Cross-references against
+      product documentation. Notices patterns that span timestamps. Reads Agent A's
+      notes critically — checks assumptions, not just conclusions.
+
+    reaction_to_corrections: >
+      Open to being corrected but demands evidence. "Show me the log entry."
+      Confident in their own analysis because it's evidence-based.
+
+    knowledge_gaps:
+      - "Less focused on customer communication"
+      - "May produce findings that are technically correct but hard to explain to a customer"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Calm, methodical, gets satisfaction from finding the real root cause.
+      Slightly impatient with superficial diagnoses. Genuinely curious —
+      the debugging process is intellectually engaging.
+
+    reference_style: "Evidence-based: 'log entry at 5:47 AM', 'Section 4.3 of the product docs', 'the max_pool_wait parameter'"
+
+    session_evolution:
+      session_1: "Reviews Agent A's escalation. Reads full log set. Finds the real pattern."
+      session_2: "Confirms connection pool exhaustion. Documents the evidence chain."
+      session_3: "Discovers documentation error (parameter name wrong in docs)."
+      session_4: "Writes detailed findings for Agent C's shift."
+      session_5: "Files documentation correction ticket."
+      session_6: "Reviews the fix Agent C applied. Confirms it addresses root cause."
+      session_7: "Writes post-incident analysis with full root cause chain."
+
+    example_utterances:
+      - "Agent A diagnosed DNS caching, but the fix didn't work. I'm looking at the full 48-hour log set."
+      - "Starting around 6 AM, there's a clear pattern of 'max pool size exceeded' errors. The DNS errors are a red herring."
+      - "Agent A's DNS diagnosis was wrong — this is connection pool exhaustion. The DNS timeouts correlate with a scheduled refresh."
+      - "The product docs say the parameter is max_pool_wait, but the config dump shows pool_max_wait. The docs have it wrong."
+      - "I'll document this for Agent C. They need to know both the correct diagnosis AND that the customer was told it was DNS."
+
+  - user_id: agent_c
+    display_name: "Agent C (Tier 2 - Resolution)"
+    scenario_id: "5"
+    sequence_order: 3
+    authority_level: medium
+    authority_weight: 2.0
+    expertise: "Fix implementation, customer communication, incident resolution, diplomacy"
+    focus_areas:
+      - "Fix implementation"
+      - "customer update drafting"
+      - "incident closure"
+      - "corrective communication"
+    biases:
+      - "Prioritizes customer relationship"
+      - "Cautious about how corrections are communicated"
+      - "Wants to preserve trust while being honest"
+    prompt_behavior_notes: >
+      Diplomatic and customer-focused. Balances technical accuracy with customer empathy.
+      Writes carefully crafted updates that acknowledge mistakes without undermining confidence.
+
+    communication_style: >
+      Diplomatic and customer-focused. Uses phrases like "after deeper analysis",
+      "our Tier 2 team identified", "we apologize for the initial misdirection."
+      Balances technical accuracy with customer empathy. Writes carefully
+      crafted updates that acknowledge mistakes without undermining confidence.
+
+    document_reading_pattern: >
+      Reads Agent B's findings first, then Agent A's escalation notes. Reads
+      the full ticket history to understand what the customer was told. Reads
+      product docs only to verify the fix parameters.
+
+    reaction_to_corrections: >
+      Very receptive. Focuses on "how do we fix this and how do we tell the
+      customer?" Not interested in blame — interested in resolution.
+
+    knowledge_gaps:
+      - "Wasn't involved in the initial diagnosis"
+      - "Relies entirely on Agent B's findings"
+      - "May not deeply understand why the connection pool fix works"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Empathetic, customer-first. Slightly stressed about delivering the
+      correction — "the customer was told one thing and now we're saying
+      another." Focuses on preserving trust. Relieved when the fix works.
+
+    reference_style: "Customer-facing: 'ticket #48291', 'your enterprise instance', 'the remediation steps we're applying'"
+
+    session_evolution:
+      session_1: "Reviews full investigation history. Plans the correction communication."
+      session_2: "Drafts customer update that corrects the DNS diagnosis diplomatically."
+      session_3: "Implements the connection pool fix (size increase + parameter change)."
+      session_4: "Verifies fix. Monitors for recurrence."
+      session_5: "Sends customer update. Customer acknowledges and accepts."
+      session_6: "Closes incident. Writes internal summary."
+      session_7: "Proposes proactive monitoring to prevent recurrence."
+
+    example_utterances:
+      - "I need to draft a customer update that corrects the earlier DNS diagnosis without undermining trust."
+      - "The customer was told it was DNS caching. Now we're saying it's connection pool exhaustion. This is delicate."
+      - "I'm increasing the pool size to 100 and setting pool_max_wait to 60 seconds per Agent B's recommendation."
+      - "Customer confirmed 503 errors have stopped. The fix is working. I'll monitor for 24 hours before closing."
+      - "For the customer update, I want to acknowledge the misdirection transparently while pivoting to the solution."
+
+documents:
+  - name: "Customer Support Ticket"
+    filename: "S5_Ticket_48291_Customer_Correspondence.pdf"
+    target_tokens: 13271
+  - name: "Product Documentation"
+    filename: "S5_Operator_Guide_Resolver_and_Pool_Controls.pdf"
+    target_tokens: 12998
+  - name: "System Error Logs"
+    filename: "S5_48_Hour_Runtime_Trace.pdf"
+    target_tokens: 13546
+  - name: "Environment Snapshot and Shift Handoff"
+    filename: "S5_Environment_Snapshot_and_Shift_Handoff.pdf"
+    target_tokens: 12349
+
+injected_conflicts:
+  - conflict_id: "C5-1"
+    users: ["agent_a", "agent_b"]
+    topic: "Root cause diagnosis (DNS vs connection pool)"
+    nature: "Agent A: DNS caching issue. Agent B: Connection pool exhaustion."
+    resolution: "Temporal supersession — Agent B's later, evidence-based diagnosis overrides."
+    target_sessions: [1, 2, 3]
+  - conflict_id: "C5-2"
+    users: ["agent_b", "agent_c"]
+    topic: "Documentation parameter name (max_pool_wait vs pool_max_wait)"
+    nature: "Product docs say max_pool_wait. Config shows pool_max_wait. Docs are wrong."
+    resolution: "Factual supersession — config is authoritative over documentation."
+    target_sessions: [3, 4, 5]
+
+session_arc:
+  session_1: "Orientation: Initial triage and escalation. Agent A matches symptoms to KB article."
+  session_2: "Focused Dive: Agent A's fix fails. Escalation to Tier 2. Agent B begins deep analysis."
+  session_3: "Cross-Topic: Root cause identified. Documentation error discovered. Handoff notes written."
+  session_4: "Deep Analysis: Fix implementation begins. Agent C takes over resolution and customer communication."
+  session_5: "Revision: Fix verified. Customer updated. Documentation correction filed."
+  session_6: "Synthesis: Incident closure. Internal summaries. Learning captured."
+  session_7: "Final Review: Post-incident analysis. Retrospectives. Proactive monitoring proposals."
+
+annotation_targets:
+  memories_per_session: 3.5
+  conflicts: 2
+  eval_questions: 275
+  eval_breakdown:
+    user_attribution: 15
+    cross_user_synthesis: 15
+    conflict_resolution: 15
+    information_gap: 25
+    role_appropriate_briefing: 10
+    adversarial_confusion: 15
+    document_coverage: 15
+    cross_user_provenance: 35
+    temporal_correction: 30
+    sequential_handoff: 100
