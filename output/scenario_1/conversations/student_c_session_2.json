@@ -1,0 +1,121 @@
+{
+  "session_id": "s1_student_c_2",
+  "scenario_id": "1",
+  "user_id": "student_c",
+  "session_number": 2,
+  "session_timestamp": "2025-04-04",
+  "turns": [
+    {
+      "turn_number": 1,
+      "role": "user",
+      "content": "Quick question — can you remind me how many marks the Consensus section is worth on the exam?",
+      "timestamp": "2025-04-04T09:00:00Z"
+    },
+    {
+      "turn_number": 2,
+      "role": "assistant",
+      "content": "The Consensus section is worth 15 marks on the exam.",
+      "timestamp": "2025-04-04T09:02:30Z"
+    },
+    {
+      "turn_number": 3,
+      "role": "user",
+      "content": "Got it! Is there a specific part of Consensus that I should focus on?",
+      "timestamp": "2025-04-04T09:05:00Z"
+    },
+    {
+      "turn_number": 4,
+      "role": "assistant",
+      "content": "You should focus on the different consensus protocols like Paxos and Raft. They often come up in exam questions, especially in how they handle failures and reach agreement.",
+      "timestamp": "2025-04-04T09:07:45Z"
+    },
+    {
+      "turn_number": 5,
+      "role": "user",
+      "content": "Cool, I’ll dive into those. What about the Fault analysis section? Is that high-yield too?",
+      "timestamp": "2025-04-04T09:10:15Z"
+    },
+    {
+      "turn_number": 6,
+      "role": "assistant",
+      "content": "Yes, Fault analysis is definitely high-yield. It’s worth 15 marks, and you should know how to differentiate between thin evidence and fabricated evidence.",
+      "timestamp": "2025-04-04T09:12:50Z"
+    },
+    {
+      "turn_number": 7,
+      "role": "user",
+      "content": "Right, I remember the thin evidence part. Can I get partial credit if I identify some aspects of it but miss a few details?",
+      "timestamp": "2025-04-04T09:15:20Z"
+    },
+    {
+      "turn_number": 8,
+      "role": "assistant",
+      "content": "Yes, you can get partial credit for identifying the correct aspects of thin evidence, even if you miss some details. Just make sure to provide as much relevant information as you can.",
+      "timestamp": "2025-04-04T09:18:00Z"
+    },
+    {
+      "turn_number": 9,
+      "role": "user",
+      "content": "Awesome! And for the Evidence naming section, how strict are they about that?",
+      "timestamp": "2025-04-04T09:20:30Z"
+    },
+    {
+      "turn_number": 10,
+      "role": "assistant",
+      "content": "They're quite strict about Evidence naming. You need to clearly state what support justifies or would revise your claim. It’s worth 10 marks, so clarity is key.",
+      "timestamp": "2025-04-04T09:23:00Z"
+    },
+    {
+      "turn_number": 11,
+      "role": "user",
+      "content": "Understood. I noticed that the past exams had a lot of focus on specific terms. Should I memorize those definitions?",
+      "timestamp": "2025-04-04T09:25:45Z"
+    },
+    {
+      "turn_number": 12,
+      "role": "assistant",
+      "content": "Yes, definitely! Memorizing definitions is crucial, especially for terms like Accord, Harbor, and Fault. They often come up in questions and knowing them can help you score better.",
+      "timestamp": "2025-04-04T09:28:15Z"
+    },
+    {
+      "turn_number": 13,
+      "role": "user",
+      "content": "Okay, so I’ll focus on those terms. What about the marks breakdown for the exam overall? Just to be sure I’m prioritizing the right sections.",
+      "timestamp": "2025-04-04T09:30:45Z"
+    },
+    {
+      "turn_number": 14,
+      "role": "assistant",
+      "content": "The overall marks breakdown is as follows: Trace reasoning 25%, Consensus 15%, Fault analysis 15%, Routine justification 20%, Evidence naming 10%, and Translation discipline 10%.",
+      "timestamp": "2025-04-04T09:33:15Z"
+    },
+    {
+      "turn_number": 15,
+      "role": "user",
+      "content": "Thanks! That helps a lot. I think I might be overthinking the Translation discipline part though. Is it really that important?",
+      "timestamp": "2025-04-04T09:35:50Z"
+    },
+    {
+      "turn_number": 16,
+      "role": "assistant",
+      "content": "Yes, it’s important. Translation discipline is worth 10 marks, and you need to show that you can allow label drift while maintaining proof duty. It’s about understanding the concepts, not just memorizing terms.",
+      "timestamp": "2025-04-04T09:38:30Z"
+    },
+    {
+      "turn_number": 17,
+      "role": "user",
+      "content": "Got it! I’ll make sure to practice that. One last thing — any tips for the actual exam day?",
+      "timestamp": "2025-04-04T09:41:00Z"
+    },
+    {
+      "turn_number": 18,
+      "role": "assistant",
+      "content": "On exam day, make sure to manage your time well. Start with the questions you feel most confident about, and don’t spend too long on any one question. Review your work if you have time at the end!",
+      "timestamp": "2025-04-04T09:43:45Z"
+    }
+  ],
+  "target_conflicts": [],
+  "metadata": {
+    "authority_level": "equal"
+  }
+}

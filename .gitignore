@@ -1,6 +1,6 @@
 # Generated data
 # documents/
-output/
+#output/
 !documents/.gitkeep
 !output/.gitkeep
 

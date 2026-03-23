@@ -1,0 +1,3508 @@
+[
+  {
+    "question_id": "q_1_user_attribution_1",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who proposed that understanding the practical relevance of vector clocks is important?",
+    "gold_answer": "student_a (m_1_student_a_1_2)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_2",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who expressed curiosity about how the Accord routine handles conflicting witness reports?",
+    "gold_answer": "student_a (m_1_student_a_2_4)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_3",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who believes that vector clocks might be heavily tested in the exam?",
+    "gold_answer": "student_a (m_1_student_a_3_4)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_4",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who stated that they find the theoretical guarantees of Paxos compelling?",
+    "gold_answer": "student_a (m_1_student_a_3_2)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_5",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who expressed interest in exploring the implications of the braid vector concept?",
+    "gold_answer": "student_a (m_1_student_a_2_1)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_6",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who believes that understanding the theoretical underpinnings of Accord and Harbor is more important than implementation specifics?",
+    "gold_answer": "student_a (m_1_student_a_2_2)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_7",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who requested a structured summary of the key differences between Accord and Harbor?",
+    "gold_answer": "student_a (m_1_student_a_2_3)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_8",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who wants to understand how the Harbor routine justifies its use in specific deployment scenarios?",
+    "gold_answer": "student_a (m_1_student_a_4_1)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_9",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who expressed a preference for focusing on safety and liveness properties over vector clocks?",
+    "gold_answer": "student_a (m_1_student_a_3_3)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_10",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who believes that understanding the advantages and disadvantages of Paxos compared to Raft is important?",
+    "gold_answer": "student_a (m_1_student_a_1_4)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_user_attribution_11",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who stated that Raft is more straightforward than Paxos?",
+    "gold_answer": "student_b (evidence from conflict C1-1)",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_12",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who expressed a different strategy regarding the importance of vector clocks for exam preparation?",
+    "gold_answer": "student_c (evidence from conflict C1-2)",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_13",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who stated that 3f+1 nodes are needed to tolerate f Byzantine faults?",
+    "gold_answer": "student_c (evidence from conflict C1-3)",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_14",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who emphasized that Paxos can still reach consensus as long as a majority remains operational?",
+    "gold_answer": "student_d (evidence from conflict C1-3)",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_15",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who stated that they should give vector clocks a quick look despite thinking they might not be worth their time?",
+    "gold_answer": "student_c (evidence from conflict C1-2)",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_16",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who expressed a preference for Raft's simplicity over Paxos?",
+    "gold_answer": "student_d (evidence from conflict C1-1)",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_17",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who stated that the textbook emphasizes the need for 3f+1 nodes to tolerate f Byzantine faults?",
+    "gold_answer": "student_c (evidence from conflict C1-3)",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_18",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who expressed that they find Raft's approach to consensus quite different from Paxos?",
+    "gold_answer": "student_d (evidence from conflict C1-1)",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_19",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who stated that both views on Raft's simplicity should be preserved?",
+    "gold_answer": "student_b (evidence from conflict C1-1)",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_user_attribution_20",
+    "scenario_id": "1",
+    "category": "user_attribution",
+    "question": "Who believes that both students have different strategies regarding vector clocks for exam preparation?",
+    "gold_answer": "student_a (evidence from conflict C1-2)",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_1",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the Paxos consensus algorithm's role in distributed systems?",
+    "gold_answer": "Paxos is a consensus algorithm that ensures agreement among distributed nodes, particularly during network partitions. It can tolerate failures as long as a majority of nodes are operational, making it crucial for maintaining consistency in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1",
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_2",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the differences between Paxos and Raft?",
+    "gold_answer": "Paxos is often seen as more complex due to its leader election process and handling of network partitions, while Raft is considered simpler and more intuitive. Both algorithms aim to achieve consensus, but their approaches differ significantly.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_3",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of vector clocks and their applications in distributed systems?",
+    "gold_answer": "Vector clocks are used to maintain the causal ordering of events in distributed systems. They help in resolving conflicts and understanding the state of different nodes, particularly in systems like Git and Amazon DynamoDB.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2",
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_4",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the Harbor routine's efficiency compared to Accord?",
+    "gold_answer": "The Harbor routine is designed to maintain a bounded proof surface while ensuring reliable event ordering, making it more efficient under constrained proof budgets compared to Accord, which takes a more comprehensive approach.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4",
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_5",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the implications of the braid vector in distributed systems?",
+    "gold_answer": "The braid vector concept helps distinguish between dominance and concurrency in distributed systems, maintaining event ordering and adapting to changes in network topology, which is crucial for managing conflicting witness reports.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_6",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the safety and liveness properties in consensus algorithms?",
+    "gold_answer": "Safety ensures that no two nodes can decide on different values, while liveness guarantees that every request eventually gets processed. Both properties are essential for the reliability of consensus algorithms like Paxos and Raft.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_7",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the challenges faced by Etcd in maintaining consistency and performance?",
+    "gold_answer": "Etcd faces challenges in maintaining consistency and performance during network partitions and leader failures, which require robust consensus mechanisms like Raft to ensure that the system remains operational.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_8",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the importance of understanding theoretical underpinnings for exam preparation?",
+    "gold_answer": "Understanding theoretical underpinnings is crucial for exam preparation as it provides a solid foundation for applying concepts in practical scenarios, especially in complex topics like consensus algorithms.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_9",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the relevance of vector clocks in exam preparation?",
+    "gold_answer": "Vector clocks are considered highly relevant for exam preparation due to their significance in distributed systems, and students have differing opinions on how much focus they should place on them.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_4"
+    ],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_10",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of how Paxos handles leader crashes?",
+    "gold_answer": "Paxos can still reach consensus even if a leader crashes after sending a proposal, as long as a majority of nodes remain operational to respond to the proposal.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_11",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the implications of 'honest overlap' in the Accord routine?",
+    "gold_answer": "Honest overlap in the Accord routine refers to the conditions under which event histories can be considered consistent, impacting how conflicts are resolved in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_12",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the role of the Accord routine in managing conflicting witness reports?",
+    "gold_answer": "The Accord routine uses the braid vector to manage event ordering and resolve conflicting witness reports, ensuring that the system can maintain consistency despite discrepancies.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_13",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the practical applications of vector clocks?",
+    "gold_answer": "Vector clocks are practically applied in systems like Git for version control and in Amazon DynamoDB for maintaining consistency across distributed nodes.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_14",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the challenges in maintaining consistency in distributed systems?",
+    "gold_answer": "Maintaining consistency in distributed systems involves challenges such as handling network partitions, leader failures, and ensuring that all nodes have a consistent view of the data.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_15",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the importance of understanding the differences between consensus algorithms?",
+    "gold_answer": "Understanding the differences between consensus algorithms like Paxos and Raft is important for selecting the right algorithm based on the specific requirements of a distributed system, such as complexity and fault tolerance.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_16",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the implications of network topology changes on event ordering?",
+    "gold_answer": "Changes in network topology can affect event ordering in distributed systems, necessitating robust mechanisms like braid vectors to maintain consistency and resolve conflicts.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_17",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the role of theoretical knowledge in practical applications of distributed systems?",
+    "gold_answer": "Theoretical knowledge provides a foundation for understanding the complexities of distributed systems, enabling practitioners to apply concepts effectively in real-world scenarios.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_18",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the significance of event history consistency in distributed systems?",
+    "gold_answer": "Event history consistency is significant in distributed systems as it ensures that all nodes have a coherent view of the events, which is crucial for maintaining reliability and correctness in operations.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_19",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the relationship between consensus algorithms and fault tolerance?",
+    "gold_answer": "Consensus algorithms like Paxos and Raft are designed to provide fault tolerance by ensuring that a majority of nodes can still reach consensus even in the presence of failures, which is essential for the reliability of distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_synthesis_20",
+    "scenario_id": "1",
+    "category": "cross_user_synthesis",
+    "question": "Combining all users' analyses, what is the complete picture of the importance of practical applications in understanding theoretical concepts?",
+    "gold_answer": "Practical applications help solidify understanding of theoretical concepts by providing real-world contexts in which these theories can be applied, enhancing learning and retention.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_1",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Identify the conflict between student_b and student_d regarding the complexity of Paxos and Raft. What resolution strategy should be applied?",
+    "gold_answer": "The conflict is about the complexity of Paxos vs Raft, with both students expressing a preference for Raft's simplicity. The resolution strategy is to preserve both views as the interpretation of complexity is subjective.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_2",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What are the differing opinions of student_a and student_c regarding the relevance of vector clocks for the exam? How should this conflict be resolved?",
+    "gold_answer": "Student_a believes vector clocks will be significant for the exam, while student_c thinks they might not be worth the time. The resolution strategy is to preserve both views as they reflect different exam preparation strategies.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_3",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Analyze the conflict between student_c and student_d regarding the Byzantine fault tolerance threshold. What is the correct resolution?",
+    "gold_answer": "The conflict is about the number of nodes needed to tolerate Byzantine faults. Student_c's claim is based on the textbook, which is correct. The resolution strategy is to supersede student_d's claim with student_c's factual basis.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_4",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What is the nature of the disagreement between student_a and student_c regarding vector clocks, and how should it be resolved?",
+    "gold_answer": "The disagreement is strategic; student_a believes vector clocks will be heavily tested, while student_c is less convinced. The resolution is to preserve both views as they reflect different study strategies.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_5",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Identify the conflicting positions of student_b and student_d regarding the simplicity of Raft compared to Paxos. What resolution approach is appropriate?",
+    "gold_answer": "Both students prefer Raft's simplicity, but their interpretations of complexity differ. The appropriate resolution approach is to preserve both views.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_6",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What are the key differences in opinion between student_a and student_c regarding the exam relevance of vector clocks? How should this conflict be resolved?",
+    "gold_answer": "Student_a believes vector clocks will be significant for the exam, while student_c thinks they might not be worth the time. The resolution is to preserve both opinions as they represent different perspectives on exam preparation.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_7",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Examine the conflict between student_c and student_d regarding the Byzantine fault tolerance threshold. What resolution strategy is appropriate?",
+    "gold_answer": "Student_c's claim about needing 3f+1 nodes is based on the textbook, which is correct. The resolution strategy is to supersede student_d's claim with student_c's factual basis.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_8",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Identify the nature of the disagreement between student_b and student_d regarding Raft's simplicity. What resolution strategy should be applied?",
+    "gold_answer": "Both students express a preference for Raft's simplicity, but their interpretations of complexity are subjective. The resolution strategy is to preserve both views.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_9",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What are the differing strategies of student_a and student_c regarding vector clocks for exam preparation? How should this conflict be resolved?",
+    "gold_answer": "Student_a believes vector clocks will be significant for the exam, while student_c thinks they might not be worth the time. The resolution is to preserve both views as they reflect different strategies.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_10",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Analyze the conflict between student_c and student_d regarding the Byzantine fault tolerance threshold. What is the correct resolution?",
+    "gold_answer": "Student_c's claim about needing 3f+1 nodes is based on the textbook, which is correct. The resolution strategy is to supersede student_d's claim with student_c's factual basis.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_11",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What is the nature of the disagreement between student_b and student_d regarding the complexity of Paxos and Raft? What resolution strategy should be applied?",
+    "gold_answer": "The disagreement is interpretive; both students prefer Raft's simplicity, but their interpretations of complexity differ. The resolution strategy is to preserve both views.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_12",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What are the differing opinions of student_a and student_c regarding the relevance of vector clocks for the exam? How should this conflict be resolved?",
+    "gold_answer": "Student_a believes vector clocks will be significant for the exam, while student_c thinks they might not be worth the time. The resolution strategy is to preserve both views as they reflect different exam preparation strategies.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_13",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Examine the conflict between student_c and student_d regarding the Byzantine fault tolerance threshold. What resolution strategy is appropriate?",
+    "gold_answer": "Student_c's claim about needing 3f+1 nodes is based on the textbook, which is correct. The resolution strategy is to supersede student_d's claim with student_c's factual basis.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_14",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "Identify the conflicting positions of student_b and student_d regarding Raft's simplicity. What resolution approach is appropriate?",
+    "gold_answer": "Both students prefer Raft's simplicity, but their interpretations of complexity differ. The appropriate resolution approach is to preserve both views.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_conflict_resolution_15",
+    "scenario_id": "1",
+    "category": "conflict_resolution",
+    "question": "What are the differing strategies of student_a and student_c regarding vector clocks for exam preparation? How should this conflict be resolved?",
+    "gold_answer": "Student_a believes vector clocks will be significant for the exam, while student_c thinks they might not be worth the time. The resolution is to preserve both views as they reflect different strategies.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_1",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know?",
+    "gold_answer": "Student_a believes that vector clocks will be a significant part of the exam due to past weighting, which student_c does not fully appreciate.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_information_gap_2",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know?",
+    "gold_answer": "Student_a has a deeper understanding of the practical applications of vector clocks, which student_b may not fully grasp.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_3",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_d needs but doesn't know?",
+    "gold_answer": "Student_a has insights into the complexities of the Paxos algorithm that student_d may not be aware of.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_4",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know regarding the Harbor routine?",
+    "gold_answer": "Student_a understands the efficiency of the Harbor routine in maintaining a bounded proof surface, which student_b may not know.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_5",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know about the braid vector?",
+    "gold_answer": "Student_a has insights into how the braid vector concept helps distinguish dominance and concurrency, which student_c may not fully understand.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_6",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_d needs but doesn't know about the safety property in Paxos?",
+    "gold_answer": "Student_a has a nuanced understanding of how Paxos handles safety during leader crashes, which student_d may not be aware of.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_7",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know about the differences between Accord and Harbor?",
+    "gold_answer": "Student_a has a structured summary of the differences between Accord and Harbor that student_b may not have.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_8",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know regarding the implications of the Paxos algorithm?",
+    "gold_answer": "Student_a has insights into the implications of Paxos for network partitions that student_c may not fully appreciate.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_9",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_d needs but doesn't know about the challenges faced by Etcd?",
+    "gold_answer": "Student_a has a deeper understanding of the challenges faced by Etcd in maintaining consistency and performance that student_d may not be aware of.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_10",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know about the liveness properties in consensus algorithms?",
+    "gold_answer": "Student_a has insights into how Paxos achieves liveness during leader election that student_b may not fully understand.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_11",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know about the role of the leader in Paxos?",
+    "gold_answer": "Student_a has a detailed understanding of the leader's role in Paxos that student_c may not fully grasp.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_12",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know about the practical applications of vector clocks?",
+    "gold_answer": "Student_a has insights into the practical applications of vector clocks in systems like Git and Amazon DynamoDB that student_b may not be aware of.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_13",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_d needs but doesn't know about the complexities of the Accord routine?",
+    "gold_answer": "Student_a has insights into how the Accord routine manages conflicting witness reports that student_d may not fully understand.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_14",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know about the differences between Paxos and Raft?",
+    "gold_answer": "Student_a has insights into the differences in leader election processes between Paxos and Raft that student_c may not fully appreciate.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_15",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know about the implications of the braid vector?",
+    "gold_answer": "Student_a understands the implications of the braid vector in managing event ordering that student_b may not be aware of.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_16",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_d needs but doesn't know about the challenges of maintaining consistency in distributed systems?",
+    "gold_answer": "Student_a has insights into the challenges of maintaining consistency in distributed systems that student_d may not fully grasp.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_17",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know about the operational mechanics of consensus algorithms?",
+    "gold_answer": "Student_a has insights into the operational mechanics of consensus algorithms that student_c may not fully appreciate.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_18",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_b needs but doesn't know about the theoretical underpinnings of distributed systems?",
+    "gold_answer": "Student_a has insights into the theoretical underpinnings of distributed systems that student_b may not fully grasp.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_19",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_d needs but doesn't know about the implications of network topology changes?",
+    "gold_answer": "Student_a has insights into how changes in network topology affect event ordering that student_d may not fully appreciate.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_information_gap_20",
+    "scenario_id": "1",
+    "category": "information_gap",
+    "question": "What has student_a discovered that student_c needs but doesn't know about the importance of proof budgets in distributed systems?",
+    "gold_answer": "Student_a understands the importance of proof budgets in maintaining efficiency in distributed systems that student_c may not fully grasp.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_1",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a summarizing the key differences between the Paxos and Raft consensus algorithms, as discussed in their sessions.",
+    "gold_answer": "Student_a should understand that Paxos is more complex in terms of leader election and fault tolerance, while Raft simplifies these processes, making it easier to implement. Both algorithms have their strengths, but Raft is often preferred for its clarity.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4",
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_2",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that highlights the implications of the braid vector concept in distributed systems, based on their inquiries.",
+    "gold_answer": "Student_a is exploring how the braid vector helps distinguish between dominance and concurrency in distributed systems, particularly in relation to the Accord routine's management of event ordering.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1",
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_3",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a summarizing the challenges faced by Etcd in maintaining consistency and performance as discussed in their sessions.",
+    "gold_answer": "Student_a should be aware that Etcd faces challenges in maintaining consistency during network partitions and ensuring performance under load, which are critical for distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_4",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that includes their thoughts on the importance of vector clocks for their upcoming exam.",
+    "gold_answer": "Student_a believes that vector clocks will be heavily tested in the exam due to their past significance, and they should focus on understanding their practical applications.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_5",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a summarizing the differences between the Accord and Harbor routines based on their discussions.",
+    "gold_answer": "Student_a should note that Accord is comprehensive in managing event ordering, while Harbor is more efficient under constrained proof budgets, making it suitable for different deployment scenarios.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3",
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_6",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that captures their interest in the safety and liveness properties of consensus algorithms.",
+    "gold_answer": "Student_a is focusing on the safety and liveness properties of consensus algorithms, particularly how Paxos achieves these properties during leader election.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_7",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that summarizes their inquiries about the implications of a leader's crash in the Paxos algorithm.",
+    "gold_answer": "Student_a is curious about how Paxos handles scenarios where the leader crashes after sending a proposal but before receiving responses from acceptors, emphasizing the algorithm's resilience.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_8",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that reflects their understanding of the trade-offs between Accord and Harbor.",
+    "gold_answer": "Student_a recognizes that choosing between Accord and Harbor depends on deployment scenarios and resource availability, with each routine offering distinct advantages.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2",
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_9",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that summarizes their thoughts on the practical applications of vector clocks.",
+    "gold_answer": "Student_a believes that understanding the practical relevance of vector clocks is crucial, particularly in systems like Git and Amazon DynamoDB.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_10",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that includes their directive for a structured summary of the differences between Accord and Harbor.",
+    "gold_answer": "Student_a has requested a structured summary of the key differences between Accord and Harbor to help consolidate their understanding for exam preparation.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_11",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that summarizes their inquiries about the challenges of maintaining consistency in distributed systems.",
+    "gold_answer": "Student_a is interested in understanding the challenges faced by distributed systems in maintaining consistency, particularly during network partitions.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_12",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that reflects their understanding of the implications of the Harbor routine's efficiency.",
+    "gold_answer": "Student_a understands that the Harbor routine is efficient in maintaining a bounded proof surface while ensuring reliable event ordering, which is crucial for performance in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_13",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that summarizes their thoughts on the relationship between the braid vector and the Accord routine.",
+    "gold_answer": "Student_a is exploring how the braid vector concept is utilized by the Accord routine to manage event ordering and resolve conflicting witness reports.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_14",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that includes their preferences for exam preparation topics.",
+    "gold_answer": "Student_a prefers to focus on theoretical concepts such as safety and liveness properties in consensus algorithms for their exam preparation.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_role_appropriate_briefing_15",
+    "scenario_id": "1",
+    "category": "role_appropriate_briefing",
+    "question": "Generate a briefing for student_a that summarizes their understanding of the implications of the leader's role in the Paxos algorithm.",
+    "gold_answer": "Student_a understands that the leader in the Paxos algorithm plays a crucial role in ensuring agreement among nodes, especially during network partitions, and is interested in the implications of a leader's crash.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_1",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b analyze the Paxos consensus algorithm?",
+    "gold_answer": "No — student_a did. Student_b is involved in a different discussion about Raft's simplicity.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_2",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c believe that understanding the practical relevance of vector clocks is important?",
+    "gold_answer": "No — student_a did. Student_c expressed uncertainty about the importance of vector clocks for exam preparation.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_3",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_d inquire about the advantages and disadvantages of Paxos compared to Raft?",
+    "gold_answer": "No — student_a did. Student_d is involved in a different discussion about Raft's approach to consensus.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_4",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b explore the implications of the braid vector concept?",
+    "gold_answer": "No — student_a did. Student_b is discussing Raft's simplicity instead.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_5",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c request a structured summary of the key differences between Accord and Harbor?",
+    "gold_answer": "No — student_a did. Student_c is focused on a different aspect of vector clocks.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_6",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_d express a preference for focusing on safety and liveness properties over vector clocks?",
+    "gold_answer": "No — student_a did. Student_d is discussing a different topic related to Raft.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_7",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b believe that vector clocks might be heavily tested in the exam?",
+    "gold_answer": "No — student_a did. Student_b is discussing Raft's consensus approach.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_8",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c focus on the implementation details of the Paxos consensus algorithm?",
+    "gold_answer": "No — student_a did. Student_c is involved in a different discussion about vector clocks.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_9",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_d express interest in how the Harbor routine justifies its use in specific deployment scenarios?",
+    "gold_answer": "No — student_a did. Student_d is discussing Raft instead.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_10",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b believe that understanding the theoretical underpinnings of Accord and Harbor is more important than implementation specifics?",
+    "gold_answer": "No — student_a did. Student_b is discussing a different topic related to Raft.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_11",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c analyze the Harbor routine's efficiency in maintaining a bounded proof surface?",
+    "gold_answer": "No — student_a did. Student_c is focused on a different aspect of vector clocks.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_12",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b express interest in the implications of the braid vector concept?",
+    "gold_answer": "No — student_a did. Student_b is discussing Raft's consensus approach.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_13",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c inquire about the relationship between the braid vector and the Accord routine?",
+    "gold_answer": "No — student_a did. Student_c is discussing a different topic related to vector clocks.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_14",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_d express a preference for focusing on vector clocks over consensus algorithms?",
+    "gold_answer": "No — student_a did. Student_d is discussing Raft's simplicity instead.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_15",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b believe that understanding the challenges faced by Etcd is crucial?",
+    "gold_answer": "No — student_a did. Student_b is discussing a different topic related to Raft.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_16",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c focus on the complexities of the Paxos consensus algorithm?",
+    "gold_answer": "No — student_a did. Student_c is discussing a different topic related to vector clocks.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_17",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_d express interest in the practical applications of vector clocks?",
+    "gold_answer": "No — student_a did. Student_d is discussing Raft's consensus approach instead.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_18",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_b inquire about the challenges faced by Etcd in maintaining consistency?",
+    "gold_answer": "No — student_a did. Student_b is discussing Raft's simplicity instead.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_19",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_c analyze the differences between Accord and Harbor?",
+    "gold_answer": "No — student_a did. Student_c is discussing a different topic related to vector clocks.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_adversarial_confusion_20",
+    "scenario_id": "1",
+    "category": "adversarial_confusion",
+    "question": "Did student_d express a preference for focusing on the braid vector concept?",
+    "gold_answer": "No — student_a did. Student_d is discussing Raft's consensus approach instead.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_document_coverage_1",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on Paxos consensus algorithm were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the implementation details of Paxos, particularly the role of the leader and its implications during network partitions. However, the discussion on the comparison with Raft was not fully explored.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_2",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about vector clocks were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the practical applications of vector clocks and their comparison with Lamport timestamps. However, the implications of vector clocks in distributed systems were not fully covered.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2",
+      "m_1_student_a_1_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_3",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on the Harbor routine were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the efficiency of the Harbor routine and its comparison with Accord. However, the specific deployment scenarios for Harbor were not discussed in detail.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_4",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about the braid vector were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the implications of the braid vector concept and its relationship with Accord. However, the practical examples of braid vector applications were not covered.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1",
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_5",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on consensus algorithms were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the comparison between Paxos and Raft, focusing on their complexities. However, the practical applications of these algorithms were not discussed.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1",
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_6",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about Byzantine fault tolerance were reviewed by student_c? What was missed?",
+    "gold_answer": "Student_c reviewed the threshold for Byzantine fault tolerance but did not explore the implications of this threshold on consensus algorithms like Paxos and Raft.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_7",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on the Accord routine were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the concept of 'honest overlap' in Accord but did not cover its implications for event history consistency in detail.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_8",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about consensus properties were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the safety and liveness properties of consensus algorithms but did not discuss their practical implications in real-world scenarios.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_9",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about vector clocks were reviewed by student_c? What was missed?",
+    "gold_answer": "Student_c briefly mentioned vector clocks but did not engage in a detailed discussion about their relevance for the exam.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_10",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about the Harbor routine were reviewed by student_b? What was missed?",
+    "gold_answer": "Student_b reviewed the efficiency of the Harbor routine but did not discuss its comparison with Accord or specific use cases.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_11",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on Raft were reviewed by student_d? What was missed?",
+    "gold_answer": "Student_d discussed Raft's approach to consensus but did not explore its practical applications in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_12",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about the Paxos algorithm were reviewed by student_b? What was missed?",
+    "gold_answer": "Student_b reviewed the basic principles of Paxos but did not delve into its comparison with other consensus algorithms like Raft.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_13",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about the braid vector were reviewed by student_d? What was missed?",
+    "gold_answer": "Student_d discussed the braid vector concept but did not cover its implications for event ordering in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_14",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on consensus algorithms were reviewed by student_c? What was missed?",
+    "gold_answer": "Student_c reviewed the safety properties of consensus algorithms but did not discuss their implications for real-world applications.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_15",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about vector clocks were reviewed by student_b? What was missed?",
+    "gold_answer": "Student_b reviewed the theoretical aspects of vector clocks but did not discuss their practical applications in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_16",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on the Harbor routine were reviewed by student_c? What was missed?",
+    "gold_answer": "Student_c reviewed the efficiency of the Harbor routine but did not explore its comparison with Accord in detail.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_17",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about consensus properties were reviewed by student_b? What was missed?",
+    "gold_answer": "Student_b reviewed the liveness properties of consensus algorithms but did not discuss safety properties in detail.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_18",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion on vector clocks were reviewed by student_d? What was missed?",
+    "gold_answer": "Student_d reviewed the basic principles of vector clocks but did not cover their implications for distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_19",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the conversation about the Paxos algorithm were reviewed by student_c? What was missed?",
+    "gold_answer": "Student_c reviewed the safety properties of Paxos but did not discuss its implications for consensus in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_document_coverage_20",
+    "scenario_id": "1",
+    "category": "document_coverage",
+    "question": "Which sections of the discussion about the Harbor routine were reviewed by student_a? What was missed?",
+    "gold_answer": "Student_a reviewed the efficiency of the Harbor routine but did not discuss its advantages over Accord in detail.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_1",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the history of the user's interest in the Paxos consensus algorithm across all sessions.",
+    "gold_answer": "Student_a expressed interest in the Paxos consensus algorithm in Session 1 (m_1_student_a_1_1) and further explored its implications in Session 3 (m_1_student_a_3_1).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1",
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_2",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the evolution of student_a's understanding of vector clocks and their relevance for the exam.",
+    "gold_answer": "In Session 1, student_a believed understanding vector clocks was important (m_1_student_a_1_2). In Session 3, they expressed concern that vector clocks might be heavily tested (m_1_student_a_3_4).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2",
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_3",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the discussion on the differences between the Paxos and Raft algorithms across sessions.",
+    "gold_answer": "Student_a compared Paxos and Raft in Session 1 (m_1_student_a_1_4) and further explored their complexities in Session 3 (m_1_student_a_3_3).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_4",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the history of student_a's inquiries about the braid vector concept across sessions.",
+    "gold_answer": "In Session 2, student_a expressed interest in the braid vector concept (m_1_student_a_2_1) and discussed its implications in Session 2 (m_1_student_a_2_4).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1",
+      "m_1_student_a_2_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_5",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the evolution of student_a's understanding of the Harbor routine's efficiency.",
+    "gold_answer": "In Session 2, student_a discussed the Harbor routine's efficiency (m_1_student_a_2_3) and further explored its justification in Session 4 (m_1_student_a_4_1).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3",
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_6",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the conflicting views on the relevance of vector clocks for exam preparation between student_a and student_c.",
+    "gold_answer": "Student_a believes vector clocks will be significant for the exam (C1-2), while student_c feels they should only give them a quick look.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_7",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the history of student_a's inquiries about the implications of the leader's crash in Paxos.",
+    "gold_answer": "In Session 3, student_a inquired about the implications of a leader's crash (m_1_student_a_3_1) and discussed safety properties in the same session (m_1_student_a_3_3).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1",
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_8",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the discussion on the advantages and disadvantages of Paxos compared to Raft across sessions.",
+    "gold_answer": "Student_a expressed curiosity about the advantages and disadvantages of Paxos compared to Raft in Session 1 (m_1_student_a_1_4) and further explored these concepts in Session 3 (m_1_student_a_3_2).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4",
+      "m_1_student_a_3_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_9",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the conflicting views on the complexity of Paxos and Raft between student_b and student_d.",
+    "gold_answer": "Student_b finds Raft more straightforward than Paxos (C1-1), while student_d expresses a similar sentiment but emphasizes different aspects of simplicity.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_10",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the history of student_a's understanding of the Accord routine's handling of conflicting witness reports.",
+    "gold_answer": "In Session 2, student_a inquired about how Accord handles conflicting witness reports (m_1_student_a_2_4) and discussed its implications in Session 4 (m_1_student_a_4_1).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4",
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_11",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the evolution of student_a's focus on safety and liveness properties in consensus algorithms.",
+    "gold_answer": "In Session 3, student_a expressed a preference for focusing on safety and liveness properties (m_1_student_a_3_3) and discussed their implications in the context of Paxos.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_12",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the history of student_a's inquiries about the practical applications of vector clocks.",
+    "gold_answer": "In Session 1, student_a expressed interest in the practical applications of vector clocks (m_1_student_a_1_2) and further explored their relevance in Session 2 (m_1_student_a_2_1).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2",
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_13",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the discussion on the challenges faced by Etcd in maintaining consistency and performance.",
+    "gold_answer": "In Session 1, student_a discussed the challenges faced by Etcd (m_1_student_a_1_4) and sought further clarification in Session 3 (m_1_student_a_3_1).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4",
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_14",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the evolution of student_a's understanding of the differences between Accord and Harbor.",
+    "gold_answer": "In Session 2, student_a requested a structured summary of the differences between Accord and Harbor (m_1_student_a_2_3) and further explored these differences in Session 4 (m_1_student_a_4_1).",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      },
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3",
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_cross_user_provenance_15",
+    "scenario_id": "1",
+    "category": "cross_user_provenance",
+    "question": "Trace the conflicting views on the Byzantine fault tolerance threshold between student_c and student_d.",
+    "gold_answer": "Student_c states that 3f+1 nodes are needed to tolerate f Byzantine faults (C1-3), while student_d emphasizes that a majority of nodes must remain operational for Paxos to reach consensus.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_1",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the original claim made by student_a regarding the Paxos consensus algorithm, and when was it made?",
+    "gold_answer": "Student_a made the claim about analyzing the Paxos consensus algorithm during Session 1 on April 1, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_2",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "Who expressed a preference for focusing on safety and liveness properties in consensus algorithms, and when did this occur?",
+    "gold_answer": "Student_a expressed this preference during Session 3 on April 5, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_3",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the user_id and session_id of the user who requested a structured summary of the differences between Accord and Harbor, and when was this request made?",
+    "gold_answer": "Student_a made the request during Session 2 on April 3, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_4",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What conflicting views did student_a and student_c have regarding the relevance of vector clocks for the exam, and when did this conflict surface?",
+    "gold_answer": "Student_a believed vector clocks would be significant for the exam, while student_c felt they might not be worth their time. This conflict surfaced on April 9, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_5_2"
+      },
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_4_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4"
+    ],
+    "required_conflicts": [
+      "C1-2"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_5",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the nature of the conflict between student_b and student_d regarding Paxos and Raft, and when was it first surfaced?",
+    "gold_answer": "The conflict was interpretive, with student_b stating Raft is more straightforward than Paxos, while student_d found Raft's approach quite different. It first surfaced on April 1, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_b",
+        "session_id": "s1_student_b_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-1"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_6",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "When did student_a express curiosity about how Paxos handles a leader crash scenario, and what was the specific concern?",
+    "gold_answer": "Student_a expressed this curiosity during Session 3 on April 5, 2025, specifically about how Paxos handles the scenario where the leader crashes after sending a proposal.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_7",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in the braid vector concept, and what was the context?",
+    "gold_answer": "The timestamp was April 3, 2025, and the context was student_a's exploration of the braid vector concept in distinguishing dominance and concurrency in distributed systems.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_8",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a conclude about the differences between Accord and Harbor, and when was this conclusion reached?",
+    "gold_answer": "Student_a concluded the differences during Session 2 on April 3, 2025, after discussing the efficiency of Harbor compared to Accord.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_9",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the conflict regarding the Byzantine fault tolerance threshold between student_c and student_d, and what was the resolution?",
+    "gold_answer": "Student_c claimed that 3f+1 nodes are needed to tolerate f Byzantine faults, while student_d emphasized that a majority is sufficient for Paxos. The resolution was that student_c's claim was correct based on the textbook.",
+    "evidence": [
+      {
+        "user_id": "student_c",
+        "session_id": "s1_student_c_1_1"
+      },
+      {
+        "user_id": "student_d",
+        "session_id": "s1_student_d_2_4"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [
+      "C1-3"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "question_id": "q_1_temporal_correction_10",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "When did student_a express the belief that understanding the practical relevance of vector clocks is important, and what was the context?",
+    "gold_answer": "Student_a expressed this belief during Session 1 on April 1, 2025, while discussing vector clocks and their applications.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_11",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in the advantages and disadvantages of Paxos compared to Raft?",
+    "gold_answer": "The timestamp was April 1, 2025, during Session 1.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_12",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a want to understand about the Harbor routine, and when was this expressed?",
+    "gold_answer": "Student_a wanted to understand how the Harbor routine justifies its use in specific deployment scenarios, expressed during Session 4 on April 7, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_13",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "When did student_a express a belief that vector clocks might be heavily tested in the exam, and what was the status of that memory?",
+    "gold_answer": "Student_a expressed this belief during Session 3 on April 5, 2025, and the memory was marked as superseded.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_14",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in the implications of the braid vector concept?",
+    "gold_answer": "The timestamp was April 3, 2025, during Session 2.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_15",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a conclude about the importance of theoretical underpinnings for exam preparation, and when was this conclusion reached?",
+    "gold_answer": "Student_a concluded that understanding theoretical underpinnings is more important than implementation specifics during Session 2 on April 3, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_16",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed curiosity about how the Accord routine handles conflicting witness reports?",
+    "gold_answer": "The timestamp was April 3, 2025, during Session 2.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_4"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_17",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a express interest in regarding the Paxos consensus algorithm, and when was this expressed?",
+    "gold_answer": "Student_a expressed interest in the implementation details of the Paxos consensus algorithm during Session 3 on April 5, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_18",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed a preference for focusing on vector clocks over other topics?",
+    "gold_answer": "The timestamp was April 5, 2025, during Session 3.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_19",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the nature of the discussion between student_a and the AI assistant regarding the challenges faced by Etcd, and when did this occur?",
+    "gold_answer": "The discussion was about the challenges in maintaining consistency and performance in Etcd, occurring during Session 1 on April 1, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_20",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a conclude about the relationship between the braid vector and the Accord routine, and when was this conclusion reached?",
+    "gold_answer": "Student_a concluded that the braid vector is used by Accord to manage event ordering during Session 2 on April 3, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_21",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in the practical applications of vector clocks?",
+    "gold_answer": "The timestamp was April 1, 2025, during Session 1.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_22",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a express regarding the efficiency of the Harbor routine, and when was this expressed?",
+    "gold_answer": "Student_a expressed interest in the efficiency of the Harbor routine during Session 4 on April 7, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_23",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed curiosity about the implications of a leader's crash on Paxos's safety property?",
+    "gold_answer": "The timestamp was April 5, 2025, during Session 3.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_3"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_3_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_24",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a express regarding the importance of focusing on theoretical concepts for exam preparation, and when was this expressed?",
+    "gold_answer": "Student_a expressed this during Session 2 on April 3, 2025, emphasizing the importance of theoretical concepts over implementation specifics.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_25",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in how the Harbor routine maintains a bounded proof surface?",
+    "gold_answer": "The timestamp was April 7, 2025, during Session 4.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_26",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a express regarding the challenges faced by Etcd in maintaining consistency, and when was this expressed?",
+    "gold_answer": "Student_a expressed this concern during Session 1 on April 1, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [],
+    "required_conflicts": [],
+    "difficulty": "medium"
+  },
+  {
+    "question_id": "q_1_temporal_correction_27",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in the differences between vector clocks and Lamport timestamps?",
+    "gold_answer": "The timestamp was April 1, 2025, during Session 1.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_3"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_28",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a express regarding the importance of understanding the practical applications of vector clocks, and when was this expressed?",
+    "gold_answer": "Student_a expressed this during Session 1 on April 1, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_1"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_1_2"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_29",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What was the timestamp of the memory where student_a expressed interest in the implications of the braid vector for event ordering?",
+    "gold_answer": "The timestamp was April 3, 2025, during Session 2.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_2"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_2_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  },
+  {
+    "question_id": "q_1_temporal_correction_30",
+    "scenario_id": "1",
+    "category": "temporal_correction",
+    "question": "What did student_a express regarding the relationship between the Harbor routine and event history consistency, and when was this expressed?",
+    "gold_answer": "Student_a expressed this during Session 4 on April 7, 2025.",
+    "evidence": [
+      {
+        "user_id": "student_a",
+        "session_id": "s1_student_a_4"
+      }
+    ],
+    "required_memories": [
+      "m_1_student_a_4_1"
+    ],
+    "required_conflicts": [],
+    "difficulty": "easy"
+  }
+]
