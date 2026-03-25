@@ -1,16 +1,19 @@
 scenario_id: "3"
-name: "Contract Review: Vendor Agreement"
+name: "Product Strategy: Ficduct Platform Review"
 relationship_type: cross_functional
-domain: "Legal / Business"
+domain: "Technology / Product Strategy"
 sessions_per_user: 7
-turns_per_session: 18
+turns_per_session:
+  "1": 50
+  "2": 50
+  default: 20
 
 timeline:
   start_date: "2025-06-02T09:00:00Z"
   end_date: "2025-06-20T18:00:00Z"
   description: "3-week contract review cycle. Sessions clustered around key milestones."
   session_schedule:
-    legal_counsel:
+    cto_eng:
       - {session: 1, date: "2025-06-02"}
       - {session: 2, date: "2025-06-04"}
       - {session: 3, date: "2025-06-06"}
@@ -18,7 +21,7 @@ timeline:
       - {session: 5, date: "2025-06-12"}
       - {session: 6, date: "2025-06-16"}
       - {session: 7, date: "2025-06-20"}
-    finance_lead:
+    cfo_finance:
       - {session: 1, date: "2025-06-02"}
       - {session: 2, date: "2025-06-04"}
       - {session: 3, date: "2025-06-06"}
@@ -26,7 +29,7 @@ timeline:
       - {session: 5, date: "2025-06-13"}
       - {session: 6, date: "2025-06-17"}
       - {session: 7, date: "2025-06-20"}
-    eng_manager:
+    cmo_marketing:
       - {session: 1, date: "2025-06-02"}
       - {session: 2, date: "2025-06-05"}
       - {session: 3, date: "2025-06-07"}
@@ -34,7 +37,7 @@ timeline:
       - {session: 5, date: "2025-06-13"}
       - {session: 6, date: "2025-06-17"}
       - {session: 7, date: "2025-06-20"}
-    procurement_lead:
+    vp_product:
       - {session: 1, date: "2025-06-03"}
       - {session: 2, date: "2025-06-05"}
       - {session: 3, date: "2025-06-09"}
@@ -44,304 +47,327 @@ timeline:
       - {session: 7, date: "2025-06-20"}
 
 users:
-  - user_id: legal_counsel
-    display_name: "Legal Counsel"
-    scenario_id: "3"
-    authority_level: medium
-    authority_weight: 2.0
-    domain_authority: "legal"
-    expertise: "Contract law, IP rights, liability, indemnification"
-    focus_areas:
-      - "IP clause (Section 4)"
-      - "liability caps (Section 7)"
-      - "indemnification (Section 8)"
-    biases:
-      - "Risk-averse — flags everything as potential liability"
-      - "Views ambiguous language as hostile"
-    prompt_behavior_notes: >
-      Asks precise legal risk questions. Structures analysis as issue, risk,
-      recommendation. Decisive on legal matters, defers on technical feasibility.
-
-    communication_style: >
-      Formal, precise legal language. Uses terms like "as written", "on its face",
-      "notwithstanding", "carve-out". Structures analysis as: issue → risk → recommendation.
-      Decisive — calls things "deal-breakers" or "acceptable risk". Defers to Eng
-      on technical feasibility but owns the legal risk assessment.
-
-    document_reading_pattern: >
-      Reads the MSA clause by clause, starting with IP, liability, and indemnification.
-      Marks up ambiguous phrases. Cross-references defined terms across documents.
-      Reads the SOW only to assess legal exposure from SLA commitments.
-
-    reaction_to_corrections: >
-      On legal matters: resistant — "I understand the engineering perspective, but
-      the legal risk is real regardless of industry practice." On technical matters:
-      defers gracefully — "I'll take your word on the SLA feasibility."
-
-    knowledge_gaps:
-      - "Cannot assess technical SLA feasibility"
-      - "Doesn't understand engineering trade-offs"
-      - "May overstate risk for technically standard contract terms"
-    misconceptions: []
-
-    emotional_tendencies: >
-      Calm, authoritative, occasionally alarmed by genuinely risky clauses.
-      Gets passionate about IP rights. Protective of the client's interests.
-
-    reference_style: "Legal citations: 'Section 4.2(a)', 'as defined in Section 1.3', 'per the indemnification basket in 8.2'"
-
-    session_evolution:
-      session_1: "IP clause discovery. Reads Section 4. Flags derivative works assignment."
-      session_2: "Deep analysis of IP and liability. Builds the deal-breaker case."
-      session_3: "Reviews SLA penalties. Pushes for higher penalties."
-      session_4: "Encounters Engineering's 'this is standard' view on IP. Disagrees firmly."
-      session_5: "Reviews indemnification and termination clauses."
-      session_6: "Builds overall legal risk assessment. Rates contract risk."
-      session_7: "Final redline recommendations. Prioritized negotiation list."
-
-    example_utterances:
-      - "Section 4.2(a) assigns all derivative works to the Vendor. This is a deal-breaker as written."
-      - "We need to redline Section 4.2(a) to assign derivative works to the Client, with the Vendor retaining rights only to pre-existing tools."
-      - "The indemnification basket at $3M is too high. I'd push for $1.5M given the contract value."
-      - "I understand Engineering views this as standard, but the legal risk is real — 'derivative works' is broadly defined."
-      - "Flag this as the highest-priority item for negotiation."
-
-  - user_id: finance_lead
-    display_name: "Finance Lead"
-    scenario_id: "3"
-    authority_level: medium
-    authority_weight: 2.0
-    domain_authority: "financial"
-    expertise: "Pricing analysis, budgeting, payment terms, total cost of ownership"
-    focus_areas:
-      - "Payment schedule"
-      - "total cost analysis"
-      - "NET-30 vs NET-60"
-      - "milestone payments"
-    biases:
-      - "Cash flow focused — always prefers extended payment terms"
-      - "Evaluates everything in NPV terms"
-    prompt_behavior_notes: >
-      Asks numbers-oriented questions. Frames everything as cost impact.
-      Builds total cost models and payment structure analyses.
-
-    communication_style: >
-      Numbers-oriented. Uses financial language: "cash flow impact", "NPV",
-      "working capital". Presents arguments with spreadsheet-style breakdowns.
-      Pragmatic — frames everything as "what does this cost us?"
-
-    document_reading_pattern: >
-      Goes straight to the pricing schedule. Builds mental total cost model.
-      Reads payment terms in the MSA. Ignores legal and technical clauses
-      unless they have financial penalties attached.
-
-    reaction_to_corrections: >
-      Readily accepts if shown better numbers. Pushes back on payment terms
-      with financial modeling: "NET-30 costs us X in working capital."
-      Defers to Legal on clause language, Procurement on market benchmarks.
-
-    knowledge_gaps:
-      - "Doesn't understand SLA technical requirements"
-      - "Doesn't assess legal risk"
-      - "Focused on cost, may miss quality/risk trade-offs"
-    misconceptions: []
-
-    emotional_tendencies: >
-      Calm, analytical, occasionally frustrated by non-financial priorities.
-      Gets energized by finding cost optimization opportunities.
-
-    reference_style: "Financial: 'rate card line item 3', 'the milestone payment schedule', 'NET-30 clause on page 8'"
-
-    session_evolution:
-      session_1: "Pricing analysis. Total cost model. Rate card review."
-      session_2: "Payment terms deep-dive. Builds NET-60 business case."
-      session_3: "Cross-references milestone payments with SOW deliverables."
-      session_4: "Encounters Procurement's market data on NET-30. Pushes back."
-      session_5: "Builds alternative payment structures. Explores compromise."
-      session_6: "Final cost assessment. Rates financial risk."
-      session_7: "Summary of financial terms and negotiation priorities."
-
-    example_utterances:
-      - "NET-60 gives us an extra 30 days of working capital. Under NET-30, we'd need to draw on the credit facility."
-      - "The total contract cost under the rate card is $2.4M over 24 months. That's within budget but tight."
-      - "Can you break down the milestone payment schedule against the SOW deliverables timeline?"
-      - "If the vendor insists on NET-30, can we negotiate a discount for early payment?"
-      - "I defer to Legal on the clause language, but from a cost perspective, the penalty structure is acceptable."
-
-  - user_id: eng_manager
-    display_name: "Engineering Manager"
+  - user_id: cto_eng
+    display_name: "CTO / Engineering Lead"
     scenario_id: "3"
     authority_level: medium
     authority_weight: 2.0
     domain_authority: "technical"
-    expertise: "Technical delivery, SLA feasibility, integration architecture, system design"
+    expertise: "Technical architecture, engineering roadmap, system reliability, security compliance"
     focus_areas:
-      - "SLA metrics (99.9% uptime)"
-      - "deliverable specs"
-      - "integration requirements"
-      - "technical feasibility"
+      - "Microservices architecture on Kubernetes"
+      - "gRPC inter-service communication"
+      - "SOC 2 and HIPAA compliance"
+      - "engineering roadmap and tech debt"
     biases:
-      - "Pragmatic — 'this is how the industry works'"
-      - "Dismisses legal concerns about technically standard terms"
+      - "Prioritizes technical soundness over market timing"
+      - "Skeptical of marketing's competitive claims without technical backing"
+      - "Concerned about tech debt accumulation"
     prompt_behavior_notes: >
-      Asks practical engineering questions. Evaluates SLA feasibility and
-      integration complexity. Dismisses non-technical concerns about standard terms.
+      Technically precise. Reviews architecture critically. Flags gaps between
+      marketing claims and technical reality.
 
     communication_style: >
-      Direct, practical, engineering-oriented. Uses terms like "service tier",
-      "connection pooling", "failover architecture". Explains things in terms
-      of systems and trade-offs. Gets impatient with non-technical concerns
-      about technically standard contract terms.
+      Direct, technically precise. Uses terms like "microservices", "gRPC",
+      "observability stack", "tech debt grade". Structures analysis around
+      architectural decisions and their trade-offs. Gets impatient with
+      non-technical claims about platform capability.
 
     document_reading_pattern: >
-      Reads the SOW first for deliverables and SLAs. Reads the MSA's technical
-      sections (SLA definitions, acceptance criteria). Skims pricing. Reads
-      the IP clause casually — doesn't see the legal risk.
+      Reads Technical_Architecture.pdf first and thoroughly (microservices on K8s,
+      gRPC, security, API spec, performance metrics). Cross-references
+      Product_Overview.pdf for technical accuracy of capability claims (Connect,
+      Flow, Stream, Insight, Vault). Reviews Future_Planning.pdf for engineering
+      roadmap feasibility. Skims Financial_Report.pdf and Marketing_Sales.pdf.
 
     reaction_to_corrections: >
-      On technical matters: carefully considers, but confident in their assessment.
-      On legal risk of IP clause: "I see your point, but in managed services
-      this is standard practice." Defers to Legal on legal risk, but offers
-      counter-perspective from industry practice.
+      On technical matters: carefully considers but confident. On marketing claims:
+      "Show me the architecture that supports that claim." Defers to CFO on
+      financial analysis but pushes back on unrealistic engineering timelines.
 
     knowledge_gaps:
-      - "Doesn't understand legal nuance of IP assignment"
-      - "May underestimate legal risk of technically standard terms"
-      - "Doesn't assess financial implications"
+      - "Doesn't deeply understand marketing attribution or go-to-market strategy"
+      - "Less focused on unit economics and cash flow"
+      - "May overweight technical quality at the expense of market opportunity"
     misconceptions:
-      - "Believes the IP clause is standard and harmless for managed services"
+      - "Believes the observability stack is mature enough for enterprise SLAs (Technical_Architecture.pdf shows gaps in the monitoring roadmap)"
 
     emotional_tendencies: >
-      Confident, practical, occasionally dismissive of non-technical concerns.
-      Gets engaged when discussing SLA architecture. Genuinely wants the
-      deal to work — sees the vendor's technology as valuable.
+      Confident, principled about engineering quality. Gets engaged discussing
+      architecture decisions. Frustrated when marketing claims outpace technical
+      reality.
 
-    reference_style: "Technical: 'SOW Section 2.3', 'the 99.9% SLA target', 'the integration architecture in Appendix B'"
+    reference_style: "Technical: 'the microservices architecture in Section 3', 'gRPC latency metrics on page 7', 'SOC 2 compliance status in the security section', 'the engineering roadmap timeline'"
 
     session_evolution:
-      session_1: "SOW review. Assesses SLA feasibility and deliverable specs."
-      session_2: "Deep-dive into technical requirements. Evaluates integration complexity."
-      session_3: "Reviews IP clause. Dismisses as standard. Disagrees with Legal."
-      session_4: "Debates SLA penalties with Legal. Thinks current penalties are reasonable."
-      session_5: "Revisits IP clause after Legal's detailed argument. Slightly shifts position."
-      session_6: "Technical risk assessment. Rates overall technical feasibility."
-      session_7: "Final technical recommendations. Integration timeline."
+      session_1: "Architecture review. Assesses microservices design, gRPC choices, K8s deployment."
+      session_2: "Deep-dive into performance metrics, reliability, and observability stack."
+      session_3: "Reviews Product Overview capability claims. Flags areas where architecture doesn't fully support marketing messaging."
+      session_4: "Debates v2 timeline with VP Product. Raises tech debt concerns from engineering roadmap."
+      session_5: "Cross-references Customer Feedback for technical pain points. Revises observability assessment."
+      session_6: "Technical risk assessment. Rates architecture maturity and v2 readiness."
+      session_7: "Final engineering recommendations. Prioritized tech debt items and v2 prerequisites."
 
     example_utterances:
-      - "The 99.9% uptime SLA is achievable for this service tier. We've seen similar commitments from other vendors."
-      - "For a managed services engagement, IP assignment to the vendor is pretty standard. They're bringing their proprietary tooling."
-      - "I see Legal's concern, but in practice the 'derivative works' language applies to their own frameworks, not our data models."
-      - "The SLA penalties are reasonable for this tier. Higher penalties would price us out of the market."
-      - "SOW Section 2.3 describes deliverables that integrate with our infrastructure. The timeline looks aggressive but feasible."
+      - "The Technical Architecture document shows microservices on Kubernetes with gRPC for inter-service communication. The design is solid, but the observability roadmap has gaps."
+      - "The Product Overview claims enterprise-grade reliability, but Section 5 of the Technical Architecture shows the monitoring stack isn't fully built out yet."
+      - "SOC 2 and HIPAA compliance are in place, which is good. But the security section flags some open items in the API spec."
+      - "If we're targeting v2 GA by Q1 2027, the engineering roadmap in Technical Architecture needs to account for the tech debt items I've flagged."
+      - "The marketing messaging about competing with MuleSoft and Workato needs to be grounded in what the architecture actually delivers today, not the roadmap."
 
-  - user_id: procurement_lead
-    display_name: "Procurement Lead"
+  - user_id: cfo_finance
+    display_name: "CFO / Finance Lead"
     scenario_id: "3"
     authority_level: medium
     authority_weight: 2.0
-    domain_authority: "vendor"
-    expertise: "Vendor management, contract benchmarking, market intelligence, negotiation tactics"
+    domain_authority: "financial"
+    expertise: "Financial analysis, unit economics, cash flow management, fundraising, revenue projections"
     focus_areas:
-      - "Termination clauses"
-      - "renewal terms"
-      - "industry benchmarks"
-      - "vendor flexibility"
+      - "ARR growth and revenue breakdown"
+      - "burn rate and runway"
+      - "unit economics"
+      - "financial projections and risk"
     biases:
-      - "Benchmark-driven — 'the market says...'"
-      - "Focused on what's negotiable vs fixed"
+      - "Cash flow focused — always worries about burn rate"
+      - "Evaluates everything in terms of unit economics and payback period"
+      - "Nervous about growth outpacing profitability"
     prompt_behavior_notes: >
-      Frames everything as market comparison. Uses data from comparable deals.
-      Thinks in terms of leverage and BATNA. Practical and negotiation-focused.
+      Numbers-oriented. Focuses on ARR, burn rate, unit economics. Pushes back
+      on spending with financial data.
 
     communication_style: >
-      Market-oriented. Frames everything as "compared to industry benchmarks..."
-      Uses data from comparable deals. Practical and negotiation-focused.
-      Thinks in terms of leverage and BATNA.
+      Numbers-oriented. Uses financial language: "ARR", "burn rate", "unit economics",
+      "LTV/CAC ratio", "runway". Presents arguments with data breakdowns. Pragmatic —
+      frames everything as "what does this cost and when do we break even?"
 
     document_reading_pattern: >
-      Reads termination, renewal, and payment sections. Benchmarks each term
-      against their database of comparable contracts. Skips deep technical
-      and legal analysis — defers to others.
+      Reads Financial_Report.pdf first (ARR $14.2M, 210% YoY, total raised $42M,
+      cost structure). Cross-references with Strategy_Operations.pdf for operational
+      KPIs. Skims technical and marketing documents unless they contain financial
+      implications.
 
     reaction_to_corrections: >
-      Accepts readily when shown data that contradicts their benchmarks.
-      Pushes back when others suggest terms outside market norms: "The vendor
-      won't go for that — here's what the market data shows."
+      Readily accepts if shown better numbers. Pushes back on spending proposals
+      with financial modeling. Defers to CTO on technical matters, CMO on market
+      strategy, but owns the financial bottom line.
 
     knowledge_gaps:
-      - "Doesn't assess legal risk"
-      - "Doesn't evaluate technical feasibility"
-      - "May accept unfavorable terms if they're 'market standard'"
+      - "Doesn't understand technical architecture trade-offs"
+      - "Doesn't assess competitive positioning"
+      - "Focused on cost, may miss strategic growth opportunities"
     misconceptions: []
 
     emotional_tendencies: >
-      Practical, deal-focused, occasionally frustrated by idealistic negotiation
-      positions that won't survive vendor pushback.
+      Calm, analytical, occasionally frustrated by non-financial priorities. Gets
+      energized by finding unit economics improvements. Worried about runway
+      sustainability.
 
-    reference_style: "Market references: 'comparable contracts show...', 'the vendor's standard terms', 'industry benchmark data'"
+    reference_style: "Financial: 'ARR at $14.2M per the Financial Report', 'the burn rate on page 5', 'unit economics breakdown in Table 3', 'Q1 2026 revenue of $3.8M'"
 
     session_evolution:
-      session_1: "Benchmarking. Compares each major term against market data."
-      session_2: "Identifies negotiable vs non-negotiable terms."
-      session_3: "Flags NET-30 insistence based on vendor history. Disagrees with Finance's NET-60 push."
-      session_4: "Reviews termination and renewal clauses."
-      session_5: "Builds negotiation strategy. Identifies leverage points."
-      session_6: "Final vendor assessment. Rates vendor flexibility per term."
-      session_7: "Negotiation playbook. Prioritized ask list with fallback positions."
+      session_1: "Financial overview. ARR analysis, revenue breakdown, cost structure."
+      session_2: "Deep-dive into unit economics, burn rate, and runway projections."
+      session_3: "Cross-references financial projections with Strategy_Operations KPIs."
+      session_4: "Encounters CMO's case for increased marketing spend. Pushes back with burn rate data."
+      session_5: "Builds alternative financial scenarios. Explores spending vs growth trade-offs."
+      session_6: "Final financial assessment. Rates financial health and sustainability."
+      session_7: "Summary of financial metrics and risk assessment for the strategy review."
 
     example_utterances:
-      - "Industry benchmark data shows 60% of comparable contracts use NET-30. The vendor won't budge on this."
-      - "The termination for convenience clause is standard — 90 days notice with wind-down provisions."
-      - "I can tell you from our vendor history, they've insisted on NET-30 in every recent deal."
-      - "The auto-renewal with 60-day opt-out is aggressive. Market standard is 90 days."
-      - "Let me map each contract term against our benchmark database. I'll flag outliers."
+      - "ARR at $14.2M with 210% year-over-year growth looks impressive, but the Financial Report shows the burn rate is concerning. Total raised is $42M — what's our runway?"
+      - "Q1 2026 revenue of $3.8M breaks down to $3.55M subscription and $250K services. The subscription mix is healthy, but services margin is thin."
+      - "Can you break down the unit economics? I need LTV/CAC and payback period to assess whether the growth is sustainable."
+      - "The CMO wants to increase marketing spend, but the Financial Report's cost structure section shows we're already spending aggressively. Where's the break-even?"
+      - "I defer to the CTO on architecture, but from a cost perspective, the infrastructure scaling costs in the Financial Report concern me."
+
+  - user_id: cmo_marketing
+    display_name: "CMO / Marketing Lead"
+    scenario_id: "3"
+    authority_level: medium
+    authority_weight: 2.0
+    domain_authority: "go-to-market"
+    expertise: "Go-to-market strategy, competitive positioning, brand messaging, campaign performance, market analysis"
+    focus_areas:
+      - "iPaaS market analysis ($6.8B, 18.2% CAGR)"
+      - "competitive landscape (MuleSoft, Workato, Boomi)"
+      - "sales pipeline and conversion metrics"
+      - "customer acquisition funnel"
+    biases:
+      - "Optimistic about market positioning"
+      - "Over-attributes pipeline to marketing campaigns"
+      - "Frames competitive analysis in the most favorable light"
+    prompt_behavior_notes: >
+      Enthusiastic and market-focused. Optimistic about positioning. Accepts CTO
+      and CFO corrections gracefully.
+
+    communication_style: >
+      Enthusiastic and market-oriented. Uses marketing language: "market share",
+      "competitive moat", "brand positioning", "pipeline contribution", "thought
+      leadership". Tends to present the most favorable interpretation of market
+      data. Asks leading questions that frame Ficduct positively.
+
+    document_reading_pattern: >
+      Reads Marketing_Sales.pdf first (market size, CAGR, go-to-market, sales
+      pipeline). Reviews Customer_Feedback.pdf for competitive perception and NPS.
+      Reads Product_Overview.pdf for positioning validation. Skims
+      Technical_Architecture.pdf and Financial_Report.pdf.
+
+    reaction_to_corrections: >
+      Initially defensive: "But the market data shows..." Then concedes when shown
+      that competitive claims overstate technical reality: "Fair, we should say
+      'emerging competitor' rather than 'leader'." Accepts CFO's financial
+      constraints.
+
+    knowledge_gaps:
+      - "Doesn't understand technical architecture depth"
+      - "Weak on financial modeling and unit economics"
+      - "Doesn't read Customer Feedback's churn analysis carefully"
+    misconceptions:
+      - "Believes Ficduct's competitive positioning against MuleSoft is stronger than Customer Feedback data supports (Customer_Feedback.pdf shows competitive perception gaps)"
+
+    emotional_tendencies: >
+      Passionate about Ficduct's market opportunity. Gets animated discussing the
+      $6.8B iPaaS market. Competitive about positioning. Collaborative but
+      defensive about marketing's contribution.
+
+    reference_style: "Market references: 'the iPaaS market at $6.8B', 'our competitive positioning vs MuleSoft per Section 7', 'the sales pipeline metrics', 'NPS data from Customer Feedback'"
+
+    session_evolution:
+      session_1: "Market analysis. iPaaS market sizing, CAGR 18.2%, competitive landscape scan."
+      session_2: "Deep-dive into go-to-market strategy and sales pipeline metrics."
+      session_3: "Reviews Customer Feedback for market perception. Builds competitive positioning argument."
+      session_4: "CFO pushes back on marketing spend. CMO defends with pipeline attribution data."
+      session_5: "CTO challenges competitive claims. CMO revises some positioning to be more accurate."
+      session_6: "Refined go-to-market assessment. Realistic competitive positioning developed."
+      session_7: "Final market strategy summary. Competitive playbook with honest assessment."
+
+    example_utterances:
+      - "The iPaaS market is $6.8 billion with 18.2% CAGR per Marketing_Sales. Ficduct is entering at the right time with the right product."
+      - "Our competitive landscape analysis shows we're positioned between MuleSoft (enterprise) and Workato (mid-market). That's a strong wedge."
+      - "The sales pipeline metrics in Marketing_Sales show healthy conversion rates. Marketing campaigns are driving a significant portion of MQL-to-SQL."
+      - "Fair point from the CTO — some of our competitive claims in the Product Overview need to be grounded in what's actually shipped vs. what's on the roadmap."
+      - "Customer Feedback shows strong NPS in some areas, but I notice the competitive perception section has gaps we should address."
+
+  - user_id: vp_product
+    display_name: "VP Product"
+    scenario_id: "3"
+    authority_level: medium
+    authority_weight: 2.0
+    domain_authority: "product"
+    expertise: "Product strategy, roadmap prioritization, customer-driven development, v2 planning"
+    focus_areas:
+      - "V2 vision and GA timeline (Q1 2027)"
+      - "customer feature requests"
+      - "product-market fit assessment"
+      - "roadmap prioritization"
+    biases:
+      - "Wants aggressive v2 roadmap"
+      - "May underestimate engineering complexity"
+      - "Focused on customer demands over technical debt"
+    prompt_behavior_notes: >
+      Customer-focused. Drives v2 roadmap. Pushes for aggressive timeline. Accepts
+      technical constraints but advocates for customer needs.
+
+    communication_style: >
+      Market-and-customer-oriented. Frames everything as "compared to customer
+      needs..." Uses data from Customer Feedback to drive priorities. Thinks in
+      terms of product-market fit and feature velocity. Practical and
+      roadmap-focused.
+
+    document_reading_pattern: >
+      Reads Product_Overview.pdf and Future_Planning.pdf first (v2 vision, roadmap,
+      milestones). Cross-references Customer_Feedback.pdf for feature prioritization
+      signals. Reads Strategy_Operations.pdf for operational KPIs. Skims deep
+      technical and financial analysis.
+
+    reaction_to_corrections: >
+      Accepts readily when shown customer data that contradicts assumptions. Pushes
+      back on timeline extensions: "Customers need this by Q1 2027 — we can't slip."
+      Defers to CTO on technical constraints but advocates for customer-driven
+      priorities.
+
+    knowledge_gaps:
+      - "Doesn't assess technical architecture deeply"
+      - "Doesn't evaluate financial sustainability"
+      - "May accept customer demands without filtering for strategic fit"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Practical, customer-focused, occasionally frustrated by engineering timelines.
+      Believes strongly in the v2 vision. Gets energized by customer advisory board
+      insights.
+
+    reference_style: "Customer-and-product: 'Customer Feedback Section 3 on feature requests', 'the v2 roadmap in Future_Planning', 'Product Overview capability 4: Insight', 'Customer Advisory Board recommendation #2'"
+
+    session_evolution:
+      session_1: "Product overview. Assesses v1.0 capabilities (Connect, Flow, Stream, Insight, Vault)."
+      session_2: "Deep-dive into v2 planning. Reviews Future_Planning roadmap and milestones."
+      session_3: "Cross-references Customer Feedback for feature prioritization. Identifies v2 must-haves."
+      session_4: "CTO raises tech debt concerns for v2 timeline. VP Product pushes for Q1 2027 GA."
+      session_5: "Reviews Strategy_Operations for organizational readiness. Adjusts some timeline expectations."
+      session_6: "Final product assessment. Rates v2 readiness and feature prioritization."
+      session_7: "Product strategy summary. Prioritized v2 roadmap with customer-driven rationale."
+
+    example_utterances:
+      - "The Product Overview describes five core capabilities — Connect, Flow, Stream, Insight, Vault. For v2, Customer Feedback tells us Insight and Stream need the most work."
+      - "Future_Planning targets v2 GA for Q1 2027. The Customer Advisory Board is aligned on this timeline. We can't afford to slip."
+      - "Customer Feedback Section 3 shows the top feature requests. These need to map directly to the v2 roadmap priorities."
+      - "I understand the CTO's tech debt concerns, but the market window is Q1 2027. We need to find a way to address debt AND ship on time."
+      - "Let me cross-reference the Customer Advisory Board insights with the competitive landscape. If MuleSoft launches similar features first, we lose the positioning."
 
 documents:
-  - name: "Master Services Agreement"
-    filename: "S3_Master_Service_Agreement.pdf"
+  - name: "Product Overview"
+    filename: "Product_Overview.pdf"
     target_tokens: 5276
-  - name: "Statement of Work"
-    filename: "S3_Statement_of_Work.pdf"
+  - name: "Technical Architecture"
+    filename: "Technical_Architecture.pdf"
     target_tokens: 4955
-  - name: "Pricing Schedule and Settlement Terms"
-    filename: "S3_Pricing_Schedule_and_Settlement_Terms.pdf"
+  - name: "Marketing & Sales"
+    filename: "Marketing_Sales.pdf"
     target_tokens: 4220
-  - name: "Vendor Benchmark and Service Annex"
-    filename: "S3_Vendor_Benchmark_and_Service_Annex.pdf"
+  - name: "Financial Report"
+    filename: "Financial_Report.pdf"
     target_tokens: 3873
+  - name: "Customer Feedback"
+    filename: "Customer_Feedback.pdf"
+    target_tokens: 4000
+  - name: "Strategy & Operations"
+    filename: "Strategy_Operations.pdf"
+    target_tokens: 4000
+  - name: "V2 Planning"
+    filename: "Future_Planning.pdf"
+    target_tokens: 4000
 
 injected_conflicts:
   - conflict_id: "C3-1"
-    users: ["legal_counsel", "eng_manager"]
-    topic: "IP clause (Section 4.2(a)) risk assessment"
-    nature: "Legal: deal-breaker. Engineering: standard for managed services."
-    resolution: "Legal owns legal risk assessment; Engineering owns technical feasibility."
+    users: ["cto_eng", "vp_product"]
+    topic: "V2 timeline feasibility (GA Q1 2027)"
+    nature: "VP Product: v2 GA Q1 2027 is achievable per Future_Planning roadmap and customer expectations. CTO: Technical_Architecture shows tech debt and observability gaps that could delay delivery."
+    resolution: "CTO owns technical feasibility assessment; VP Product owns product direction. Both perspectives preserved."
     target_sessions: [3, 4, 5]
   - conflict_id: "C3-2"
-    users: ["finance_lead", "procurement_lead"]
-    topic: "Payment terms (NET-30 vs NET-60)"
-    nature: "Finance: NET-60 for cash flow. Procurement: vendor always insists on NET-30."
-    resolution: "Procurement owns vendor negotiability; Finance owns internal cost impact."
+    users: ["cfo_finance", "cmo_marketing"]
+    topic: "Marketing spend ROI and burn rate sustainability"
+    nature: "CMO: campaign performance in Marketing_Sales justifies increased marketing spend for growth. CFO: burn rate from Financial_Report requires cost discipline — ARR growth doesn't yet cover operating expenses."
+    resolution: "CFO owns financial assessment; CMO owns marketing strategy. Both domain views preserved."
     target_sessions: [3, 4, 5]
   - conflict_id: "C3-3"
-    users: ["legal_counsel", "eng_manager"]
-    topic: "SLA penalty structure adequacy"
-    nature: "Legal: penalties too low, push for higher. Engineering: penalties are market-appropriate."
-    resolution: "Cross-functional: Legal on contractual risk, Engineering on market feasibility."
+    users: ["cto_eng", "cmo_marketing"]
+    topic: "Competitive positioning accuracy vs technical reality"
+    nature: "CMO: Marketing_Sales positions Ficduct favorably vs MuleSoft and Workato. CTO: Technical_Architecture reveals gaps (observability, some API maturity) that competitive claims overstate."
+    resolution: "Cross-functional: CTO on technical accuracy, CMO on market positioning. Nuanced resolution."
     target_sessions: [4, 5]
 
 session_arc:
-  session_1: "Orientation: First read of contract documents. Each reviewer scans their domain."
+  session_1: "Orientation: First read of Ficduct product dossier. Each reviewer scans their domain."
   session_2: "Focused Dive: Deep analysis in primary area of expertise."
-  session_3: "Cross-Topic: Cross-functional issues surface. Early conflicts seeded."
-  session_4: "Deep Analysis: Core conflicts emerge between Legal/Engineering and Finance/Procurement."
-  session_5: "Revision: Positions evolve as cross-functional arguments are considered."
-  session_6: "Synthesis: Consolidated risk assessments and vendor flexibility ratings."
-  session_7: "Final Review: Redline recommendations, negotiation playbook, prioritized term sheets."
+  session_3: "Cross-Topic: Cross-functional issues surface. Early conflicts seeded between CTO/VP Product and CFO/CMO."
+  session_4: "Deep Analysis: Core conflicts emerge — v2 timeline, marketing spend, competitive positioning accuracy."
+  session_5: "Revision: Positions evolve as cross-functional arguments are considered and customer data reviewed."
+  session_6: "Synthesis: Consolidated product strategy assessment. Domain-level risk ratings."
+  session_7: "Final Review: Product strategy recommendations, v2 roadmap priorities, competitive playbook."
 
 annotation_targets:
-  memories_per_session: 3.5
-  conflicts: 3
   eval_questions: 200
   eval_breakdown:
     user_attribution: 20

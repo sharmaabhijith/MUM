@@ -1,272 +1,366 @@
 scenario_id: "5"
-name: "Support Escalation: Enterprise Incident"
+name: "Incident Response: Cascading Payment Failures"
 relationship_type: sequential
-domain: "Technology / Support"
+domain: "Technology / Incident Management"
 sessions_per_user: 7
-turns_per_session: 18
+turns_per_session:
+  "1": 50
+  "2": 50
+  default: 20
 
 timeline:
   start_date: "2025-08-11T02:00:00Z"
   end_date: "2025-08-13T23:00:00Z"
-  description: "3-day multi-day enterprise incident. Hour-level timestamps. Sequential handoffs between agents."
+  description: "~41.5 hour major incident. Four analysts in sequential shifts with 7 sessions each. Evidence accumulates across shifts."
   session_schedule:
-    agent_a:
+    analyst_1:
       - {session: 1, date: "2025-08-11T02:00:00Z"}
-      - {session: 2, date: "2025-08-11T06:00:00Z"}
-      - {session: 3, date: "2025-08-11T10:00:00Z"}
+      - {session: 2, date: "2025-08-11T05:00:00Z"}
+      - {session: 3, date: "2025-08-11T07:30:00Z"}
       - {session: 4, date: "2025-08-12T08:00:00Z"}
       - {session: 5, date: "2025-08-12T14:00:00Z"}
       - {session: 6, date: "2025-08-13T09:00:00Z"}
       - {session: 7, date: "2025-08-13T16:00:00Z"}
-    agent_b:
-      - {session: 1, date: "2025-08-11T11:00:00Z"}
-      - {session: 2, date: "2025-08-11T15:00:00Z"}
-      - {session: 3, date: "2025-08-11T20:00:00Z"}
+    analyst_2:
+      - {session: 1, date: "2025-08-11T08:00:00Z"}
+      - {session: 2, date: "2025-08-11T11:00:00Z"}
+      - {session: 3, date: "2025-08-11T14:00:00Z"}
       - {session: 4, date: "2025-08-12T10:00:00Z"}
       - {session: 5, date: "2025-08-12T16:00:00Z"}
       - {session: 6, date: "2025-08-13T11:00:00Z"}
       - {session: 7, date: "2025-08-13T18:00:00Z"}
-    agent_c:
+    analyst_3:
+      - {session: 1, date: "2025-08-11T16:00:00Z"}
+      - {session: 2, date: "2025-08-11T19:00:00Z"}
+      - {session: 3, date: "2025-08-11T22:00:00Z"}
+      - {session: 4, date: "2025-08-12T12:00:00Z"}
+      - {session: 5, date: "2025-08-12T18:00:00Z"}
+      - {session: 6, date: "2025-08-13T12:00:00Z"}
+      - {session: 7, date: "2025-08-13T20:00:00Z"}
+    analyst_4:
       - {session: 1, date: "2025-08-12T00:00:00Z"}
-      - {session: 2, date: "2025-08-12T06:00:00Z"}
-      - {session: 3, date: "2025-08-12T12:00:00Z"}
-      - {session: 4, date: "2025-08-12T18:00:00Z"}
+      - {session: 2, date: "2025-08-12T04:00:00Z"}
+      - {session: 3, date: "2025-08-12T08:00:00Z"}
+      - {session: 4, date: "2025-08-12T16:00:00Z"}
       - {session: 5, date: "2025-08-13T06:00:00Z"}
       - {session: 6, date: "2025-08-13T14:00:00Z"}
-      - {session: 7, date: "2025-08-13T20:00:00Z"}
+      - {session: 7, date: "2025-08-13T21:00:00Z"}
 
 users:
-  - user_id: agent_a
-    display_name: "Agent A (Tier 1)"
+  - user_id: analyst_1
+    display_name: "Analyst 1 (Shift A)"
     scenario_id: "5"
     sequence_order: 1
-    authority_level: low
+    authority_level: equal
     authority_weight: 1.0
-    expertise: "Tier 1 support, standard playbook execution, initial triage"
+    expertise: "First-response triage, pattern matching against known failure modes, initial diagnosis, PgBouncer operations"
     focus_areas:
-      - "Problem identification"
-      - "standard troubleshooting"
-      - "customer communication"
-      - "escalation"
+      - "Initial alert triage"
+      - "Settlement Engine latency metrics"
+      - "PgBouncer pool diagnostics"
+      - "known failure pattern matching"
     biases:
-      - "Follows playbook literally"
-      - "Anchors on first matching KB article"
-      - "Doesn't look beyond initial symptoms"
+      - "Anchors on DB-pool metrics because they show the strongest initial signal"
+      - "Follows established diagnostic patterns without questioning assumptions"
+      - "Doesn't look beyond the most prominent symptoms"
     prompt_behavior_notes: >
-      Structured, playbook-oriented. Follows a checklist mentality.
-      Reports findings in numbered steps. Escalates when beyond playbook.
+      Structured, metric-driven. Uses incident management terminology. Reports
+      findings in numbered steps with timestamps. Concise handoff notes.
 
     communication_style: >
-      Structured, playbook-oriented. Uses support ticket language: "initial
-      triage", "applying KB-2847 remediation", "escalating to Tier 2."
-      Follows a checklist mentality. Reports findings in numbered steps.
+      Structured, metric-driven. Uses incident management terminology: "P99
+      latency spike to 4,870ms", "success rate at 71.3% nadir", "deploying
+      CHG-88921". Reports findings in numbered steps with timestamps. Concise
+      handoff notes.
 
     document_reading_pattern: >
-      Reads error logs first — matches symptoms to KB articles. Reads product
-      docs for the matching KB remediation steps. Doesn't read deeply into
-      alternative causes. Stops investigating once a plausible match is found.
+      Reads Log Packet 1 carefully — matches settlement engine symptoms to known
+      database patterns. Focuses on PgBouncer metrics and connection-wait timeouts.
+      Doesn't explore non-database services. Stops investigating once a plausible
+      DB-pool hypothesis forms.
 
     reaction_to_corrections: >
-      Accepts escalation feedback professionally. Doesn't take it personally
-      when their diagnosis is overridden. "Makes sense — the later logs tell
-      a different story."
+      Accepts when later shifts override their diagnosis. "Makes sense — the later
+      evidence tells a different story." Doesn't take it personally. Eager to learn
+      from the resolution.
 
     knowledge_gaps:
-      - "Can't do deep log analysis"
-      - "Doesn't understand database connection pooling"
-      - "Follows playbook but can't reason beyond it"
+      - "Cannot analyze non-database service failures"
+      - "Doesn't understand mTLS certificate infrastructure"
+      - "Follows pattern matching but can't reason about novel failure modes"
     misconceptions:
-      - "DNS timeout errors = DNS caching issue (actually coincidental with scheduled refresh)"
+      - "Believes the root cause is database connection-pool exhaustion based on PgBouncer saturation and 'connection wait timeout' errors in Shift A logs"
 
     emotional_tendencies: >
-      Diligent but methodical. Slightly stressed by the enterprise customer's
-      urgency. Relieved when escalating — "this is above my pay grade."
-      Wants to be helpful but knows their limits.
+      Diligent but methodical. Stressed by the severity — 412K transaction
+      timeouts, success rate dropping to 71.3%. Relieved to have a plausible
+      diagnosis (DB pool). Wants to be thorough in handoff notes.
 
-    reference_style: "Support format: 'KB-2847', 'error log timestamps 2:00-6:00 AM', 'standard remediation steps 1-3'"
+    reference_style: "Incident format: 'alert at 02:14 UTC', 'P99 latency 4,870ms', 'CHG-88921 pool-size increase', 'red flags A-RF1 through A-RF6'"
 
     session_evolution:
-      session_1: "Triages ticket. Matches DNS errors to KB-2847. Applies fix. Tells customer it's DNS."
-      session_2: "Fix didn't work. Customer still has 503s. Realizes it's beyond playbook. Escalates."
-      session_3: "Writes escalation notes. Summarizes what was tried."
-      session_4: "Follows up on escalation status. Asks if more info is needed."
-      session_5: "Learns the correct diagnosis from B's notes. Reflects on what was missed."
-      session_6: "Asks how to recognize connection pool issues in future. Learns from the experience."
-      session_7: "Writes internal retrospective notes for their own learning."
+      session_1: "First alert. Reviews PagerDuty triggers. Settlement Engine P99 at 4,870ms. Success rate 71.3%. Initial triage."
+      session_2: "Matches symptoms to DB pool pattern. PgBouncer connection-wait timeouts prominent. Forms DB-pool-exhaustion hypothesis."
+      session_3: "Deploys CHG-88921 (PgBouncer pool-size increase). Brief improvement then regression. Documents 6 red flags (A-RF1 to A-RF6)."
+      session_4: "Reviews handoff from later shifts. Learns DB-pool was wrong. Reflects on what evidence was misleading."
+      session_5: "Asks about the TLS failure pattern. Understands how it mimicked DB pool symptoms."
+      session_6: "Studies the root cause (CLS SAN-mismatch) to learn from it. Asks how to distinguish similar patterns in future."
+      session_7: "Writes personal retrospective notes. Identifies diagnostic improvement areas."
 
     example_utterances:
-      - "Customer reporting intermittent 503 errors. I see 'resolution failed' and 'DNS timeout' in the early logs."
-      - "KB-2847 matches — DNS caching issue. Applying the standard fix: flush cache, update TTL, verify with dig."
-      - "The DNS fix didn't work. 503 errors persist. I need to escalate to Tier 2."
-      - "Here are my escalation notes: applied KB-2847, all three remediation steps completed, errors persist."
-      - "I told the customer it was DNS caching. If the root cause is different, they'll need an update."
+      - "PagerDuty fired at 02:14 UTC — Settlement Engine P99 latency spiked to 4,870ms, well above the 1,200ms threshold. Success rate dropped to 71.3% by 02:47."
+      - "Log Packet 1 shows clear PgBouncer saturation: 'connection wait timeout' errors clustering between 02:30-05:00 UTC. This looks like database connection-pool exhaustion."
+      - "Deploying CHG-88921 — increasing PgBouncer pool size. Expecting improvement within 15 minutes."
+      - "CHG-88921 gave us a brief improvement but then regression. I'm raising this to 6 red flags (A-RF1 through A-RF6). Documenting handoff for Shift B."
+      - "So the DB pool metrics were a downstream symptom of TLS failures, not the cause? That's a diagnostic trap I need to watch for."
 
-  - user_id: agent_b
-    display_name: "Agent B (Tier 2)"
+  - user_id: analyst_2
+    display_name: "Analyst 2 (Shift B)"
     scenario_id: "5"
     sequence_order: 2
-    authority_level: medium
-    authority_weight: 2.0
-    expertise: "Deep log analysis, database systems, API troubleshooting, root cause analysis"
+    authority_level: equal
+    authority_weight: 1.0
+    expertise: "Deep log analysis, cross-service correlation, network diagnostics, TLS infrastructure"
     focus_areas:
-      - "Full log analysis"
-      - "connection pool diagnostics"
-      - "root cause identification"
-      - "documentation accuracy"
+      - "Full cross-service log analysis"
+      - "TLS handshake failure patterns"
+      - "non-DB service symptoms"
+      - "evidence chain documentation"
     biases:
-      - "Skeptical of Tier 1 diagnoses"
-      - "Looks for the non-obvious cause"
+      - "Skeptical of prior diagnosis — looks for what was missed"
       - "Thoroughness over speed"
+      - "Methodical evidence-chain reasoning"
     prompt_behavior_notes: >
       Analytical and detailed. Walks through findings step by step with evidence.
-      Explicitly flags when a prior diagnosis was wrong. Evidence-based reasoning.
+      Explicitly flags when prior diagnosis weakens. Evidence-based reasoning.
 
     communication_style: >
       Analytical and detailed. Walks through findings step by step with evidence.
-      Uses technical language: "connection pool exhaustion", "max pool size exceeded",
-      "downstream cascade." Explicitly flags when a prior diagnosis was wrong.
+      Uses technical language: "TLS handshake failures", "Envoy sidecar logs",
+      "cross-service correlation". Explicitly flags when prior diagnosis weakens.
+      Evidence-based reasoning.
 
     document_reading_pattern: >
-      Reads the full 48-hour log set chronologically. Cross-references against
-      product documentation. Notices patterns that span timestamps. Reads Agent A's
-      notes critically — checks assumptions, not just conclusions.
+      Reads Log Packet 1 (to understand Shift A's work) and Log Packet 2 (new
+      evidence). Cross-references across services. Notices that FSS (Fraud Scoring
+      Service) has NO PostgreSQL dependency but shows symptoms — this is the key
+      evidence that weakens the DB-pool theory. Finds TLS handshake failures in
+      Envoy sidecar logs.
 
     reaction_to_corrections: >
-      Open to being corrected but demands evidence. "Show me the log entry."
-      Confident in their own analysis because it's evidence-based.
+      Open to correction but demands evidence. "Show me the log entry." Confident
+      in their own analysis because it's evidence-based. Willing to revise if new
+      data contradicts.
 
     knowledge_gaps:
-      - "Less focused on customer communication"
-      - "May produce findings that are technically correct but hard to explain to a customer"
+      - "Less focused on remediation — diagnoses but doesn't fix"
+      - "May produce technically correct findings that are hard to communicate"
+      - "Doesn't track customer communication history"
     misconceptions: []
 
     emotional_tendencies: >
-      Calm, methodical, gets satisfaction from finding the real root cause.
-      Slightly impatient with superficial diagnoses. Genuinely curious —
-      the debugging process is intellectually engaging.
+      Calm, methodical, gets intellectual satisfaction from finding the real
+      pattern. Slightly impatient with Shift A's diagnosis. Genuinely curious —
+      the debugging process is engaging.
 
-    reference_style: "Evidence-based: 'log entry at 5:47 AM', 'Section 4.3 of the product docs', 'the max_pool_wait parameter'"
+    reference_style: "Evidence-based: 'Log Packet 2, 08:47 UTC entry', 'FSS has NO PostgreSQL dependency per Main Incident Report Section 1.1', 'Envoy sidecar TLS handshake failures at 09:12 UTC'"
 
     session_evolution:
-      session_1: "Reviews Agent A's escalation. Reads full log set. Finds the real pattern."
-      session_2: "Confirms connection pool exhaustion. Documents the evidence chain."
-      session_3: "Discovers documentation error (parameter name wrong in docs)."
-      session_4: "Writes detailed findings for Agent C's shift."
-      session_5: "Files documentation correction ticket."
-      session_6: "Reviews the fix Agent C applied. Confirms it addresses root cause."
-      session_7: "Writes post-incident analysis with full root cause chain."
+      session_1: "Reviews Shift A's work. Reads both Log Packets. CHG-88921 (pool increase) gave partial improvement then regression — why?"
+      session_2: "Key discovery: FSS (Fraud Scoring Service) is symptomatic but has NO DB dependency. DB-pool theory fatally weakened."
+      session_3: "Finds TLS handshake failures in Envoy sidecar logs. Success rate at ~88% — above nadir but below SLA. Resolves 3 of A's flags, raises B-RF1 to B-RF3."
+      session_4: "Documents evidence chain for Shift C. Connection-leak mechanism traced. Points Shift C toward CLS investigation."
+      session_5: "Reviews Shift C's root cause finding. Validates it against their TLS observations."
+      session_6: "Confirms Shift C's CLS SAN-mismatch explains their TLS findings. All pieces connect."
+      session_7: "Writes post-incident analysis section covering the DB-pool-to-TLS diagnostic pivot."
 
     example_utterances:
-      - "Agent A diagnosed DNS caching, but the fix didn't work. I'm looking at the full 48-hour log set."
-      - "Starting around 6 AM, there's a clear pattern of 'max pool size exceeded' errors. The DNS errors are a red herring."
-      - "Agent A's DNS diagnosis was wrong — this is connection pool exhaustion. The DNS timeouts correlate with a scheduled refresh."
-      - "The product docs say the parameter is max_pool_wait, but the config dump shows pool_max_wait. The docs have it wrong."
-      - "I'll document this for Agent C. They need to know both the correct diagnosis AND that the customer was told it was DNS."
+      - "Shift A diagnosed DB pool exhaustion and deployed CHG-88921. But it gave only brief improvement then regression. Let me look deeper at the full log set."
+      - "Key finding: the Fraud Scoring Service (FSS) is showing symptoms — but per the Main Incident Report Section 1.1, FSS has NO PostgreSQL dependency. This breaks the DB-pool theory."
+      - "Log Packet 2 shows TLS handshake failures in the Envoy sidecar logs starting around 08:47 UTC. The connection failures aren't in the database layer — they're in the service mesh."
+      - "I'm resolving 3 of Shift A's red flags (A-RF1, A-RF3, A-RF5) and raising 3 new ones (B-RF1 through B-RF3) focused on the TLS anomaly pattern."
+      - "Documenting this for Shift C: the DB-pool theory is weakened. Evidence points to service-mesh TLS layer. CLS (Certificate Lifecycle Service) should be investigated."
 
-  - user_id: agent_c
-    display_name: "Agent C (Tier 2 - Resolution)"
+  - user_id: analyst_3
+    display_name: "Analyst 3 (Shift C)"
     scenario_id: "5"
     sequence_order: 3
-    authority_level: medium
-    authority_weight: 2.0
-    expertise: "Fix implementation, customer communication, incident resolution, diplomacy"
+    authority_level: equal
+    authority_weight: 1.0
+    expertise: "Root cause analysis, certificate infrastructure, mTLS debugging, CLS audit log analysis"
     focus_areas:
-      - "Fix implementation"
-      - "customer update drafting"
-      - "incident closure"
-      - "corrective communication"
+      - "CLS (Certificate Lifecycle Service) investigation"
+      - "SAN field validation"
+      - "cert rotation audit logs"
+      - "pod-to-batch correlation analysis"
     biases:
-      - "Prioritizes customer relationship"
-      - "Cautious about how corrections are communicated"
-      - "Wants to preserve trust while being honest"
+      - "Methodical causal-chain builder"
+      - "Won't declare root cause without strong correlation evidence"
+      - "Focuses on the 'why' behind the 'what'"
     prompt_behavior_notes: >
-      Diplomatic and customer-focused. Balances technical accuracy with customer empathy.
-      Writes carefully crafted updates that acknowledge mistakes without undermining confidence.
+      Methodical, builds causal chains. Uses precise certificate terminology.
+      Cites specific log entries, correlation percentages, and CLS audit records.
+      Escalation-aware.
 
     communication_style: >
-      Diplomatic and customer-focused. Uses phrases like "after deeper analysis",
-      "our Tier 2 team identified", "we apologize for the initial misdirection."
-      Balances technical accuracy with customer empathy. Writes carefully
-      crafted updates that acknowledge mistakes without undermining confidence.
+      Methodical, builds causal chains. Uses precise certificate terminology:
+      "SAN field", "mTLS handshake", "cert rotation job cls-rotate-20260315-0100",
+      "soft-fail mode". Cites specific log entries, correlation percentages, and
+      CLS audit records. Escalation-aware.
 
     document_reading_pattern: >
-      Reads Agent B's findings first, then Agent A's escalation notes. Reads
-      the full ticket history to understand what the customer was told. Reads
-      product docs only to verify the fix parameters.
+      Reads all three Log Packets (1, 2, 3) plus the Main Incident Report's CLS
+      section. Follows Shift B's pointer to investigate CLS. Pulls CLS audit logs
+      and finds 'partial_success' status. Discovers SAN mismatch: '*.mesh.internal'
+      instead of '*.mesh.local' on 38.1% of certs (119/312). Performs pod-to-batch
+      correlation (100% match).
 
     reaction_to_corrections: >
-      Very receptive. Focuses on "how do we fix this and how do we tell the
-      customer?" Not interested in blame — interested in resolution.
+      Very precise — demands correlation evidence before declaring root cause.
+      Won't accept "probable" — needs the causal chain documented. Open to
+      refinement from Shift D on the underlying code cause.
 
     knowledge_gaps:
-      - "Wasn't involved in the initial diagnosis"
-      - "Relies entirely on Agent B's findings"
-      - "May not deeply understand why the connection pool fix works"
+      - "Not focused on code-level bugs — identifies the operational failure, not the software bug"
+      - "Doesn't track the full remediation timeline"
+      - "Doesn't investigate why soft-fail mode was enabled"
     misconceptions: []
 
     emotional_tendencies: >
-      Empathetic, customer-first. Slightly stressed about delivering the
-      correction — "the customer was told one thing and now we're saying
-      another." Focuses on preserving trust. Relieved when the fix works.
+      Focused, intense during the investigation. Experiences breakthrough
+      satisfaction when the SAN-mismatch pattern emerges. Careful about SEV-0
+      escalation — takes it seriously.
 
-    reference_style: "Customer-facing: 'ticket #48291', 'your enterprise instance', 'the remediation steps we're applying'"
+    reference_style: "Root-cause precise: 'CLS audit log entry at 01:03 UTC shows partial_success', 'SAN field: *.mesh.internal vs expected *.mesh.local', '119/312 certs (38.1%)', 'pod-to-batch correlation: 100%'"
 
     session_evolution:
-      session_1: "Reviews full investigation history. Plans the correction communication."
-      session_2: "Drafts customer update that corrects the DNS diagnosis diplomatically."
-      session_3: "Implements the connection pool fix (size increase + parameter change)."
-      session_4: "Verifies fix. Monitors for recurrence."
-      session_5: "Sends customer update. Customer acknowledges and accepts."
-      session_6: "Closes incident. Writes internal summary."
-      session_7: "Proposes proactive monitoring to prevent recurrence."
+      session_1: "Reviews all prior evidence. Follows Shift B's CLS pointer. Begins CLS audit log analysis."
+      session_2: "Discovers CLS rotation job cls-rotate-20260315-0100 logged 'partial_success'. Investigates cert details."
+      session_3: "ROOT CAUSE FOUND: SAN mismatch — '*.mesh.internal' instead of '*.mesh.local' on 119/312 certs (38.1%). Pod-to-batch correlation: 100%."
+      session_4: "Escalates to SEV-0. Initiates emergency cert re-rotation (CHG-89104). Documents full causal chain."
+      session_5: "Monitors re-rotation progress. Resolves remaining Shift A and B flags. Raises C-RF1 and C-RF2 for soft-fail mode investigation."
+      session_6: "Reviews Shift D's confirmation. Validates PR #4781 as underlying code cause."
+      session_7: "Writes root cause analysis section of post-incident report. Documents the full diagnostic chain."
 
     example_utterances:
-      - "I need to draft a customer update that corrects the earlier DNS diagnosis without undermining trust."
-      - "The customer was told it was DNS caching. Now we're saying it's connection pool exhaustion. This is delicate."
-      - "I'm increasing the pool size to 100 and setting pool_max_wait to 60 seconds per Agent B's recommendation."
-      - "Customer confirmed 503 errors have stopped. The fix is working. I'll monitor for 24 hours before closing."
-      - "For the customer update, I want to acknowledge the misdirection transparently while pivoting to the solution."
+      - "Following Shift B's pointer to CLS. The CLS audit log shows the rotation job cls-rotate-20260315-0100 completed with 'partial_success' status at 01:03 UTC."
+      - "ROOT CAUSE IDENTIFIED: The CLS rotation deployed certificates with SAN field '*.mesh.internal' instead of the correct '*.mesh.local'. This affected 119 out of 312 certificates — 38.1%."
+      - "Pod-to-batch correlation is 100% — every symptomatic pod has a certificate from the affected rotation batch. The SAN validation was in soft-fail mode, which allowed the deployment."
+      - "Escalating to SEV-0. Initiating emergency cert re-rotation under CHG-89104. All 119 affected certificates must be replaced."
+      - "The soft-fail mode is a separate concern — I'm raising C-RF1 and C-RF2 to track why SAN validation wasn't in hard-fail mode."
+
+  - user_id: analyst_4
+    display_name: "Analyst 4 (Shift D)"
+    scenario_id: "5"
+    sequence_order: 4
+    authority_level: equal
+    authority_weight: 1.0
+    expertise: "Remediation verification, code-level root cause tracing, incident closure, comprehensive audit trail"
+    focus_areas:
+      - "Remediation monitoring (119 cert replacements)"
+      - "code-level root cause (PR #4781)"
+      - "soft-fail mode origin"
+      - "red flag resolution and incident closure"
+    biases:
+      - "Completionist — won't close until every red flag is resolved"
+      - "Traces root cause to code level, not just operational level"
+      - "Summary-oriented — connects all threads for formal closure"
+    prompt_behavior_notes: >
+      Comprehensive and closure-oriented. Uses formal incident management language.
+      Connects all threads across all shifts. Summary format.
+
+    communication_style: >
+      Comprehensive and closure-oriented. Uses formal incident management language:
+      "remediation complete: 119/119 certs replaced", "mesh-wide verification:
+      312/312 pass", "root cause code: PR #4781 race condition". Connects all
+      threads across all shifts. Summary format.
+
+    document_reading_pattern: >
+      Reads ALL 4 Log Packets plus the Main Incident Report. Monitors remediation
+      progress from Shift C's CHG-89104. Traces the root cause code change —
+      PR #4781 introduced a race condition in CLS that caused the wrong SAN
+      template to be selected. Investigates soft-fail mode origin. Resolves all
+      11 red flags (A-RF1-6, B-RF1-3, C-RF1-2).
+
+    reaction_to_corrections: >
+      Thoroughgoing — if someone points out a gap in the closure analysis, they
+      investigate immediately. Won't close the incident with any unresolved threads.
+
+    knowledge_gaps:
+      - "Wasn't present during initial triage — relies on prior analysts' documentation"
+      - "May over-formalize the closure process"
+    misconceptions: []
+
+    emotional_tendencies: >
+      Methodical, detail-oriented. Satisfaction from resolving every open thread.
+      Takes the CONFIRMED closure status seriously. Wants the post-incident report
+      to be comprehensive.
+
+    reference_style: "Closure format: 'remediation 119/119 complete', 'PR #4781 race condition in CLS', 'all 11 red flags resolved (A-RF1-6, B-RF1-3, C-RF1-2)', 'incident CONFIRMED and closed'"
+
+    session_evolution:
+      session_1: "Reads all prior evidence. Begins monitoring CHG-89104 remediation progress."
+      session_2: "Verifies cert replacement: 54/119 complete. Mesh-wide health check shows improvement in affected pods."
+      session_3: "Remediation complete: 119/119 certs replaced. 312/312 mesh-wide verification pass. Transaction success rate recovering to 99.97%."
+      session_4: "Traces root cause to code level: PR #4781 introduced a race condition in CLS that selected wrong SAN template when concurrent rotation jobs overlapped."
+      session_5: "Investigates soft-fail mode origin. Traces to a legacy configuration from pre-production. Documents the governance gap."
+      session_6: "Resolves all 11 red flags. Prepares final incident status: CONFIRMED. Drafts closure summary."
+      session_7: "Incident formally closed at 19:48 UTC. Writes comprehensive post-incident report section. Proposes preventive measures."
+
+    example_utterances:
+      - "Remediation status: 119 of 119 certificates have been replaced via CHG-89104. Mesh-wide verification shows 312/312 pass. Transaction success rate back to 99.97%."
+      - "Tracing the root cause to code level: PR #4781 introduced a race condition in the CLS cert rotation pipeline. When concurrent rotation jobs overlapped, the wrong SAN template ('*.mesh.internal') was selected."
+      - "The soft-fail mode for SAN validation was a legacy configuration from pre-production that was never hardened. This is a governance gap — I'm documenting it in the post-incident report."
+      - "All 11 red flags are now resolved: A-RF1 through A-RF6, B-RF1 through B-RF3, C-RF1 and C-RF2. Setting incident status to CONFIRMED."
+      - "Incident INC-2026-04417 is formally closed. Duration: approximately 41 hours 34 minutes. Root cause: CLS SAN-mismatch via PR #4781 race condition."
 
 documents:
-  - name: "Customer Support Ticket"
-    filename: "S5_Ticket_48291_Customer_Correspondence.pdf"
+  - name: "Main Incident Report"
+    filename: "Main_Incident_Report.pdf"
     target_tokens: 13271
-  - name: "Product Documentation"
-    filename: "S5_Operator_Guide_Resolver_and_Pool_Controls.pdf"
+  - name: "Log Packet 1 — Shift A"
+    filename: "Log_Packet1.pdf"
     target_tokens: 12998
-  - name: "System Error Logs"
-    filename: "S5_48_Hour_Runtime_Trace.pdf"
+  - name: "Log Packet 2 — Shift B"
+    filename: "Log_Packet2.pdf"
     target_tokens: 13546
-  - name: "Environment Snapshot and Shift Handoff"
-    filename: "S5_Environment_Snapshot_and_Shift_Handoff.pdf"
+  - name: "Log Packet 3 — Shift C"
+    filename: "Log_Packet3.pdf"
     target_tokens: 12349
+  - name: "Log Packet 4 — Shift D"
+    filename: "Log_Packet4.pdf"
+    target_tokens: 12000
 
 injected_conflicts:
   - conflict_id: "C5-1"
-    users: ["agent_a", "agent_b"]
-    topic: "Root cause diagnosis (DNS vs connection pool)"
-    nature: "Agent A: DNS caching issue. Agent B: Connection pool exhaustion."
-    resolution: "Temporal supersession — Agent B's later, evidence-based diagnosis overrides."
+    users: ["analyst_1", "analyst_2"]
+    topic: "Root cause: DB pool exhaustion vs service-mesh TLS anomaly"
+    nature: "Analyst 1: DB pool exhaustion based on PgBouncer saturation and connection-wait timeouts. Analyst 2: DB-pool theory weakened — FSS (no DB dependency) symptomatic; TLS handshake failures found in sidecar logs."
+    resolution: "Temporal supersession — Analyst 2's evidence weakens Analyst 1's diagnosis."
     target_sessions: [1, 2, 3]
   - conflict_id: "C5-2"
-    users: ["agent_b", "agent_c"]
-    topic: "Documentation parameter name (max_pool_wait vs pool_max_wait)"
-    nature: "Product docs say max_pool_wait. Config shows pool_max_wait. Docs are wrong."
-    resolution: "Factual supersession — config is authoritative over documentation."
+    users: ["analyst_2", "analyst_3"]
+    topic: "TLS anomaly scope: generic network issue vs specific CLS SAN-mismatch"
+    nature: "Analyst 2: frames as generic 'network/proxy anomaly' with TLS handshake failures. Analyst 3: refines to specific root cause — CLS SAN-mismatch on 38.1% of certs."
+    resolution: "Temporal supersession — Analyst 3 refines Analyst 2's observation to a specific root cause."
     target_sessions: [3, 4, 5]
+  - conflict_id: "C5-3"
+    users: ["analyst_3", "analyst_4"]
+    topic: "Root cause depth: operational CLS failure vs code-level PR #4781 race condition"
+    nature: "Analyst 3: identifies CLS SAN-mismatch as root cause (operational level). Analyst 4: deepens to code-level cause — PR #4781 race condition caused wrong SAN template selection."
+    resolution: "Temporal refinement — Analyst 4 confirms and deepens Analyst 3's finding."
+    target_sessions: [5, 6, 7]
 
 session_arc:
-  session_1: "Orientation: Initial triage and escalation. Agent A matches symptoms to KB article."
-  session_2: "Focused Dive: Agent A's fix fails. Escalation to Tier 2. Agent B begins deep analysis."
-  session_3: "Cross-Topic: Root cause identified. Documentation error discovered. Handoff notes written."
-  session_4: "Deep Analysis: Fix implementation begins. Agent C takes over resolution and customer communication."
-  session_5: "Revision: Fix verified. Customer updated. Documentation correction filed."
-  session_6: "Synthesis: Incident closure. Internal summaries. Learning captured."
-  session_7: "Final Review: Post-incident analysis. Retrospectives. Proactive monitoring proposals."
+  session_1: "Shift A — Initial triage: Analyst 1 receives first PagerDuty alerts, reviews DB metrics, forms DB-pool hypothesis."
+  session_2: "Shift A continued: CHG-88921 deployed. Brief improvement then regression. Red flags documented."
+  session_3: "Shift B — Deep analysis: Analyst 2 discovers FSS (no DB) symptomatic. TLS handshake failures found. DB-pool theory weakened."
+  session_4: "Shift B/C transition: Evidence chain documented. Analyst 3 begins CLS investigation. Root cause identification."
+  session_5: "Shift C — Root cause: CLS SAN-mismatch identified. SEV-0 escalation. Emergency re-rotation initiated."
+  session_6: "Shift C/D transition: Remediation monitored. Analyst 4 traces code-level cause. Red flags being resolved."
+  session_7: "Shift D — Closure: All certs replaced. PR #4781 confirmed. All 11 red flags resolved. Incident CONFIRMED and closed."
 
 annotation_targets:
-  memories_per_session: 3.5
-  conflicts: 2
   eval_questions: 275
   eval_breakdown:
     user_attribution: 15

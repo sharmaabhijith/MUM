@@ -91,10 +91,12 @@ class ConversationGenerator:
                     prior_summaries=accumulated_summary,
                     target_conflicts=target_conflicts,
                     doc_context=doc_context,
+                    turns_this_session=turns_this_session,
                 )
+                turns_this_session = config.get_turns_for_session(session_num)
                 user_prompt = build_conversation_user_prompt(
                     session_number=session_num,
-                    turns_per_session=config.turns_per_session,
+                    turns_per_session=turns_this_session,
                 )
 
                 # Generate conversation
@@ -125,7 +127,7 @@ class ConversationGenerator:
                 )
 
                 # Validate
-                warnings = self._validate_session(session, config.turns_per_session)
+                warnings = self._validate_session(session, turns_this_session)
                 for w in warnings:
                     logger.warning(f"  Validation: {w}")
 

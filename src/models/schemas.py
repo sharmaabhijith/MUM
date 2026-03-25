@@ -6,11 +6,7 @@ from pydantic import BaseModel, ConfigDict
 
 from src.models.enums import (
     AuthorityLevel,
-    ConflictResolution,
-    ConflictType,
     EvalQuestionCategory,
-    MemoryStatus,
-    MemoryType,
     RelationshipType,
 )
 
@@ -74,46 +70,11 @@ class SessionSummary(BaseModel):
     positions_changed: list[str] = []
 
 
-class ExtractedMemory(BaseModel):
-    """Cross-session durable memory — session-level attribution."""
-
-    model_config = ConfigDict(use_enum_values=True)
-
-    memory_id: str
-    scenario_id: str
-    user_id: str
-    session_id: str
-    memory_type: MemoryType
-    content: str
-    status: MemoryStatus
-    superseded_by: str | None = None
-    authority_level: AuthorityLevel
-    domain_tag: str | None = None
-    side_tag: str | None = None
-    timestamp: str
-
-
 class EvidenceLink(BaseModel):
     """Session-level evidence reference."""
 
     user_id: str
     session_id: str
-
-
-class ConflictAnnotation(BaseModel):
-    model_config = ConfigDict(use_enum_values=True)
-
-    conflict_id: str
-    scenario_id: str
-    users_involved: list[str]
-    topic: str
-    conflict_type: ConflictType
-    positions: dict[str, str]
-    resolution: ConflictResolution
-    resolution_detail: str
-    evidence: list[EvidenceLink]
-    first_surfaced: str
-    last_updated: str
 
 
 class EvalQuestion(BaseModel):
@@ -125,8 +86,6 @@ class EvalQuestion(BaseModel):
     question: str
     gold_answer: str
     evidence: list[EvidenceLink]
-    required_memories: list[str] = []
-    required_conflicts: list[str] = []
     difficulty: Literal["easy", "medium", "hard"]
 
 
@@ -154,8 +113,6 @@ class InjectedConflict(BaseModel):
 
 
 class AnnotationTargets(BaseModel):
-    memories_per_session: float
-    conflicts: int
     eval_questions: int
     eval_breakdown: dict[str, int]
 
@@ -170,21 +127,26 @@ class ScenarioConfig(BaseModel):
     users: list[UserProfile]
     documents: list[DocumentConfig]
     sessions_per_user: int
-    turns_per_session: int
+    turns_per_session: int | dict[str, int]
     timeline: ScenarioTimeline
     injected_conflicts: list[InjectedConflict]
     annotation_targets: AnnotationTargets
     session_arc: dict[str, str] = {}
 
+    def get_turns_for_session(self, session_number: int) -> int:
+        """Return the turn count for a specific session.
 
-class ValidationReport(BaseModel):
-    scenario_id: str
-    conflict_coverage: dict[str, Any] = {}
-    memory_extractability: dict[str, Any] = {}
-    evidence_validity: dict[str, Any] = {}
-    question_answerability: dict[str, Any] = {}
-    persona_fidelity: dict[str, Any] = {}
-    overall_pass: bool = False
+        If turns_per_session is an int, every session gets that count.
+        If it's a dict, keys are session numbers (as strings) with int values.
+        Sessions not listed in the dict fall back to the "default" key,
+        or 20 if no default is specified.
+        """
+        if isinstance(self.turns_per_session, int):
+            return self.turns_per_session
+        key = str(session_number)
+        if key in self.turns_per_session:
+            return self.turns_per_session[key]
+        return self.turns_per_session.get("default", 20)
 
 
 class GenerationReport(BaseModel):
@@ -199,10 +161,7 @@ class ScenarioOutput(BaseModel):
     config: ScenarioConfig
     conversations: list[ConversationSession]
     session_summaries: list[SessionSummary]
-    memories: list[ExtractedMemory]
-    conflicts: list[ConflictAnnotation]
     eval_questions: list[EvalQuestion]
-    validation_report: ValidationReport
 
 
 class BenchmarkDataset(BaseModel):

@@ -4,8 +4,9 @@ import tiktoken
 
 
 class TokenCounter:
-    def __init__(self, model: str = "gpt-4o-mini"):
+    def __init__(self, model: str = "deepseek-ai/DeepSeek-V3.2"):
         self.model = model
+        # cl100k_base is a reasonable approximation for token counting across providers
         self.encoding = tiktoken.get_encoding("cl100k_base")
 
     def count(self, text: str) -> int:

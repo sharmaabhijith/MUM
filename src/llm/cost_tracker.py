@@ -7,11 +7,14 @@ logger = logging.getLogger("mum")
 
 # Prices per 1M tokens (USD)
 MODEL_PRICING: dict[str, dict[str, float]] = {
-    "gpt-4o-mini": {"input": 0.15, "output": 0.60},
-    "gpt-4o": {"input": 2.50, "output": 10.00},
-    "gpt-4.1": {"input": 2.00, "output": 8.00},
-    "gpt-4.1-mini": {"input": 0.40, "output": 1.60},
-    "gpt-4.1-nano": {"input": 0.10, "output": 0.40},
+    # DeepInfra — DeepSeek models
+    "deepseek-ai/DeepSeek-V3.2": {"input": 0.30, "output": 0.88},
+    "deepseek-ai/DeepSeek-V3": {"input": 0.30, "output": 0.88},
+    "deepseek-ai/DeepSeek-R1": {"input": 0.75, "output": 2.19},
+    # DeepInfra — Google Gemini models
+    "google/gemini-2.5-pro": {"input": 1.25, "output": 10.00},
+    "google/gemini-2.5-flash": {"input": 0.15, "output": 0.60},
+    "google/gemini-2.0-flash": {"input": 0.10, "output": 0.40},
 }
 
 

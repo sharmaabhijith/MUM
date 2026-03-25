@@ -12,12 +12,10 @@ from src.models.schemas import (
     BenchmarkDataset,
     GenerationReport,
     ScenarioOutput,
-    ValidationReport,
 )
 from src.pipeline.phase1_document_prep import DocumentPreparer
 from src.pipeline.phase2_conversation import ConversationGenerator
-from src.pipeline.phase3_annotation import AnnotationPipeline
-from src.pipeline.phase4_validation import ValidationPipeline
+from src.pipeline.phase3_annotation import QuestionGenerator
 from src.scenarios import create_scenario, load_scenario
 from src.utils.io import write_json
 
@@ -29,8 +27,8 @@ OUTPUT_DIR = Path("output")
 class PipelineOrchestrator:
     def __init__(
         self,
-        model: str = "gpt-4o-mini",
-        annotation_model: str | None = None,
+        model: str = "deepseek-ai/DeepSeek-V3.2",
+        question_model: str | None = "google/gemini-2.5-pro",
         dry_run: bool = False,
         output_dir: Path | str = OUTPUT_DIR,
     ):
@@ -43,18 +41,18 @@ class PipelineOrchestrator:
             self.llm_client = MockLLMClient(
                 model=model, cost_tracker=self.cost_tracker
             )
-            self.annotation_client = self.llm_client
+            self.question_client = self.llm_client
         else:
             self.llm_client = LLMClient(
                 model=model, cost_tracker=self.cost_tracker
             )
-            ann_model = annotation_model or model
-            if ann_model != model:
-                self.annotation_client = LLMClient(
-                    model=ann_model, cost_tracker=self.cost_tracker
+            q_model = question_model or model
+            if q_model != model:
+                self.question_client = LLMClient(
+                    model=q_model, cost_tracker=self.cost_tracker
                 )
             else:
-                self.annotation_client = self.llm_client
+                self.question_client = self.llm_client
 
         self.doc_preparer = DocumentPreparer(token_counter=self.token_counter)
         self.conv_generator = ConversationGenerator(
@@ -62,12 +60,8 @@ class PipelineOrchestrator:
             token_counter=self.token_counter,
             cost_tracker=self.cost_tracker,
         )
-        self.annotation_pipeline = AnnotationPipeline(
-            llm_client=self.annotation_client,
-            cost_tracker=self.cost_tracker,
-        )
-        self.validation_pipeline = ValidationPipeline(
-            llm_client=self.annotation_client,
+        self.question_generator = QuestionGenerator(
+            llm_client=self.question_client,
             cost_tracker=self.cost_tracker,
         )
 
@@ -91,9 +85,9 @@ class PipelineOrchestrator:
             scenario, doc_context, output_dir=self.output_dir
         )
 
-        # Phase 3: Annotation
-        logger.info("Phase 3: Annotation")
-        memories, conflicts, eval_questions = self.annotation_pipeline.annotate_scenario(
+        # Phase 3: Question generation
+        logger.info("Phase 3: Question Generation")
+        eval_questions = self.question_generator.generate_questions(
             scenario, conversations, summaries, doc_context
         )
 
@@ -103,16 +97,8 @@ class PipelineOrchestrator:
             config=config,
             conversations=conversations,
             session_summaries=summaries,
-            memories=memories,
-            conflicts=conflicts,
             eval_questions=eval_questions,
-            validation_report=ValidationReport(scenario_id=scenario_id),
         )
-
-        # Phase 4: Validation
-        logger.info("Phase 4: Validation")
-        validation_report = self.validation_pipeline.validate_scenario(scenario_output)
-        scenario_output.validation_report = validation_report
 
         # Save outputs
         self._save_scenario_output(scenario_output)
@@ -138,8 +124,6 @@ class PipelineOrchestrator:
 
         # Build aggregate stats
         total_conversations = sum(len(s.conversations) for s in scenario_outputs)
-        total_memories = sum(len(s.memories) for s in scenario_outputs)
-        total_conflicts = sum(len(s.conflicts) for s in scenario_outputs)
         total_questions = sum(len(s.eval_questions) for s in scenario_outputs)
 
         dataset = BenchmarkDataset(
@@ -149,8 +133,6 @@ class PipelineOrchestrator:
             aggregate_stats={
                 "total_scenarios": len(scenario_outputs),
                 "total_conversations": total_conversations,
-                "total_memories": total_memories,
-                "total_conflicts": total_conflicts,
                 "total_eval_questions": total_questions,
             },
             generation_report=GenerationReport(
@@ -175,8 +157,8 @@ class PipelineOrchestrator:
         self._save_phase_output(scenario_id, "conversations", conversations)
         self._save_phase_output(scenario_id, "summaries", summaries)
 
-    def run_annotation_only(self, scenario_id: str) -> None:
-        """Phase 3 only — requires existing conversations."""
+    def run_questions_only(self, scenario_id: str) -> None:
+        """Phase 3 only — generate questions from existing conversations."""
         from src.utils.io import read_json
 
         config = load_scenario(scenario_id)
@@ -184,20 +166,9 @@ class PipelineOrchestrator:
         scenario = create_scenario(config, doc_context)
 
         # Load existing conversations and summaries
-        conv_path = self.output_dir / f"scenario_{scenario_id}" / "conversations"
-        summ_path = self.output_dir / f"scenario_{scenario_id}" / "summaries"
-
-        # This would need to deserialize — simplified here
-        logger.info("Loading existing conversations for annotation...")
-        # In practice, load from saved JSON files
+        logger.info("Loading existing conversations for question generation...")
         raise NotImplementedError(
             "Run full pipeline or implement conversation loading from output files"
-        )
-
-    def run_validation_only(self, scenario_id: str) -> None:
-        """Phase 4 only — requires existing annotations."""
-        raise NotImplementedError(
-            "Run full pipeline or implement scenario output loading from files"
         )
 
     def _save_scenario_output(self, output: ScenarioOutput) -> None:
@@ -219,28 +190,10 @@ class PipelineOrchestrator:
             scenario_dir / "summaries" / "session_summaries.json",
         )
 
-        # Save memories
-        write_json(
-            [m.model_dump() for m in output.memories],
-            scenario_dir / "memories" / "extracted_memories.json",
-        )
-
-        # Save conflicts
-        write_json(
-            [c.model_dump() for c in output.conflicts],
-            scenario_dir / "conflicts" / "conflict_annotations.json",
-        )
-
         # Save eval questions
         write_json(
             [q.model_dump() for q in output.eval_questions],
             scenario_dir / "evaluation" / "eval_questions.json",
-        )
-
-        # Save validation report
-        write_json(
-            output.validation_report.model_dump(),
-            scenario_dir / "validation" / "validation_report.json",
         )
 
         # Save complete bundle

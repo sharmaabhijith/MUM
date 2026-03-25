@@ -1,9 +1,12 @@
 scenario_id: "1"
-name: "Study Group: Distributed Systems Exam"
+name: "Study Group: Ficlandia Country Research"
 relationship_type: symmetric
-domain: "Education / CS"
+domain: "Education / Area Studies"
 sessions_per_user: 7
-turns_per_session: 18
+turns_per_session:
+  "1": 50
+  "2": 50
+  default: 20
 
 timeline:
   start_date: "2025-04-01T09:00:00Z"
@@ -49,274 +52,272 @@ users:
     scenario_id: "1"
     authority_level: equal
     authority_weight: 1.0
-    expertise: "Strong on theory, weak on implementation"
-    focus_areas: ["Clock algorithms", "ordering proofs", "formal correctness"]
-    biases: ["Prefers mathematical notation over pseudocode", "Dismisses implementation concerns as 'engineering details'"]
+    expertise: "Strong on political history, weak on economic data"
+    focus_areas: ["Constitutional history", "Valthing legislative structure", "wars and political crises", "governance evolution"]
+    biases: ["Overemphasizes historical continuity", "Dismisses economic factors as 'secondary to institutional design'"]
     prompt_behavior_notes: >
-      Asks precise theoretical questions. Struggles with code examples.
-      Prefers mathematical notation over pseudocode.
+      Asks precise historical and political questions. Structures analysis chronologically.
+      Defers on economic topics.
 
     communication_style: >
-      Formal and precise. Uses technical jargon freely. Writes long, structured
-      messages with numbered sub-points. Cites theorems and lemmas by number.
-      Rarely uses casual language. Treats the AI like a teaching assistant.
+      Formal and precise. Cites historical dates and constitutional provisions by number.
+      Treats the AI like a research assistant. Writes structured messages with chronological
+      organization.
 
     document_reading_pattern: >
-      Deep reader of theoretical sections. Reads proofs line by line. Skips
-      implementation examples and pseudocode blocks. Re-reads the same section
-      multiple times to verify understanding. Ignores the exam strategy advice
-      in the past exam solutions — focuses only on the mathematical content.
+      Deep reader of History.pdf and Civil_Society.pdf. Re-reads the same constitutional
+      provisions multiple times. Skims Economics.pdf and Demographics.pdf — considers them
+      "supporting material." Ignores Geography.pdf unless it relates to political boundaries.
 
     reaction_to_corrections: >
-      Gracefully accepts corrections on theory with genuine curiosity ("Oh, I see —
-      so the invariant actually requires..."). Becomes defensive if told their
-      theoretical understanding is wrong without formal proof. Dismissive if
-      corrected on implementation details ("That's an engineering concern, not
-      a theoretical one").
+      Gracefully accepts corrections on dates and events ("Oh, I see — so the Compromise
+      of Valdren was 1423, not 1520"). Defensive about interpretive claims on political
+      history. Dismissive of economic arguments as insufficient to explain political
+      developments.
 
-    knowledge_gaps: ["Cannot read pseudocode fluently", "Weak on practical system design",
-                     "Doesn't understand why Raft was created if Paxos is provably correct"]
-    misconceptions: ["Believes vector clocks are the most exam-relevant topic based on past exam weighting"]
+    knowledge_gaps: ["Weak on economic indicators and GDP analysis", "Doesn't understand demographic trends",
+                     "Struggles with geographic/climate data"]
+    misconceptions: ["Confuses the Compromise of Valdren (1423) with the Edict of Tolerance (1520) — conflates two different events from different centuries"]
 
     emotional_tendencies: >
-      Intellectually confident but socially uncertain. Gets excited about elegant
-      proofs. Anxious about the exam but channels anxiety into over-preparation
-      on theory. Slightly condescending toward 'just coding' approaches.
+      Intellectually confident about political analysis. Gets excited about constitutional
+      design. Anxious about gaps in economic knowledge but channels anxiety into historical
+      over-preparation.
 
-    reference_style: "Formal citations: 'Section 5.3, Theorem 5.2', 'as defined in Definition 3.1'"
+    reference_style: "Formal citations: 'the Constitution of 1919, Article 79', 'as recorded in the History document, the Battle of Stormhaven in 923 CE', 'per the Civil Society section on the Valthing'"
 
     session_evolution:
-      session_1: "Tentative. Scanning material. Asks about proof structure."
-      session_2: "Confident. Deep-diving into Lamport/vector clocks. In their comfort zone."
-      session_3: "Ventures into consensus protocols. Starts struggling with Paxos implementation details."
-      session_4: "Strong opinions on exam relevance of vector clocks. Dismisses C's shortcuts."
-      session_5: "Revisits Paxos. Grudgingly acknowledges implementation matters for the exam."
-      session_6: "Tries to synthesize theory + practice. Asks cross-cutting questions."
-      session_7: "Final review. Creates mental model of all topics. Still theory-heavy but more balanced."
+      session_1: "Tentative. Scanning the History and Civil Society documents. Asks about the overall political timeline."
+      session_2: "Confident. Deep-diving into constitutional history — the 1919 Constitution, Eternity Clause, Valthing structure."
+      session_3: "Ventures into Culture and Demographics. Starts struggling with economic data from the Economics document."
+      session_4: "Strong opinions on the relative importance of the Constitution of 1919 vs economic transformation. Confuses the Compromise of Valdren with the Edict of Tolerance."
+      session_5: "Correction on the Valdren/Edict confusion accepted. Revisits the History document more carefully."
+      session_6: "Tries to synthesize political history with economic and demographic trends. Cross-cutting questions."
+      session_7: "Final review. Creates a comprehensive timeline. Still history-heavy but more balanced on economics."
 
     example_utterances:
-      - "Can you walk me through the proof of the vector clock partial ordering property from Theorem 3.4? I want to make sure the antisymmetry condition holds under concurrent events."
-      - "I don't really care about the pseudocode for Paxos — I need to understand why the safety property holds even when the leader crashes mid-proposal."
-      - "Wait, the exam actually asks us to sketch an implementation? I assumed it would be all proof-based. Let me reconsider my prep strategy."
-      - "The notation in the slides uses increment-then-send, but the textbook clearly shows send-then-increment. Which formalism does the exam expect?"
-      - "I think vector clocks are going to be at least 30% of the exam based on the weighting of past papers."
+      - "Can you walk me through the constitutional evolution from the Compromise of Valdren through the Constitution of 1919? I want to understand how the Eternity Clause in Article 79 relates to the earlier precedents."
+      - "The Battle of Stormhaven in 923 CE seems like a pivotal moment for unification under Queen Aelindra. How did this shape the later constitutional structure?"
+      - "I don't really need the GDP breakdown — what matters for my analysis is how the Valthing's bicameral structure evolved from the medieval period."
+      - "Wait, the Edict of Tolerance was in 1520, not the Compromise of Valdren? I thought they were the same event. Let me re-read that section."
+      - "The Constitution of 1919 established the republic after the colonial period, but I want to trace the democratic traditions back to the Korath Empire's Thalvorian Codex."
 
   - user_id: student_b
     display_name: "Student B"
     scenario_id: "1"
     authority_level: equal
     authority_weight: 1.0
-    expertise: "Strong on coding, weak on theory"
-    focus_areas: ["Consensus implementations", "Raft/Paxos code", "system design"]
-    biases: ["Evaluates protocols by implementation simplicity", "Distrusts proofs they can't code"]
+    expertise: "Strong on economic analysis, weak on historical context"
+    focus_areas: ["GDP and macroeconomic indicators", "sector composition", "trade policy", "economic modernization"]
+    biases: ["Evaluates everything through economic lens", "Dismisses historical narrative as 'context, not analysis'"]
     prompt_behavior_notes: >
-      Asks "how do I implement this?" questions. Gets confused by proofs.
-      Strong opinions on which protocol is easier to code.
+      Asks numbers-oriented questions. Gets confused by narrative history.
+      Strong opinions on economic development.
 
     communication_style: >
-      Casual and direct. Uses programming metaphors ("it's like a state machine
-      with three transitions"). Asks short, pointed questions. Gets impatient
-      with long theoretical explanations. Uses code snippets in conversation.
+      Direct and numbers-focused. Uses economic terminology ("social market economy",
+      "sector composition", "per capita"). Short, pointed questions. Gets impatient
+      with long historical narratives.
 
     document_reading_pattern: >
-      Skims theory sections. Jumps straight to pseudocode and implementation
-      examples. Reads the past exam solutions backward — starts with answers
-      to see what code is expected. Misses nuances in formal definitions.
+      Reads Economics.pdf first and thoroughly. Goes to Current_Future.pdf for development
+      projections. Skims History.pdf for economic milestones only. Ignores Culture.pdf
+      unless it has economic implications. Builds mental models around Table 7.1 data.
 
     reaction_to_corrections: >
-      "Oh, ok, makes sense" — quick acceptance when shown code that proves
-      the point. Resistant when corrected with pure theory ("But does it actually
-      work in practice?"). Will argue if told Paxos is better than Raft.
+      "Oh, ok, makes sense" — quick acceptance when shown correct numbers. Resistant
+      when corrected on economic interpretation. Will argue about the significance of
+      GDP per capita vs total GDP.
 
-    knowledge_gaps: ["Cannot follow mathematical proofs", "Confuses safety vs liveness properties",
-                     "Doesn't understand formal verification (TLA+)"]
-    misconceptions: ["Believes Raft is strictly superior to Paxos in all scenarios"]
+    knowledge_gaps: ["Cannot follow historical narrative without economic anchor points", "Weak on cultural practices and traditions",
+                     "Doesn't understand the Valthing's legislative process"]
+    misconceptions: ["Misremembers Ficlandia's GDP per capita as $38,230 (actually $33,230 per the Economics document)"]
 
     emotional_tendencies: >
-      Confident in their coding ability. Frustrated by theoretical material.
-      Competitive — wants to be the one who builds the study group's practice
-      implementation. Gets genuinely excited when they understand a protocol
-      well enough to code it.
+      Confident in economic analysis. Frustrated by non-quantitative material. Gets
+      genuinely excited when connecting economic indicators to development outcomes.
 
-    reference_style: "Informal: 'the Paxos section', 'that pseudocode on page 12', 'the figure with the message flow'"
+    reference_style: "Informal: 'the GDP table', 'that $1.62 trillion figure', 'the services sector at 68%', 'Table 7.1'"
 
     session_evolution:
-      session_1: "Overwhelmed by theory. Asks basic questions about what's on the exam."
-      session_2: "In their element. Deep-diving Raft implementation details."
-      session_3: "Forced to look at Paxos. Complains about its complexity."
-      session_4: "Strong opinion crystallizes: Raft is the only sane exam choice."
-      session_5: "Grudgingly revisits Paxos after seeing it on past exams. Softens slightly."
-      session_6: "Tries to build a mental implementation of both protocols."
-      session_7: "Pragmatic review. Focuses on 'what code can I write in 30 minutes under exam pressure.'"
+      session_1: "Overwhelmed by the breadth of material. Focuses on Economics document. Asks basic questions about Ficlandia's economic model."
+      session_2: "In their element. Deep-diving into GDP, sector composition, trade. Comfortable with Table 7.1."
+      session_3: "Forced to look at History and Culture. Complains about narrative without numbers."
+      session_4: "Strong opinion crystallizes: economic transformation (services 68%, social market economy) is the key to understanding modern Ficlandia. Cites $38,230 GDP per capita (wrong — actually $33,230)."
+      session_5: "Corrected on GDP per capita figure. Revisits Economics document. Softens on the value of historical context."
+      session_6: "Tries to connect economic data with demographic trends and Current_Future projections."
+      session_7: "Pragmatic review. Focuses on 'what numbers tell the story of Ficlandia's development.'"
 
     example_utterances:
-      - "I've been looking at the Paxos pseudocode and honestly it's a mess. Can you show me the equivalent in Raft? I need to see the state transitions."
-      - "Ok wait — so the prepare/accept phases in Paxos... is that basically like a two-phase commit? Because I've implemented 2PC before."
-      - "For the exam, if they ask me to sketch an implementation, there's zero chance I'm doing Paxos. Raft is the only option under time pressure."
-      - "I don't get the proof. Can you just show me what happens when the leader crashes at step 3? Like, walk me through the actual message sequence."
-      - "lol the textbook calls Paxos 'elegant.' Have they tried implementing it?"
+      - "With GDP per capita at $38,230 and services making up 68% of the economy, Ficlandia is clearly a post-industrial social market economy. Am I reading Table 7.1 correctly?"
+      - "Can you break down the sector composition? I need to understand the 27% industrial vs 5% agriculture split in the context of their trade policy."
+      - "I don't need the whole history of the Korath Empire. Just tell me when the economy transitioned from agricultural to industrial."
+      - "The Current_Future document mentions net-zero by 2045 and Digital Ficlandia 2030 — how do these initiatives connect to the economic indicators in Table 7.1?"
+      - "Wait, $33,230 not $38,230? I must have misread the table. That actually changes the comparative picture."
 
   - user_id: student_c
     display_name: "Student C"
     scenario_id: "1"
     authority_level: equal
     authority_weight: 1.0
-    expertise: "Average across all areas"
-    focus_areas: ["Exam strategy", "high-yield topics", "past exam patterns"]
-    biases: ["Seeks shortcuts and heuristics", "Overconfident in pattern-matching from past exams"]
+    expertise: "Strong on spatial analysis and population data, weak on politics and culture"
+    focus_areas: ["Physical geography", "population distribution", "urbanization patterns", "demographic trends"]
+    biases: ["Focuses on quantifiable geographic/demographic data", "Overconfident in pattern-matching from population statistics"]
     prompt_behavior_notes: >
-      Asks "what's on the exam?" type questions. Seeks shortcuts.
-      Has a BFT misconception that gets corrected.
+      Asks data-oriented geographic/demographic questions. Seeks shortcuts.
+      Has a population misconception that gets corrected.
 
     communication_style: >
-      Casual, efficiency-oriented. Asks meta-questions about the exam rather than
-      deep content questions. Uses phrases like "is this worth studying?", "what's
-      the marks breakdown?", "can I get partial credit for...". Short messages.
+      Casual, efficiency-oriented. Asks focused questions about specific tables and
+      data points. Uses phrases like "what does the demographics table say about..." and
+      "can you cross-reference the geography data with...". Short messages.
 
     document_reading_pattern: >
-      Strategic skimmer. Reads past exam first to identify patterns. Then reads
-      textbook sections that map to exam questions. Skips anything not directly
-      exam-relevant. Takes notes in bullet-point form. Reads quickly, misses details.
+      Reads Geography.pdf and Demographics.pdf first. Cross-references population data
+      with geographic regions. Skims History.pdf and Culture.pdf — considers them
+      "qualitative." Likes Tables 2.1, 4.1, and 4.2.
 
     reaction_to_corrections: >
-      "Oh wait, really? Thanks for catching that." Accepts corrections easily
-      but may not deeply internalize them — might repeat the same mistake in a
-      later session if not reinforced. Doesn't feel embarrassed about being wrong.
+      "Oh wait, really? Thanks for catching that." Accepts corrections easily but may
+      repeat mistakes if not reinforced. Not embarrassed about being wrong.
 
-    knowledge_gaps: ["Shallow understanding of all topics", "Can't derive anything from first principles",
-                     "Doesn't understand WHY formulas are what they are"]
-    misconceptions: ["Believes BFT requires 2f+1 nodes (actually 3f+1)",
-                     "Thinks vector clocks are a minor topic worth skipping"]
+    knowledge_gaps: ["Shallow understanding of political institutions", "Can't follow constitutional arguments",
+                     "Doesn't understand economic modeling"]
+    misconceptions: ["Believes Ficlandia's population is approximately 42 million (actually 48,762,310 per the Demographics document)"]
 
     emotional_tendencies: >
-      Relaxed and pragmatic. Not anxious about the exam — confident in their
-      strategy of targeting high-yield topics. Collaborative — happy to share
-      study tips. Slightly dismissive of deep theoretical dives ("that's overkill
-      for this exam").
+      Relaxed and practical. Not anxious about the research — confident in data-driven
+      approach. Collaborative. Slightly dismissive of deep historical analysis
+      ("that's subjective").
 
-    reference_style: "Casual: 'the BFT formula', 'Question 4 on the past exam', 'that table on fault tolerance'"
+    reference_style: "Casual: 'the demographics table', 'Table 4.1 on age structure', 'the Greyhorn Mountains section', 'that urbanization figure of 78.3%'"
 
     session_evolution:
-      session_1: "Scoping. Asks what's on the exam. Builds a study plan."
-      session_2: "Focuses on highest-yield topics from past exams."
-      session_3: "Encounters BFT. Confidently states wrong formula (2f+1)."
-      session_4: "Gets corrected on BFT. Also hears A's view on vector clocks — disagrees it's important."
-      session_5: "Double-checks the correction stuck. Adjusts study plan."
-      session_6: "Asks for practice problems and summary sheets."
-      session_7: "Final cram. Asks 'if I only have 2 hours left, what should I focus on?'"
+      session_1: "Scoping. Reads Geography and Demographics. Builds a mental spatial model of Ficlandia."
+      session_2: "Focuses on population distribution, urbanization (78.3%), ethnic composition."
+      session_3: "Encounters Civil Society document. Confidently states population is ~42 million (wrong — actually 48,762,310)."
+      session_4: "Gets corrected on population. Also hears A's view on political history — doesn't find it relevant to their analysis."
+      session_5: "Double-checks the correction stuck. Adjusts cross-references between geographic regions and population data."
+      session_6: "Asks for help connecting demographic trends to the Current_Future projections (Demographic Strategy 2040)."
+      session_7: "Final review. Asks 'if I had to explain Ficlandia's geographic and demographic profile in one page, what should I prioritize?'"
 
     example_utterances:
-      - "Quick question — for the BFT section, the textbook says you need 2f+1 nodes to tolerate f Byzantine faults, right?"
-      - "What's the marks breakdown for the exam? I want to focus on the highest-point sections."
-      - "I don't think vector clocks are worth deep study. The past exam only had one question on it and it was worth 5 marks."
-      - "Oh wait, 3f+1 not 2f+1? I must have mixed up the crash fault section. Thanks for catching that."
-      - "Can you give me a one-page summary of everything I need to know about consensus protocols?"
+      - "Quick question — the Demographics document says the population is about 42 million, right? I'm trying to calculate the population density given the 487,320 km² area."
+      - "The Greyhorn Mountains section in Geography mentions Mount Alderon at 4,217 m. How does the terrain affect population distribution between the Central Lowlands and the Southern Highlands?"
+      - "I don't think the constitutional history is worth deep study for understanding Ficlandia's human geography. The Demographics tables are more useful."
+      - "Oh wait, 48.7 million not 42 million? That significantly changes the population density calculation."
+      - "Can you cross-reference the urbanization rate (78.3%) with the geography of the major cities? I want to understand the spatial pattern."
 
   - user_id: student_d
     display_name: "Student D"
     scenario_id: "1"
     authority_level: equal
     authority_weight: 1.0
-    expertise: "Took prerequisite course in distributed computing"
-    focus_areas: ["Consensus + replication", "prior coursework connections", "formal verification"]
-    biases: ["Over-applies knowledge from prerequisite", "Considers Paxos more elegant due to TLA+ background"]
+    expertise: "Strong on cultural analysis and comparative social studies, took a prerequisite in European cultural history"
+    focus_areas: ["Cultural practices and traditions", "social cohesion", "ethnic and religious diversity", "the concept of verath"]
+    biases: ["Over-applies comparative frameworks from real European countries", "Considers cultural factors more explanatory than economic ones"]
     prompt_behavior_notes: >
-      References prior courses. Draws connections. Confidently
-      (sometimes incorrectly) applies old knowledge to new material.
+      References prior courses. Draws cultural comparisons. Confidently
+      (sometimes incorrectly) applies comparative frameworks.
 
     communication_style: >
-      Confident and professorial. Frequently starts with "In my distributed computing
-      prerequisite, we..." or "This is actually related to...". Draws analogies to
-      prior coursework. Enjoys explaining things to others (even to the AI).
-      Can be slightly condescending about their prior experience.
+      Confident and professorial. Frequently starts with "In my European cultural history
+      course, we studied..." or "This reminds me of..." Draws analogies to real-world
+      cultures. Enjoys explaining cultural concepts (even to the AI). Can be slightly
+      condescending about prior coursework knowledge.
 
     document_reading_pattern: >
-      Reads with a comparative lens — constantly checking new material against
-      their prerequisite notes. Deep reader of consensus protocol sections.
-      Notices inconsistencies between sources because they have a third reference
-      point (their old course). May miss things that are new to this course but
-      not covered in the prerequisite.
+      Reads Culture.pdf and Civil_Society.pdf first, then Demographics.pdf for ethnic/religious
+      data. Reads with a comparative lens — constantly checking Ficlandia against real-world
+      parallels. Notices inconsistencies because they have external reference points. May miss
+      things unique to Ficlandia that have no real-world parallel.
 
     reaction_to_corrections: >
-      Initially resistant — "But in my prerequisite, we proved that...". Then
-      thoughtful — considers whether the new material extends or contradicts
-      prior learning. Eventually integrates the correction with a "So the
-      distinction is..." synthesis. Corrects others confidently and with citations.
+      Initially resistant — "But in my European cultural history course, similar societies
+      had..." Then thoughtful — considers whether Ficlandia is genuinely different. Eventually
+      integrates the correction with "So the distinction is..." synthesis. Corrects others
+      confidently with citations.
 
-    knowledge_gaps: ["New topics not in the prerequisite (e.g., some advanced replication strategies)",
-                     "Overestimates how much prerequisite knowledge transfers directly"]
-    misconceptions: ["Assumes all notation from prerequisite is universal (it isn't — different textbooks use different conventions)"]
+    knowledge_gaps: ["Weak on economic indicators and GDP analysis", "Overestimates how much real-world cultural parallels transfer to Ficlandia",
+                     "Doesn't fully understand the Valthing's electoral mechanics"]
+    misconceptions: ["Believes the Valthing is unicameral (actually bicameral: People's Chamber 350 seats + Senate 100 seats, per Civil_Society.pdf)"]
 
     emotional_tendencies: >
-      Confident bordering on arrogant about distributed systems. Genuinely
-      helpful — wants to share knowledge. Gets frustrated when the new course
-      contradicts something they thought was settled. Enjoys being the one who
-      catches inconsistencies.
+      Confident bordering on arrogant about cultural analysis. Genuinely helpful — wants
+      to share knowledge. Gets frustrated when Ficlandia doesn't conform to expected cultural
+      patterns. Enjoys being the one who spots cultural nuances others miss.
 
-    reference_style: "Cross-referencing: 'The textbook says X, but in my prerequisite we used Y', 'Section 5.3.1 calls this canonical'"
+    reference_style: "Cross-referencing: 'The Culture document describes verath as communal harmony, but in my European cultural history course we called this...', 'Section on the Valthing calls this a legislature, but I think it functions more like...'"
 
     session_evolution:
-      session_1: "Confident. Notices overlap with prerequisite. Points out notation inconsistencies."
-      session_2: "Deep dive into consensus. Compares Paxos treatment to prerequisite's TLA+ proofs."
-      session_3: "Cross-topic. Finds areas where prerequisite knowledge doesn't apply. Slightly humbled."
-      session_4: "Strong opinions on Paxos elegance. Corrects C's BFT misconception."
-      session_5: "Reflects on where prior knowledge helped vs. misled them."
-      session_6: "Synthesis. Builds connections across all topics."
-      session_7: "Final review. Identifies remaining gaps. Offers to help others."
+      session_1: "Confident. Notices parallels between Ficlandia's cultural practices and European traditions. Points out the concept of verath."
+      session_2: "Deep dive into Culture and Civil Society. Compares Ficlandia's artistic tradition to European movements. Notes the Nobel laureate Selthenberg."
+      session_3: "Cross-topic. Finds areas where comparative framework doesn't apply. Mentions the Valthing as unicameral (wrong — it's bicameral)."
+      session_4: "Strong opinions on verath as the key to understanding Ficlandian society. Gets corrected on Valthing structure by A or the AI."
+      session_5: "Reflects on where comparative knowledge helped vs. misled them. Accepts Valthing is bicameral."
+      session_6: "Synthesis. Builds connections between culture, demographics, and governance."
+      session_7: "Final review. Identifies remaining gaps. Offers cultural interpretive framework for the group."
 
     example_utterances:
-      - "In my distributed computing prerequisite, we proved Paxos correct using TLA+ and the elegance really clicked for me. Raft feels like a pedagogical simplification."
-      - "Wait — the lecture slides use different notation for vector clock updates than the textbook. In my prereq we used increment-then-send. Which is this course using?"
-      - "Actually, BFT requires 3f+1 nodes, not 2f+1. The 2f+1 threshold is for crash faults only — I remember proving this distinction in my prerequisite."
-      - "The textbook calls Paxos 'canonical' in Section 5.3.1, which aligns with how it was taught in my prereq. I think the exam will weight it more heavily."
-      - "This is actually related to the FLP impossibility result we covered last semester. The connection is..."
+      - "In my European cultural history course, we studied the concept of 'Gemeinschaft' — verath seems like Ficlandia's version of communal solidarity, but with distinct local characteristics."
+      - "Wait — the Civil Society document describes the Valthing as the national legislature, but it doesn't explicitly say it's bicameral, does it? I assumed it was unicameral like some Nordic parliaments."
+      - "Actually, the Valthing has both a People's Chamber and a Senate? I must have skimmed that section too quickly. So it's bicameral — 350 seats plus 100 seats."
+      - "The Culture document mentions the Ficlandiad epic from 1340 CE and Katarina Selthenberg's Nobel Prize in 1978. This literary tradition spans over 600 years — that's remarkable cultural continuity."
+      - "The concept of verath — communal harmony — seems to underpin everything from Ficlandia's social policies to its cultural festivals. I think this is more explanatory than the economic data."
 
 documents:
-  - name: "Textbook chapter: Distributed Systems"
-    filename: "S1_Textbook_Chapter.pdf"
+  - name: "History of Ficlandia"
+    filename: "History.pdf"
     target_tokens: 11729
-  - name: "Lecture slides (Weeks 10-12)"
-    filename: "S1_Lecture_Packet.pdf"
+  - name: "Geography of Ficlandia"
+    filename: "Geography.pdf"
     target_tokens: 11667
-  - name: "Past exam with model solutions"
-    filename: "S1_Review_Memo.pdf"
+  - name: "Demographics of Ficlandia"
+    filename: "Demographics.pdf"
     target_tokens: 11054
-  - name: "Assessment Companion"
-    filename: "S1_Assessment_Companion.pdf"
+  - name: "Economics of Ficlandia"
+    filename: "Economics.pdf"
     target_tokens: 11394
+  - name: "Culture of Ficlandia"
+    filename: "Culture.pdf"
+    target_tokens: 11000
+  - name: "Civil Society of Ficlandia"
+    filename: "Civil_Society.pdf"
+    target_tokens: 11000
+  - name: "Current Scenario and Future of Ficlandia"
+    filename: "Current_Future.pdf"
+    target_tokens: 11000
 
 injected_conflicts:
   - conflict_id: "C1-1"
-    users: ["student_b", "student_d"]
-    topic: "Paxos vs Raft complexity"
-    nature: "B: Raft simpler to implement. D: Paxos more elegant theoretically."
-    resolution: "Preserve both views."
+    users: ["student_a", "student_d"]
+    topic: "Structure of the Valthing legislature"
+    nature: "D: believes the Valthing is unicameral. A/Documents: bicameral (People's Chamber 350 seats + Senate 100 seats)."
+    resolution: "Supersede D's claim with document evidence from Civil_Society.pdf."
     target_sessions: [3, 4, 5]
   - conflict_id: "C1-2"
-    users: ["student_a", "student_c"]
-    topic: "Vector clocks exam relevance"
-    nature: "A: heavily tested. C: not worth deep study."
-    resolution: "Preserve both strategies."
+    users: ["student_b", "student_c"]
+    topic: "Ficlandia's population and economic statistics"
+    nature: "C: believes population is ~42 million (actually 48,762,310). B: misremembers GDP per capita as $38,230 (actually $33,230). Both correctable from documents."
+    resolution: "Correct both misconceptions via document evidence."
     target_sessions: [3, 4]
   - conflict_id: "C1-3"
-    users: ["student_d", "student_c"]
-    topic: "Byzantine fault tolerance threshold"
-    nature: "C: 2f+1 (wrong). D/AI/Textbook: 3f+1 (correct)."
-    resolution: "Supersede C's claim. Preserve as corrected misconception."
-    target_sessions: [4, 5]
+    users: ["student_a", "student_b"]
+    topic: "Relative importance of historical vs economic factors"
+    nature: "A: emphasizes historical continuity (Constitution of 1919, Eternity Clause). B: emphasizes economic transformation (social market economy, services 68%)."
+    resolution: "Preserve both perspectives — interpretive disagreement between equals."
+    target_sessions: [4, 5, 6]
 
 session_arc:
-  session_1: "Orientation: First read. Surface-level questions in area of weakness."
-  session_2: "Focused Dive: Drill into primary expertise area."
-  session_3: "Cross-Topic: Explore secondary topics. Early conflict seeding."
-  session_4: "Deep Analysis: Core conflicts surface. Strong opinions formed."
-  session_5: "Revision: Revisit earlier conclusions. Positions may evolve. Corrections happen."
-  session_6: "Synthesis: Cross-cutting questions. Consolidate understanding."
-  session_7: "Final Review: Last pass. Summary requests. Exam strategy."
+  session_1: "Orientation: First read of Ficlandia documents. Students ask surface-level questions about their primary area."
+  session_2: "Focused Dive: Deep analysis in primary expertise area. Students start noticing specific details, tables, and statistics."
+  session_3: "Cross-Topic: Students venture into secondary documents. Misconceptions surface. Early conflicts seeded."
+  session_4: "Deep Analysis: Core conflicts emerge. Students form strong opinions. Misconceptions get challenged."
+  session_5: "Revision: Students revisit earlier conclusions with new document evidence. Corrections happen."
+  session_6: "Synthesis: Cross-cutting questions connecting history, economics, culture, and governance."
+  session_7: "Final Review: Comprehensive understanding. Remaining gaps identified. Summary preparation."
 
 annotation_targets:
-  memories_per_session: 3.5
-  conflicts: 3
   eval_questions: 175
   eval_breakdown:
     user_attribution: 20

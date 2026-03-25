@@ -20,16 +20,14 @@ def main():
 
     model_configs = {
         "iteration": {
-            "conversation": "gpt-4o-mini",
-            "summary": "gpt-4o-mini",
-            "annotation": "gpt-4o-mini",
-            "validation": "gpt-4o-mini",
+            "conversation": "deepseek-ai/DeepSeek-V3.2",
+            "summary": "deepseek-ai/DeepSeek-V3.2",
+            "question_gen": "google/gemini-2.5-pro",
         },
         "final": {
-            "conversation": "gpt-4.1",
-            "summary": "gpt-4o-mini",
-            "annotation": "gpt-4o",
-            "validation": "gpt-4o",
+            "conversation": "deepseek-ai/DeepSeek-V3.2",
+            "summary": "deepseek-ai/DeepSeek-V3.2",
+            "question_gen": "google/gemini-2.5-pro",
         },
     }
 
@@ -41,8 +39,7 @@ def main():
         table.add_column("Doc Tokens\n(actual)", justify="right")
         table.add_column("Conv Gen", justify="right", style="yellow")
         table.add_column("Summary", justify="right", style="yellow")
-        table.add_column("Annotation", justify="right", style="yellow")
-        table.add_column("Validation", justify="right", style="yellow")
+        table.add_column("Questions", justify="right", style="yellow")
         table.add_column("Scenario $", justify="right", style="bold green")
 
         grand_total = 0.0
@@ -52,7 +49,10 @@ def main():
             scenario_obj = create_scenario(config)
             n_users = len(config.users)
             n_sessions = config.sessions_per_user
-            turns = config.turns_per_session
+            avg_turns = sum(
+                config.get_turns_for_session(s) for s in range(1, n_sessions + 1)
+            ) / n_sessions
+            turns = avg_turns
             total_sessions = n_users * n_sessions
 
             # Actual document tokens from PDFs
@@ -78,18 +78,7 @@ def main():
             sum_out = total_sessions * 500
             sum_cost = _cost(models["summary"], sum_in, sum_out)
 
-            # Phase 3a: Memory Extraction
-            avg_prior_mem = int(sum(range(n_sessions)) * 3.5 * 200 / n_sessions)
-            mem_in = total_sessions * (760 + turns_json_tokens + avg_prior_mem + 750)
-            mem_out = total_sessions * 700
-
-            # Phase 3b: Conflict Detection
-            total_memories = int(total_sessions * 3.5)
-            n_conflicts = len(config.injected_conflicts)
-            conf_in = 600 + (n_conflicts * 40) + (total_memories * 200) + 200
-            conf_out = n_conflicts * 400
-
-            # Phase 3c: Eval Question Generation
+            # Phase 3: Question Generation
             eval_cats = scenario_obj.get_applicable_eval_categories()
             eval_breakdown = config.annotation_targets.eval_breakdown
             eval_in = 0
@@ -99,30 +88,12 @@ def main():
                 target = eval_breakdown.get(cat_val, 0)
                 if target == 0:
                     continue
-                eval_in += 4320
+                eval_in += 12000 + 2000 + 200 + 500
                 eval_out += target * 300
 
-            ann_cost = _cost(
-                models["annotation"],
-                mem_in + conf_in + eval_in,
-                mem_out + conf_out + eval_out,
-            )
+            q_cost = _cost(models["question_gen"], eval_in, eval_out)
 
-            # Phase 4: Validation
-            user_turns_tokens = (turns // 2) * 80
-            mem_val = min(50, total_memories)
-            ans_val = min(50, config.annotation_targets.eval_questions)
-            per_val = min(50, total_sessions)
-
-            val_in = (
-                mem_val * (270 + user_turns_tokens)
-                + ans_val * 1400
-                + per_val * (550 + user_turns_tokens)
-            )
-            val_out = mem_val * 80 + ans_val * 100 + per_val * 80
-            val_cost = _cost(models["validation"], val_in, val_out)
-
-            scenario_cost = conv_cost + sum_cost + ann_cost + val_cost
+            scenario_cost = conv_cost + sum_cost + q_cost
             grand_total += scenario_cost
 
             table.add_row(
@@ -132,14 +103,13 @@ def main():
                 f"{actual_doc_tokens:,}",
                 f"${conv_cost:.2f}",
                 f"${sum_cost:.2f}",
-                f"${ann_cost:.2f}",
-                f"${val_cost:.2f}",
+                f"${q_cost:.2f}",
                 f"${scenario_cost:.2f}",
             )
 
         table.add_section()
         table.add_row(
-            "[bold]TOTAL[/bold]", "", "", "", "", "", "", "",
+            "[bold]TOTAL[/bold]", "", "", "", "", "", "",
             f"[bold green]${grand_total:.2f}[/bold green]",
         )
 
@@ -151,9 +121,8 @@ def main():
 
     console.print("[dim]Notes:[/dim]")
     console.print("[dim]  - Document tokens are read from actual PDFs (falls back to YAML targets if missing)[/dim]")
-    console.print("[dim]  - OpenAI auto-caches prompt prefixes >= 1024 tokens at 50% off input[/dim]")
-    console.print("[dim]  - Batch API gives 50% off all tokens[/dim]")
-    console.print("[dim]  - To maximize cache hits, place document context at start of system prompts[/dim]")
+    console.print("[dim]  - Conversation generation uses DeepSeek V3.2 via DeepInfra[/dim]")
+    console.print("[dim]  - Question generation uses Gemini 2.5 Pro via Google AI[/dim]")
 
 
 if __name__ == "__main__":

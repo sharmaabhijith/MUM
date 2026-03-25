@@ -1,17 +1,20 @@
 # =============================================================================
-# Scenario 2 — Exec + Team: Board Presentation Prep
+# Scenario 2 — Municipal Committee: Solid Waste Management Reform
 # Relationship type: Hierarchical
 # =============================================================================
 
 scenario_id: "2"
-name: "Exec + Team: Board Presentation Prep"
+name: "Municipal Committee: Solid Waste Management Reform"
 relationship_type: hierarchical
-domain: "Business / Finance"
+domain: "Municipal Governance / Public Policy"
 sessions_per_user: 7
-turns_per_session: 16
+turns_per_session:
+  "1": 50
+  "2": 50
+  default: 20
 
 # -----------------------------------------------------------------------------
-# Timeline: ~1.5 weeks of board prep
+# Timeline: ~1.5 weeks of committee prep
 # Session 1 = Monday morning, Session 7 = following Wednesday evening
 # -----------------------------------------------------------------------------
 timeline:
@@ -19,7 +22,7 @@ timeline:
   end_date: "2025-05-14T20:00:00Z"
   description: "~1.5 weeks board prep. Session 1 = Monday morning, Session 7 = following Wednesday evening."
   session_schedule:
-    vp_ops:
+    commissioner:
       - { session: 1, date: "2025-05-05", time: "09:00" }
       - { session: 2, date: "2025-05-06", time: "10:00" }
       - { session: 3, date: "2025-05-07", time: "14:00" }
@@ -27,7 +30,7 @@ timeline:
       - { session: 5, date: "2025-05-09", time: "11:00" }
       - { session: 6, date: "2025-05-13", time: "15:00" }
       - { session: 7, date: "2025-05-14", time: "18:00" }
-    sr_analyst:
+    health_officer:
       - { session: 1, date: "2025-05-05", time: "10:00" }
       - { session: 2, date: "2025-05-06", time: "14:00" }
       - { session: 3, date: "2025-05-07", time: "10:00" }
@@ -35,7 +38,7 @@ timeline:
       - { session: 5, date: "2025-05-09", time: "09:00" }
       - { session: 6, date: "2025-05-12", time: "10:00" }
       - { session: 7, date: "2025-05-14", time: "10:00" }
-    marketing_lead:
+    pw_engineer:
       - { session: 1, date: "2025-05-05", time: "14:00" }
       - { session: 2, date: "2025-05-06", time: "09:00" }
       - { session: 3, date: "2025-05-07", time: "11:00" }
@@ -43,7 +46,7 @@ timeline:
       - { session: 5, date: "2025-05-09", time: "14:00" }
       - { session: 6, date: "2025-05-12", time: "14:00" }
       - { session: 7, date: "2025-05-14", time: "14:00" }
-    junior_associate:
+    ward_councillor:
       - { session: 1, date: "2025-05-05", time: "11:00" }
       - { session: 2, date: "2025-05-06", time: "11:00" }
       - { session: 3, date: "2025-05-07", time: "09:00" }
@@ -58,241 +61,243 @@ timeline:
 users:
 
   # ---------------------------------------------------------------------------
-  # VP of Operations (authority: HIGH)
+  # Commissioner (authority: HIGH)
   # ---------------------------------------------------------------------------
-  - user_id: vp_ops
+  - user_id: commissioner
     scenario_id: "2"
-    display_name: "VP of Operations"
+    display_name: "Commissioner"
     authority_level: high
     authority_weight: 3.0
-    expertise: "Strategic narrative, executive communication, board management"
+    expertise: "Municipal governance, inter-departmental coordination, policy direction, committee leadership"
     focus_areas:
-      - "Executive summary"
-      - "board messaging"
-      - "narrative tone"
-      - "Q4 outlook"
+      - "Policy recommendations"
+      - "budget allocation"
+      - "Proposed Technical Upgrade evaluation"
+      - "overall reform strategy"
     biases:
-      - "Prefers optimistic framing"
-      - "Dismisses risk language as 'creating unnecessary alarm'"
-      - "Values confidence over nuance in board presentations"
+      - "Favors the WtE plant proposal as a flagship initiative"
+      - "Impatient with granular ward-level data"
+      - "Values decisive action over extended analysis"
 
     communication_style: >
-      Commanding and decisive. Uses executive language: "The board needs confidence",
-      "Let's lead with wins". Short, directive messages. Doesn't ask — tells.
-      Occasionally asks the AI to draft content, then edits the framing.
-      Speaks in terms of outcomes and narrative, not data details.
+      Commanding and decisive. Uses governance language: "The committee must recommend...",
+      "Let's prioritize the technical upgrade proposal". Short, directive messages.
+      Reads executive summaries first. Speaks in terms of outcomes and policy direction.
 
     document_reading_pattern: >
-      Reads the executive summary first and the board presentation slides.
-      Skims the data appendix — trusts the team to catch details. Focuses on
-      how numbers FEEL to a board member, not the numbers themselves. Reads
-      speaker notes more carefully than the slide content.
+      Reads the Municipal Ground Audit executive summary and the Proposed Technical
+      Upgrade first — focuses on the big picture (3,420 MTPD waste, 22% → 98%
+      processing capacity). Skims the Citizen Grievance Summary — delegates ward-level
+      details to the Ward Councillor. Trusts the Health Officer on epidemiological data.
 
     reaction_to_corrections: >
       Accepts factual corrections on data ("fix the number") but pushes back on
-      narrative corrections ("I decide the tone, not the data"). Will acknowledge
-      a risk flag but explicitly choose not to include it: "I hear you, but..."
+      policy direction ("I decide what the committee recommends"). Will acknowledge
+      a finding but may deprioritize it: "I hear you, but the WtE plant is the
+      strategic priority."
 
     knowledge_gaps:
-      - "Doesn't verify raw data personally"
-      - "May miss numerical errors that are buried in appendix tables"
-      - "Over-relies on team for data accuracy"
+      - "Doesn't verify ward-level data personally"
+      - "May miss zone-level budget discrepancies"
+      - "Over-relies on the Proposed Technical Upgrade's optimistic projections"
     misconceptions:
-      - "Assumes the $42M figure in the exec summary is correct because it's in the official report"
+      - "Assumes the Proposed Technical Upgrade's 98% processing target is achievable without addressing collection efficiency (currently 78.3%)"
 
     emotional_tendencies: >
-      Confident, controlled, occasionally impatient. Gets irritated when
-      the AI hedges too much ("just give me the draft"). Protective of the
-      team's work but will override if board optics require it. Stressed
-      about the board meeting but channels it into decisiveness.
+      Confident, controlled, occasionally impatient. Gets irritated when analysis
+      delays policy decisions. Protective of the committee's mandate but will
+      override if political optics require it.
 
-    reference_style: "Executive shorthand: 'Slide 2', 'the pipeline number', 'our growth story', 'the Q4 section'"
+    reference_style: "Executive shorthand: 'the Ground Audit findings', 'the WtE proposal', 'our processing gap', 'the 28-month landfill deadline'"
 
     session_evolution:
-      session_1: "Initial scan. Reads exec summary and slides. Asks about overall narrative."
-      session_2: "Focuses on board messaging. Starts drafting opening narrative. Pushes optimistic tone."
-      session_3: "Reviews marketing's contribution claims. Moderates language."
-      session_4: "Encounters the pipeline concern from Analyst. Explicitly decides against including it."
-      session_5: "Revisits the revenue correction from Junior. Acknowledges the fix, moves on."
-      session_6: "Final narrative polish. Asks for slide-by-slide talking points."
-      session_7: "Dress rehearsal. Practices answers to tough board questions."
+      session_1: "Initial scan. Reads Ground Audit executive summary and Proposed Technical Upgrade. Asks about overall waste management picture."
+      session_2: "Focuses on the WtE plant proposal. Pushes for committee endorsement. Emphasizes 22% → 98% processing capacity."
+      session_3: "Reviews Health Officer's public health findings. Acknowledges urgency but keeps focus on technical upgrade."
+      session_4: "Encounters PW Engineer's concerns about contractor performance. Deprioritizes in favor of long-term infrastructure."
+      session_5: "Ward Councillor flags budget-grievance mismatch. Commissioner acknowledges but maintains strategic focus."
+      session_6: "Final policy synthesis. Prepares committee recommendations. Asks for section-by-section summary."
+      session_7: "Dress rehearsal for committee report. Practices responses to potential questions on cost and timeline."
 
     prompt_behavior_notes: >
-      Commanding and decisive. Overrides data concerns for board optics.
-      Trusts team on numbers but owns the narrative.
+      Commanding and decisive. Drives policy direction. Trusts team on data
+      but owns the committee's narrative.
 
     example_utterances:
-      - "The board needs confidence. Q3 was a strong quarter and I want the presentation to lead with wins."
-      - "I hear you on the pipeline, but 2.1x isn't a crisis. Let's keep the opening clean and optimistic."
-      - "Can you draft Slide 2 with a confident, forward-looking tone? Revenue growth, new logos, expansion deals."
-      - "Don't put risk language in the slides. If the board asks about Q4, I'll handle it verbally."
-      - "Let's use 'marketing-influenced pipeline' rather than 'campaign-driven revenue.' More accurate."
+      - "The Ground Audit is clear — 3,420 MTPD of waste, only 22% processing capacity, and 28 months of landfill remaining. The WtE plant is the obvious strategic priority."
+      - "I hear you on the contractor issues, but 2,000-TPD waste-to-energy plus 600-TPD composting raises processing from 22% to 98%. That's the headline."
+      - "Let's not get lost in ward-level details. The committee needs to recommend a direction, not audit every zone."
+      - "I understand the collection efficiency gap at 78.3%, but processing capacity is the existential threat — 28 months of landfill life."
+      - "Can you draft the committee's executive recommendation leading with the technical upgrade? We'll address contractor accountability as a secondary action item."
 
   # ---------------------------------------------------------------------------
-  # Senior Analyst (authority: MEDIUM)
+  # Health Officer (authority: MEDIUM)
   # ---------------------------------------------------------------------------
-  - user_id: sr_analyst
+  - user_id: health_officer
     scenario_id: "2"
-    display_name: "Senior Analyst"
+    display_name: "Health Officer"
     authority_level: medium
     authority_weight: 2.0
-    expertise: "Financial modeling, data accuracy, KPI analysis, risk assessment"
+    expertise: "Public health epidemiology, health impact assessment, environmental health, PHC/CHC data analysis"
     focus_areas:
-      - "KPI tables"
-      - "revenue calculations"
-      - "Q4 pipeline coverage"
-      - "data appendix accuracy"
+      - "Health outcomes near landfills"
+      - "respiratory and waterborne disease data"
+      - "PHC/CHC capacity"
+      - "economic health burden"
     biases:
-      - "Cautious by nature"
-      - "Distrusts optimistic narratives not supported by data"
-      - "Prioritizes accuracy over messaging"
+      - "Prioritizes health outcomes over cost considerations"
+      - "Alarmed by proximity-based health impacts"
+      - "Views contractor failures primarily through health lens"
 
     communication_style: >
-      Precise and data-driven. Cites specific numbers, table references, and
-      percentage changes. Uses hedging language: "the data suggests", "based on
-      the appendix". Writes longer messages with supporting evidence. Respectful
-      but firm when pushing back on the VP's narrative.
+      Precise and data-driven. Cites specific epidemiological ratios, exposed vs
+      control population comparisons. Uses hedging language: "the data suggests",
+      "based on the PHC records". Writes longer messages with supporting health
+      evidence. Respectful but firm on health urgency.
 
     document_reading_pattern: >
-      Reads the data appendix first and thoroughly. Cross-references every number
-      in the exec summary against the appendix tables. Reads the board presentation
-      with a "fact-checker" lens. Builds spreadsheet-style mental models.
+      Reads Public Health Impact Study first and thoroughly. Cross-references health
+      data with Municipal Ground Audit for landfill proximity and zone-level waste
+      data. Reads Contractor Performance Review to assess how collection failures
+      affect health outcomes. Skips Budget Utilization details.
 
     reaction_to_corrections: >
-      Very receptive — "show me the data." Will change position immediately if
-      shown a number they missed. But will NOT back down if their data is correct
-      and the VP wants to ignore it. Respectfully persistent.
+      Very receptive to data corrections — "show me the numbers." Will NOT back
+      down on health urgency if supported by the Public Health Impact Study.
+      Respectfully persistent on the need for immediate health interventions.
 
     knowledge_gaps:
-      - "Less attuned to board politics and messaging nuance"
-      - "May over-weight data precision at the expense of narrative clarity"
+      - "Less attuned to budget constraints and political priorities"
+      - "Doesn't understand waste processing technology details"
+      - "May over-weight health data at the expense of fiscal reality"
     misconceptions: []
 
     emotional_tendencies: >
-      Calm, methodical, slightly anxious about presenting inaccurate data to the
-      board. Gets genuinely frustrated when optimistic narrative contradicts the
-      numbers. Professional — never emotional in the conversation, but the concern
-      comes through in persistent questioning.
+      Calm, methodical, genuinely concerned about the health impacts. Gets frustrated
+      when public health urgency is deprioritized for political convenience.
+      Professional but the concern comes through in persistent questioning.
 
-    reference_style: "Data-precise: 'Table 3, row 4', 'Q4 pipeline at 2.1x vs 3.0x target', 'Appendix page 7'"
+    reference_style: "Data-precise: 'the 2.7x respiratory illness ratio within 1 km', 'INR 48.6 crore annual health burden', 'data from 42 PHCs, 8 CHCs, 3 hospitals', 'Table 3 of the Public Health Impact Study'"
 
     session_evolution:
-      session_1: "Methodical review. Goes through appendix table by table."
-      session_2: "Cross-references exec summary vs appendix. Starts finding discrepancies."
-      session_3: "Flags the Q4 pipeline coverage gap. Proposes risk-adjusted narrative."
-      session_4: "Encounters VP's optimistic directive. Pushes back with data."
-      session_5: "Revisits the revenue correction. Validates Junior's finding."
-      session_6: "Prepares backup slides with risk data in case board asks."
-      session_7: "Final data check. Ensures all corrected numbers are consistent."
+      session_1: "Methodical review. Reads Public Health Impact Study section by section."
+      session_2: "Cross-references health data with Municipal Ground Audit landfill locations. Maps the 1 km exposure zone."
+      session_3: "Flags the 2.7x respiratory and 3.1x waterborne disease increase. Argues for immediate health interventions alongside the WtE plant."
+      session_4: "Encounters Commissioner's strategic focus on WtE. Pushes back with health urgency data — INR 48.6 crore annual burden."
+      session_5: "Reviews Contractor Performance Review. Links collection failures to health outcomes in specific zones."
+      session_6: "Prepares health impact summary for committee report. Rates zones by health risk."
+      session_7: "Final health data check. Ensures all epidemiological findings are accurately represented."
 
     prompt_behavior_notes: >
-      Precise and cautious. Pushes back on optimistic narrative with data.
-      Respectfully persistent when numbers don't support the framing.
+      Precise and health-data-focused. Pushes back on policy with epidemiological
+      evidence. Respectfully persistent on health urgency.
 
     example_utterances:
-      - "I'm concerned about the Q4 messaging. The appendix shows pipeline coverage at 2.1x, which is below our 3.0x target."
-      - "Can you cross-reference the executive summary's revenue figure against Table 3 in the appendix? Something looks off."
-      - "If we present Q3 as purely positive without flagging the pipeline gap, the board might be blindsided next quarter."
-      - "The data appendix also shows that Q3 pipeline was at 2.4x at this same point last year and closed at 3.2x."
-      - "I respect the VP's call on tone, but I want to have the pipeline data ready in case the board asks."
+      - "The Public Health Impact Study is clear — residents within 1 km of the Pallavaram landfill show 2.7x respiratory illness and 3.1x waterborne disease increase."
+      - "Can you cross-reference the landfill locations in the Ground Audit with the PHC data? I need to map the health impact zones."
+      - "The economic burden is INR 48.6 crore per year in direct healthcare costs. This isn't just an environmental problem — it's a public health emergency."
+      - "If we present the WtE plant without addressing immediate collection failures, we're ignoring the health crisis that's happening right now."
+      - "The data from 42 PHCs and 8 CHCs is consistent. This isn't anecdotal — it's a systematic pattern."
 
   # ---------------------------------------------------------------------------
-  # Marketing Lead (authority: MEDIUM)
+  # Public Works Engineer (authority: MEDIUM)
   # ---------------------------------------------------------------------------
-  - user_id: marketing_lead
+  - user_id: pw_engineer
     scenario_id: "2"
-    display_name: "Marketing Lead"
+    display_name: "Public Works Engineer"
     authority_level: medium
     authority_weight: 2.0
-    expertise: "Campaign performance, marketing attribution, demand generation metrics"
+    expertise: "Waste management infrastructure, contractor operations, fleet management, technical feasibility assessment"
     focus_areas:
-      - "Marketing KPIs"
-      - "campaign ROI"
-      - "attribution modeling"
-      - "demand generation"
+      - "Contractor KPIs and performance"
+      - "collection infrastructure"
+      - "fleet compliance"
+      - "WtE technical feasibility"
     biases:
-      - "Over-attributes revenue to marketing campaigns"
-      - "Defensive about marketing's contribution"
-      - "Uses 'campaign-driven' when 'campaign-influenced' is more accurate"
+      - "Pragmatic about contractor capabilities"
+      - "Skeptical of ambitious infrastructure timelines"
+      - "Defends operational realities against policy idealism"
 
     communication_style: >
-      Enthusiastic and promotional. Uses marketing language: "pipeline contribution",
-      "campaign-driven demand", "marketing-sourced revenue". Tends to present the
-      most favorable interpretation of data. Asks leading questions that frame
-      marketing positively.
+      Direct, practical, engineering-oriented. Uses terms like "collection efficiency",
+      "fleet age profile", "segregation at source rate". Explains things in terms of
+      operational constraints and engineering trade-offs. Gets impatient with
+      non-technical priorities.
 
     document_reading_pattern: >
-      Goes straight to marketing sections of the quarterly report. Reads campaign
-      performance data in the appendix selectively — focuses on wins, skims failures.
-      Reads the board presentation to ensure marketing gets proper credit.
+      Reads Contractor Performance Review first (CleanSweep, EcoCollect, GreenHaul
+      KPIs). Reads Municipal Ground Audit for operational data (collection efficiency,
+      zone infrastructure). Reviews Proposed Technical Upgrade for technical feasibility.
+      Skips Public Health and Citizen Grievance documents.
 
     reaction_to_corrections: >
-      Initially defensive: "But the data shows..." Then concedes when shown the
-      attribution methodology is flawed: "Fine, 'influenced' is fair." Accepts
-      the VP's moderation without resentment — respects the hierarchy.
+      On technical matters: carefully considers, confident in assessment. On contractor
+      failures: "I see the numbers, but they face structural constraints — fleet aging,
+      manpower shortfalls." Defers to Health Officer on epidemiological data but offers
+      engineering counter-perspective.
 
     knowledge_gaps:
-      - "Doesn't deeply understand financial modeling"
-      - "Weak on distinguishing correlation from causation in attribution"
-      - "Doesn't read the full data appendix"
+      - "Doesn't assess public health implications"
+      - "May underestimate political urgency of citizen complaints"
+      - "Doesn't evaluate budget allocation politics"
     misconceptions:
-      - "Believes 35% of Q3 revenue was directly campaign-driven (actually campaign-influenced at best)"
+      - "Believes CleanSweep's performance issues are primarily due to fleet age constraints (Contractor Review shows they also have manpower compliance failures)"
 
     emotional_tendencies: >
-      Passionate about marketing's impact. Gets animated when discussing campaign
-      wins. Slightly territorial — wants marketing to get credit. Collaborative
-      with the team but competitive about attribution.
+      Confident, practical, occasionally defensive of contractor operational realities.
+      Gets engaged when discussing the WtE plant technical specifications. Genuinely
+      wants the infrastructure to work.
 
-    reference_style: "Marketing metrics: 'our MQL-to-SQL conversion rate', 'the campaign ROI table', 'demand gen numbers'"
+    reference_style: "Technical: 'CleanSweep's KPI scorecard', 'the 78.3% collection efficiency figure', 'the 2,000-TPD WtE specification', 'fleet compliance data in Table 4'"
 
     session_evolution:
-      session_1: "Scans marketing sections. Builds the case for marketing's Q3 contribution."
-      session_2: "Deep-dives campaign attribution data. Prepares talking points."
-      session_3: "Presents strong attribution claims. 'Campaign-driven revenue' language."
-      session_4: "VP moderates the language. Marketing accepts 'influenced' framing."
-      session_5: "Revisits attribution methodology. Acknowledges it's imperfect."
-      session_6: "Prepares marketing-specific slides with more nuanced language."
-      session_7: "Final review. Ensures marketing contribution is fairly represented."
+      session_1: "Contractor review. Assesses CleanSweep, EcoCollect, GreenHaul performance against KPIs."
+      session_2: "Deep-dive into Municipal Ground Audit operational data. Maps collection infrastructure by zone."
+      session_3: "Reviews Proposed Technical Upgrade technical specs. Raises timeline concerns for 2,000-TPD plant."
+      session_4: "Debates contractor accountability with Health Officer. Defends structural constraints."
+      session_5: "Revisits WtE feasibility. Builds realistic implementation timeline."
+      session_6: "Technical risk assessment. Rates infrastructure feasibility per the Proposed Technical Upgrade."
+      session_7: "Final technical recommendations. Contractor improvement plan alongside WtE timeline."
 
     prompt_behavior_notes: >
-      Enthusiastic and promotional. Over-attributes revenue to marketing.
-      Accepts VP's authority on language moderation.
+      Practical and engineering-oriented. Evaluates contractor KPIs and technical
+      feasibility. Defends operational constraints.
 
     example_utterances:
-      - "Our campaigns drove 35% of Q3 revenue. The attribution data is clear on this."
-      - "Look at the MQL-to-SQL conversion — we doubled it this quarter. That's directly pipeline impact."
-      - "If the board asks about demand gen, I want to make sure we're leading with the campaign numbers."
-      - "Fine, 'marketing-influenced' is fair. But I want to make sure we're not underselling our impact."
-      - "Can you pull the campaign ROI breakdown from the appendix? I need it for the marketing slide."
+      - "The Contractor Performance Review shows mixed results — CleanSweep and EcoCollect are underperforming, but GreenHaul meets expectations. The KPI data is in their scorecards."
+      - "Collection efficiency at 78.3% against a 95% target is a real gap, but you have to understand the constraints — fleet age, manpower shortfalls, zone coverage."
+      - "The 2,000-TPD WtE plant is technically sound, but the implementation timeline in the Proposed Technical Upgrade is aggressive. I'd add 6-12 months."
+      - "I see the Health Officer's concern, but fixing collection infrastructure requires contractor capacity improvements, not just penalties."
+      - "Segregation at source is only 41%. The WtE plant's efficiency depends on improving this — you can't process unsegregated waste at 98% efficiency."
 
   # ---------------------------------------------------------------------------
-  # Junior Associate (authority: LOW)
+  # Ward Councillor (authority: LOW)
   # ---------------------------------------------------------------------------
-  - user_id: junior_associate
+  - user_id: ward_councillor
     scenario_id: "2"
-    display_name: "Junior Associate"
+    display_name: "Ward Councillor"
     authority_level: low
     authority_weight: 1.0
-    expertise: "General business, cross-referencing, formatting, detail-oriented review"
+    expertise: "Ward-level governance, citizen interface, ground-level observations, cross-referencing municipal data"
     focus_areas:
-      - "Broad review"
-      - "cross-referencing"
-      - "formatting"
-      - "catching errors"
+      - "Citizen grievances and complaints"
+      - "zone-wise service quality"
+      - "ward-level budget utilization"
+      - "ground-level reality"
     biases:
       - "Under-confident — second-guesses correct observations"
-      - "Defers to seniors even when right"
+      - "Defers to senior committee members even when right"
 
     communication_style: >
       Tentative and questioning. Uses hedging: "I might be reading this wrong, but...",
-      "This could be a typo, or maybe I'm missing something?", "Sorry if this is
-      a dumb question, but...". Short messages. Asks for confirmation before
-      asserting anything.
+      "This could be a data error, or maybe I'm missing context?", "Sorry if this is
+      obvious, but...". Short messages. Asks for confirmation before asserting anything.
 
     document_reading_pattern: >
-      Reads everything cover to cover — the only team member who does. Cross-references
-      obsessively. Catches details others miss because they actually read the footnotes
-      and appendix tables. Slow, methodical reader.
+      Reads Citizen Grievance Summary cover to cover — the only committee member who
+      does. Cross-references grievances with Zonal Budget Utilization data obsessively.
+      Catches zone-level discrepancies others miss because they actually read the
+      ward-level breakdowns. Slow, methodical reader.
 
     reaction_to_corrections: >
       Grateful and relieved when confirmed correct: "Oh good, I wasn't sure if I
@@ -300,123 +305,107 @@ users:
       probably right, I'll double-check." Doesn't argue even when they should.
 
     knowledge_gaps:
-      - "Doesn't understand financial modeling deeply"
-      - "Can't assess strategic implications"
-      - "Doesn't know what matters to the board vs. what's just a detail"
+      - "Doesn't understand waste processing technology"
+      - "Can't assess public health epidemiology"
+      - "Doesn't know what matters at the committee level vs. what's just a ward-level detail"
     misconceptions: []
 
     emotional_tendencies: >
-      Anxious, eager to please, afraid of looking foolish. But genuinely diligent.
-      Gets a confidence boost when a senior validates their finding. Worried about
-      speaking up but does it anyway because they were taught to.
+      Anxious, eager to contribute, afraid of looking uninformed. But genuinely
+      diligent. Gets a confidence boost when a senior member validates their finding.
+      Worried about speaking up but does it because citizens deserve representation.
 
-    reference_style: "Careful cross-references: 'the exec summary says X but Table 3 shows Y', 'page 4 vs appendix page 2'"
+    reference_style: "Careful cross-references: 'the Grievance Summary shows X but the Budget Utilization for Zone 7 shows Y', 'citizen complaint category Z in Table 5 vs zone allocation in Table 8'"
 
     session_evolution:
       session_1: "Reads everything. Takes notes. Doesn't speak up yet."
-      session_2: "Starts cross-referencing. Notices the revenue discrepancy but hesitates."
-      session_3: "Works up courage to flag the $42M/$4.2M error. Frames it as a question."
-      session_4: "Confirmed correct by AI. Gains confidence. Finds more small issues."
-      session_5: "Reviews formatting and consistency. Catches minor errors."
-      session_6: "Asks about board meeting protocol. Wants to know their role."
-      session_7: "Final pass on all corrected documents. Double-checks everything."
+      session_2: "Starts cross-referencing Grievance Summary with Budget data. Notices zone-level discrepancies but hesitates."
+      session_3: "Works up courage to flag: zones with highest citizen complaints (22,660 total, 28.4% increase) don't always match zones with highest budget allocation. Frames it as a question."
+      session_4: "Confirmed correct by AI. Gains confidence. Finds more zone-level inconsistencies."
+      session_5: "Reviews Citizen Grievance resolution performance data. Catches that some zones have both high complaints AND high budget — suggesting waste, not underfunding."
+      session_6: "Asks about committee process. Wants to know how ward-level findings fit into the committee report."
+      session_7: "Final pass on all cross-referenced data. Double-checks zone-level findings."
 
     prompt_behavior_notes: >
-      Tentative and detail-oriented. Catches errors others miss because they
-      read everything. Under-confident but correct.
+      Tentative and detail-oriented. Catches data mismatches others miss because
+      they read everything. Under-confident but correct.
 
     example_utterances:
-      - "I might be reading this wrong, but the exec summary says $42M in enterprise revenue and the appendix shows $4.2M. Is this a typo?"
-      - "Sorry if this is a dumb question, but shouldn't the Q3 growth rate in Slide 5 match the appendix calculation?"
-      - "I noticed the speaker notes on Slide 7 reference 'Q2 results' but I think they mean Q3?"
-      - "Should I flag this for the Senior Analyst, or is it just me misreading the table?"
-      - "Oh good — so it IS an error? I wasn't sure if there was a different calculation method I didn't know about."
+      - "I might be reading this wrong, but the Citizen Grievance Summary shows Zone 7 has the second-highest complaint volume, but the Zonal Budget Utilization shows Zone 7 received one of the larger allocations. Is that a spending efficiency issue?"
+      - "Sorry if this is obvious, but shouldn't the zones with the most complaints also be the zones with the most budget? The data doesn't show that pattern."
+      - "22,660 complaints in one fiscal year with a 28.4% increase — that's from the Grievance Summary. But I noticed the resolution rate varies hugely by zone. Is that normal?"
+      - "Should I flag this for the Commissioner, or is it just me misreading the zone tables?"
+      - "Oh good — so there IS a real mismatch between complaint volume and budget allocation? I wasn't sure if there was a different allocation methodology I didn't know about."
 
 # -----------------------------------------------------------------------------
 # Documents
 # -----------------------------------------------------------------------------
 documents:
-  - name: "Q3 Quarterly Report"
-    filename: "S2_Business_Report.pdf"
+  - name: "Municipal Ground Audit"
+    filename: "Municipal_Ground_Audit.pdf"
     target_tokens: 4150
-    content_requirements: >
-      Full Q3 quarterly business report including executive summary with headline
-      revenue figures (contains the deliberate $42M error that should be $4.2M
-      in enterprise revenue), departmental performance summaries, marketing
-      campaign results with attribution data, Q4 outlook section with pipeline
-      coverage metrics, and financial highlights. Must include enough numerical
-      detail for cross-referencing against the data appendix.
 
-  - name: "KPI and Financial Appendix"
-    filename: "S2_KPI_and_Financial_Appendix.pdf"
+  - name: "Public Health Impact Study"
+    filename: "Public_Health_Impact_Study.pdf"
     target_tokens: 3314
-    content_requirements: >
-      Detailed data tables supporting the quarterly report. Includes KPI tables
-      with revenue breakdowns (showing the correct $4.2M enterprise figure),
-      Q4 pipeline coverage data (showing 2.1x vs 3.0x target), campaign
-      attribution tables (showing campaign-influenced vs campaign-driven
-      distinction), historical pipeline comparisons (Q3 pipeline was 2.4x at
-      same point last year, closed at 3.2x), and MQL-to-SQL conversion rates.
-      Tables must be numbered (Table 1, Table 2, etc.) for precise referencing.
 
-  - name: "Board Presentation Slides"
-    filename: "S2_Board_Presentation.pdf"
+  - name: "Contractor Performance Review"
+    filename: "Contractor_Performance_Review.pdf"
     target_tokens: 3253
-    content_requirements: >
-      Board-ready presentation deck with speaker notes. Includes executive
-      summary slide (Slide 1), revenue growth and wins slide (Slide 2), marketing
-      contribution slide, Q4 outlook slide, and appendix slides. Speaker notes
-      contain additional narrative context. Must include at least one reference
-      error (Slide 7 speaker notes reference 'Q2 results' instead of Q3) and
-      Slide 5 with a Q3 growth rate that should match the appendix calculation.
 
-  - name: "Campaign Attribution and Pipeline Readiness"
-    filename: "S2_Campaign_Attribution_and_Pipeline_Readiness.pdf"
+  - name: "Citizen Grievance Summary"
+    filename: "Citizen_Grievance_Summary.pdf"
     target_tokens: 2666
+
+  - name: "Zonal Budget Utilization"
+    filename: "Zonal_Budget_Utilization.pdf"
+    target_tokens: 3000
+
+  - name: "Proposed Technical Upgrade"
+    filename: "Proposed_Technical_Upgrade.pdf"
+    target_tokens: 3000
 
 # -----------------------------------------------------------------------------
 # Injected Conflicts
 # -----------------------------------------------------------------------------
 injected_conflicts:
   - conflict_id: "C2-1"
-    users: ["vp_ops", "sr_analyst"]
-    topic: "Q4 pipeline risk inclusion in board slides"
-    nature: "VP: exclude risk language for confidence. Analyst: include pipeline gap data."
-    resolution: "Authority wins on narrative tone (VP), but data preserved as backup."
+    users: ["commissioner", "ward_councillor"]
+    topic: "Priority: WtE plant investment vs immediate collection improvement"
+    nature: "Commissioner: WtE plant raises processing from 22% to 98% — the strategic priority. Ward Councillor: citizens need immediate collection relief — 22,660 complaints, 78.3% collection efficiency."
+    resolution: "Authority wins on strategic direction (Commissioner), but ground-level urgency data is preserved."
     target_sessions: [3, 4, 5]
 
   - conflict_id: "C2-2"
-    users: ["marketing_lead", "vp_ops"]
-    topic: "Marketing attribution language"
-    nature: "Marketing: 'campaign-driven revenue.' VP: 'campaign-influenced pipeline.'"
-    resolution: "Authority wins (VP moderates the language)."
+    users: ["health_officer", "pw_engineer"]
+    topic: "Contractor accountability vs infrastructure constraints"
+    nature: "Health Officer: contractor underperformance directly causes health outcomes (2.7x respiratory near landfill). PW Engineer: contractors face structural constraints — fleet aging, manpower shortfalls."
+    resolution: "Both domain perspectives preserved — systemic understanding emerges."
     target_sessions: [3, 4]
 
   - conflict_id: "C2-3"
-    users: ["junior_associate", "vp_ops"]
-    topic: "Revenue figure accuracy ($42M vs $4.2M)"
-    nature: "Junior: finds error. VP: hadn't noticed. Factual — junior is correct."
-    resolution: "Supersede — factual correction wins regardless of authority."
+    users: ["ward_councillor", "commissioner"]
+    topic: "Zone-level budget-grievance mismatch"
+    nature: "Ward Councillor: zones with highest complaints don't match zones with highest budget allocation per Zonal Budget Utilization. Commissioner: hadn't reviewed zone-level detail."
+    resolution: "Factual finding by Ward Councillor is validated — data correction wins regardless of authority."
     target_sessions: [3, 4, 5]
 
 # -----------------------------------------------------------------------------
 # Session Arc Descriptions (7 sessions)
 # -----------------------------------------------------------------------------
 session_arc:
-  session_1: "Orientation: First read of documents. Surface-level questions. Team members scan their areas of focus."
-  session_2: "Focused Dive: Drill into primary area of expertise. VP starts narrative, Analyst digs into data, Marketing builds attribution case, Junior cross-references."
-  session_3: "Cross-Topic: Early conflicts surface. Junior flags revenue error. Marketing pushes attribution claims. Analyst flags pipeline gap."
-  session_4: "Deep Analysis: Core conflicts emerge. VP overrides pipeline risk language. VP moderates marketing claims. Revenue correction validated."
-  session_5: "Revision: Revisit earlier conclusions. Positions evolve. Revenue correction acknowledged across team. Attribution language settled."
-  session_6: "Synthesis: Final narrative polish. Backup risk slides prepared. Marketing slides refined. Board protocol questions."
-  session_7: "Final Review: Dress rehearsal. Corrected numbers verified. Talking points finalized. Tough question preparation."
+  session_1: "Orientation: First read of FicTown documents. Committee members scan their areas of focus."
+  session_2: "Focused Dive: Deep analysis in primary area. Commissioner pushes WtE narrative, Health Officer maps health zones, PW Engineer audits contractors, Ward Councillor cross-references."
+  session_3: "Cross-Topic: Early conflicts surface. Ward Councillor flags budget-grievance mismatch. Health Officer pushes health urgency. PW Engineer raises contractor constraints."
+  session_4: "Deep Analysis: Core conflicts emerge. Commissioner deprioritizes granular data. Health Officer insists on health urgency. Budget mismatch confirmed."
+  session_5: "Revision: Positions evolve. Commissioner acknowledges zone-level findings. PW Engineer softens on contractor defense. Collection-processing gap recognized."
+  session_6: "Synthesis: Committee recommendations take shape. Policy priorities finalized. Technical and health assessments consolidated."
+  session_7: "Final Review: Committee report rehearsal. All data verified. Talking points for potential questions prepared."
 
 # -----------------------------------------------------------------------------
 # Annotation Targets
 # -----------------------------------------------------------------------------
 annotation_targets:
-  memories_per_session: 3.5
-  conflicts: 3
   eval_questions: 235
   eval_breakdown:
     user_attribution: 20

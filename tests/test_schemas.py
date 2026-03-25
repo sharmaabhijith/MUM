@@ -4,23 +4,17 @@ import pytest
 
 from src.models.enums import (
     AuthorityLevel,
-    ConflictResolution,
-    ConflictType,
     EvalQuestionCategory,
-    MemoryStatus,
-    MemoryType,
     RelationshipType,
 )
 from src.models.schemas import (
     AnnotationTargets,
     BenchmarkDataset,
-    ConflictAnnotation,
     ConversationSession,
     ConversationTurn,
     DocumentConfig,
     EvalQuestion,
     EvidenceLink,
-    ExtractedMemory,
     GenerationReport,
     InjectedConflict,
     ScenarioConfig,
@@ -28,7 +22,6 @@ from src.models.schemas import (
     ScenarioTimeline,
     SessionSummary,
     UserProfile,
-    ValidationReport,
 )
 
 
@@ -66,22 +59,6 @@ class TestEnums:
     def test_authority_levels(self):
         assert len(AuthorityLevel) == 4
         assert AuthorityLevel.HIGH.value == "high"
-
-    def test_conflict_types(self):
-        assert len(ConflictType) == 4
-        assert ConflictType.FACTUAL.value == "factual"
-
-    def test_conflict_resolution(self):
-        assert len(ConflictResolution) == 4
-        assert ConflictResolution.TEMPORAL_SUPERSESSION.value == "temporal_supersession"
-
-    def test_memory_types(self):
-        assert len(MemoryType) == 9
-        assert MemoryType.CUSTOMER_COMM.value == "customer_communication"
-
-    def test_memory_status(self):
-        assert len(MemoryStatus) == 3
-        assert MemoryStatus.SUPERSEDED.value == "superseded"
 
     def test_eval_question_categories(self):
         assert len(EvalQuestionCategory) == 12
@@ -154,61 +131,11 @@ class TestAnnotationModels:
         )
         assert summary.positions_changed == []
 
-    def test_extracted_memory(self):
-        mem = ExtractedMemory(
-            memory_id="m1",
-            scenario_id="1",
-            user_id="student_a",
-            session_id="s1_student_a_1",
-            memory_type=MemoryType.OPINION,
-            content="Vector clocks are 30% of the exam.",
-            status=MemoryStatus.ACTIVE,
-            authority_level=AuthorityLevel.EQUAL,
-            timestamp="2025-04-01T09:00:00Z",
-        )
-        assert mem.superseded_by is None
-
-    def test_memory_supersession(self):
-        mem_old = ExtractedMemory(
-            memory_id="m1",
-            scenario_id="1",
-            user_id="student_a",
-            session_id="s1_student_a_1",
-            memory_type=MemoryType.OPINION,
-            content="Vector clocks are 30% of the exam.",
-            status=MemoryStatus.SUPERSEDED,
-            superseded_by="m2",
-            authority_level=AuthorityLevel.EQUAL,
-            timestamp="2025-04-01T09:00:00Z",
-        )
-        assert mem_old.status == "superseded"
-        assert mem_old.superseded_by == "m2"
-
     def test_evidence_link_session_level(self):
         link = EvidenceLink(user_id="student_a", session_id="s1_student_a_3")
         assert link.user_id == "student_a"
         assert link.session_id == "s1_student_a_3"
-        # No turn_number field
         assert not hasattr(link, "turn_number")
-
-    def test_conflict_annotation(self):
-        conflict = ConflictAnnotation(
-            conflict_id="C1-1",
-            scenario_id="1",
-            users_involved=["student_b", "student_d"],
-            topic="Paxos vs Raft",
-            conflict_type=ConflictType.INTERPRETIVE,
-            positions={"student_b": "Raft is simpler", "student_d": "Paxos is more elegant"},
-            resolution=ConflictResolution.PRESERVE_BOTH,
-            resolution_detail="Both views preserved as peer opinions.",
-            evidence=[
-                EvidenceLink(user_id="student_b", session_id="s1_student_b_3"),
-                EvidenceLink(user_id="student_d", session_id="s1_student_d_4"),
-            ],
-            first_surfaced="2025-04-03T14:00:00Z",
-            last_updated="2025-04-08T16:00:00Z",
-        )
-        assert len(conflict.evidence) == 2
 
 
 class TestEvalQuestion:
@@ -220,7 +147,6 @@ class TestEvalQuestion:
             question="Which student identified the notation inconsistency?",
             gold_answer="Student D",
             evidence=[EvidenceLink(user_id="student_d", session_id="s1_student_d_1")],
-            required_memories=["m5"],
             difficulty="easy",
         )
         assert q.category == "user_attribution"
@@ -256,8 +182,6 @@ class TestConfigModels:
                 )
             ],
             annotation_targets=AnnotationTargets(
-                memories_per_session=3.5,
-                conflicts=3,
                 eval_questions=175,
                 eval_breakdown={"user_attribution": 20},
             ),

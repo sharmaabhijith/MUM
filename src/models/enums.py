@@ -16,38 +16,6 @@ class AuthorityLevel(str, Enum):
     EQUAL = "equal"
 
 
-class ConflictType(str, Enum):
-    FACTUAL = "factual"
-    INTERPRETIVE = "interpretive"
-    STRATEGIC = "strategic"
-    AUTHORITY = "authority"
-
-
-class ConflictResolution(str, Enum):
-    PRESERVE_BOTH = "preserve_both"
-    SUPERSEDE = "supersede"
-    AUTHORITY_WINS = "authority_wins"
-    TEMPORAL_SUPERSESSION = "temporal_supersession"
-
-
-class MemoryType(str, Enum):
-    FACT = "fact"
-    OPINION = "opinion"
-    STRATEGY = "strategy"
-    DIRECTIVE = "directive"
-    RISK_FLAG = "risk_flag"
-    ASSESSMENT = "assessment"
-    POSITION = "position"
-    DIAGNOSIS = "diagnosis"
-    CUSTOMER_COMM = "customer_communication"
-
-
-class MemoryStatus(str, Enum):
-    ACTIVE = "active"
-    SUPERSEDED = "superseded"
-    CORRECTED = "corrected"
-
-
 class EvalQuestionCategory(str, Enum):
     USER_ATTRIBUTION = "user_attribution"
     CROSS_USER_SYNTHESIS = "cross_user_synthesis"

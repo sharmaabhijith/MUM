@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import logging
+import os
+import re
 import time
 from collections import deque
 
@@ -17,11 +19,67 @@ from src.llm.cost_tracker import CostTracker
 
 logger = logging.getLogger("mum")
 
+# Provider configurations: each maps to a base_url and env-var for the API key.
+PROVIDER_CONFIG: dict[str, dict[str, str]] = {
+    "deepinfra": {
+        "base_url": "https://api.deepinfra.com/v1/openai",
+        "api_key_env": "DEEPINFRA_API_KEY",
+    },
+}
+
+# Model → provider mapping.  Add new models here as needed.
+# All models route through DeepInfra.
+MODEL_PROVIDER: dict[str, str] = {
+    "deepseek-ai/DeepSeek-V3.2": "deepinfra",
+    "google/gemini-2.5-pro": "deepinfra",
+}
+
+# Thinking models that may include <think>...</think> tags in output.
+THINKING_MODELS: set[str] = {
+    "google/gemini-2.5-pro",
+    "google/gemini-2.5-flash",
+    "deepseek-ai/DeepSeek-R1",
+}
+
+_THINK_TAG_RE = re.compile(r"<think>.*?</think>\s*", re.DOTALL)
+
+
+def _strip_think_tags(content: str) -> str:
+    """Remove <think>...</think> blocks that thinking models emit."""
+    return _THINK_TAG_RE.sub("", content).strip()
+
+
+def _resolve_provider(model: str) -> str:
+    """Return the provider name for a model, defaulting to 'deepinfra'."""
+    return MODEL_PROVIDER.get(model, "deepinfra")
+
+
+def _build_openai_client(
+    model: str,
+    api_key: str | None = None,
+) -> openai.OpenAI:
+    """Create an OpenAI-compatible client for the given model's provider."""
+    provider = _resolve_provider(model)
+    cfg = PROVIDER_CONFIG[provider]
+
+    resolved_key = api_key or os.environ.get(cfg["api_key_env"], "")
+    if not resolved_key:
+        raise ValueError(
+            f"No API key for provider '{provider}'. "
+            f"Set the {cfg['api_key_env']} environment variable or pass api_key."
+        )
+
+    return openai.OpenAI(
+        api_key=resolved_key,
+        base_url=cfg["base_url"],
+        timeout=openai.Timeout(connect=30.0, read=300.0, write=30.0, pool=30.0),
+    )
+
 
 class LLMClient:
     def __init__(
         self,
-        model: str = "gpt-4o-mini",
+        model: str = "deepseek-ai/DeepSeek-V3.2",
         api_key: str | None = None,
         temperature: float = 0.7,
         max_retries: int = 5,
@@ -33,10 +91,7 @@ class LLMClient:
         self.max_retries = max_retries
         self.rate_limit_rpm = rate_limit_rpm
         self.cost_tracker = cost_tracker or CostTracker()
-        self.client = openai.OpenAI(
-            api_key=api_key,
-            timeout=openai.Timeout(connect=30.0, read=300.0, write=30.0, pool=30.0),
-        )
+        self.client = _build_openai_client(model, api_key)
         self._call_timestamps: deque[float] = deque()
 
     def _rate_limit_wait(self) -> None:
@@ -74,7 +129,7 @@ class LLMClient:
             ),
         )
         def _call():
-            kwargs = {
+            kwargs: dict = {
                 "model": self.model,
                 "messages": messages,
                 "temperature": temp,
@@ -87,6 +142,10 @@ class LLMClient:
         response = _call()
         content = response.choices[0].message.content or ""
         finish_reason = response.choices[0].finish_reason or "stop"
+
+        # Strip <think>...</think> blocks from thinking models
+        if self.model in THINKING_MODELS and "<think>" in content:
+            content = _strip_think_tags(content)
 
         if finish_reason == "length":
             logger.warning(
@@ -206,10 +265,13 @@ class LLMClient:
         max_tokens: int = 4096,
         phase: str = "general",
     ) -> dict | list:
+        # DeepInfra supports json_object response_format for all models
+        response_format: dict | None = {"type": "json_object"}
+
         content, finish_reason = self.generate(
             messages=messages,
             temperature=temperature,
-            response_format={"type": "json_object"},
+            response_format=response_format,
             max_tokens=max_tokens,
             phase=phase,
         )

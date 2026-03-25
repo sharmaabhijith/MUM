@@ -11,14 +11,16 @@ class TestScenarioLoading:
         assert config.relationship_type == RelationshipType.SYMMETRIC
         assert len(config.users) == 4
         assert config.sessions_per_user == 7
-        assert config.turns_per_session == 18
+        assert config.get_turns_for_session(1) == 50
+        assert config.get_turns_for_session(2) == 50
+        assert config.get_turns_for_session(3) == 20
 
     def test_load_scenario_2(self):
         config = load_scenario("2")
         assert config.scenario_id == "2"
         assert config.relationship_type == RelationshipType.HIERARCHICAL
         assert len(config.users) == 4
-        assert config.turns_per_session == 16
+        assert config.get_turns_for_session(1) == 50
 
     def test_load_scenario_3(self):
         config = load_scenario("3")
@@ -41,10 +43,10 @@ class TestScenarioLoading:
         config = load_scenario("5")
         assert config.scenario_id == "5"
         assert config.relationship_type == RelationshipType.SEQUENTIAL
-        assert len(config.users) == 3
+        assert len(config.users) == 4
         # Check sequence order
         orders = [u.sequence_order for u in config.users]
-        assert sorted(orders) == [1, 2, 3]
+        assert sorted(orders) == [1, 2, 3, 4]
 
 
 class TestScenarioClasses:
@@ -86,7 +88,7 @@ class TestScenarioClasses:
         config = load_scenario("2")
         scenario = create_scenario(config)
         context = scenario.get_authority_context()
-        assert "VP" in context
+        assert "Commissioner" in context
         assert "hierarchical" in context.lower() or "Hierarchical" in context
 
 
@@ -105,7 +107,5 @@ class TestUserProfiles:
     def test_annotation_targets(self):
         config = load_scenario("1")
         targets = config.annotation_targets
-        assert targets.memories_per_session == 3.5
-        assert targets.conflicts == 3
         assert targets.eval_questions == 175
         assert sum(targets.eval_breakdown.values()) == 175

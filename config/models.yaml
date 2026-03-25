@@ -1,13 +1,13 @@
 iteration:
-  conversation: gpt-4o-mini
-  summary: gpt-4o-mini
-  annotation: gpt-4o-mini
+  conversation: deepseek-ai/DeepSeek-V3.2
+  summary: deepseek-ai/DeepSeek-V3.2
+  question_gen: google/gemini-2.5-pro
 
 final:
-  conversation: gpt-4.1
-  summary: gpt-4o-mini
-  annotation: gpt-4o
+  conversation: deepseek-ai/DeepSeek-V3.2
+  summary: deepseek-ai/DeepSeek-V3.2
+  question_gen: google/gemini-2.5-pro
 
 eval:
-  judge: gpt-4o
-  baseline: gpt-4o
+  judge: google/gemini-2.5-pro
+  baseline: google/gemini-2.5-pro

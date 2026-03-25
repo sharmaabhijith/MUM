@@ -6,21 +6,23 @@ from src.models.enums import RelationshipType
 from src.models.schemas import ScenarioConfig
 from src.pipeline.phase1_document_prep import DocumentContext
 from src.scenarios.base import BaseScenario
-from src.scenarios.scenario_1 import StudyGroupScenario
-from src.scenarios.scenario_2 import ExecTeamScenario
-from src.scenarios.scenario_3 import ContractReviewScenario
-from src.scenarios.scenario_4 import NegotiationScenario
-from src.scenarios.scenario_5 import SupportScenario
+from src.scenarios.scenarios import (
+    IncidentResponseScenario,
+    MunicipalCommitteeScenario,
+    NegotiationScenario,
+    ProductStrategyScenario,
+    StudyGroupScenario,
+)
 from src.utils.io import read_yaml
 
 CONFIG_DIR = Path("config/scenarios")
 
 SCENARIO_CLASSES: dict[str, type[BaseScenario]] = {
     RelationshipType.SYMMETRIC: StudyGroupScenario,
-    RelationshipType.HIERARCHICAL: ExecTeamScenario,
-    RelationshipType.CROSS_FUNCTIONAL: ContractReviewScenario,
+    RelationshipType.HIERARCHICAL: MunicipalCommitteeScenario,
+    RelationshipType.CROSS_FUNCTIONAL: ProductStrategyScenario,
     RelationshipType.ADVERSARIAL: NegotiationScenario,
-    RelationshipType.SEQUENTIAL: SupportScenario,
+    RelationshipType.SEQUENTIAL: IncidentResponseScenario,
 }
 
 
@@ -42,10 +44,10 @@ def create_scenario(
 __all__ = [
     "BaseScenario",
     "StudyGroupScenario",
-    "ExecTeamScenario",
-    "ContractReviewScenario",
+    "MunicipalCommitteeScenario",
+    "ProductStrategyScenario",
     "NegotiationScenario",
-    "SupportScenario",
+    "IncidentResponseScenario",
     "load_scenario",
     "create_scenario",
 ]

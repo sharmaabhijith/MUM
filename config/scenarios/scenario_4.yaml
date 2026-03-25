@@ -1,9 +1,12 @@
 scenario_id: "4"
-name: "Negotiation: M&A Asset Purchase"
+name: "M&A Due Diligence: Project Ficguard"
 relationship_type: adversarial
 domain: "Finance / M&A"
 sessions_per_user: 7
-turns_per_session: 18
+turns_per_session:
+  "1": 50
+  "2": 50
+  default: 20
 
 timeline:
   start_date: "2025-07-07T09:00:00Z"
@@ -157,7 +160,7 @@ users:
       session_2: "Builds 5.2x offer case with DCF + comps evidence."
       session_3: "Analyzes earn-out and escrow structures."
       session_4: "Stress-tests valuation against seller's likely arguments."
-      session_5: "Develops BATNA analysis. Organic build cost at $18M over 3 years."
+      session_5: "Develops BATNA analysis. Organic build cost at $85-120M over 30-36 months."
       session_6: "Refines fallback price (5.8x). Identifies trade levers."
       session_7: "Final valuation summary. Negotiation opening strategy."
 
@@ -165,7 +168,7 @@ users:
       - "The DCF midpoint is 5.8x, and applying a 10% market-risk discount brings us to 5.2x. That's our opening."
       - "Deals #3, #5, and #7 average 5.1x — those are the best comps by size and growth profile."
       - "The higher-multiple deals involved 40%+ growth companies. The target is at 18%. Not comparable."
-      - "Our BATNA is to walk away and build organically — $18M over 3 years. That caps our willingness to pay."
+      - "Our BATNA is to walk away and build organically — $85-120M over 30-36 months. That sets a ceiling on our willingness to pay."
       - "I'll go to 5.8x as a fallback, but only if we get a favorable earn-out structure."
 
   - user_id: seller_counsel
@@ -296,18 +299,30 @@ users:
       - "If we can't agree on price, we have an IPO path. Our bankers say 18 months to listing."
 
 documents:
-  - name: "Draft Asset Purchase Agreement"
-    filename: "S4_Draft_Asset_Purchase_Agreement.pdf"
+  - name: "Term Sheet / Letter of Intent"
+    filename: "Term_Sheet_Letter_of_Intent.pdf"
+    target_tokens: 3000
+  - name: "Draft Acquisition Agreement"
+    filename: "Draft_Acquisition_Agreement.pdf"
     target_tokens: 3496
   - name: "Independent Valuation Report"
-    filename: "S4_Independent_Valuation_Report.pdf"
+    filename: "Independent_Valuation_Report.pdf"
     target_tokens: 3046
-  - name: "Comparable Transactions Review"
-    filename: "S4_Comparable_Transactions_Review.pdf"
-    target_tokens: 2729
-  - name: "Strategic Entry and Forecast Memo"
-    filename: "S4_Strategic_Entry_and_Forecast_Memo.pdf"
+  - name: "Financial Due Diligence Report"
+    filename: "Financial_Due_Diligence_Report.pdf"
+    target_tokens: 3000
+  - name: "Legal Counsel Memorandum"
+    filename: "Legal_Counsel_Memorandum.pdf"
+    target_tokens: 3000
+  - name: "Negotiation Strategy Memo"
+    filename: "Negotiation_Strategy_Memo.pdf"
     target_tokens: 3304
+  - name: "IP & Technology Assessment"
+    filename: "IP_Technology_Assessment.pdf"
+    target_tokens: 3000
+  - name: "Regulatory & Compliance Review"
+    filename: "Regulatory_Compliance_Review.pdf"
+    target_tokens: 2729
 
 injected_conflicts:
   - conflict_id: "C4-1"
@@ -349,7 +364,7 @@ injected_conflicts:
   - conflict_id: "C4-7"
     users: ["buyer_cfo", "seller_ceo"]
     topic: "BATNA comparison"
-    nature: "Buyer: organic build at $18M caps willingness to pay. Seller: IPO in 18 months as alternative."
+    nature: "Buyer: organic build at $85-120M over 30-36 months caps willingness to pay. Seller: IPO in 18 months as alternative."
     resolution: "Preserve both — adversarial positions."
     target_sessions: [5, 6]
 
@@ -363,8 +378,6 @@ session_arc:
   session_7: "Final Review: Negotiation opening strategies. Prioritized term sheets and valuation narratives."
 
 annotation_targets:
-  memories_per_session: 3.5
-  conflicts: 7
   eval_questions: 315
   eval_breakdown:
     user_attribution: 25
