@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -100,20 +101,24 @@ class ConversationGenerator:
                 )
 
                 # Generate conversation
+                sys_tokens = self.token_counter.count(system_prompt)
                 logger.info(
                     f"  Session {session_num}/{config.sessions_per_user} "
-                    f"for {user.display_name}"
+                    f"for {user.display_name} "
+                    f"({turns_this_session} turns, ~{sys_tokens:,} prompt tokens)"
                 )
                 messages = [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ]
+                t0 = time.time()
                 response = self.llm_client.generate_json(
                     messages=messages,
                     temperature=0.7,
                     max_tokens=16384,
                     phase="conversation_generation",
                 )
+                elapsed = time.time() - t0
 
                 # Parse into ConversationSession
                 session = self._parse_conversation_response(
@@ -126,15 +131,25 @@ class ConversationGenerator:
                     authority_level=user.authority_level,
                 )
 
-                # Validate
+                # Validate and log results
+                actual_turns = len(session.turns) // 2
+                logger.info(
+                    f"    Generated {actual_turns}/{turns_this_session} turns "
+                    f"({len(session.turns)} messages) in {elapsed:.1f}s"
+                )
                 warnings = self._validate_session(session, turns_this_session)
                 for w in warnings:
-                    logger.warning(f"  Validation: {w}")
+                    logger.warning(f"    Validation: {w}")
 
                 user_sessions.append(session)
 
                 # Generate session summary immediately (feed-forward)
+                logger.info(f"    Generating session summary...")
                 summary = self._generate_summary(session, accumulated_summary)
+                logger.info(
+                    f"    Summary: {len(summary.key_facts)} key facts, "
+                    f"{len(summary.positions_taken)} positions"
+                )
                 user_summaries.append(summary)
 
                 # Accumulate summaries for next session

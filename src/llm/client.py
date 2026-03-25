@@ -72,7 +72,7 @@ def _build_openai_client(
     return openai.OpenAI(
         api_key=resolved_key,
         base_url=cfg["base_url"],
-        timeout=openai.Timeout(connect=30.0, read=300.0, write=30.0, pool=30.0),
+        timeout=openai.Timeout(connect=30.0, read=600.0, write=30.0, pool=30.0),
     )
 
 
@@ -82,7 +82,7 @@ class LLMClient:
         model: str = "deepseek-ai/DeepSeek-V3.2",
         api_key: str | None = None,
         temperature: float = 0.7,
-        max_retries: int = 5,
+        max_retries: int = 10,
         rate_limit_rpm: int = 500,
         cost_tracker: CostTracker | None = None,
     ):
@@ -119,10 +119,15 @@ class LLMClient:
         temp = temperature if temperature is not None else self.temperature
 
         @retry(
-            wait=wait_exponential(min=1, max=60),
+            wait=wait_exponential(min=5, max=120),
             stop=stop_after_attempt(self.max_retries),
             retry=retry_if_exception_type(
-                (openai.RateLimitError, openai.APITimeoutError, openai.APIConnectionError)
+                (
+                    openai.RateLimitError,
+                    openai.APITimeoutError,
+                    openai.APIConnectionError,
+                    openai.APIStatusError,
+                )
             ),
             before_sleep=lambda rs: logger.warning(
                 f"Retry {rs.attempt_number}/{self.max_retries} after {rs.outcome.exception()}"
@@ -137,7 +142,15 @@ class LLMClient:
             }
             if response_format:
                 kwargs["response_format"] = response_format
-            return self.client.chat.completions.create(**kwargs)
+            resp = self.client.chat.completions.create(**kwargs)
+            # DeepInfra may return an empty choices list when model is busy
+            if not resp.choices:
+                raise openai.APIStatusError(
+                    message="Model returned empty response (model may be busy)",
+                    response=resp,
+                    body=None,
+                )
+            return resp
 
         response = _call()
         content = response.choices[0].message.content or ""
