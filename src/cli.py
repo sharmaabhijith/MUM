@@ -21,7 +21,7 @@ def main(verbose: bool):
 @main.command()
 @click.option("--scenario", "-s", type=str, help="Scenario ID (1-5)")
 @click.option("--all", "run_all", is_flag=True, help="Run all scenarios")
-@click.option("--model", "-m", default="deepseek-ai/DeepSeek-V3.2", help="Model for conversation generation")
+@click.option("--model", "-m", default="google/gemini-2.5-pro", help="Model for conversation generation")
 @click.option("--question-model", default="google/gemini-2.5-pro", help="Model for question generation")
 @click.option("--dry-run", is_flag=True, help="Use mock LLM client")
 @click.option("--output-dir", default="output", help="Output directory")
@@ -51,7 +51,7 @@ def generate(scenario, run_all, model, question_model, dry_run, output_dir):
 
 @main.command("generate-conversations")
 @click.option("--scenario", "-s", required=True, type=str, help="Scenario ID")
-@click.option("--model", "-m", default="deepseek-ai/DeepSeek-V3.2", help="Model")
+@click.option("--model", "-m", default="google/gemini-2.5-pro", help="Model")
 def generate_conversations(scenario, model):
     """Generate conversations only (Phase 2)."""
     from src.pipeline.orchestrator import PipelineOrchestrator
@@ -110,13 +110,13 @@ def estimate_cost(scenario, run_all, mode):
 
     model_configs = {
         "iteration": {
-            "conversation": "deepseek-ai/DeepSeek-V3.2",
-            "summary": "deepseek-ai/DeepSeek-V3.2",
+            "conversation": "google/gemini-2.5-pro",
+            "summary": "google/gemini-2.5-pro",
             "question_gen": "google/gemini-2.5-pro",
         },
         "final": {
-            "conversation": "deepseek-ai/DeepSeek-V3.2",
-            "summary": "deepseek-ai/DeepSeek-V3.2",
+            "conversation": "google/gemini-2.5-pro",
+            "summary": "google/gemini-2.5-pro",
             "question_gen": "google/gemini-2.5-pro",
         },
     }
@@ -294,8 +294,7 @@ def estimate_cost(scenario, run_all, mode):
     console.print()
     console.print("[dim]Notes:[/dim]")
     console.print("[dim]  - Document tokens are read from actual PDFs (falls back to YAML targets if PDFs missing)[/dim]")
-    console.print("[dim]  - Conversation generation uses DeepSeek V3.2 via DeepInfra[/dim]")
-    console.print("[dim]  - Question generation uses Gemini 2.5 Pro via DeepInfra[/dim]")
+    console.print("[dim]  - All generation phases use Gemini 2.5 Pro via DeepInfra[/dim]")
 
 
 @main.command()

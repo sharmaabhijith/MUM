@@ -1,11 +1,11 @@
 iteration:
-  conversation: deepseek-ai/DeepSeek-V3.2
-  summary: deepseek-ai/DeepSeek-V3.2
+  conversation: google/gemini-2.5-pro
+  summary: google/gemini-2.5-pro
   question_gen: google/gemini-2.5-pro
 
 final:
-  conversation: deepseek-ai/DeepSeek-V3.2
-  summary: deepseek-ai/DeepSeek-V3.2
+  conversation: google/gemini-2.5-pro
+  summary: google/gemini-2.5-pro
   question_gen: google/gemini-2.5-pro
 
 eval:

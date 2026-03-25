@@ -79,7 +79,7 @@ def _build_openai_client(
 class LLMClient:
     def __init__(
         self,
-        model: str = "deepseek-ai/DeepSeek-V3.2",
+        model: str = "google/gemini-2.5-pro",
         api_key: str | None = None,
         temperature: float = 0.7,
         max_retries: int = 10,

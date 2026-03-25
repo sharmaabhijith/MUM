@@ -9,6 +9,7 @@ logger = logging.getLogger("mum")
 MODEL_PRICING: dict[str, dict[str, float]] = {
     # DeepInfra — DeepSeek models
     "deepseek-ai/DeepSeek-V3.2": {"input": 0.30, "output": 0.88},
+    "deepseek-ai/DeepSeek-V3.1": {"input": 0.30, "output": 0.88},
     "deepseek-ai/DeepSeek-V3": {"input": 0.30, "output": 0.88},
     "deepseek-ai/DeepSeek-R1": {"input": 0.75, "output": 2.19},
     # DeepInfra — Google Gemini models
