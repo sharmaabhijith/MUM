@@ -1,0 +1,26 @@
+{
+  "session_id": "s3_cfo_finance_4",
+  "scenario_id": "3",
+  "user_id": "cfo_finance",
+  "session_number": 4,
+  "summary": "The user, a CFO, scrutinized the company's Sales & Marketing (S&M) spend (41% of revenue), identifying significant inefficiencies and unbudgeted initiatives like a customer conference and APAC expansion. This discovery, combined with previously identified uncosted R&D projects and new AI compute costs (up to $45K/month), led the user to conclude the official 22-month runway is \"built on sand\" and likely closer to 15-16 months. This puts the company's FY 2027 profitability target at risk. The user questioned the expensive push for enterprise customers, noting that while they have a high NPS (71), the lack of segmented CAC data means the company is \"flying blind\" on the segment's true profitability. The user contrasted this with the highly efficient PLG motion for the Professional tier. The session reinforced the user's prior assessment of a \"fragile\" financial model, concluding that no further enterprise-focused spending can be approved without clear unit economics.",
+  "key_facts": [
+    "Sales & Marketing spend is 41% of revenue, or $1.54M in Q1 2026.",
+    "The marketing roadmap includes major uncosted initiatives like a customer conference and an APAC market entry campaign.",
+    "The V2 AI features have a projected future cost of up to $45K per month, which is not explicitly included in financial projections.",
+    "The user estimates the actual runway is closer to 15-16 months, not the stated 22 months.",
+    "The company lacks segmented CAC data, only providing a blended figure of $38,200.",
+    "The Product-Led Growth (PLG) motion originates 64% of Professional-tier customers, which have an average ACV of $255K.",
+    "Enterprise customers have a high NPS of 71, compared to the overall score of 62.",
+    "The company is pursuing enterprise deals to mitigate a known customer concentration risk (top 3 customers are 31% of ARR)."
+  ],
+  "positions_taken": [
+    "The company's 22-month runway projection is unreliable and overstated due to multiple unbudgeted initiatives.",
+    "The company is 'flying blind' on the economics of its enterprise sales motion and cannot make informed spending decisions.",
+    "The current planning process reflects a 'serious governance issue' and a lack of financial discipline.",
+    "Pursuing expensive enterprise deals without clear economics is 'trading one risk for another' (swapping concentration risk for financial risk).",
+    "The PLG motion appears to be a more efficient growth channel that should be considered for greater investment.",
+    "No more spending on enterprise acquisition can be approved until the unit economics for that segment are fully understood."
+  ],
+  "positions_changed": []
+}

@@ -1,0 +1,30 @@
+{
+  "session_id": "s2_health_officer_7",
+  "scenario_id": "2",
+  "user_id": "health_officer",
+  "session_number": 7,
+  "summary": "In a final review before a committee meeting, the user, as a health officer, systematically gathered damning statistics to argue for immediate action on FicTown's public health emergency. They focused on two fronts: the 'catastrophic' Tier 1 crisis at the Pallavaram landfill and the 'emerging' Tier 2 crisis in zones managed by contractor GreenHaul. The user established a 'causal chain' for Pallavaram, linking confirmed leachate migration to a 4.81x odds ratio for Hepatitis A and a 64.3% share of pediatric pneumonia deaths in a zone with only 3.8% of the city's at-risk children. For GreenHaul, they highlighted the Grade F rating, 58% collection efficiency, and neglect of worker safety as a 'dual crisis'. The user solidified their core strategy: to bifurcate the discussion, making funding for 'non-negotiable' health interventions (mobile clinics, water purification, blood-lead screening) a prerequisite to discussing the 2031 Waste-to-Energy plant. They will use the INR 48.6 crore annual economic burden and emergency spending to argue the city is already 'paying for failure' and must act now, given the landfill's 8-month lifespan.",
+  "key_facts": [
+    "The adjusted odds ratio for Hepatitis A in Zone A is 4.81.",
+    "Groundwater at the Pallavaram site has confirmed leachate migration.",
+    "The annual economic burden from waste-related illness is INR 48.6 crore.",
+    "Contractor GreenHaul received a Grade F performance rating with 58% collection efficiency.",
+    "Zone A, with 3.8% of the city's under-5 population, accounts for 64.3% of pediatric pneumonia deaths.",
+    "The Pallavaram landfill has an estimated 8 months of remaining lifespan.",
+    "The proposed Waste-to-Energy plant's target operational date is July 2031.",
+    "Immediate health recommendations include mobile clinics and water purification kits for Zone A.",
+    "Short-term recommendations include blood-lead-level screening for children due to a rising trend in e-waste.",
+    "The prevalence of moderate-to-severe depressive symptoms in Zone A (22.4%) is nearly double that of the control zone (11.8%).",
+    "Two specific outbreaks (Acute Diarrhoeal Disease and Cholera) were recorded in Zone A."
+  ],
+  "positions_taken": [
+    "The link between the landfill, leachate, and disease is a 'causal chain,' not a mere correlation.",
+    "The WtE plant is not a solution to the current public health emergency and is a distraction.",
+    "The committee discussion must be bifurcated to prioritize immediate health funding over long-term capital projects.",
+    "Immediate health interventions like mobile clinics and water purification are 'non-negotiables'.",
+    "The city is already 'paying for failure' through the economic burden of illness and reactive emergency spending.",
+    "The disproportionate pediatric death rate in Zone A is the 'single most important point' and is 'indefensible'.",
+    "The GreenHaul situation is a 'dual crisis' affecting both the public and the contractor's unprotected workforce."
+  ],
+  "positions_changed": []
+}

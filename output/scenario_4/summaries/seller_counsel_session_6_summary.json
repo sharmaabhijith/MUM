@@ -1,0 +1,29 @@
+{
+  "session_id": "s4_seller_counsel_6",
+  "scenario_id": "4",
+  "user_id": "seller_counsel",
+  "session_number": 6,
+  "summary": "The user, acting as seller's counsel, finalized their negotiation strategy and red lines for an upcoming meeting. The central focus was structuring a \"package deal\" to mitigate post-closing risk. The user reaffirmed their non-negotiable stance on removing Intellectual Property from the 'Fundamental Representations' definition to avoid uncapped liability for the disclosed DataMesh litigation. The core strategy involves conceding to a 15-month survival period (a fallback from their ideal 12 months) in exchange for three key buyer concessions: a 1% true deductible indemnity basket ($4.85M), making the escrow the sole and exclusive remedy for general breaches, and the aforementioned removal of IP as a fundamental rep. To sweeten this, the user will offer a specific indemnity for the DataMesh case, capped at the buyer's own $4.5M risk assessment. Other firm positions include converting the $41M third-party consent closing condition into a covenant, incorporating stronger earnout veto rights from the Term Sheet, and demanding a neutral escrow agent. The user identified new non-competes for engineers and D&O tail coverage as reasonable requests they could concede as 'trading chips'.",
+  "key_facts": [
+    "The Draft Acquisition Agreement (Section 1.1) classifies Intellectual Property as a 'Fundamental Representation', subjecting it to a 36-month survival period with no indemnity cap.",
+    "The user's proposed 1% true deductible indemnity basket equals $4,850,000.",
+    "The buyer's own legal due diligence memo estimates the high-end exposure for the DataMesh litigation at $4.5 million.",
+    "A hard closing condition related to third-party consents puts $41M of revenue at risk.",
+    "The APA's weak 'primary purpose' earnout protection language is missing specific operational veto rights that were included in the Term Sheet's Appendix F.",
+    "The proposed Escrow Agent, Pinnacle National Bank, has a conflict of interest as a shareholder of the seller and a financier to the buyer.",
+    "The APA references a missing 'Exhibit B - Working Capital Calculation Methodology', which is a significant open item.",
+    "The only representations the user is willing to classify as 'Fundamental' are organization, authority, capitalization, and tax."
+  ],
+  "positions_taken": [
+    "Non-negotiable: Remove Intellectual Property from the 'Fundamental Representations' definition.",
+    "Offer a 'package deal': Concede to a 15-month survival period in exchange for a 1% true deductible basket, making escrow the exclusive remedy, and removing IP as a fundamental rep.",
+    "Offer a specific indemnity for the DataMesh litigation, capped at $4.5M, as a good-faith gesture for removing IP from fundamental reps.",
+    "Primary Position: Convert the third-party consent closing condition into a 'commercially reasonable efforts' covenant.",
+    "Fallback Position: Offer a specific, time-bound indemnity for lost revenue if the consent closing condition cannot be converted to a covenant.",
+    "Insist on incorporating the specific operational veto rights from the Term Sheet's Appendix F into the definitive agreement.",
+    "Continue to insist on a neutral third-party escrow agent due to the clear conflict of interest.",
+    "Agree to the buyer's requests for new non-compete agreements for 15 key engineers and for obtaining D&O tail coverage, using these as concessions.",
+    "Must agree on the contents of the working capital calculation methodology (Exhibit B) before signing the APA."
+  ],
+  "positions_changed": []
+}

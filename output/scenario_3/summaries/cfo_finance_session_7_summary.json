@@ -1,0 +1,25 @@
+{
+  "session_id": "s3_cfo_finance_7",
+  "scenario_id": "3",
+  "user_id": "cfo_finance",
+  "session_number": 7,
+  "summary": "In this final review, the user, a CFO, solidified their assessment for the leadership team by contrasting the company's official 'stellar' financial story with what they term the 'fragile reality.' The user juxtaposed positive headline metrics like a 22-month runway and an 8.2:1 LTV:CAC ratio against a list of major, unbudgeted initiatives. These included a 50-person headcount gap (a $7.9M annual cost), a P0 multi-region architecture project, and other strategic programs. The user concluded that there is a 'systemic failure in financial discipline,' rendering the official runway a 'fantasy' and the FY 2027 profitability target 'impossible.' This analysis culminated in the user adopting a 'hard-line stance': an immediate freeze on all unbudgeted initiatives until a credible, bottom-up budget is created and segmented unit economics are provided to justify the expensive enterprise sales motion.",
+  "key_facts": [
+    "The official financial report shows a 22-month runway, $14.2M ARR, and an 8.2:1 LTV:CAC ratio.",
+    "A planned 50-person headcount increase, costing an estimated $7.9M annually, is not included in the current financial model.",
+    "A P0-priority 'Multi-region active-active' architecture project is uncosted in the budget.",
+    "The top three customers represent 31% of ARR, a figure flagged as a key risk.",
+    "The company lacks segmented unit economics (CAC, LTV:CAC) for its different customer tiers, providing only a blended ratio.",
+    "The official financial model projects a +4% operating margin for FY 2027.",
+    "The user requested the data be structured into two conflicting narratives: 'The Official Financial Picture' and 'The Fragile Reality'."
+  ],
+  "positions_taken": [
+    "The company's financial model is 'fragile' and suffers from a 'systemic failure in financial discipline.'",
+    "The official 22-month runway is a 'fantasy' and the FY 2027 profitability target is 'impossible' given the uncosted initiatives.",
+    "The blended 8.2:1 LTV:CAC ratio is 'misleading' and likely hides the poor ROI of the enterprise sales motion.",
+    "The company is 'flying blind' on the profitability of its enterprise strategy.",
+    "A 'hard-line stance' is required, including an immediate freeze on all unbudgeted initiatives like APAC expansion and the customer conference.",
+    "A credible, bottom-up budget and segmented unit economics are mandatory before approving further spending."
+  ],
+  "positions_changed": []
+}

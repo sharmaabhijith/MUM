@@ -1,0 +1,27 @@
+{
+  "session_id": "s4_buyer_cfo_6",
+  "scenario_id": "4",
+  "user_id": "buyer_cfo",
+  "session_number": 6,
+  "summary": "The user, a CFO, conducted a final pre-negotiation review to solidify their strategy for the Veloxra acquisition. They re-anchored their $485M base offer to the $484M DCF valuation, preparing to dismiss outlier public comparables. The core of the session was a detailed walkthrough of their concession playbook, confirming the primary strategy is to hold the base price firm and trade flexibility on the earnout, with a maximum concession from $75M to $82.5M. They identified a board observer seat as a key low-cost \"give\" to be used strategically to close the deal. The user reinforced their non-negotiable \"Hold Firm\" items, including uncapped IP representations, a full working capital adjustment, and the right to offset indemnity claims against the earnout. They reviewed key risks to justify their price discipline, such as the $2.5M tech debt and $4.5M litigation exposure. The session concluded with the user reaffirming their absolute walk-away total consideration of $585M, which is underpinned by their organic build BATNA, feeling confident and prepared to proceed with the definitive offer.",
+  "key_facts": [
+    "The base case DCF enterprise value from the valuation report is $484M.",
+    "The user's maximum concession on the earnout is to increase the total potential payment from $75M to $82.5M.",
+    "The final earnout targets being negotiated are $145M in ARR and $38M in adjusted EBITDA.",
+    "Key risks to be used as leverage include a $2.0M-$4.5M patent litigation exposure, a $2.5M tech debt remediation cost, and $6.7M in recommended financial adjustments.",
+    "The user's maximum acceptable base price is $510M, and the absolute walk-away total consideration is $585M.",
+    "The user's BATNA is an organic build estimated to cost $85M-$120M over 3 years.",
+    "Both legal and financial advisors recommended increasing the escrow to 10% of the base price.",
+    "Non-negotiable items include designating IP representations as fundamental, the full working capital adjustment, and the right to offset earnout payments against indemnity claims."
+  ],
+  "positions_taken": [
+    "The opening offer of a $485M base price is firm and will be defended using the identified risks.",
+    "The primary negotiation strategy is to trade on the earnout quantum before conceding on the base price.",
+    "The 10% escrow is a non-negotiable risk mitigation measure, not a price negotiation point.",
+    "A board observer seat will be held back and used as a final, low-cost \"give\" to make the seller feel valued and close the deal.",
+    "The walk-away price of $585M is a hard stop, as exceeding it would breach the required IRR hurdle.",
+    "The organic build BATNA strengthens the resolve to maintain price discipline.",
+    "The high-multiple public comparable 'Synthara' is considered a ridiculous comparison and will be actively refuted."
+  ],
+  "positions_changed": []
+}

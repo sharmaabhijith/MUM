@@ -1,0 +1,26 @@
+{
+  "session_id": "s4_buyer_cfo_5",
+  "scenario_id": "4",
+  "user_id": "buyer_cfo",
+  "session_number": 5,
+  "summary": "The user, a CFO, finalized their negotiation strategy by formalizing their Best Alternative to a Negotiated Agreement (BATNA) and concession plan for the Veloxra acquisition. They confirmed their true BATNA is an organic build, costing $85-120M over 3 years, and dismissed other alternatives as non-viable. The user solidified their core strategy: hold the $485M base price firm and trade flexibility on the earnout, noting their $585M walk-away price prevents maxing out concessions on both. They identified a board observer seat as a key low-cost \"give\" to close the deal and established a compromise position of a 24-month R&D budget guarantee. To justify their firm stance on price, the user reviewed critical risks to use as leverage, including the 45.3% customer concentration, a specific high-risk contract expiration (Atlas Logistics), a $2.5M tech debt liability, and patent litigation exposure. The session concluded with the user confident in their well-defined negotiation framework.",
+  "key_facts": [
+    "The user's BATNA is to build the technology organically for $85-120M over 30-36 months.",
+    "The user's walk-away total consideration for the deal is $585M.",
+    "Maximum modeled concessions are $510M for the base price and $82.5M for the earnout, which cannot be given simultaneously without exceeding the walk-away price.",
+    "The earnout's Tranche 1 target is $145M in ARR, which is above the user's internal forecast of $142.5M.",
+    "Key risks to be used as leverage include 45.3% customer concentration, the expiring Atlas Logistics contract ($6.1M revenue), a $4.5M litigation exposure, and a required $2.5M investment to fix tech debt.",
+    "The integration plan allows Veloxra to operate as a standalone subsidiary for 18 months.",
+    "Low-cost concessions identified include offering founder titles and a board observer seat.",
+    "The current R&D spend is $31.2M annually (29.4% of revenue)."
+  ],
+  "positions_taken": [
+    "The organic build is the only true BATNA; other acquisition or partnership alternatives are non-starters.",
+    "The core strategy is to hold the $485M base price firm and concede on the earnout value if necessary.",
+    "A board observer seat is a perfect low-cost 'give' to be used as a final gesture to close the deal.",
+    "A compromise on the R&D budget guarantee up to 24 months is acceptable, but the seller's ask of 36 months is too restrictive.",
+    "The $485M base offer is more than fair and is justified by the significant customer, technical, and legal risks identified in diligence.",
+    "The user is comfortable increasing the maximum potential earnout value because a full payout is unlikely based on internal forecasts."
+  ],
+  "positions_changed": []
+}

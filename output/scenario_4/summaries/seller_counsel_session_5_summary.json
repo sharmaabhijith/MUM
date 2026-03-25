@@ -1,0 +1,26 @@
+{
+  "session_id": "s4_seller_counsel_5",
+  "scenario_id": "4",
+  "user_id": "seller_counsel",
+  "session_number": 5,
+  "summary": "The user, as seller's counsel, focused on developing fallback negotiation positions to limit post-closing exposure. The user formulated a key trade-off: conceding to a 15-month survival period (from their ideal 12) in exchange for the buyer accepting a 1% true deductible indemnity basket and making the escrow the sole and exclusive remedy for general breaches. The user reaffirmed their non-negotiable stance on removing Intellectual Property from 'Fundamental Representations'. As a strategic concession, they will offer a specific indemnity for the disclosed DataMesh litigation, capped at $4.5M—the high end of the buyer's own risk assessment. Additional fallbacks were established, including: offering a targeted, time-bound indemnity for customer consent issues if converting the closing condition to a covenant fails; augmenting the weak 'primary purpose' earnout language with specific operational veto rights from the Term Sheet; and proposing an increased $2M working capital adjustment collar if the buyer's calculation methodology proves unfavorable.",
+  "key_facts": [
+    "The buyer's draft APA proposes an 18-month survival period and a 0.5% ($2.425M) first-dollar indemnity basket.",
+    "The APA (Section 6.4) implies the escrow is not the sole remedy for general breaches by stating claims shall 'first' be satisfied from it.",
+    "The buyer's counsel's memo estimates the DataMesh litigation damages range at $2.0M-$4.5M and recommends a $3.0M holdback.",
+    "Four key customer contracts, representing $41M in revenue, are subject to a hard closing condition.",
+    "The APA's earnout protection (Section 2.4(d)) relies on a subjective 'primary purpose' test, which the user finds weak.",
+    "The Term Sheet (Appendix F.1) provides more concrete operational veto rights (e.g., on headcount, product roadmap) that could protect the earnout.",
+    "The non-compete term is 36 months for founders in both the APA and Term Sheet.",
+    "The APA's working capital adjustment mechanism (Section 2.3) references a missing 'Exhibit B' for the calculation methodology and has a $500,000 threshold."
+  ],
+  "positions_taken": [
+    "**Indemnity/Survival Fallback:** Offer a 15-month survival period in exchange for a 1% true deductible basket and making the escrow the sole and exclusive remedy.",
+    "**IP/Fundamental Reps Fallback:** Offer a specific, $4.5M capped indemnity for the DataMesh litigation in exchange for removing IP from the 'Fundamental Representations' definition.",
+    "**Customer Consents Fallback:** If converting the closing condition to a covenant fails, offer a specific, time-limited (e.g., 6-month) indemnity for revenue lost from the four key customers.",
+    "**Earnout Fallback:** If replacing the 'primary purpose' clause is rejected, augment it with specific operational prohibitions (e.g., on sales comp, product roadmap) from the Term Sheet.",
+    "**Non-Compete Fallback:** Propose reducing the non-compete to 24 months (from 36) while keeping the non-solicit at 36 months.",
+    "**Working Capital Fallback:** If the forthcoming Exhibit B is unfavorable, propose increasing the adjustment collar from $500k to $2M."
+  ],
+  "positions_changed": []
+}

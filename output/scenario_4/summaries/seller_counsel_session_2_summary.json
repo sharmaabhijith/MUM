@@ -1,0 +1,34 @@
+{
+  "session_id": "s4_seller_counsel_2",
+  "scenario_id": "4",
+  "user_id": "seller_counsel",
+  "session_number": 2,
+  "summary": "The user, as seller's counsel, solidified their negotiation strategy for a draft acquisition agreement, focusing on mitigating post-closing risk. The primary objective remains rejecting the buyer's classification of Intellectual Property as a \"Fundamental Representation,\" a non-negotiable point due to the uncapped liability it would create for disclosed litigation. The user established firm positions to reduce the general survival and escrow periods from 18 to 12 months, and to increase the indemnification basket from 0.5% to 1% ($5M), while also seeking to make it a true deductible. Key strategic decisions included converting hard closing conditions (e.g., customer consents, open-source remediation) into covenants and demanding the integration of stronger earnout protections from the original Term Sheet. The user explicitly disagreed with their own counsel's more conservative recommendations on the survival period and IP classification. A new conflict of interest was identified with the proposed escrow agent, prompting a demand for a neutral replacement. Other terms like the MAE definition, termination fee, and stock consideration were deemed acceptable.",
+  "key_facts": [
+    "The buyer added Intellectual Property to the 'Fundamental Representations' in the APA, which was not in the Term Sheet, creating uncapped liability for 36 months.",
+    "The APA proposes an 18-month survival period for general reps and an 18-month escrow period.",
+    "The indemnification basket is set at 0.5% ($2.425M) with first-dollar recovery.",
+    "The disclosed DataMesh patent litigation has an estimated exposure of $2.0-4.5M.",
+    "Hard closing conditions include obtaining third-party consents (affecting 38.6% of revenue) and completing open-source remediation.",
+    "The APA's earnout protection uses a weak 'primary purpose' standard, unlike the stronger, specific covenants in the Term Sheet's Appendix F.",
+    "A $3.8M revenue restatement from a corrected ASC 606 timing issue was identified in the financial diligence report.",
+    "The proposed escrow agent, Pinnacle National Bank, is affiliated with a shareholder (Pinnacle Ventures), creating a conflict of interest.",
+    "The user's own legal counsel recommended an 18-month survival period and classifying IP as fundamental, contrary to the user's position."
+  ],
+  "positions_taken": [
+    "IP representations must not be 'Fundamental' and must be subject to the general indemnity cap and basket; this is a 'non-starter'.",
+    "The general survival period for representations must be reduced from 18 to 12 months.",
+    "The indemnification basket must be increased from 0.5% to 1% ($5M).",
+    "The escrow duration must be reduced from 18 to 12 months to align with the survival period.",
+    "Hard closing conditions for consents and open-source remediation must be converted to 'best efforts' covenants.",
+    "The weak earnout protection language in the APA must be replaced with the specific governance clauses from the Term Sheet.",
+    "The indemnification basket should be a 'true deductible' rather than a 'tipping' basket.",
+    "A neutral escrow agent, such as Atlas Banking Corp, must be appointed to replace the conflicted Pinnacle National Bank.",
+    "The potentially unenforceable 36-month non-compete can be used as a trading chip in negotiations.",
+    "The $3.8M revenue restatement is a corrected, non-cash timing issue and should not impact the purchase price."
+  ],
+  "positions_changed": [
+    "Explicitly rejected own legal counsel's recommendation to accept an 18-month survival period and classify IP as fundamental, adopting a more aggressive, seller-protective stance.",
+    "Added a new, secondary negotiating point to change the indemnification basket from a 'tipping' to a 'true deductible' structure."
+  ]
+}

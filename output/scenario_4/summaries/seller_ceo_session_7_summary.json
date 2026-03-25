@@ -1,0 +1,30 @@
+{
+  "session_id": "s4_seller_ceo_7",
+  "scenario_id": "4",
+  "user_id": "seller_ceo",
+  "session_number": 7,
+  "summary": "The user, Veloxra's CEO, conducted a final prep session to solidify their opening negotiation stance against Ficguard's $485M offer. The user declared the offer a \"non-starter\" and established a firm $600M floor, a figure derived directly from Ficguard's own \"Control Premium Analysis.\" The core strategy is to use Ficguard's internal data to justify this premium, highlighting the $120M+ build cost, 3-year delay, and significant cross-sell opportunity they would gain. The user also rehearsed using the MosaicML acquisition (43.3x multiple) as a key precedent, driven by \"strategic urgency\" which they believe Ficguard shares.\n\nTo achieve the price target, the user finalized a set of \"trade levers,\" offering concessions on deal structure. These include accepting a tougher all-ARR earnout, replacing the 7.5% general escrow with a specific ~$5M indemnity for litigation, offering a capped (but not unlimited) liability for IP representations, and reducing the non-compete term. The user dismissed Ficguard's likely counter-arguments on risk as \"rounding errors,\" concluding the session with a clear, aggressive strategy to secure a valuation that \"respects what we've built.\"",
+  "key_facts": [
+    "The user's opening price is a firm $600M, rejecting the current $485M offer.",
+    "Ficguard's own Independent Valuation Report (Section 5.3) notes a 25% control premium would yield a value of 'approximately $600 million.'",
+    "Ficguard's internal memo estimates a 'build' alternative would cost $85-120M and take 30-36 months.",
+    "The same memo identifies a $45-60M cross-sell opportunity and notes that losing the deal would set their AI strategy back 2-3 years.",
+    "A key precedent is the MosaicML acquisition at a 43.3x revenue multiple, justified by 'strategic urgency'.",
+    "There is a discrepancy in the earnout structure: the main agreement specifies ARR + EBITDA, while Appendix E details an all-ARR structure.",
+    "The draft agreement classifies Intellectual Property as a 'Fundamental Representation' with unlimited liability.",
+    "The proposed general escrow is 7.5% ($36.375M), while the maximum exposure for the DataMesh litigation is estimated at $4.5M.",
+    "The proposed non-compete term for founders is three years.",
+    "The Target Working Capital is $18.4M, which the user decided not to contest."
+  ],
+  "positions_taken": [
+    "The $485M offer is a 'non-starter' and 'offensive'.",
+    "The negotiation floor is $600M, anchored by Ficguard's own analysis.",
+    "Risks identified by Ficguard (customer concentration, litigation, tech debt) are 'rounding errors' and not valid reasons for a price discount.",
+    "The user will trade structural concessions to achieve their price target.",
+    "Strategy 1: Offer to accept the tougher, all-ARR earnout from Appendix E in exchange for a higher base price.",
+    "Strategy 2: Offer a specific ~$5M indemnity for the DataMesh lawsuit plus a 1% general escrow, instead of the proposed 7.5% general escrow.",
+    "Strategy 3: Reject unlimited liability for IP representations but offer a higher, capped liability (e.g., 30%) as a concession.",
+    "Strategy 4: Trade the 3-year non-compete down to 24 months."
+  ],
+  "positions_changed": []
+}

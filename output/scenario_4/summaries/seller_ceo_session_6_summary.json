@@ -1,0 +1,31 @@
+{
+  "session_id": "s4_seller_ceo_6",
+  "scenario_id": "4",
+  "user_id": "seller_ceo",
+  "session_number": 6,
+  "summary": "The user, Veloxra's CEO, shifted tactics from arguing strategic value to identifying concrete \"trade levers\" to compel Ficguard to increase its acquisition offer towards the $600M target. The user developed a strategy to trade structural concessions for a higher base price. Key levers identified include: 1) Accepting a challenging, all-ARR earnout structure (from Appendix E), but only in exchange for a higher price and a guaranteed R&D budget to de-risk the targets. 2) Replacing the \"absurd\" 7.5% general escrow with a specific, capped indemnity (~$5M) for the DataMesh lawsuit and a nominal 1-2% general escrow. 3) Removing IP from the uncapped \"Fundamental Representations\" category while offering a higher, specific liability cap (e.g., 30%) as a compromise. 4) Reducing the founder non-compete from 36 to 24 months. The user also identified \"soft\" asks like a board observer seat but decided against negotiating the working capital target, deeming it less strategic. This approach is designed to frame concessions as a sign of confidence in their growth and IP.",
+  "key_facts": [
+    "The draft agreement contains conflicting earnout structures: one with an EBITDA component and another in Appendix E that is entirely based on ARR targets.",
+    "The maximum estimated exposure for the DataMesh lawsuit is $4.5M.",
+    "Ficguard's current offer includes a 7.5% escrow for an 18-month term.",
+    "The draft agreement designates Intellectual Property as a 'Fundamental Representation' with uncapped liability.",
+    "The proposed non-compete period for founders is 36 months.",
+    "The term sheet outlines a 24-month 'Autonomy Period' post-closing.",
+    "Veloxra's R&D spending was 29.4% of revenue in the previous fiscal year.",
+    "The user identified a board observer seat and a guaranteed R&D budget as valuable non-cash negotiating points.",
+    "The user decided not to contest the $18.4M working capital target methodology."
+  ],
+  "positions_taken": [
+    "The user will insist on the all-ARR earnout structure found in Appendix E.",
+    "The user will trade acceptance of a challenging earnout for a higher base price and a guaranteed R&D budget.",
+    "The user proposes replacing the large general escrow with a specific, capped indemnity for the known lawsuit and a nominal (1-2%) general escrow.",
+    "The user declared that IP as an uncapped 'Fundamental Representation' is a non-starter.",
+    "The user will offer a higher, specific liability cap (e.g., 30%) for IP as a compromise.",
+    "The user will offer to reduce the founder non-compete from 36 to 24 months as a concession to raise the price.",
+    "The user's primary goal remains a valuation near the $600M figure from Ficguard's own control premium analysis.",
+    "The user believes trading on major deal terms is a more effective strategy than debating accounting methodologies like the working capital target."
+  ],
+  "positions_changed": [
+    "The user's negotiating strategy shifted from primarily arguing the company's inherent strategic value to a more transactional approach of identifying specific deal terms to trade for a higher purchase price."
+  ]
+}

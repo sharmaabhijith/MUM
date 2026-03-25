@@ -1,0 +1,32 @@
+{
+  "session_id": "s3_cfo_finance_1",
+  "scenario_id": "3",
+  "user_id": "cfo_finance",
+  "session_number": 1,
+  "summary": "The user, a CFO, conducted a comprehensive financial review, starting with top-line metrics like ARR ($14.2M) and runway (22 months). The user analyzed revenue composition, noting the healthy 93% subscription mix but expressing concern over the high customer concentration (31% from the top 3 customers), which they deemed a \"key risk.\" The conversation then shifted to unit economics, where the user was impressed by the \"very strong\" 8.2:1 LTV:CAC ratio and \"excellent\" 7.4-month payback period, attributing this efficiency to a 134% Net Revenue Retention rate. The user also investigated future growth initiatives, including the V2 product and APAC expansion, and their financial implications. Throughout the session, the user identified several critical discrepancies between documents to be addressed with the team: a material difference in headcount projections, a missing cost estimate for a major technical initiative (V2 multi-region architecture), and a significant variance between the list price and actual average contract value for the Professional tier. The session concluded with these discrepancies flagged as key follow-up items.",
+  "key_facts": [
+    "ARR is $14.2M with a 22-month runway based on a $367K monthly burn.",
+    "Q1 2026 revenue was $3.8M, comprised of $3.55M subscription and $250K professional services.",
+    "The top three customers contribute 31% of total ARR, exceeding the 25% target threshold.",
+    "The LTV:CAC ratio is 8.2:1, with a CAC of $38.2K and a payback period of 7.4 months.",
+    "Net Revenue Retention is 134%, with recent cohorts showing even stronger performance.",
+    "Q1 2026 operating expenses were $4.9M, with R&D being the largest cost center at $1.68M.",
+    "A discrepancy was found in year-end 2026 headcount projections: 140 in the Financial Report vs. 170 in the Operations plan.",
+    "A cost estimate for the V2 multi-region architecture is missing from planning documents.",
+    "The Professional tier's list price is $90K/year, but its actual average ACV is $255K.",
+    "The sales pipeline has 4.1x coverage against the quarterly quota.",
+    "The company plans an APAC expansion, front-loading hiring costs in Q2/Q3 for an expected Q4 revenue contribution.",
+    "The company targets operational breakeven by Q1 2027 and a +4% operating margin for FY 2027."
+  ],
+  "positions_taken": [
+    "The 22-month runway is a 'manageable timeframe'.",
+    "The 31% customer concentration is 'too high' and a 'key risk'.",
+    "The LTV:CAC ratio of 8.2:1 and payback period under 8 months are 'excellent' and indicate 'sustainable and efficient' growth.",
+    "The 134% Net Revenue Retention is the 'key lever' for strong unit economics.",
+    "The discrepancy in headcount projections is a 'material discrepancy' that needs reconciliation.",
+    "The lack of a cost estimate for the V2 multi-region architecture is a 'major gap'.",
+    "The variance between the Professional tier's list price ($90k) and average ACV ($255k) suggests a strong upsell motion or that the list price is too low.",
+    "Marketing materials should use current financial data for ROI case studies."
+  ],
+  "positions_changed": []
+}

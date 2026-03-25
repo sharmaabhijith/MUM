@@ -1,0 +1,25 @@
+{
+  "session_id": "s4_buyer_cfo_3",
+  "scenario_id": "4",
+  "user_id": "buyer_cfo",
+  "session_number": 3,
+  "summary": "The user, a CFO, conducted a detailed analysis of the earnout and escrow provisions for the Veloxra acquisition. They identified an inconsistency in the seller's term sheet regarding earnout targets, but correctly focused on the Draft Acquisition Agreement's terms ($145M ARR target). By comparing this target to their internal forecast of $142.5M, the user concluded a full payout is unlikely, but a partial payment is probable. The user then shifted to risk mitigation, confirming that both financial and legal advisors recommended increasing the escrow from 7.5% to 10% to cover identified risks like patent litigation. They verified critical indemnity protections, including that IP representations are uncapped and that the escrow is the first source of recovery after a 0.5% basket. The user expressed satisfaction with the earnout's ARR definition, which excludes low-margin services, and a compromise on including cross-sell revenue at 50%. The session concluded with the user solidifying their strategy: hold firm on the 10% escrow demand and secure the right to offset indemnity claims against future earnout payments, viewing these as essential downside protections.",
+  "key_facts": [
+    "An inconsistency exists between the Term Sheet's main body ($145M ARR target) and its Appendix E ($155M ARR target); the Draft Acquisition Agreement aligns with the $145M target.",
+    "The buyer's adjusted forecast for FY 2026 revenue is $142.5M, which falls within the earnout's pro-rated payout band of $130M to $145M.",
+    "Both the Financial Due Diligence Report and Legal Counsel Memorandum recommend increasing the escrow from 7.5% to 10.0%.",
+    "The legal memo specifically recommends earmarking $3.0M of the escrow for the DataMesh patent litigation, which has a potential liability of up to $4.5M.",
+    "Intellectual Property representations are defined as 'Fundamental Representations' and are not subject to the 15% indemnity cap or the 0.5% basket.",
+    "The survival period for general reps (18 months) matches the escrow period, but fundamental reps survive for 36 months.",
+    "Revenue from the buyer's existing customers cross-sold onto Veloxra products will be included at 50% for earnout calculation purposes.",
+    "The deal includes a $24.25M seller note with a 12-month term, which is shorter than the survival period for fundamental reps."
+  ],
+  "positions_taken": [
+    "The user's strategy is to hold firm on the proposal to increase the escrow to 10%, using consistent recommendations from advisors as justification.",
+    "The user considers the right to offset indemnity claims against earnout payments a crucial protection, especially for claims arising after the 18-month escrow period.",
+    "The user is comfortable with the earnout mechanics as drafted, including the exclusion of services revenue from ARR and the 50% inclusion of cross-sell revenue.",
+    "The user views the 'primary purpose' language in the earnout operating covenants as a high legal standard that is favorable to the buyer.",
+    "The user's primary focus for negotiation is on securing downside protection via the escrow and offset rights, rather than adjusting the base price."
+  ],
+  "positions_changed": []
+}

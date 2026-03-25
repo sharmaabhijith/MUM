@@ -1,0 +1,28 @@
+{
+  "session_id": "s4_seller_counsel_4",
+  "scenario_id": "4",
+  "user_id": "seller_counsel",
+  "session_number": 4,
+  "summary": "The user, as seller's counsel, focused on mitigating post-closing exposure in the draft APA to prepare for the next negotiation round. They reaffirmed several core positions: reducing the general survival and escrow periods from 18 to 12 months, converting the 0.5% first-dollar indemnity basket to a 1% ($5M) true deductible, and making the escrow the sole and exclusive remedy for general breaches. The user's most critical, non-negotiable point remains the removal of Intellectual Property from the 'Fundamental Representations' definition to avoid uncapped liability for the disclosed DataMesh litigation. A key strategic development occurred when the user, upon learning the buyer's counsel had internally proposed a specific holdback, decided to offer a capped indemnity for the litigation as a trade for concessions on the fundamental reps and survival period. Additionally, the user established a new firm position to convert the hard closing condition for third-party consents (risking $41M in revenue) into a 'commercially reasonable efforts' covenant.",
+  "key_facts": [
+    "The draft APA proposes an 18-month survival period for general reps and a 7.5% escrow.",
+    "The buyer's counsel's internal memo recommended an even more aggressive 10% escrow.",
+    "The draft includes a 0.5% ($2.425M) indemnification basket with first-dollar recovery.",
+    "The buyer's counsel's memo estimated damages for the DataMesh litigation at a maximum of $4.5M and recommended a specific $3.0M holdback.",
+    "The APA classifies Intellectual Property as a 'Fundamental Representation', creating uncapped liability with a 36-month survival period.",
+    "A hard closing condition requires obtaining third-party consents, which puts $41.0M of revenue at risk, with the Horizon Healthcare contract being 'High' risk.",
+    "The 'Knowledge of the Company' definition was deemed acceptable.",
+    "A closing condition requires a 60-day remediation for three AGPL open-source components, which the user found manageable."
+  ],
+  "positions_taken": [
+    "The general survival period must be reduced to 12 months.",
+    "The indemnification basket must be a 1% (~$5M) true deductible.",
+    "Intellectual Property must be removed from the 'Fundamental Representations' definition.",
+    "The escrow must be the 'sole and exclusive' remedy for general representation breaches.",
+    "The closing condition for obtaining third-party consents must be converted to a 'commercially reasonable efforts' covenant.",
+    "The 'after reasonable inquiry' qualifier in the 'Knowledge of the Company' definition must be retained."
+  ],
+  "positions_changed": [
+    "While maintaining the position that IP is not a fundamental rep, the user developed a new strategy to offer a specific, capped indemnity for the DataMesh litigation as a trade-off for concessions."
+  ]
+}

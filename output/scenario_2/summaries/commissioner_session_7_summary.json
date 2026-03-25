@@ -1,0 +1,29 @@
+{
+  "session_id": "s2_commissioner_7",
+  "scenario_id": "2",
+  "user_id": "commissioner",
+  "session_number": 7,
+  "summary": "The commissioner conducted a final rehearsal for a committee presentation, structuring a decisive argument for FicTown's waste management overhaul. The session focused on solidifying key talking points and data to support a unified recommendation: approving the INR 598 crore FicTown Integrated Waste Processing Complex (FIWPC) contingent on terminating the contract of the failing operator, M/s GreenHaul. The user practiced framing the FIWPC's cost as a necessary cost-avoidance measure, justified by INR 48.6 crore in annual health savings. They linked the strategic need for the plant—raising processing capacity from 22% to 98%—with the tactical necessity of removing GreenHaul, who is responsible for 37.4% of city-wide complaints and whose failure to collect waste would undermine the new facility. The user reinforced the urgency by citing the 8-month lifespan of the Pallavaram landfill and the \"morally indefensible\" public health crisis, including a 3.1x increase in waterborne illness. The final position is to present a single, data-driven motion that solves the strategic crisis while simultaneously addressing critical operational failures.",
+  "key_facts": [
+    "The FIWPC will cost INR 598 crore and raise waste processing capacity from 22% to 98% of collected waste.",
+    "The annual economic burden of waste-related illness is INR 48.6 crore, which is used to justify the FIWPC's cost.",
+    "The Pallavaram landfill has an estimated 8 months of remaining lifespan.",
+    "Residents near the landfill face a 3.1x higher rate of waterborne illness.",
+    "Contractor M/s GreenHaul is responsible for 37.4% of all SWM-related complaints.",
+    "GreenHaul's contract has a termination clause triggered when penalties exceed 5% of the annual contract value.",
+    "The city's overall waste collection efficiency is 78.3%, meaning 21.7% of waste would not reach the new plant without improvements.",
+    "The contingency budget was overdrawn by INR 11.20 crore due to emergency landfill repairs.",
+    "The FIWPC project is expected to formalize 2,400 waste-picker jobs and displace 23 families.",
+    "64.3% of pediatric pneumonia deaths occurred in the zone around the landfills, which contains only 3.8% of the city's under-5 population."
+  ],
+  "positions_taken": [
+    "The final recommendation to the committee must be a single, unified motion linking FIWPC approval to GreenHaul's termination.",
+    "The FIWPC's cost should be framed as a 'cost-avoidance investment' rather than a new expense.",
+    "Terminating GreenHaul is essential for the FIWPC's operational success, as the plant needs the waste they are failing to collect.",
+    "The city is 'fiscally trapped,' hemorrhaging money on emergency repairs that should be invested in a long-term solution.",
+    "The disproportionate health impact on children near the landfill makes continuing the status quo 'morally indefensible.'",
+    "Community opposition should be proactively managed through benefit-sharing agreements and by highlighting social benefits like job formalization.",
+    "The administration's response to contractors is 'measured': terminating the unsalvageable (GreenHaul) while putting the salvageable (EcoCollect) on probation."
+  ],
+  "positions_changed": []
+}

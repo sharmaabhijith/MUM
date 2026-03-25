@@ -1,0 +1,34 @@
+{
+  "session_id": "s4_seller_counsel_1",
+  "scenario_id": "4",
+  "user_id": "seller_counsel",
+  "session_number": 1,
+  "summary": "The user, acting as seller's counsel, reviewed a Draft Acquisition Agreement (APA) against a prior Term Sheet to identify post-closing risks and formulate negotiation strategies. The primary focus was on indemnification, closing conditions, and covenants. The most critical issue discovered was the buyer's unilateral addition of Intellectual Property to the definition of 'Fundamental Representations' in the APA, which was not in the Term Sheet. This change would subject IP reps to a 36-month survival period with no indemnity cap, creating significant exposure, particularly concerning a disclosed patent lawsuit. The user established a firm position to reject this change. Other key negotiation points identified include shortening the 18-month escrow and survival periods, making the escrow the sole remedy for general breaches, converting hard closing conditions (e.g., customer consents, open-source remediation) into covenants, strengthening earnout protections, and removing forward-looking language from the Material Adverse Effect (MAE) definition. The user also noted significant gaps in the APA, such as the absence of a detailed indemnity claims procedure.",
+  "key_facts": [
+    "The Draft Acquisition Agreement (APA) defines Intellectual Property as a 'Fundamental Representation', while the Term Sheet did not.",
+    "Fundamental Representations have a 36-month survival period and are not subject to the 15% ($72.75M) indemnity cap.",
+    "There is an active patent litigation (DataMesh) with an estimated exposure of $2.0M to $4.5M.",
+    "The APA includes a 3% ($14.55M) reverse termination fee if the buyer's financing fails, which is an improvement over the Term Sheet.",
+    "A pre-closing covenant restricts the seller from settling litigation over $250k without buyer consent.",
+    "Obtaining four material customer consents and completing an open-source software remediation are hard conditions to closing.",
+    "The 'Material Adverse Effect' definition includes the forward-looking phrase 'would reasonably be expected to have'.",
+    "The APA is missing a detailed procedure for making and defending against indemnity claims.",
+    "The earnout protection covenant uses weak 'primary purpose' language.",
+    "The APA proposes a 12-month lock-up on stock consideration, with ambiguity as to whether it applies to all shareholders or just founders."
+  ],
+  "positions_taken": [
+    "The inclusion of IP as a fundamental representation is a 'non-starter' and must be rejected.",
+    "Known litigation like the DataMesh case should be handled via a specific, capped indemnity, not through uncapped general reps.",
+    "The escrow should be the sole and exclusive remedy for breaches of general representations.",
+    "The 18-month survival period and escrow term should be negotiated down to 12 months.",
+    "The litigation settlement covenant must be increased from $250k to at least $1.5M to allow for management of disclosed lawsuits.",
+    "Hard closing conditions for customer consents and open-source remediation should be converted to post-closing covenants.",
+    "Forward-looking language must be struck from the Material Adverse Effect (MAE) definition.",
+    "Earnout protection covenants must be strengthened, and the 'Autonomy Period' from the Term Sheet must be incorporated into the APA.",
+    "A detailed indemnity claims procedure giving the seller notice and control of defense must be added to the APA.",
+    "The buyer should be responsible for the cost of D&O tail coverage.",
+    "The 36-month non-compete for founders should be negotiated down to 24 months.",
+    "The 12-month stock lock-up should be shortened and clarified to apply only to founders."
+  ],
+  "positions_changed": []
+}
