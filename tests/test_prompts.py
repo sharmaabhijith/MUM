@@ -136,7 +136,8 @@ class TestConversationPrompt:
     def test_user_prompt_contains_session_info(self):
         prompt = build_conversation_user_prompt(session_number=3, turns_per_session=18)
         assert "Session 3" in prompt
-        assert "18 turns" in prompt
+        assert "36 messages" in prompt
+        assert "18 user messages" in prompt
 
 
 class TestSummaryPrompt:

@@ -133,9 +133,10 @@ class ConversationGenerator:
 
                 # Validate and log results
                 actual_turns = len(session.turns) // 2
+                expected_messages = turns_this_session * 2
                 logger.info(
-                    f"    Generated {actual_turns}/{turns_this_session} turns "
-                    f"({len(session.turns)} messages) in {elapsed:.1f}s"
+                    f"    Generated {len(session.turns)}/{expected_messages} messages "
+                    f"({actual_turns}/{turns_this_session} turn pairs) in {elapsed:.1f}s"
                 )
                 warnings = self._validate_session(session, turns_this_session)
                 for w in warnings:
