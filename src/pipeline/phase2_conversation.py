@@ -101,16 +101,16 @@ class ConversationGenerator:
                 )
 
                 # Generate conversation
-                sys_tokens = self.token_counter.count(system_prompt)
-                logger.info(
-                    f"  Session {session_num}/{config.sessions_per_user} "
-                    f"for {user.display_name} "
-                    f"({turns_this_session} turns, ~{sys_tokens:,} prompt tokens)"
-                )
                 messages = [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
                 ]
+                input_tokens = self.token_counter.count_messages(messages)
+                logger.info(
+                    f"  Session {session_num}/{config.sessions_per_user} "
+                    f"for {user.display_name} "
+                    f"({turns_this_session} turns, ~{input_tokens:,} input tokens)"
+                )
                 t0 = time.time()
                 response = self.llm_client.generate_json(
                     messages=messages,
