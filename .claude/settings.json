@@ -52,7 +52,10 @@
       "Bash(ls /Users/abhijith.sharma/Documents/Research/MUM/documents/scenario_*/)",
       "Bash(grep -c \"user_id:\" config/scenarios/scenario_*.yaml)",
       "Bash(python -m pytest tests/test_prompts.py tests/test_schemas.py tests/test_scenarios.py -v)",
-      "Bash(python3 -m pytest tests/test_prompts.py tests/test_schemas.py tests/test_scenarios.py -v)"
+      "Bash(python3 -m pytest tests/test_prompts.py tests/test_schemas.py tests/test_scenarios.py -v)",
+      "Bash(git pull --rebase origin main)",
+      "Bash(git stash)",
+      "Bash(git stash pop)"
     ]
   }
 }

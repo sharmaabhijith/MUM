@@ -267,7 +267,7 @@ class LLMClient:
         repaired = truncated + suffix
 
         try:
-            return json.loads(repaired)
+            return json.loads(repaired, strict=False)
         except json.JSONDecodeError:
             return None
 
@@ -293,19 +293,19 @@ class LLMClient:
                 phase=phase,
             )
             try:
-                return json.loads(content)
+                return json.loads(content, strict=False)
             except json.JSONDecodeError:
                 # Try to extract JSON from markdown code blocks
                 if "```json" in content:
                     json_str = content.split("```json")[1].split("```")[0].strip()
                     try:
-                        return json.loads(json_str)
+                        return json.loads(json_str, strict=False)
                     except json.JSONDecodeError:
                         pass
                 elif "```" in content:
                     json_str = content.split("```")[1].split("```")[0].strip()
                     try:
-                        return json.loads(json_str)
+                        return json.loads(json_str, strict=False)
                     except json.JSONDecodeError:
                         pass
 
