@@ -75,8 +75,8 @@ class TestPromptBuilder:
         section = PromptBuilder.build_user_persona_section(user)
         assert "Test User" in section
         assert "Communication Style" in section
-        assert "How They Read Documents" in section
-        assert "What They Don't Know" in section
+        assert "Document Reading Pattern" in section
+        assert "Knowledge Gaps and Misconceptions" in section
         assert "Example Messages" in section
         assert "Can you show me how to test this?" in section
 

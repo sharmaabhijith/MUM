@@ -295,7 +295,7 @@ def estimate_cost(scenario, run_all, mode):
     console.print("[dim]Notes:[/dim]")
     console.print("[dim]  - Document tokens are read from actual PDFs (falls back to YAML targets if PDFs missing)[/dim]")
     console.print("[dim]  - Conversation generation uses DeepSeek V3.2 via DeepInfra[/dim]")
-    console.print("[dim]  - Question generation uses Gemini 2.5 Pro via Google AI[/dim]")
+    console.print("[dim]  - Question generation uses Gemini 2.5 Pro via DeepInfra[/dim]")
 
 
 @main.command()

@@ -17,7 +17,7 @@ from src.utils.io import read_yaml
 
 CONFIG_DIR = Path("config/scenarios")
 
-SCENARIO_CLASSES: dict[str, type[BaseScenario]] = {
+SCENARIO_CLASSES: dict[RelationshipType, type[BaseScenario]] = {
     RelationshipType.SYMMETRIC: StudyGroupScenario,
     RelationshipType.HIERARCHICAL: MunicipalCommitteeScenario,
     RelationshipType.CROSS_FUNCTIONAL: ProductStrategyScenario,

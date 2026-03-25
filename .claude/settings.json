@@ -50,7 +50,9 @@
       "Bash(python3.11 -m pytest tests/test_prompts.py::TestPromptBuilder::test_build_user_persona_section -v)",
       "Bash(python3.11 -m pytest tests/test_schemas.py tests/test_scenarios.py tests/test_prompts.py::TestEvalCategories -v)",
       "Bash(ls /Users/abhijith.sharma/Documents/Research/MUM/documents/scenario_*/)",
-      "Bash(grep -c \"user_id:\" config/scenarios/scenario_*.yaml)"
+      "Bash(grep -c \"user_id:\" config/scenarios/scenario_*.yaml)",
+      "Bash(python -m pytest tests/test_prompts.py tests/test_schemas.py tests/test_scenarios.py -v)",
+      "Bash(python3 -m pytest tests/test_prompts.py tests/test_schemas.py tests/test_scenarios.py -v)"
     ]
   }
 }

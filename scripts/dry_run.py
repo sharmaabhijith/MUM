@@ -24,8 +24,6 @@ def main():
         console.print(f"\n[green]Dry run completed for scenario 1[/green]")
         console.print(f"  Conversations: {len(output.conversations)}")
         console.print(f"  Summaries: {len(output.session_summaries)}")
-        console.print(f"  Memories: {len(output.memories)}")
-        console.print(f"  Conflicts: {len(output.conflicts)}")
         console.print(f"  Eval questions: {len(output.eval_questions)}")
     except Exception as e:
         console.print(f"[red]Dry run failed: {e}[/red]")

@@ -83,6 +83,7 @@ class ConversationGenerator:
                 )
 
                 # Build prompts
+                turns_this_session = config.get_turns_for_session(session_num)
                 system_prompt = build_conversation_system_prompt(
                     user=user,
                     scenario=scenario,
@@ -93,7 +94,6 @@ class ConversationGenerator:
                     doc_context=doc_context,
                     turns_this_session=turns_this_session,
                 )
-                turns_this_session = config.get_turns_for_session(session_num)
                 user_prompt = build_conversation_user_prompt(
                     session_number=session_num,
                     turns_per_session=turns_this_session,
