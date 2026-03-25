@@ -235,7 +235,7 @@ class ConversationGenerator:
         response = self.llm_client.generate_json(
             messages=messages,
             temperature=0.2,
-            max_tokens=2048,
+            max_tokens=8192,
             phase="session_summary",
         )
 

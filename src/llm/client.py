@@ -281,43 +281,58 @@ class LLMClient:
         # DeepInfra supports json_object response_format for all models
         response_format: dict | None = {"type": "json_object"}
 
-        content, finish_reason = self.generate(
-            messages=messages,
-            temperature=temperature,
-            response_format=response_format,
-            max_tokens=max_tokens,
-            phase=phase,
-        )
-        try:
-            return json.loads(content)
-        except json.JSONDecodeError:
-            # Try to extract JSON from markdown code blocks
-            if "```json" in content:
-                json_str = content.split("```json")[1].split("```")[0].strip()
-                try:
-                    return json.loads(json_str)
-                except json.JSONDecodeError:
-                    pass
-            elif "```" in content:
-                json_str = content.split("```")[1].split("```")[0].strip()
-                try:
-                    return json.loads(json_str)
-                except json.JSONDecodeError:
-                    pass
+        current_max_tokens = max_tokens
+        max_retries_for_truncation = 3
 
-            # If truncated by max_tokens, attempt repair
-            if finish_reason == "length":
-                logger.warning(
-                    f"Attempting to repair truncated JSON ({len(content)} chars) "
-                    f"in phase={phase}"
-                )
-                repaired = self._repair_truncated_json(content)
-                if repaired is not None:
-                    logger.info("Successfully repaired truncated JSON")
-                    return repaired
-                logger.error("Failed to repair truncated JSON")
+        for attempt in range(max_retries_for_truncation):
+            content, finish_reason = self.generate(
+                messages=messages,
+                temperature=temperature,
+                response_format=response_format,
+                max_tokens=current_max_tokens,
+                phase=phase,
+            )
+            try:
+                return json.loads(content)
+            except json.JSONDecodeError:
+                # Try to extract JSON from markdown code blocks
+                if "```json" in content:
+                    json_str = content.split("```json")[1].split("```")[0].strip()
+                    try:
+                        return json.loads(json_str)
+                    except json.JSONDecodeError:
+                        pass
+                elif "```" in content:
+                    json_str = content.split("```")[1].split("```")[0].strip()
+                    try:
+                        return json.loads(json_str)
+                    except json.JSONDecodeError:
+                        pass
 
-            raise
+                # If truncated by max_tokens, retry with doubled limit
+                if finish_reason == "length" and attempt < max_retries_for_truncation - 1:
+                    new_max = current_max_tokens * 2
+                    logger.warning(
+                        f"Response truncated at max_tokens={current_max_tokens} in "
+                        f"phase={phase}. Retrying with max_tokens={new_max} "
+                        f"(attempt {attempt + 2}/{max_retries_for_truncation})"
+                    )
+                    current_max_tokens = new_max
+                    continue
+
+                # Final attempt: try repair as last resort
+                if finish_reason == "length":
+                    logger.warning(
+                        f"Attempting to repair truncated JSON ({len(content)} chars) "
+                        f"in phase={phase}"
+                    )
+                    repaired = self._repair_truncated_json(content)
+                    if repaired is not None:
+                        logger.info("Successfully repaired truncated JSON")
+                        return repaired
+                    logger.error("Failed to repair truncated JSON")
+
+                raise
 
 
 class MockLLMClient(LLMClient):
