@@ -2,12 +2,12 @@ import json
 
 import pytest
 
-from src.models.enums import (
+from datagen.models.enums import (
     AuthorityLevel,
     EvalQuestionCategory,
     RelationshipType,
 )
-from src.models.schemas import (
+from datagen.models.schemas import (
     AnnotationTargets,
     BenchmarkDataset,
     ConversationSession,

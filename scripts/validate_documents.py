@@ -7,15 +7,15 @@ from pathlib import Path
 from rich.console import Console
 from rich.table import Table
 
-from src.llm.token_counter import TokenCounter
-from src.scenarios import load_scenario
+from datagen.llm.token_counter import TokenCounter
+from datagen.scenarios import load_scenario
 
 console = Console()
 
 
 def validate_scenario_docs(scenario_id: str, token_counter: TokenCounter) -> bool:
     config = load_scenario(scenario_id)
-    doc_dir = Path("documents") / f"scenario_{scenario_id}"
+    doc_dir = Path("MUMBench/documents") / f"scenario_{scenario_id}"
 
     table = Table(title=f"Scenario {scenario_id}: {config.name}")
     table.add_column("Document", style="cyan")
@@ -33,7 +33,7 @@ def validate_scenario_docs(scenario_id: str, token_counter: TokenCounter) -> boo
         status = "MISSING"
 
         if exists:
-            from src.utils.pdf_reader import extract_text_from_pdf
+            from datagen.utils.pdf_reader import extract_text_from_pdf
 
             text = extract_text_from_pdf(pdf_path)
             token_count = token_counter.count(text)

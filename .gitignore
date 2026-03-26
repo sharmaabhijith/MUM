@@ -1,9 +1,3 @@
-# Generated data
-# documents/
-#output/
-!documents/.gitkeep
-!output/.gitkeep
-
 # Environment
 .env
 .venv/
@@ -32,3 +26,9 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+# Memory evaluation results (regeneratable)
+MUMBench/results/
+
+# ChromaDB storage
+memory/chroma_store/

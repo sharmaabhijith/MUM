@@ -1,18 +1,18 @@
 import pytest
 
-from src.models.enums import AuthorityLevel, EvalQuestionCategory
-from src.models.schemas import (
+from datagen.models.enums import AuthorityLevel, EvalQuestionCategory
+from datagen.models.schemas import (
     ConversationSession,
     ConversationTurn,
     InjectedConflict,
     UserProfile,
 )
-from src.pipeline.phase1_document_prep import DocumentContext
-from src.prompts.base import PromptBuilder
-from src.prompts.conversation_system import build_conversation_system_prompt
-from src.prompts.conversation_user import build_conversation_user_prompt
-from src.prompts.eval_question_gen import CATEGORY_INSTRUCTIONS
-from src.prompts.session_summary import build_summary_prompt
+from datagen.pipeline.phase1_document_prep import DocumentContext
+from datagen.prompts.base import PromptBuilder
+from datagen.prompts.conversation_system import build_conversation_system_prompt
+from datagen.prompts.conversation_user import build_conversation_user_prompt
+from datagen.prompts.eval_question_gen import CATEGORY_INSTRUCTIONS
+from datagen.prompts.session_summary import build_summary_prompt
 
 
 def make_user() -> UserProfile:

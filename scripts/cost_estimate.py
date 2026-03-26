@@ -4,11 +4,11 @@
 from rich.console import Console
 from rich.table import Table
 
-from src.llm.cost_tracker import MODEL_PRICING
-from src.llm.token_counter import TokenCounter
-from src.pipeline.phase1_document_prep import DocumentPreparer
-from src.scenarios import create_scenario, load_scenario
-from src.utils.logging import setup_logging
+from datagen.llm.cost_tracker import MODEL_PRICING
+from datagen.llm.token_counter import TokenCounter
+from datagen.pipeline.phase1_document_prep import DocumentPreparer
+from datagen.scenarios import create_scenario, load_scenario
+from datagen.utils.logging import setup_logging
 
 console = Console()
 

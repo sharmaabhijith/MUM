@@ -1,11 +1,11 @@
 import pytest
 
-from src.llm.client import MockLLMClient
-from src.llm.cost_tracker import CostTracker
-from src.llm.token_counter import TokenCounter
-from src.models.schemas import ConversationSession, ConversationTurn
-from src.pipeline.phase1_document_prep import DocumentContext, DocumentPreparer
-from src.pipeline.phase2_conversation import ConversationGenerator
+from datagen.llm.client import MockLLMClient
+from datagen.llm.cost_tracker import CostTracker
+from datagen.llm.token_counter import TokenCounter
+from datagen.models.schemas import ConversationSession, ConversationTurn
+from datagen.pipeline.phase1_document_prep import DocumentContext, DocumentPreparer
+from datagen.pipeline.phase2_conversation import ConversationGenerator
 
 
 class TestDocumentPreparer:

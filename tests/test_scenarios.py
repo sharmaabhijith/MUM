@@ -1,7 +1,7 @@
 import pytest
 
-from src.models.enums import EvalQuestionCategory, RelationshipType
-from src.scenarios import load_scenario, create_scenario
+from datagen.models.enums import EvalQuestionCategory, RelationshipType
+from datagen.scenarios import load_scenario, create_scenario
 
 
 class TestScenarioLoading:

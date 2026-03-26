@@ -1,0 +1,47 @@
+# Memory evaluation configuration
+
+# ── Models ─────────────────────────────────────────────────────────
+
+# The 7 answer models to evaluate (all via DeepInfra)
+eval_models:
+  # - Qwen/Qwen3-14B
+  # - Qwen/Qwen3-32B
+  # - Qwen/Qwen3-Next-80B-A3B-Instruct
+  # - meta-llama/Meta-Llama-3.1-8B-Instruct
+  # - meta-llama/Meta-Llama-3.1-70B-Instruct
+  # - deepseek-ai/DeepSeek-V3.2
+  - google/gemini-2.5-flash
+
+# Judge model (strong model for consistent scoring)
+judge_model: google/gemini-2.5-pro
+
+# ── Memory methods ─────────────────────────────────────────────────
+
+methods:
+  no_memory: {}
+  full_context: {}
+  rag:
+    chunk_size: 512
+    chunk_overlap: 64
+    top_k: 20
+  summary: {}
+  structured: {}
+
+# ── Generation parameters ──────────────────────────────────────────
+
+judge:
+  temperature: 0.1
+  max_tokens: 1024
+
+answer:
+  temperature: 0.3
+  max_tokens: 2048
+
+# ── Scoring weights ────────────────────────────────────────────────
+
+scoring:
+  # Weights for the overall score (must sum to 1.0)
+  correctness_weight: 0.35
+  completeness_weight: 0.25
+  attribution_weight: 0.25
+  hallucination_weight: 0.15

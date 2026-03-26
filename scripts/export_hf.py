@@ -12,13 +12,13 @@ from rich.console import Console
 console = Console()
 
 
-def export_to_huggingface(output_dir: str = "output") -> None:
+def export_to_huggingface(output_dir: str = "MUMBench") -> None:
     output_path = Path(output_dir)
     benchmark_path = output_path / "benchmark.json"
 
     if not benchmark_path.exists():
         console.print(f"[red]Benchmark file not found: {benchmark_path}[/red]")
-        console.print("Run the full pipeline first: python -m src.cli generate --all")
+        console.print("Run the full pipeline first: python -m datagen.cli generate --all")
         return
 
     with open(benchmark_path) as f:
@@ -124,5 +124,5 @@ def export_to_huggingface(output_dir: str = "output") -> None:
 
 
 if __name__ == "__main__":
-    output_dir = sys.argv[1] if len(sys.argv) > 1 else "output"
+    output_dir = sys.argv[1] if len(sys.argv) > 1 else "MUMBench"
     export_to_huggingface(output_dir)

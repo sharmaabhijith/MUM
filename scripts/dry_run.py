@@ -3,8 +3,8 @@
 
 from rich.console import Console
 
-from src.pipeline.orchestrator import PipelineOrchestrator
-from src.utils.logging import setup_logging
+from datagen.pipeline.orchestrator import PipelineOrchestrator
+from datagen.utils.logging import setup_logging
 
 console = Console()
 
@@ -16,7 +16,7 @@ def main():
     orchestrator = PipelineOrchestrator(
         model="gpt-4o-mini",
         dry_run=True,
-        output_dir="output/dry_run",
+        output_dir="MUMBench/dry_run",
     )
 
     try:

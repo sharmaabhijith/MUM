@@ -55,7 +55,18 @@
       "Bash(python3 -m pytest tests/test_prompts.py tests/test_schemas.py tests/test_scenarios.py -v)",
       "Bash(git pull --rebase origin main)",
       "Bash(git stash)",
-      "Bash(git stash pop)"
+      "Bash(git stash pop)",
+      "Bash(find /Users/abhijith.sharma/Documents/Research/MUM/config/scenarios -name \"*.yaml\" -exec basename {} ;)",
+      "Read(//Users/abhijith.sharma/Documents/Research/MUM/documents/**)",
+      "Bash(python3 -c \"import json; data = json.load\\(open\\(''/Users/abhijith.sharma/Documents/Research/MUM/output/scenario_1/evaluation/eval_questions.json''\\)\\); print\\(f''Total questions: {len\\(data\\)}''\\); from collections import Counter; cats = Counter\\([q[''category''] for q in data]\\); print\\(''\\\\nBreakdown:''\\); [print\\(f''  {k}: {v}''\\) for k, v in sorted\\(cats.items\\(\\)\\)]\")",
+      "Bash(git mv src datagen)",
+      "Bash(git mv output MUMBench)",
+      "Bash(git mv documents MUMBench/documents)",
+      "Bash(find datagen scripts tests -name \"*.py\" -exec sed -i '' 's/from src\\\\./from datagen./g; s/import src\\\\./import datagen./g' {} +)",
+      "Bash(python -c \"from memory.methods import METHODS; print\\(''Memory methods:'', list\\(METHODS.keys\\(\\)\\)\\)\")",
+      "Bash(python3 -c \"from memory.methods import METHODS; print\\(''Memory methods:'', list\\(METHODS.keys\\(\\)\\)\\)\")",
+      "Bash(/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/bin/python3.11 -c \"from memory.methods import METHODS; print\\(''Memory methods:'', list\\(METHODS.keys\\(\\)\\)\\)\")",
+      "Bash(/opt/homebrew/opt/python@3.11/Frameworks/Python.framework/Versions/3.11/bin/python3.11 -c \"from datagen.models.schemas import EvalQuestion; print\\(''OK''\\); from memory.evaluation.runner import EvaluationRunner; print\\(''Runner OK''\\); from memory.cli import main; print\\(''CLI OK''\\)\")"
     ]
   }
 }
