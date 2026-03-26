@@ -218,17 +218,33 @@ class EvaluationRunner:
         answer_model: str = "google/gemini-2.5-pro",
         judge_model: str = "google/gemini-2.5-pro",
         benchmark_dir: Path | str = BENCHMARK_DIR,
+        eval_config: "EvalConfig | None" = None,
     ):
+        from memory.evaluation.config import EvalConfig
+
+        cfg = eval_config or EvalConfig()
         self.method = method
         self.answer_model = answer_model
         self.benchmark_dir = Path(benchmark_dir)
         self.cost_tracker = CostTracker()
         self.answer_llm = LLMClient(
             model=answer_model,
-            temperature=0.3,
+            temperature=cfg.answer_temperature,
             cost_tracker=self.cost_tracker,
         )
-        self.judge = LLMJudge(model=judge_model, cost_tracker=self.cost_tracker)
+        self.judge = LLMJudge(
+            model=judge_model,
+            cost_tracker=self.cost_tracker,
+            temperature=cfg.judge_temperature,
+            scoring_weights={
+                "correctness": cfg.correctness_weight,
+                "completeness": cfg.completeness_weight,
+                "attribution": cfg.attribution_weight,
+                "hallucination": cfg.hallucination_weight,
+            },
+        )
+        self._answer_max_tokens = cfg.answer_max_tokens
+        self._judge_max_tokens = cfg.judge_max_tokens
 
     # ── data loading ──────────────────────────────────────────────────────
 
@@ -464,8 +480,7 @@ class EvaluationRunner:
         )
         predicted_answer, _ = self.answer_llm.generate(
             messages=messages,
-            temperature=0.3,
-            max_tokens=2048,
+            max_tokens=self._answer_max_tokens,
             phase="eval_answer",
         )
         answer_time = time.time() - t0
@@ -517,6 +532,7 @@ class MultiModelEvaluator:
         judge_model: str = "google/gemini-2.5-pro",
         benchmark_dir: Path | str = BENCHMARK_DIR,
         resume: bool = True,
+        eval_config: "EvalConfig | None" = None,
     ):
         from memory.methods import METHODS
 
@@ -526,6 +542,7 @@ class MultiModelEvaluator:
         self.judge_model = judge_model
         self.benchmark_dir = Path(benchmark_dir)
         self.resume = resume
+        self.eval_config = eval_config
 
         # Compute total number of runs
         self.total_runs = (
@@ -561,7 +578,11 @@ class MultiModelEvaluator:
             for method_name in self.method_names:
                 method_cls = METHODS[method_name]
                 method_kwargs: dict = {"model": model}
-                if method_name == "rag":
+                if method_name == "rag" and self.eval_config:
+                    rag_kw = self.eval_config.rag_kwargs()
+                    method_kwargs["top_k"] = rag_kw["top_k"]
+                    method_kwargs["chunk_size"] = rag_kw["chunk_size"]
+                elif method_name == "rag":
                     method_kwargs["top_k"] = 20
                     method_kwargs["chunk_size"] = 512
 
@@ -578,6 +599,7 @@ class MultiModelEvaluator:
                         answer_model=model,
                         judge_model=self.judge_model,
                         benchmark_dir=self.benchmark_dir,
+                        eval_config=self.eval_config,
                     )
 
                     try:

@@ -29,17 +29,24 @@ class JudgeScore:
     reasoning: str
     is_binary: bool = False
     binary_correct: bool | None = None
+    _weights: dict[str, float] | None = None
 
     @property
     def overall(self) -> float:
         """Weighted average score (0-1 scale)."""
         if self.is_binary:
             return 1.0 if self.binary_correct else 0.0
+        w = self._weights or {
+            "correctness": 0.35,
+            "completeness": 0.25,
+            "attribution": 0.25,
+            "hallucination": 0.15,
+        }
         return (
-            0.35 * self.correctness
-            + 0.25 * self.completeness
-            + 0.25 * self.attribution
-            + 0.15 * self.hallucination
+            w["correctness"] * self.correctness
+            + w["completeness"] * self.completeness
+            + w["attribution"] * self.attribution
+            + w["hallucination"] * self.hallucination
         ) / 5.0
 
     def to_dict(self) -> dict:
@@ -56,6 +63,14 @@ class JudgeScore:
         }
 
 
+DEFAULT_SCORING_WEIGHTS = {
+    "correctness": 0.35,
+    "completeness": 0.25,
+    "attribution": 0.25,
+    "hallucination": 0.15,
+}
+
+
 class LLMJudge:
     """Evaluates predicted answers against gold answers using an LLM."""
 
@@ -63,11 +78,15 @@ class LLMJudge:
         self,
         model: str = "google/gemini-2.5-pro",
         cost_tracker: CostTracker | None = None,
+        temperature: float = 0.1,
+        scoring_weights: dict[str, float] | None = None,
     ):
         self.cost_tracker = cost_tracker or CostTracker()
+        self.scoring_weights = scoring_weights or DEFAULT_SCORING_WEIGHTS
+        self.temperature = temperature
         self.llm = LLMClient(
             model=model,
-            temperature=0.1,  # Low temperature for consistent scoring
+            temperature=temperature,
             cost_tracker=self.cost_tracker,
         )
 
@@ -98,7 +117,7 @@ class LLMJudge:
         try:
             result = self.llm.generate_json(
                 messages=messages,
-                temperature=0.1,
+                temperature=self.temperature,
                 max_tokens=1024,
                 phase="eval_judge",
             )
@@ -109,6 +128,7 @@ class LLMJudge:
                 attribution=float(result.get("attribution", 1)),
                 hallucination=float(result.get("hallucination", 1)),
                 reasoning=result.get("reasoning", ""),
+                _weights=self.scoring_weights,
             )
         except Exception as e:
             logger.warning(f"Judge failed for {question_id}: {e}")
@@ -132,7 +152,7 @@ class LLMJudge:
         try:
             result = self.llm.generate_json(
                 messages=messages,
-                temperature=0.1,
+                temperature=self.temperature,
                 max_tokens=512,
                 phase="eval_judge",
             )

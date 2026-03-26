@@ -10,14 +10,24 @@ from rich.console import Console
 
 from datagen.utils.logging import setup_logging
 
+from memory.evaluation.config import load_eval_config
 from memory.evaluation.runner import EVAL_MODELS, short_model_name
 
 console = Console()
 load_dotenv()
 
 
-def _resolve_models(answer_model: str) -> list[str]:
-    """Resolve model argument to a list of full model IDs."""
+def _resolve_models(answer_model: str, config_models: list[str] | None = None) -> list[str]:
+    """Resolve model argument to a list of full model IDs.
+
+    When answer_model is "config" (the default), uses models from
+    config/evaluation.yaml.  Falls back to hardcoded EVAL_MODELS when
+    the YAML list is empty or when "all" is passed explicitly.
+    """
+    if answer_model == "config":
+        if config_models:
+            return config_models
+        return list(EVAL_MODELS)
     if answer_model == "all":
         return list(EVAL_MODELS)
     # Allow comma-separated short or full names
@@ -61,24 +71,33 @@ def main(verbose: bool):
 @click.option(
     "--answer-model",
     "-a",
-    default="all",
+    default="config",
     help=(
-        "Answer model(s): 'all' for all 7 eval models, or comma-separated "
+        "Answer model(s): 'config' (default) reads from config/evaluation.yaml, "
+        "'all' for all 7 hardcoded eval models, or comma-separated "
         "names/IDs (e.g. 'Qwen3-14B,Llama3.1-8B' or full DeepInfra IDs)"
     ),
 )
-@click.option("--judge-model", default="google/gemini-2.5-pro", help="Model for LLM judge")
+@click.option("--judge-model", default=None, help="Model for LLM judge (default: from config)")
 @click.option("--benchmark-dir", default="MUMBench", help="Benchmark data directory")
 @click.option("--no-resume", is_flag=True, help="Do NOT resume from partial results")
-@click.option("--top-k", default=20, help="Top-K for RAG retrieval")
-@click.option("--chunk-size", default=512, help="Chunk size for RAG")
+@click.option("--top-k", default=None, type=int, help="Top-K for RAG retrieval (default: from config)")
+@click.option("--chunk-size", default=None, type=int, help="Chunk size for RAG (default: from config)")
+@click.option("--config", "config_path", default=None, help="Path to evaluation YAML config")
 def evaluate(
     scenario, run_all, method, answer_model, judge_model,
-    benchmark_dir, no_resume, top_k, chunk_size,
+    benchmark_dir, no_resume, top_k, chunk_size, config_path,
 ):
-    """Run evaluation: model(s) x method(s) x scenario(s)."""
+    """Run evaluation: model(s) x method(s) x scenario(s).
+
+    By default reads models, methods, and parameters from config/evaluation.yaml.
+    CLI flags override config values when provided.
+    """
     from memory.evaluation.runner import MultiModelEvaluator
     from memory.methods import METHODS
+
+    cfg = load_eval_config(config_path)
+    console.print(f"[dim]Config: {config_path or 'config/evaluation.yaml'}[/dim]")
 
     scenario_ids = []
     if run_all:
@@ -89,14 +108,28 @@ def evaluate(
         console.print("[red]Specify --scenario <id> or --all-scenarios[/red]")
         return
 
-    models = _resolve_models(answer_model)
-    method_names = list(METHODS.keys()) if method == "all" else [method]
+    models = _resolve_models(answer_model, cfg.eval_models)
+
+    # Resolve methods: "all" uses config methods if available, else all registered
+    if method == "all":
+        if cfg.method_names:
+            method_names = [m for m in cfg.method_names if m in METHODS]
+        else:
+            method_names = list(METHODS.keys())
+    else:
+        method_names = [method]
+
+    # CLI flags override config values
+    resolved_judge = judge_model or cfg.judge_model
+    rag_cfg = cfg.rag_kwargs()
+    resolved_top_k = top_k if top_k is not None else rag_cfg["top_k"]
+    resolved_chunk_size = chunk_size if chunk_size is not None else rag_cfg["chunk_size"]
 
     console.print(f"\n[bold]MUM Evaluation Grid[/bold]")
     console.print(f"  Models:    {', '.join(short_model_name(m) for m in models)}")
     console.print(f"  Methods:   {', '.join(method_names)}")
     console.print(f"  Scenarios: {', '.join('S' + s for s in scenario_ids)}")
-    console.print(f"  Judge:     {short_model_name(judge_model)}")
+    console.print(f"  Judge:     {short_model_name(resolved_judge)}")
     console.print(
         f"  Total runs: {len(models) * len(method_names) * len(scenario_ids)}"
     )
@@ -106,9 +139,10 @@ def evaluate(
         models=models,
         method_names=method_names,
         scenario_ids=scenario_ids,
-        judge_model=judge_model,
+        judge_model=resolved_judge,
         benchmark_dir=Path(benchmark_dir),
         resume=not no_resume,
+        eval_config=cfg,
     )
     evaluator.run_all()
 
