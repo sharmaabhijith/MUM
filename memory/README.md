@@ -6,6 +6,12 @@ This module implements **five memory management strategies** and an **end-to-end
 
 ## Table of Contents
 
+- [How to Run](#how-to-run)
+  - [Prerequisites](#prerequisites)
+  - [Quick Start](#quick-start)
+  - [Step-by-Step Walkthrough](#step-by-step-walkthrough)
+  - [Using Make Targets](#using-make-targets)
+  - [Programmatic Usage](#programmatic-usage)
 - [Architecture Overview](#architecture-overview)
 - [Memory Methods](#memory-methods)
   - [BaseMemoryMethod](#basememorymethod)
@@ -25,7 +31,201 @@ This module implements **five memory management strategies** and an **end-to-end
 - [CLI Reference](#cli-reference)
 - [Data Schemas](#data-schemas)
 - [Evaluation Grid](#evaluation-grid)
+- [Results & Export](#results--export)
 - [Output Files](#output-files)
+
+---
+
+## How to Run
+
+### Prerequisites
+
+1. **Python >= 3.10**
+
+2. **Install the project** (from the repository root):
+   ```bash
+   pip install -e ".[dev]"
+   ```
+
+3. **Set up your API key** — create a `.env` file in the project root:
+   ```bash
+   echo "DEEPINFRA_API_KEY=your_key_here" > .env
+   ```
+   All LLM calls (answer generation + judging) route through DeepInfra's OpenAI-compatible API.
+
+4. **Verify benchmark data exists** — the `MUMBench/` directory should contain scenario data:
+   ```
+   MUMBench/
+   ├── scenario_1/conversations/    # 28 session JSONs
+   ├── scenario_1/summaries/        # 28 summary JSONs
+   ├── scenario_1/evaluation/       # eval_questions.json
+   ├── scenario_2/ ... scenario_5/  # Same structure
+   └── results/                     # Output directory (initially empty)
+   ```
+   If scenarios haven't been generated yet, run the data generation pipeline first:
+   ```bash
+   mum generate --all
+   ```
+
+### Quick Start
+
+```bash
+# Run a single targeted evaluation (fastest way to test)
+mum-eval evaluate --scenario 1 --method summary --answer-model Qwen3-14B
+
+# View results
+mum-eval report --scenario 1
+
+# Run the full 175-run evaluation grid (7 models x 5 methods x 5 scenarios)
+mum-eval evaluate --all-scenarios --method all --answer-model all
+
+# Generate comparison reports + export to JSON
+mum-eval compare
+
+# Export results to CSV and detailed JSON
+mum-eval export-results
+```
+
+### Step-by-Step Walkthrough
+
+#### Step 1 — Run a single evaluation
+
+Start small to verify everything works. This evaluates one model with one memory method on one scenario:
+
+```bash
+mum-eval evaluate \
+  --scenario 1 \
+  --method structured \
+  --answer-model Qwen3-14B
+```
+
+This will:
+- Load conversations, summaries, and eval questions for scenario 1
+- Ingest data into the `structured` memory method
+- For each evaluation question: retrieve context, generate an answer, and judge it
+- Save results incrementally to `MUMBench/results/eval_structured__qwen3-14b__s1.json`
+- Show a progress bar with live scores
+
+#### Step 2 — Scale up to multiple methods
+
+Compare all 5 memory methods on the same model and scenario:
+
+```bash
+mum-eval evaluate \
+  --scenario 1 \
+  --method all \
+  --answer-model Qwen3-14B
+```
+
+This produces 5 result files, one per method.
+
+#### Step 3 — Scale to multiple models
+
+Run all models on a specific method:
+
+```bash
+mum-eval evaluate \
+  --all-scenarios \
+  --method structured \
+  --answer-model all
+```
+
+Or test specific models with comma separation:
+
+```bash
+mum-eval evaluate \
+  --scenario 1 \
+  --method rag \
+  --answer-model "Qwen3-14B,Llama3.1-70B,DeepSeek-V3.2"
+```
+
+#### Step 4 — Run the full grid
+
+```bash
+mum-eval evaluate --all-scenarios --method all --answer-model all
+```
+
+This runs **175 evaluations** (7 models x 5 methods x 5 scenarios). Resume is enabled by default — if interrupted, re-running the same command picks up where it left off.
+
+#### Step 5 — View results
+
+```bash
+# Detailed report for one scenario (model x method grid + category breakdown)
+mum-eval report --scenario 1
+
+# Cross-scenario comparison (model summaries, method summaries, dimension averages)
+mum-eval compare
+
+# Export all results to CSV and structured JSON
+mum-eval export-results
+
+# List available models with pricing
+mum-eval list-models
+```
+
+### Using Make Targets
+
+From the project root:
+
+```bash
+make eval-all                    # Full 175-run grid
+make eval SCENARIO=1             # Single scenario, all models/methods
+make eval-model MODEL=Qwen3-14B  # Single model, all methods/scenarios
+make eval-report SCENARIO=1      # Print scenario report
+make eval-compare                # Cross-model comparison + JSON
+```
+
+### Programmatic Usage
+
+You can use the evaluation pipeline directly from Python:
+
+```python
+from memory.methods import StructuredMemory, RAGMemory
+from memory.evaluation.runner import EvaluationRunner
+
+# Single model + method + scenario
+method = StructuredMemory()
+runner = EvaluationRunner(
+    method=method,
+    answer_model="Qwen/Qwen3-14B",
+    judge_model="google/gemini-2.5-pro",
+)
+result = runner.run_scenario("1", resume=True)
+
+print(f"Overall score: {result.overall_score():.3f}")
+print(f"By category: {result.scores_by_category()}")
+print(f"Dimensions: {result.dimension_averages()}")
+```
+
+```python
+# Full grid evaluation
+from memory.evaluation.runner import MultiModelEvaluator
+
+evaluator = MultiModelEvaluator(
+    models=["Qwen/Qwen3-14B", "deepseek-ai/DeepSeek-V3.2"],
+    method_names=["rag", "structured"],
+    scenario_ids=["1", "2"],
+    resume=True,
+)
+all_results = evaluator.run_all()
+```
+
+```python
+# Export results to CSV/JSON
+from memory.evaluation.export import ResultsExporter
+
+exporter = ResultsExporter()
+exporter.export_all()  # Writes to MUMBench/results/exports/
+```
+
+### Tips
+
+- **Resume is on by default** — re-run any command and it skips completed questions
+- **Disable resume** with `--no-resume` to start fresh
+- **Incremental saves** happen every 5 questions, so partial results are never lost
+- **Verbose logging** with `-v` flag writes detailed logs to `MUMBench/results/logs/`
+- **Model names** support fuzzy matching: `"Qwen3"` → `"Qwen/Qwen3-14B"`, `"Llama3.1-8B"` → full ID
+- **Costs**: use `mum-eval list-models` to see per-token pricing before running large grids
 
 ---
 
@@ -47,7 +247,8 @@ memory/
 │   ├── __init__.py
 │   ├── runner.py                   # EvaluationRunner + MultiModelEvaluator
 │   ├── judge.py                    # LLMJudge (dimensional + binary scoring)
-│   └── report.py                   # Comparison tables + JSON export
+│   ├── report.py                   # Comparison tables + JSON export
+│   └── export.py                   # CSV + JSON results export
 └── prompts/                        # LLM prompts
     ├── __init__.py
     ├── answer_gen.py               # System prompt for answer generation
@@ -443,6 +644,22 @@ mum-eval report --scenario 1
 mum-eval compare
 ```
 
+#### `export-results` — Export results to CSV and JSON
+
+```bash
+# Export all results to MUMBench/results/exports/
+mum-eval export-results
+
+# Export to a custom directory
+mum-eval export-results --output-dir ./my_results
+```
+
+Generates:
+- `question_level_results.csv` — One row per question per experiment
+- `experiment_summary.csv` — One row per (model, method, scenario) combination
+- `category_breakdown.csv` — Scores by evaluation category
+- `full_results.json` — Complete structured export
+
 #### `list-models` — Show registered models with pricing
 
 ```bash
@@ -540,17 +757,120 @@ The benchmark evaluates across 12 categories:
 
 ---
 
+## Results & Export
+
+After running evaluations, use the export command to generate structured result files for analysis:
+
+```bash
+mum-eval export-results
+```
+
+This produces four files in `MUMBench/results/exports/`:
+
+### 1. `question_level_results.csv`
+
+One row per question per experiment — the most detailed view:
+
+| Column | Description |
+|--------|-------------|
+| model | Short model name (e.g., Qwen3-14B) |
+| model_full | Full model ID (e.g., Qwen/Qwen3-14B) |
+| method | Memory method name |
+| scenario | Scenario ID |
+| question_id | Unique question identifier |
+| category | Evaluation category |
+| difficulty | easy / medium / hard |
+| question | Full question text |
+| gold_answer | Reference answer |
+| predicted_answer | Model-generated answer |
+| correctness | Score (1-5) |
+| completeness | Score (1-5) |
+| attribution | Score (1-5) |
+| hallucination | Score (1-5) |
+| overall_score | Weighted overall (0-1) |
+| is_binary | Whether binary scoring was used |
+| binary_correct | True/False for binary questions |
+| context_tokens | Tokens in memory context |
+| answer_time_s | Seconds to generate answer |
+| judge_reasoning | Judge's explanation |
+
+### 2. `experiment_summary.csv`
+
+One row per (model, method, scenario) — aggregate scores:
+
+| Column | Description |
+|--------|-------------|
+| model | Short model name |
+| method | Memory method |
+| scenario | Scenario ID |
+| overall_score | Mean overall score (0-1) |
+| avg_correctness | Mean correctness (1-5) |
+| avg_completeness | Mean completeness (1-5) |
+| avg_attribution | Mean attribution (1-5) |
+| avg_hallucination | Mean hallucination (1-5) |
+| num_questions | Number of questions evaluated |
+| total_time_s | Total evaluation time |
+
+### 3. `category_breakdown.csv`
+
+Scores broken down by evaluation category:
+
+| Column | Description |
+|--------|-------------|
+| model | Short model name |
+| method | Memory method |
+| scenario | Scenario ID |
+| category | Evaluation category |
+| mean_score | Average overall score for this category |
+| count | Number of questions in this category |
+| min_score | Minimum score |
+| max_score | Maximum score |
+
+### 4. `full_results.json`
+
+Complete structured JSON with all data, suitable for programmatic analysis:
+
+```json
+{
+  "exported_at": "2026-03-26T12:00:00",
+  "num_experiments": 175,
+  "num_questions_total": 8750,
+  "experiments": [
+    {
+      "model": "Qwen3-14B",
+      "model_full": "Qwen/Qwen3-14B",
+      "method": "structured",
+      "scenario": "1",
+      "overall_score": 0.7234,
+      "dimension_averages": { ... },
+      "scores_by_category": { ... },
+      "scores_by_difficulty": { ... },
+      "num_questions": 50,
+      "total_time_s": 245.5,
+      "questions": [ ... ]
+    }
+  ]
+}
+```
+
+---
+
 ## Output Files
 
 ```
 MUMBench/results/
 ├── eval_{method}__{model_short}__s{scenario_id}.json   # Per-run results
 ├── comparison_report.json                               # Full grid comparison
+├── exports/                                             # Structured exports
+│   ├── question_level_results.csv                       # Per-question detail
+│   ├── experiment_summary.csv                           # Per-experiment summary
+│   ├── category_breakdown.csv                           # Per-category scores
+│   └── full_results.json                                # Complete JSON export
 └── logs/
     └── eval_{timestamp}.log                             # Detailed execution log
 ```
 
-Each result JSON contains the full `ScenarioResult` with per-question details, scores, predicted answers, gold answers, and judge reasoning.
+Each per-run result JSON contains the full `ScenarioResult` with per-question details, scores, predicted answers, gold answers, and judge reasoning.
 
 ---
 

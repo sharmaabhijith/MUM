@@ -140,6 +140,22 @@ def compare(results_dir):
     save_comparison_report(results_path)
 
 
+@main.command("export-results")
+@click.option("--results-dir", default=None, help="Results directory")
+@click.option("--output-dir", default=None, help="Output directory for exported files")
+def export_results(results_dir, output_dir):
+    """Export evaluation results to CSV and structured JSON."""
+    from memory.evaluation.export import ResultsExporter
+
+    exporter = ResultsExporter(
+        results_dir=Path(results_dir) if results_dir else None,
+    )
+    out = exporter.export_all(
+        output_dir=Path(output_dir) if output_dir else None,
+    )
+    console.print(f"\n[green]Results exported to {out}/[/green]")
+
+
 @main.command("list-models")
 def list_models():
     """Show all registered evaluation models."""

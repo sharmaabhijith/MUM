@@ -1,4 +1,4 @@
-.PHONY: install test lint generate-all generate-scenario validate validate-docs eval eval-all eval-model eval-report eval-compare list-models cost-estimate dry-run export clean
+.PHONY: install test lint generate-all generate-scenario validate validate-docs eval eval-all eval-model eval-report eval-compare eval-export list-models cost-estimate dry-run export clean
 
 # ── Setup ──────────────────────────────────────────────────────────
 install:
@@ -52,6 +52,9 @@ eval-report:
 
 eval-compare:
 	python -m memory.cli compare
+
+eval-export:
+	python -m memory.cli export-results
 
 list-models:
 	python -m memory.cli list-models
