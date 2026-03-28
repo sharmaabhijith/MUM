@@ -1,0 +1,38 @@
+CATEGORY: role_appropriate_briefing (T5)
+
+This question tests whether the system can generate a briefing tailored to a specific
+user's role, authority level, and existing knowledge — including correctly omitting
+information the user shouldn't see.
+
+SCORING RUBRIC (total = 10 points):
+
+1. factual_accuracy (0-3 points):
+   - 3: All facts in the briefing are correct and consistent with the gold answer
+   - 2: Mostly correct with minor errors or imprecisions
+   - 1: Contains significant factual errors
+   - 0: Mostly or completely wrong facts
+
+2. role_tailoring (0-3 points):
+   - 3: The briefing is clearly tailored to the target user's role, authority, and expertise level
+        (e.g., technical detail appropriate for an expert, high-level summary for a manager)
+   - 2: Somewhat tailored but with mismatches in depth or terminology
+   - 1: Generic briefing not adapted to the target user's role
+   - 0: Briefing is for the wrong user or role entirely
+
+3. omission_correctness (0-2 points):
+   - 2: Correctly excludes information the target user should not receive
+        (e.g., adversarial info, already-known details, confidential items)
+   - 1: Some correct omissions but misses some that should be excluded
+   - 0: Includes information that should have been excluded, or incorrectly omits needed info
+
+4. completeness (0-2 points):
+   - 2: All information the target user needs is included
+   - 1: Important items missing but core need addressed
+   - 0: Major gaps in coverage
+
+SCORING FORMULA: total_score = (factual_accuracy + role_tailoring + omission_correctness + completeness) / 10
+
+SPECIAL NOTES:
+- In adversarial scenarios, cross-side information leakage is a critical failure: set omission_correctness = 0
+- "Role-appropriate" means matching the user's authority level AND their domain expertise
+- The briefing should avoid repeating things the target user explicitly stated they already know

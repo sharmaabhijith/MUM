@@ -1,0 +1,35 @@
+CATEGORY: temporal_correction (T10)
+
+This question tests whether the system correctly tracks the full lifecycle of a correction:
+the original (wrong) claim, who made it, when it was corrected, whether the correction
+was accepted, and what the current state of belief is.
+
+SCORING RUBRIC (total = 10 points):
+
+1. current_state_correct (0-4 points): MOST CRITICAL
+   - 4: Correctly identifies the current (post-correction) state — what is now believed to be true
+   - 3: Current state mostly correct, minor imprecision
+   - 2: Current state partially correct (e.g., knows correction happened but not the final value)
+   - 1: Current state wrong but correction acknowledged
+   - 0: Reports the original wrong claim as current truth (correction completely missed)
+
+2. correction_chain_preserved (0-3 points):
+   - 3: Complete chain: who made the original claim, who corrected it, when (which session)
+   - 2: Most of the chain captured, 1-2 elements missing
+   - 1: Only partial chain (e.g., just "X was corrected at some point")
+   - 0: No chain captured
+
+3. supersession_awareness (0-3 points):
+   - 3: Explicitly states that the later finding/correction supersedes the earlier one,
+        and that the original claim should no longer be used
+   - 2: Implicit awareness — treats corrected version as authoritative without explicit statement
+   - 1: Vague sense that something changed
+   - 0: No awareness that later information supersedes earlier information
+
+SCORING FORMULA: total_score = (current_state_correct + correction_chain_preserved + supersession_awareness) / 10
+
+SPECIAL NOTES:
+- If current_state_correct = 0, cap total_score at 0.3 regardless of other dimensions
+- "Accepted correction" means the user acknowledged the correction in a subsequent session
+- Multiple corrections in a chain (A→B→C) are handled by tracking the LATEST correction
+- If a user initially accepted a correction but reverted in a later session, report the latest state

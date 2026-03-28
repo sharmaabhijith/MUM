@@ -18,14 +18,14 @@ judge_model: google/gemini-2.5-pro
 # ── Memory methods ─────────────────────────────────────────────────
 
 methods:
-  no_memory: {}
+  # no_memory: {}
   full_context: {}
   rag:
     chunk_size: 512
     chunk_overlap: 64
     top_k: 20
-  summary: {}
-  structured: {}
+  # summary: {}
+  # structured: {}
 
 # ── Generation parameters ──────────────────────────────────────────
 

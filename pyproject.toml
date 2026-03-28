@@ -33,13 +33,14 @@ export = [
 [project.scripts]
 mum = "datagen.cli:main"
 mum-eval = "memory.cli:main"
+mum-bench = "MUMBench.cli:main"
 
 [build-system]
 requires = ["setuptools>=68.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["datagen*", "memory*"]
+include = ["datagen*", "memory*", "MUMBench*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,0 +1,42 @@
+CATEGORY: sequential_handoff (T12)
+
+This question tests whether the system can track information transfer and continuity
+across sequential agents, shifts, or handoffs. Each handoff transfers responsibility
+to the next agent, who must pick up where the previous one left off.
+
+SCORING RUBRIC (total = 10 points):
+
+1. handoff_completeness (0-3 points):
+   - 3: Complete tracking of the handoff chain — who handed off to whom, in what order,
+        and what information was explicitly transferred at each step
+   - 2: Most of the chain captured, 1-2 handoff steps missing or vague
+   - 1: Only the first or last handoff captured; middle steps missing
+   - 0: No handoff chain identified
+
+2. diagnosis_accuracy (0-3 points):
+   - 3: The evolving state/diagnosis/understanding at each handoff point is correctly captured
+        (e.g., "at handoff 1, diagnosis was X; at handoff 2, updated to Y because of Z")
+   - 2: Mostly correct with minor errors or gaps in the evolution
+   - 1: Current final state correct but intermediate states missing
+   - 0: State evolution not captured or wrong
+
+3. audit_trail (0-2 points):
+   - 2: Preserves who did what at each step, creating a traceable record
+        (names/roles of agents at each handoff point)
+   - 1: Partial audit trail — some agents identified but others missing
+   - 0: No audit trail; answer doesn't attribute actions to specific agents
+
+4. supersession_correct (0-2 points):
+   - 2: Later handoff information correctly overrides/updates earlier information;
+        the final state reflects the most recent agent's understanding
+   - 1: Some awareness but inconsistency between earlier and later states
+   - 0: Earlier information not superseded; system treats all handoff states as equally current
+
+SCORING FORMULA: total_score = (handoff_completeness + diagnosis_accuracy + audit_trail + supersession_correct) / 10
+
+SPECIAL NOTES:
+- "Handoff" = explicit transfer of responsibility between agents/shifts/on-call personnel
+- Information that was explicitly stated in the handoff note takes priority over inference
+- If the gold answer mentions specific actions taken at each step (e.g., "ran test X, got result Y"),
+  those must appear in a high-scoring answer
+- Sequential scenarios often involve escalation: check that authority escalation is correctly tracked

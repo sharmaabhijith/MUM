@@ -1,4 +1,4 @@
-.PHONY: install test lint generate-all generate-scenario validate validate-docs eval eval-all eval-model eval-report eval-compare eval-export list-models cost-estimate dry-run export clean
+.PHONY: install test lint generate-all generate-scenario validate validate-docs eval eval-all eval-model eval-report eval-compare eval-export list-models cost-estimate dry-run export clean mumm-select mumm-eval mumm-score mumm-report mumm-run
 
 # ── Setup ──────────────────────────────────────────────────────────
 install:
@@ -58,6 +58,32 @@ eval-export:
 
 list-models:
 	python -m memory.cli list-models
+
+# ── MUMM-Core Evaluation Pipeline ─────────────────────────────────
+
+# Step 1: Build the ~448-question core subset
+mumm-select:
+	mum-bench select-core
+
+# Step 2: Generate answers from both baselines (resume-safe)
+mumm-eval:
+	mum-bench evaluate --baselines rag,long_context
+
+# Step 2b: Single baseline, single scenario
+mumm-eval-one:
+	mum-bench evaluate --baselines $(BASELINE) --scenario $(SCENARIO)
+
+# Step 3: Score all answers (LLM judge + deterministic metrics)
+mumm-score:
+	mum-bench score
+
+# Step 4: Generate report + radar chart
+mumm-report:
+	mum-bench report
+
+# End-to-end pipeline (select + evaluate + score + report)
+mumm-run:
+	mum-bench run-eval
 
 # ── Cleanup ────────────────────────────────────────────────────────
 clean:

@@ -1,0 +1,36 @@
+CATEGORY: cross_user_provenance (T8)
+
+This question tests whether the system can trace the full history of a fact, belief,
+or decision as it propagated across users and sessions — including who originated it,
+who adopted or modified it, and who corrected it.
+
+SCORING RUBRIC (total = 10 points):
+
+1. chain_completeness (0-3 points):
+   - 3: The full chain is captured (originator → propagation → correction if any)
+   - 2: Most of the chain captured, minor gaps
+   - 1: Only partial chain (e.g., just origin or just final state)
+   - 0: Chain not identified or completely wrong
+
+2. attribution_accuracy (0-3 points):
+   - 3: Each step in the chain is correctly attributed to the right user and session
+   - 2: Most attributions correct, 1-2 errors
+   - 1: Several attribution errors
+   - 0: Attributions are mostly or completely wrong
+
+3. temporal_ordering (0-2 points):
+   - 2: Events are in correct chronological order (sessions are numbered; later sessions = more recent)
+   - 1: Minor ordering errors
+   - 0: Order is wrong or ignored
+
+4. evolution_captured (0-2 points):
+   - 2: The answer shows how understanding, beliefs, or facts CHANGED over time (not just static facts)
+   - 1: Some evolution shown but incomplete
+   - 0: No sense of evolution; just a snapshot
+
+SCORING FORMULA: total_score = (chain_completeness + attribution_accuracy + temporal_ordering + evolution_captured) / 10
+
+SPECIAL NOTES:
+- "Propagation" means a later user adopted or referenced an earlier user's belief/claim
+- If the gold answer specifies 3+ steps in the chain, missing any should reduce chain_completeness
+- Session numbers are temporal indicators: session 3 comes after session 2

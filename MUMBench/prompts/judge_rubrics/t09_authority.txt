@@ -1,0 +1,39 @@
+CATEGORY: authority_hierarchy (T9)
+
+This question tests whether the system understands that different users carry different
+authority weights, and applies the correct merging policy when users disagree.
+
+Authority resolution rules vary by scenario:
+- Hierarchical: higher-authority user's claims take precedence on matters within their domain
+- Cross-functional: domain expertise determines authority (e.g., CFO on financial matters)
+- The system must distinguish between factual claims (document-verifiable) and opinions/positions
+
+SCORING RUBRIC (total = 10 points):
+
+1. authority_recognition (0-3 points):
+   - 3: Correctly identifies who holds authority in this situation and why (role, weight, domain)
+   - 2: Identifies authority relationship but misses nuance (e.g., domain-specific vs. general)
+   - 1: Vague acknowledgment of hierarchy without specifics
+   - 0: No recognition of authority structure, or gets it backwards
+
+2. fact_vs_opinion_separation (0-3 points):
+   - 3: Correctly applies document-verifiable facts regardless of authority; only defers to
+        authority for opinion/interpretation/judgment matters
+   - 2: Mostly correct separation with minor confusion
+   - 1: Conflates facts and opinions in authority resolution
+   - 0: Applies authority blindly to factual matters (e.g., "Commissioner says X so X is true"
+        even when document contradicts)
+
+3. correct_resolution (0-4 points): MOST CRITICAL
+   - 4: Final resolution is factually correct AND authority-consistent
+   - 3: Resolution is mostly correct, minor errors
+   - 2: Resolution is partially correct (gets authority right but wrong fact, or vice versa)
+   - 1: Resolution has major errors
+   - 0: Wrong resolution entirely
+
+SCORING FORMULA: total_score = (authority_recognition + fact_vs_opinion_separation + correct_resolution) / 10
+
+SPECIAL NOTES:
+- If correct_resolution = 0, cap total_score at 0.4 regardless of other dimensions
+- The question may specify which user's claim to evaluate — the answer must address that specific claim
+- "Authority weight" in hierarchical scenarios may be numeric (e.g., 1.0, 0.7, 0.5)

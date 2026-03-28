@@ -1,0 +1,29 @@
+CATEGORY: information_gap (T4)
+
+This question tests whether the system correctly identifies asymmetries in knowledge
+between users — what one user knows that another does not know but needs.
+
+SCORING RUBRIC (total = 10 points):
+
+1. gap_identified (0 or 4 points): CRITICAL
+   - 4: The answer correctly identifies which user has the information and which user lacks it
+   - 0: The answer fails to identify the gap, gets the direction wrong, or conflates users
+
+2. specificity (0-3 points):
+   - 3: The knowledge gap is described with specific details (what exactly is known/unknown, which sessions)
+   - 2: The gap is described at a moderate level of specificity
+   - 1: The gap is vaguely described (e.g., just "User A knows more than User B")
+   - 0: No specificity
+
+3. actionability (0-3 points):
+   - 3: The answer suggests concrete next steps or implications of the gap
+   - 2: Some actionable insight provided
+   - 1: Minimal actionable content
+   - 0: No actionable content
+
+SCORING FORMULA: total_score = (gap_identified + specificity + actionability) / 10
+
+SPECIAL NOTES:
+- If gap_identified = 0, cap total_score at 0.3 regardless of other dimensions
+- The gap must be directional: "User A knows X that User B doesn't" is different from "there is a gap"
+- Symmetric gaps (both users lack something) should score lower unless the gold answer specifies both directions

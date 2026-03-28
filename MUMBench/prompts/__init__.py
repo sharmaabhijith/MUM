@@ -1,0 +1,1 @@
+"""MUMM-Core prompts package."""
